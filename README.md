@@ -1,7 +1,7 @@
-# Muhammad Danial — MERN Portfolio v3
+# Muhammad Danial â€” Portfolio
 
 > Full Stack Developer | AI Agent Developer | Python Developer  
-> BS Robotics @ Bahria University · Gujrat, Pakistan
+> BS Robotics @ Bahria University Â· Gujrat, Pakistan
 
 ---
 
