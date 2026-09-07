@@ -8,6 +8,8 @@ import { useEffect, useRef, useState } from "react";
 const ROLES = [
   "Full Stack Developer",
   "AI Agent Developer",
+  "Web Designer",
+  "SEO Specialist",
   "Python Developer",
   "MERN Stack Expert",
   "Robotics Engineer (Coming Soon)",

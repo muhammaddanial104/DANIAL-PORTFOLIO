@@ -1,34 +1,35 @@
 // ═══════════════════════════════════════════════════
 // COMPONENT: Services.jsx — WHAT I OFFER & SOLUTIONS
+// Featuring Web Design, AI Agents, SEO & Engineering
 // ═══════════════════════════════════════════════════
 
 const SERVICES = [
   {
     num: "01",
-    title: "Full Stack Web Development",
-    badge: "MERN STACK",
-    badgeClass: "service-badge-purple",
+    title: "Modern Web Design & UI/UX",
+    badge: "CREATIVE DESIGN",
+    badgeClass: "service-badge-cyan",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26">
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
-        <line x1="14" y1="4" x2="10" y2="20" />
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <line x1="3" y1="9" x2="21" y2="9" />
+        <line x1="9" y1="21" x2="9" y2="9" />
       </svg>
     ),
-    desc: "Complete end-to-end web applications crafted with React, Vite, Node.js, Express, and MongoDB. Fast loading, responsive on all devices, and engineered for high scale.",
+    desc: "Sleek, futuristic, and conversion-focused web design. High-fidelity layouts, micro-interactions, dark cyberpunk aesthetics, and flawless mobile responsiveness across all devices.",
     features: [
-      "Custom React & Vite Architectures",
-      "Robust REST & GraphQL APIs",
-      "Secure JWT Authentication",
-      "Payment Gateways (Stripe & PayPal)",
-      "Modern Responsive UI / UX",
+      "Custom UI / UX & Prototyping",
+      "Interactive Animations & Micro-effects",
+      "Mobile-First Adaptive Layouts",
+      "Futuristic Dark & Cyberpunk Themes",
+      "High-Converting Landing Pages",
     ],
   },
   {
     num: "02",
-    title: "AI Agents & LLM Systems",
+    title: "AI Agents & Intelligent Systems",
     badge: "AUTONOMOUS AI",
-    badgeClass: "service-badge-cyan",
+    badgeClass: "service-badge-purple",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26">
         <rect x="3" y="11" width="18" height="10" rx="2" />
@@ -38,17 +39,59 @@ const SERVICES = [
         <line x1="16" y1="16" x2="16" y2="16" />
       </svg>
     ),
-    desc: "Autonomous multi-agent workflows and LLM applications designed with Python, LangChain, and OpenAI GPT-4. Automate complex manual workflows with cognitive reasoning.",
+    desc: "Autonomous multi-agent workflows and cognitive LLM applications built with Python, LangChain, and OpenAI GPT-4. Automate complex manual workflows with intelligent task reasoning.",
     features: [
-      "Autonomous Agent Architectures",
+      "Autonomous Multi-Agent Architectures",
       "LangChain & Custom AI Chains",
-      "OpenAI & Claude Integrations",
+      "OpenAI & Claude API Integrations",
       "Vector DB Retrieval (RAG Workflows)",
       "Automated Task Orchestration",
     ],
   },
   {
     num: "03",
+    title: "SEO & Search Ranking Optimization",
+    badge: "SEO & GROWTH",
+    badgeClass: "service-badge-cyan",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26">
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        <path d="M11 8v6M8 11h6" />
+      </svg>
+    ),
+    desc: "Supercharge your online reach and Google organic ranking. Technical SEO, semantic metadata, lighting-fast Core Web Vitals optimization, and keyword architecture.",
+    features: [
+      "Technical & On-Page SEO Auditing",
+      "Schema Markup & Rich Snippets",
+      "Core Web Vitals & Speed Tuning",
+      "OpenGraph & Social Meta Architecture",
+      "Google Search Console Indexing",
+    ],
+  },
+  {
+    num: "04",
+    title: "Full Stack MERN Development",
+    badge: "MERN STACK",
+    badgeClass: "service-badge-purple",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26">
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
+        <line x1="14" y1="4" x2="10" y2="20" />
+      </svg>
+    ),
+    desc: "Complete end-to-end web applications crafted with React, Vite, Node.js, Express, and MongoDB. Fast loading, secure authentication, and engineered for high scale.",
+    features: [
+      "Custom React & Vite Architectures",
+      "Robust REST & GraphQL APIs",
+      "Secure JWT Authentication",
+      "Payment Gateways (Stripe & PayPal)",
+      "Database Modeling (MongoDB & SQL)",
+    ],
+  },
+  {
+    num: "05",
     title: "Backend & API Engineering",
     badge: "PYTHON & NODE.JS",
     badgeClass: "service-badge-purple",
@@ -60,17 +103,17 @@ const SERVICES = [
         <line x1="6" y1="18" x2="6.01" y2="18" />
       </svg>
     ),
-    desc: "High-performance server-side architectures built using Node.js/Express, Python/Django, and FastAPI. Focused on zero-downtime reliability and enterprise security.",
+    desc: "High-performance server-side architectures built using Node.js/Express, Python/Django, and FastAPI. Focused on zero-downtime reliability, caching, and enterprise security.",
     features: [
-      "Microservices & RESTful APIs",
-      "Database Modeling (MongoDB & SQL)",
+      "Microservices & Cloud Deployment",
+      "Database Caching (Redis) & Queues",
       "Data Scraping & Automated Pipelines",
       "Third-Party API Integrations",
       "Rate Limiting & Security Shielding",
     ],
   },
   {
-    num: "04",
+    num: "06",
     title: "Robotics & Automation",
     badge: "COMING SOON",
     badgeClass: "service-badge-emerald",
@@ -111,7 +154,7 @@ export default function Services() {
       </div>
 
       <p className="services-subtitle">
-        Delivering end-to-end digital excellence — from modern full-stack web applications and autonomous AI agents to forward-looking robotics engineering.
+        Delivering end-to-end digital excellence — from modern web designing and SEO to autonomous AI agents, full-stack engineering, and robotics.
       </p>
 
       <div className="services-grid">
