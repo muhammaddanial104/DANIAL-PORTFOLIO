@@ -49,15 +49,25 @@ export default function Contact() {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    if (!form.name || !form.email || !form.message) return;
     setState("sending");
     try {
       const res = await api.post("/api/contact", form);
-      if (res.data.success) {
+      if (res.data && res.data.success) {
         setState("success");
-        setForm({ name:"", email:"", subject:"", message:"" });
+        setForm({ name: "", email: "", subject: "", message: "" });
         setTimeout(() => setState("idle"), 4000);
-      } else setState("error");
-    } catch { setState("error"); setTimeout(() => setState("idle"), 3000); }
+        return;
+      }
+      throw new Error("API failed");
+    } catch {
+      // Fallback: direct email transmission
+      const mailtoUrl = `mailto:${MAIL}?subject=${encodeURIComponent(form.subject || "Portfolio Contact")}&body=${encodeURIComponent(`From: ${form.name} (${form.email})\n\nMessage:\n${form.message}`)}`;
+      window.location.href = mailtoUrl;
+      setState("success");
+      setForm({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setState("idle"), 4000);
+    }
   };
 
   return (

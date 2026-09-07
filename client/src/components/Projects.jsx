@@ -146,7 +146,7 @@ export default function Projects() {
   const [projects, setProjects] = useState(FALLBACK);
 
   useEffect(() => {
-    axios
+    api
       .get("/api/projects")
       .then(r => {
         if (r.data && r.data.success && Array.isArray(r.data.data) && r.data.data.length > 0) {
