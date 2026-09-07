@@ -116,6 +116,14 @@ export default function Hero() {
           AI Agent Developer &amp; Automation Engineer
         </h2>
 
+        {/* Robotics Coming Soon Badge in Emerald Green */}
+        <div className="hero-edu-badge">
+          <span className="edu-icon">🎓</span>
+          <span className="edu-text">BS IN ROBOTICS</span>
+          <span className="edu-divider">&middot;</span>
+          <span className="edu-soon-tag">COMING SOON</span>
+        </div>
+
         {/* 3. Short Line */}
         <p className="hero-desc">
           I build AI-powered applications, intelligent agents and automation systems.

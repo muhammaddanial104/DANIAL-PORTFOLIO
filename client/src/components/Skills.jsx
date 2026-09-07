@@ -1,8 +1,8 @@
 // ═══════════════════════════════════════════════════
-// COMPONENT: Skills.jsx — 4 PRECISE CATEGORIES
-// AI & Agents | Development | Automation | Other
+// COMPONENT: Skills.jsx — WITH ROBOTICS (COMING SOON)
+// Animated Progress Bars & Exact Categories
 // ═══════════════════════════════════════════════════
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CATEGORIES = [
   {
@@ -40,11 +40,23 @@ const CATEGORIES = [
   {
     title: "OTHER",
     icon: "🛠️",
-    color: "#10b981",
+    color: "#f59e0b",
     skills: [
       { name: "Git / GitHub",        pct: 88 },
       { name: "SEO",                 pct: 85 },
       { name: "Deployment",          pct: 82 },
+    ],
+  },
+  {
+    title: "ROBOTICS",
+    icon: "🦾",
+    color: "#10b981",
+    isComingSoon: true,
+    skills: [
+      { name: "Robotic Programming", comingSoon: true, pct: 60 },
+      { name: "ROS & ROS 2",         comingSoon: true, pct: 50 },
+      { name: "Embedded C / C++",     comingSoon: true, pct: 55 },
+      { name: "Autonomous Systems",  comingSoon: true, pct: 52 },
     ],
   },
 ];
@@ -67,41 +79,49 @@ const TECH_TAGS = [
   "Deployment",
   "FastAPI",
   "MongoDB",
+  "Robotic Programming (Coming Soon)",
+  "ROS & ROS 2",
+  "Embedded C++",
 ];
 
-function SkillBar({ name, pct, color }) {
-  const fillRef = useRef(null);
+function SkillBar({ name, pct, color, comingSoon }) {
+  const [filled, setFilled] = useState(false);
   const itemRef = useRef(null);
 
   useEffect(() => {
     const ob = new IntersectionObserver(
       ([e]) => {
-        if (e.isIntersecting && fillRef.current) {
-          fillRef.current.style.width = `${pct}%`;
+        if (e.isIntersecting) {
+          setFilled(true);
+          ob.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
     if (itemRef.current) ob.observe(itemRef.current);
     return () => ob.disconnect();
-  }, [pct]);
+  }, []);
+
+  const barColor = comingSoon ? "#10b981" : color;
 
   return (
-    <div className="skill-item" ref={itemRef}>
+    <div className={`skill-item ${comingSoon ? "item-coming-soon" : ""}`} ref={itemRef}>
       <div className="skill-info">
-        <span className="skill-name">{name}</span>
-        <span className="skill-pct" style={{ color: color }}>
-          {pct}%
+        <span className="skill-name">
+          {name}
+          {comingSoon && <span className="tag-soon">SOON</span>}
+        </span>
+        <span className="skill-pct" style={{ color: barColor }}>
+          {comingSoon ? "COMMENCING" : `${pct}%`}
         </span>
       </div>
       <div className="skill-bar-bg">
         <div
-          ref={fillRef}
-          className="skill-bar-fill"
+          className={`skill-bar-fill ${comingSoon ? "fill-soon" : ""}`}
           style={{
-            backgroundColor: color,
-            boxShadow: `0 0 10px ${color}`,
-            width: "0%",
+            backgroundColor: barColor,
+            boxShadow: `0 0 12px ${barColor}`,
+            width: filled ? `${pct}%` : "0%",
             transition: "width 1.2s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         />
@@ -122,14 +142,17 @@ export default function Skills() {
         <div className="section-line" />
       </div>
 
-      {/* 4 Clean Categories Grid */}
-      <div className="skills-grid skills-grid-4">
+      {/* Categories Grid (With Robotics Coming Soon in Green) */}
+      <div className="skills-grid skills-grid-5cat">
         {CATEGORIES.map(cat => (
-          <div className="skill-category" key={cat.title}>
+          <div className={`skill-category ${cat.isComingSoon ? "cat-coming-soon" : ""}`} key={cat.title}>
             <div className="cat-header">
               <h3 className="cat-title">
                 <span style={{ color: cat.color }}>{cat.icon}</span> {cat.title}
               </h3>
+              {cat.isComingSoon && (
+                <span className="cat-badge-soon">COMING SOON</span>
+              )}
             </div>
             <div className="skill-bars">
               {cat.skills.map(sk => (
@@ -138,6 +161,7 @@ export default function Skills() {
                   name={sk.name}
                   pct={sk.pct}
                   color={cat.color}
+                  comingSoon={sk.comingSoon}
                 />
               ))}
             </div>
@@ -151,7 +175,7 @@ export default function Skills() {
           <h4 className="cloud-title">ACTUAL TECH STACK</h4>
           <div className="tags-cloud">
             {TECH_TAGS.map((t, idx) => (
-              <span key={idx} className="cloud-tag">
+              <span key={idx} className={`cloud-tag ${t.includes("Coming Soon") ? "tag-soon" : ""}`}>
                 {t}
               </span>
             ))}

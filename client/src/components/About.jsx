@@ -1,18 +1,10 @@
 // ═══════════════════════════════════════════════════
 // COMPONENT: About.jsx — SHORT & GENUINE
-// Highlights: BS Robotics, AI Agents, Automation,
-// Web Dev, APIs & Current Focus: NOVA AI
+// Highlights: BS Robotics (Coming Soon), AI Agents,
+// Automation, Web Dev, APIs & Current Focus: NOVA AI
 // ═══════════════════════════════════════════════════
 
 export default function About() {
-  const PILLARS = [
-    { title: "BS ROBOTICS",     icon: "🎓", desc: "Engineering & Intelligent Machines" },
-    { title: "AI Agents",       icon: "🤖", desc: "Autonomous Systems & LLM Workflows" },
-    { title: "Automation",      icon: "⚙️", desc: "Task & Browser Automation" },
-    { title: "Web Development", icon: "🌐", desc: "Modern Full-Stack Applications" },
-    { title: "APIs",            icon: "🔌", desc: "Robust API Integration & Pipelines" },
-  ];
-
   const scrollTo = id => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -44,14 +36,29 @@ export default function About() {
             <div className="photo-scan" />
           </div>
 
-          {/* Quick Pillars */}
+          {/* Quick Pillars with Robotics in Green */}
           <div className="about-pillars-list">
-            {PILLARS.map((p) => (
-              <div className="about-pillar-tag" key={p.title}>
-                <span className="pillar-icon">{p.icon}</span>
-                <span className="pillar-title">{p.title}</span>
-              </div>
-            ))}
+            <div className="about-pillar-tag about-pillar-soon">
+              <span className="pillar-icon">🎓</span>
+              <span className="pillar-title">BS IN ROBOTICS</span>
+              <span className="edu-soon-tag">COMING SOON</span>
+            </div>
+            <div className="about-pillar-tag">
+              <span className="pillar-icon">🤖</span>
+              <span className="pillar-title">AI Agents</span>
+            </div>
+            <div className="about-pillar-tag">
+              <span className="pillar-icon">⚙️</span>
+              <span className="pillar-title">Automation</span>
+            </div>
+            <div className="about-pillar-tag">
+              <span className="pillar-icon">🌐</span>
+              <span className="pillar-title">Web Development</span>
+            </div>
+            <div className="about-pillar-tag">
+              <span className="pillar-icon">🔌</span>
+              <span className="pillar-title">APIs</span>
+            </div>
           </div>
         </div>
 
@@ -64,7 +71,7 @@ export default function About() {
 
           <p className="about-body">
             I specialize in building autonomous AI agents, automated workflows, and robust web applications with seamless API integrations.
-            Currently pursuing <span className="highlight">BS in Robotics</span>, combining engineering principles with modern software to create intelligent, production-ready systems.
+            Preparing for <span className="highlight" style={{ color: "#10b981" }}>BS in Robotics (Coming Soon)</span>, combining engineering principles with modern software to create intelligent, production-ready systems.
           </p>
 
           {/* Current Focus Card */}
@@ -87,7 +94,7 @@ export default function About() {
             </div>
             <div className="fact-card">
               <span className="fact-label">EDUCATION</span>
-              <span className="fact-val">BS in Robotics</span>
+              <span className="fact-val" style={{ color: "#10b981" }}>BS in Robotics (Coming Soon)</span>
             </div>
             <div className="fact-card">
               <span className="fact-label">CORE FOCUS</span>

@@ -68,12 +68,26 @@ const SERVICES = [
     title: "AI Content Automation",
     desc: "Automated video/content workflows for YouTube, TikTok and Facebook.",
     badge: "CONTENT ENGINES",
-    badgeClass: "service-badge-emerald",
+    badgeClass: "service-badge-cyan",
     points: [
       "YouTube Video & Script Automation",
       "TikTok & Reels Batch Generators",
       "Facebook Post Automation & Scheduling",
       "AI Voiceovers & Multimedia Pipelines",
+    ],
+  },
+  {
+    num: "06",
+    icon: "🦾",
+    title: "Robotics & Automation",
+    desc: "Autonomous robotics frameworks, ROS & ROS 2 nodes, and embedded systems.",
+    badge: "COMING SOON",
+    badgeClass: "service-badge-emerald",
+    points: [
+      "ROS & ROS 2 Robotics Framework",
+      "Embedded C / C++ Programming",
+      "Autonomous Machine Kinematics",
+      "Sensor Fusion & Hardware Interfacing",
     ],
   },
 ];

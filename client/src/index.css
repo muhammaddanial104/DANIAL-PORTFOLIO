@@ -7307,3 +7307,75 @@ html, body, #root {
     text-align: center;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   SKILL PROGRESS BARS & ROBOTICS GREEN THEME REINFORCEMENT
+   ══════════════════════════════════════════════════════════════ */
+
+.skill-bar-bg,
+.skill-bar {
+  height: 6px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  margin-top: 0.45rem !important;
+}
+
+.skill-bar-fill,
+.skill-fill {
+  height: 100% !important;
+  border-radius: 4px !important;
+  position: relative !important;
+  display: block !important;
+}
+
+.fill-soon {
+  background-color: #10b981 !important;
+  box-shadow: 0 0 12px #10b981 !important;
+}
+
+.tag-soon {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 0.55rem !important;
+  color: #10b981 !important;
+  background: rgba(16, 185, 129, 0.15) !important;
+  border: 1px solid rgba(16, 185, 129, 0.4) !important;
+  border-radius: 4px !important;
+  padding: 0.1rem 0.4rem !important;
+  margin-left: 0.5rem !important;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.3) !important;
+  display: inline-block !important;
+}
+
+.about-pillar-soon {
+  border-color: rgba(16, 185, 129, 0.4) !important;
+  background: rgba(16, 185, 129, 0.08) !important;
+}
+
+.about-pillar-soon .pillar-title {
+  color: #10b981 !important;
+  font-weight: 700 !important;
+}
+
+/* Skills 5-Category Layout */
+.skills-grid-5cat {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 1.8rem !important;
+}
+
+@media (min-width: 900px) {
+  .skills-grid-5cat .cat-coming-soon {
+    grid-column: 1 / -1 !important;
+    max-width: 680px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-grid-5cat {
+    grid-template-columns: 1fr !important;
+  }
+}
