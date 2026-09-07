@@ -1,9 +1,9 @@
 // ═══════════════════════════════════════════════════
 // COMPONENT: Projects.jsx — MAIN PORTFOLIO SHOWCASE
-// Featuring Flagship NOVA AI + Other Projects
-// No fake Live Demo links — Only verified actions!
+// Featured NOVA AI (Largest Card & Screenshot) + In Development Status
+// Other Projects with Screenshot, Description, Tech Stack, GitHub & No fake Live Demo
 // ═══════════════════════════════════════════════════
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const NOVA_FEATURES = [
   { name: "AI Brain",            icon: "🧠" },
@@ -82,78 +82,94 @@ export default function Projects() {
       </p>
 
       {/* ══════════════════════════════════════════════════
-          FLAGSHIP PROJECT CARD: NOVA AI 🤖
+          FLAGSHIP FEATURED PROJECT: NOVA AI 🤖
+          Largest Card & Dedicated Screenshot
           ══════════════════════════════════════════════════ */}
       <div className="nova-flagship-card">
         <div className="nova-card-header">
           <div className="nova-meta-left">
-            <span className="nova-crown-tag">★ FLAGSHIP PROJECT</span>
+            <span className="nova-crown-tag">★ FEATURED PROJECT</span>
             <span className="nova-status-badge">🚧 In Development</span>
           </div>
           <span className="nova-year">2026</span>
         </div>
 
-        <div className="nova-main-grid">
-          <div className="nova-content-col">
-            <h3 className="nova-title">NOVA AI 🤖</h3>
-            <h4 className="nova-subtitle">Autonomous AI Desktop Assistant &amp; Automation Engine</h4>
-
-            <p className="nova-description">
-              An AI-powered desktop assistant designed to control your computer, manage files, interact with browsers, assist with coding, generate content and automate tasks.
-            </p>
-
-            {/* 12 Features Grid */}
-            <div className="nova-features-wrap">
-              <span className="nova-features-label">KEY CAPABILITIES &amp; FEATURES:</span>
-              <div className="nova-features-grid">
-                {NOVA_FEATURES.map((f) => (
-                  <div className="nova-feat-pill" key={f.name}>
-                    <span className="nova-feat-icon">{f.icon}</span>
-                    <span className="nova-feat-text">{f.name}</span>
-                  </div>
-                ))}
-              </div>
+        {/* Big NOVA AI Screenshot Banner */}
+        <div className="nova-screenshot-banner">
+          <div className="nova-screenshot-wrap">
+            <img
+              src="/nova-preview.jpg"
+              alt="NOVA AI Desktop Assistant Interface Screenshot"
+              className="nova-screenshot-img"
+              loading="lazy"
+            />
+            <div className="nova-screenshot-overlay">
+              <span className="nova-overlay-pill">NOVA AI INTERFACE &bull; SYSTEM HUD PREVIEW</span>
             </div>
+          </div>
+        </div>
 
-            {/* Tech Stack */}
-            <div className="nova-tech-row">
-              <span className="tech-chip">Python</span>
-              <span className="tech-chip">LangChain</span>
-              <span className="tech-chip">OpenAI GPT-4</span>
-              <span className="tech-chip">Desktop Automation</span>
-              <span className="tech-chip">Browser Control</span>
-              <span className="tech-chip">Speech Recognition</span>
-              <span className="tech-chip">FastAPI</span>
-            </div>
+        {/* NOVA Content Details */}
+        <div className="nova-content-details">
+          <h3 className="nova-title">NOVA AI 🤖</h3>
+          <h4 className="nova-subtitle">Autonomous AI Desktop Assistant &amp; Automation Engine</h4>
 
-            {/* Buttons */}
-            <div className="nova-actions-row">
-              <a
-                href="https://github.com/muhammaddanial104"
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-primary"
-              >
-                <span className="btn-glow" />
-                View on GitHub
-              </a>
-              <button
-                className="btn btn-outline"
-                onClick={() =>
-                  setSelectedProject({
-                    title: "NOVA AI 🤖",
-                    desc: "An AI-powered desktop assistant designed to control your computer, manage files, interact with browsers, assist with coding, generate content and automate tasks.",
-                    tags: ["Python", "LangChain", "OpenAI GPT-4", "PyAutoGUI", "Speech Recognition", "FastAPI"],
-                    status: "🚧 In Development",
-                    details: "NOVA AI integrates natural language voice and text input with OS-level execution hooks. It automates repetitive browsing tasks, synthesizes content, manages directory structures, and performs intelligent multi-agent tasks seamlessly on your local desktop.",
-                    githubUrl: "https://github.com/muhammaddanial104",
-                    features: NOVA_FEATURES,
-                  })
-                }
-              >
-                Project Details
-              </button>
+          <p className="nova-description">
+            An AI-powered desktop assistant designed to control your computer, manage files, interact with browsers, assist with coding, generate content and automate tasks.
+          </p>
+
+          {/* 12 Features Badges */}
+          <div className="nova-features-wrap">
+            <span className="nova-features-label">12 CORE CAPABILITIES &amp; FEATURES:</span>
+            <div className="nova-features-grid">
+              {NOVA_FEATURES.map(f => (
+                <div className="nova-feat-pill" key={f.name}>
+                  <span className="nova-feat-icon">{f.icon}</span>
+                  <span className="nova-feat-text">{f.name}</span>
+                </div>
+              ))}
             </div>
+          </div>
+
+          {/* Tech Stack Chips */}
+          <div className="nova-tech-row">
+            <span className="tech-chip">Python</span>
+            <span className="tech-chip">LangChain</span>
+            <span className="tech-chip">OpenAI GPT-4</span>
+            <span className="tech-chip">Desktop Automation</span>
+            <span className="tech-chip">Browser Control</span>
+            <span className="tech-chip">Speech Recognition</span>
+            <span className="tech-chip">FastAPI</span>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="nova-actions-row">
+            <a
+              href="https://github.com/muhammaddanial104"
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-primary"
+            >
+              <span className="btn-glow" />
+              View on GitHub
+            </a>
+            <button
+              className="btn btn-outline"
+              onClick={() =>
+                setSelectedProject({
+                  title: "NOVA AI 🤖",
+                  desc: "An AI-powered desktop assistant designed to control your computer, manage files, interact with browsers, assist with coding, generate content and automate tasks.",
+                  tags: ["Python", "LangChain", "OpenAI GPT-4", "Desktop Automation", "Speech Recognition", "FastAPI"],
+                  status: "🚧 In Development",
+                  image: "/nova-preview.jpg",
+                  details: "NOVA AI integrates natural language voice and text input with OS-level execution hooks. It automates repetitive browsing tasks, synthesizes content, manages directory structures, and executes intelligent multi-agent tasks seamlessly on your local desktop.",
+                  githubUrl: "https://github.com/muhammaddanial104",
+                  features: NOVA_FEATURES,
+                })
+              }
+            >
+              Project Details
+            </button>
           </div>
         </div>
       </div>
@@ -166,7 +182,7 @@ export default function Projects() {
       <div className="other-projects-grid">
         {OTHER_PROJECTS.map((p, idx) => (
           <div className="project-card" key={p.id}>
-            {/* Thumbnail */}
+            {/* Screenshot */}
             <div className="proj-thumb-wrap">
               <img
                 src={p.image}
@@ -184,14 +200,14 @@ export default function Projects() {
               <h4 className="proj-title">{p.title}</h4>
               <p className="proj-desc">{p.desc}</p>
 
-              {/* Tags */}
+              {/* Tech Stack */}
               <div className="proj-tags">
-                {p.tags.map((t) => (
+                {p.tags.map(t => (
                   <span className="proj-tag" key={t}>{t}</span>
                 ))}
               </div>
 
-              {/* Action Buttons: Only valid buttons */}
+              {/* Action Buttons: Only actual verified links */}
               <div className="proj-card-actions">
                 <a
                   href={p.githubUrl}
@@ -207,7 +223,7 @@ export default function Projects() {
                 >
                   Details
                 </button>
-                {/* Notice: No fake live demo! */}
+                {/* Live Demo only if actually live */}
                 {p.liveUrl && (
                   <a
                     href={p.liveUrl}
@@ -224,9 +240,7 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* ══════════════════════════════════════════════════
-          DETAILS MODAL
-          ══════════════════════════════════════════════════ */}
+      {/* Details Modal */}
       {selectedProject && (
         <div className="proj-modal-backdrop" onClick={() => setSelectedProject(null)}>
           <div className="proj-modal" onClick={e => e.stopPropagation()}>
@@ -244,6 +258,16 @@ export default function Projects() {
               <span className="nova-status-badge modal-status">
                 {selectedProject.status}
               </span>
+            )}
+
+            {selectedProject.image && (
+              <div className="modal-image-wrap">
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  className="modal-image"
+                />
+              </div>
             )}
 
             <p className="proj-modal-desc">{selectedProject.desc}</p>

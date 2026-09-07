@@ -1,7 +1,6 @@
 // ═══════════════════════════════════════════════════
-// COMPONENT: About.jsx — SHORT & GENUINE
-// Highlights: BS Robotics (Coming Soon), AI Agents,
-// Automation, Web Dev, APIs & Current Focus: NOVA AI
+// COMPONENT: About.jsx — SHORT & GENUINE (MAX 3-4 LINES)
+// BS Robotics (Coming Soon), AI Agents, Automation, Web Dev, APIs, NOVA AI
 // ═══════════════════════════════════════════════════
 
 export default function About() {
@@ -36,7 +35,7 @@ export default function About() {
             <div className="photo-scan" />
           </div>
 
-          {/* Quick Pillars with Robotics in Green */}
+          {/* Quick Pillars */}
           <div className="about-pillars-list">
             <div className="about-pillar-tag about-pillar-soon">
               <span className="pillar-icon">🎓</span>
@@ -62,19 +61,19 @@ export default function About() {
           </div>
         </div>
 
-        {/* Info Column */}
+        {/* Info Column: Crisp, max 3-4 lines */}
         <div className="about-info-col">
           <p className="about-intro">
             Hey, I&apos;m <span className="text-purple">Muhammad Danial</span> —
-            an AI Agent Developer &amp; Automation Engineer from Gujrat, Pakistan.
+            an AI Agent Developer &amp; Automation Engineer based in Gujrat, Pakistan.
           </p>
 
           <p className="about-body">
-            I specialize in building autonomous AI agents, automated workflows, and robust web applications with seamless API integrations.
-            Preparing for <span className="highlight" style={{ color: "#10b981" }}>BS in Robotics (Coming Soon)</span>, combining engineering principles with modern software to create intelligent, production-ready systems.
+            I specialize in building autonomous AI agents, intelligent workflow automations, and modern web applications with scalable API integrations.
+            Preparing for <span className="highlight" style={{ color: "#10b981", fontWeight: 600 }}>BS in Robotics (Coming Soon)</span>, combining software intelligence with upcoming hardware engineering.
           </p>
 
-          {/* Current Focus Card */}
+          {/* Current Focus Card: NOVA AI */}
           <div className="about-focus-box">
             <div className="focus-header">
               <span className="focus-pulse" />
@@ -82,23 +81,23 @@ export default function About() {
             </div>
             <h3 className="focus-project-name">NOVA AI 🤖</h3>
             <p className="focus-project-desc">
-              Building an autonomous AI desktop assistant designed to control computers, manage files, automate browsers, generate content, and orchestrate complex tasks.
+              Engineering an autonomous AI desktop assistant designed to control computers, manage files, automate browsers, assist with coding, and orchestrate complex tasks.
             </p>
           </div>
 
-          {/* Key Facts */}
+          {/* Core Info Tags */}
           <div className="about-facts-grid">
             <div className="fact-card">
               <span className="fact-label">LOCATION</span>
               <span className="fact-val">Gujrat, Pakistan</span>
             </div>
             <div className="fact-card">
-              <span className="fact-label">EDUCATION</span>
-              <span className="fact-val" style={{ color: "#10b981" }}>BS in Robotics (Coming Soon)</span>
+              <span className="fact-label">ACADEMICS</span>
+              <span className="fact-val" style={{ color: "#10b981" }}>BS Robotics (Coming Soon)</span>
             </div>
             <div className="fact-card">
-              <span className="fact-label">CORE FOCUS</span>
-              <span className="fact-val">AI Agents &amp; Automation</span>
+              <span className="fact-label">SPECIALTY</span>
+              <span className="fact-val">AI Agents &amp; Automations</span>
             </div>
             <div className="fact-card">
               <span className="fact-label">AVAILABILITY</span>
@@ -106,7 +105,6 @@ export default function About() {
             </div>
           </div>
 
-          {/* Action CTA */}
           <button className="btn btn-primary" onClick={() => scrollTo("contact")}>
             <span className="btn-glow" />
             Let&apos;s Work Together

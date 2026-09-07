@@ -1,9 +1,9 @@
 // ═══════════════════════════════════════════════════
 // COMPONENT: Hero.jsx — AI AGENT & AUTOMATION ENGINEER
+// Exact positioning, buttons, BS Robotics (Coming Soon), NO fake metrics
 // ═══════════════════════════════════════════════════
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-// Letter-by-letter for solid-color word
 function AnimatedLetters({ text, className, baseDelay = 0 }) {
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -33,7 +33,6 @@ function AnimatedLetters({ text, className, baseDelay = 0 }) {
   );
 }
 
-// Whole-word animation for gradient text
 function AnimatedWord({ text, className, delay = 0 }) {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -52,40 +51,6 @@ function AnimatedWord({ text, className, delay = 0 }) {
       }}
     >
       {text}
-    </span>
-  );
-}
-
-// Number ticker
-function Counter({ target, suffix = "" }) {
-  const [val, setVal] = useState(0);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const ob = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          let cur = 0;
-          const step = Math.ceil(target / 40);
-          const t = setInterval(() => {
-            cur += step;
-            if (cur >= target) {
-              setVal(target);
-              clearInterval(t);
-            } else setVal(cur);
-          }, 35);
-          ob.disconnect();
-        }
-      },
-      { threshold: 0.5 }
-    );
-    if (ref.current) ob.observe(ref.current);
-    return () => ob.disconnect();
-  }, [target]);
-
-  return (
-    <span ref={ref} className="stat-num">
-      {val}{suffix}
     </span>
   );
 }
@@ -138,29 +103,6 @@ export default function Hero() {
           <button className="btn btn-outline" onClick={() => scrollTo("contact")}>
             Let&apos;s Work Together
           </button>
-        </div>
-
-        {/* Quick Highlights / Stats */}
-        <div className="hero-stats">
-          <div className="stat">
-            <Counter target={5} suffix="+" />
-            <span className="stat-label">AI &amp; WEB APPS</span>
-          </div>
-          <div className="stat-divider" />
-          <div className="stat">
-            <Counter target={1} suffix="+" />
-            <span className="stat-label">YRS EXP</span>
-          </div>
-          <div className="stat-divider" />
-          <div className="stat">
-            <Counter target={90} suffix="%" />
-            <span className="stat-label">AUTOMATION</span>
-          </div>
-          <div className="stat-divider" />
-          <div className="stat">
-            <Counter target={12} suffix="+" />
-            <span className="stat-label">CORE TOOLS</span>
-          </div>
         </div>
       </div>
 

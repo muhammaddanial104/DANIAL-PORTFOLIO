@@ -1,6 +1,5 @@
 // ═══════════════════════════════════════════════════
-// COMPONENT: Services.jsx — 5 CORE SERVICES
-// Features: AI Agents, Automation, Web Dev, API Integration, Content Automation
+// COMPONENT: Services.jsx — SHORT DESCRIPTIONS (4-5 CORE SERVICES)
 // Dedicated Scroll-Triggered Entrance Animation
 // ═══════════════════════════════════════════════════
 import { useEffect, useRef, useState } from "react";
@@ -10,70 +9,65 @@ const SERVICES = [
     num: "01",
     icon: "🤖",
     title: "AI Agent Development",
-    desc: "Custom AI agents for tasks and workflows.",
+    desc: "Custom autonomous AI agents designed to execute complex tasks and multi-step workflows.",
     badge: "AUTONOMOUS AI",
     badgeClass: "service-badge-purple",
     points: [
-      "Custom Autonomous Agent Architectures",
-      "LangChain & Multi-Agent Systems",
-      "Task Reasoning & Tool Use",
-      "Intelligent Decision Pipelines",
+      "Custom Multi-Agent Architectures",
+      "LangChain & Tool Integrations",
+      "Intelligent Decision Reasoning",
     ],
   },
   {
     num: "02",
     icon: "⚙️",
     title: "AI Automation",
-    desc: "Automate repetitive business and content tasks.",
+    desc: "End-to-end automation for browser tasks, desktop workflows, and repetitive business operations.",
     badge: "TASK AUTOMATION",
     badgeClass: "service-badge-cyan",
     points: [
       "Repetitive Task Elimination",
       "Browser & Desktop Automation",
-      "End-to-End Business Flow Orchestration",
-      "Error-Handling & Scheduled Triggers",
+      "Scheduled Triggers & Workflows",
     ],
   },
   {
     num: "03",
     icon: "🌐",
     title: "Web Development",
-    desc: "Modern responsive websites and web applications.",
+    desc: "Modern, high-performance responsive web applications built with React, Next.js, and Node.js.",
     badge: "FULL STACK",
     badgeClass: "service-badge-purple",
     points: [
       "Modern React / Next.js & Vite Apps",
       "Clean Responsive UI & UX",
-      "Fast Core Web Vitals & SEO Ready",
-      "Secure Production Deployments",
+      "SEO & High Performance Core Vitals",
     ],
   },
   {
     num: "04",
     icon: "🔌",
     title: "API Integration",
-    desc: "Connect AI models, services and custom APIs.",
+    desc: "Seamless connectivity between LLMs, external services, databases, and custom REST APIs.",
     badge: "INTEGRATION",
     badgeClass: "service-badge-cyan",
     points: [
-      "OpenAI, Claude & Custom LLM Hookups",
-      "RESTful & GraphQL API Development",
-      "Third-Party Service & Database Sync",
-      "Secure Authentication & Rate Limiting",
+      "OpenAI & Custom LLM Hookups",
+      "RESTful API Architecture",
+      "Secure Database Synchronization",
     ],
   },
   {
     num: "05",
     icon: "🎬",
     title: "AI Content Automation",
-    desc: "Automated video/content workflows for YouTube, TikTok and Facebook.",
+    desc: "Automated content generation and scheduling pipelines for YouTube, TikTok, and Facebook.",
     badge: "CONTENT ENGINES",
     badgeClass: "service-badge-cyan",
     points: [
-      "YouTube Video & Script Automation",
-      "TikTok & Reels Batch Generators",
-      "Facebook Post Automation & Scheduling",
-      "AI Voiceovers & Multimedia Pipelines",
+      "YouTube Video & Script Pipelines",
+      "TikTok & Reels Batch Generation",
+      "Automated Social Distribution",
     ],
   },
   {
@@ -87,7 +81,6 @@ const SERVICES = [
       "ROS & ROS 2 Robotics Framework",
       "Embedded C / C++ Programming",
       "Autonomous Machine Kinematics",
-      "Sensor Fusion & Hardware Interfacing",
     ],
   },
 ];
@@ -122,7 +115,7 @@ function ServiceCard({ s, index, onDiscuss }) {
       ref={cardRef}
       className={`service-card ${s.badgeClass === "service-badge-emerald" ? "service-card-emerald" : ""} ${isVisible ? "service-card-animated" : ""}`}
       style={{
-        transitionDelay: `${(index % 3) * 130}ms`,
+        transitionDelay: `${(index % 3) * 120}ms`,
       }}
     >
       {/* Header */}
@@ -136,7 +129,7 @@ function ServiceCard({ s, index, onDiscuss }) {
         </div>
       </div>
 
-      {/* Title & Description */}
+      {/* Title & Short Description */}
       <h3 className="service-title">{s.title}</h3>
       <p className="service-desc">{s.desc}</p>
 

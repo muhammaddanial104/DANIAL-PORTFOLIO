@@ -1,6 +1,7 @@
 // ═══════════════════════════════════════════════════
-// COMPONENT: Skills.jsx — WITH ROBOTICS (COMING SOON)
-// Animated Progress Bars & Exact Categories
+// COMPONENT: Skills.jsx — CLEAN SKILL BADGES & CARDS
+// Progress bars preserved, Robotics (Coming Soon) in emerald green
+// Actual Tech Stack fully responsive with zero overflow
 // ═══════════════════════════════════════════════════
 import { useEffect, useRef, useState } from "react";
 
@@ -169,13 +170,23 @@ export default function Skills() {
         ))}
       </div>
 
-      {/* Tech Arsenal Tags */}
-      <div className="skills-lower">
-        <div className="tech-cloud" style={{ width: "100%" }}>
-          <h4 className="cloud-title">ACTUAL TECH STACK</h4>
-          <div className="tags-cloud">
+      {/* 100% Mobile Responsive Actual Tech Stack */}
+      <div className="actual-tech-container">
+        <div className="actual-tech-card">
+          <div className="actual-tech-header">
+            <span className="actual-tech-icon">⚡</span>
+            <div>
+              <h4 className="actual-tech-title">ACTUAL TECH STACK</h4>
+              <p className="actual-tech-sub">Core verified technologies &amp; frameworks</p>
+            </div>
+          </div>
+          <div className="actual-tech-chips">
             {TECH_TAGS.map((t, idx) => (
-              <span key={idx} className={`cloud-tag ${t.includes("Coming Soon") ? "tag-soon" : ""}`}>
+              <span
+                key={idx}
+                className={`tech-pill ${t.includes("Coming Soon") ? "tech-pill-soon" : ""}`}
+              >
+                <span className="pill-dot" />
                 {t}
               </span>
             ))}

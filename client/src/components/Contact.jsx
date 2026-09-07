@@ -1,14 +1,15 @@
 // ═══════════════════════════════════════════════════
-// COMPONENT: Contact.jsx — HAVE AN IDEA? LET'S BUILD IT.
-// Buttons: WhatsApp, Email, GitHub, LinkedIn + Simple Form
+// COMPONENT: Contact.jsx — LET'S BUILD SOMETHING INTELLIGENT.
+// Verified WhatsApp (+923137525862), Email, GitHub, LinkedIn + Simple Form
 // ═══════════════════════════════════════════════════
 import { useState } from "react";
 import api from "../api";
 
 const MAIL = "innocentdanial00@gmail.com";
+const PHONE = "+923137525862";
 const GH_URL = "https://github.com/muhammaddanial104";
 const LI_URL = "https://www.linkedin.com/in/muhammad-danial-2584b4432";
-const WA_URL = "https://wa.me/?text=Hi%20Danial,%20I'd%20like%20to%20discuss%20a%20project!";
+const WA_URL = "https://wa.me/923137525862?text=Hi%20Danial,%20I'd%20like%20to%20discuss%20a%20project!";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -33,7 +34,7 @@ export default function Contact() {
       }
       throw new Error("API fallback");
     } catch {
-      // Fallback: direct email transmission
+      // Direct email fallback
       const mailtoUrl = `mailto:${MAIL}?subject=Project%20Inquiry%20from%20Portfolio&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`)}`;
       window.location.href = mailtoUrl;
       setState("success");
@@ -53,31 +54,64 @@ export default function Contact() {
       </div>
 
       <div className="contact-container">
-        {/* Big Requested Heading */}
+        {/* Strong Heading Requested */}
         <h3 className="contact-main-heading">
-          Have an idea? <span className="accent">Let&apos;s build it.</span>
+          Let&apos;s Build <span className="accent">Something Intelligent.</span>
         </h3>
         <p className="contact-lead-text">
-          Whether you need an autonomous AI agent, custom workflow automation, or modern web platform — I&apos;m ready to collaborate.
+          Whether you need an autonomous AI agent, custom workflow automation, or modern web platform — let&apos;s connect directly.
         </p>
 
-        {/* 4 Direct Channel Buttons */}
+        {/* 4 Direct Channel Quick Buttons */}
         <div className="contact-channels-grid">
-          <a href={WA_URL} target="_blank" rel="noreferrer" className="channel-btn channel-wa">
+          <a
+            href={WA_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="channel-btn channel-wa"
+          >
             <span className="channel-icon">💬</span>
-            <span className="channel-name">WhatsApp</span>
+            <div className="channel-text-wrap">
+              <span className="channel-name">WhatsApp</span>
+              <span className="channel-sub">+92 313 7525862</span>
+            </div>
           </a>
-          <a href={`mailto:${MAIL}`} className="channel-btn channel-email">
+
+          <a
+            href={`mailto:${MAIL}`}
+            className="channel-btn channel-email"
+          >
             <span className="channel-icon">✉️</span>
-            <span className="channel-name">Email</span>
+            <div className="channel-text-wrap">
+              <span className="channel-name">Email</span>
+              <span className="channel-sub">{MAIL}</span>
+            </div>
           </a>
-          <a href={GH_URL} target="_blank" rel="noreferrer" className="channel-btn channel-gh">
+
+          <a
+            href={GH_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="channel-btn channel-gh"
+          >
             <span className="channel-icon">🐙</span>
-            <span className="channel-name">GitHub</span>
+            <div className="channel-text-wrap">
+              <span className="channel-name">GitHub</span>
+              <span className="channel-sub">muhammaddanial104</span>
+            </div>
           </a>
-          <a href={LI_URL} target="_blank" rel="noreferrer" className="channel-btn channel-li">
+
+          <a
+            href={LI_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="channel-btn channel-li"
+          >
             <span className="channel-icon">💼</span>
-            <span className="channel-name">LinkedIn</span>
+            <div className="channel-text-wrap">
+              <span className="channel-name">LinkedIn</span>
+              <span className="channel-sub">muhammad-danial</span>
+            </div>
           </a>
         </div>
 
