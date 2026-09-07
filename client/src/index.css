@@ -6200,3 +6200,114 @@ nav#navbar {
     max-width: 280px !important;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE MASTER SUITE: ABOUT ME & OVERALL MOBILE ENHANCEMENTS
+   ══════════════════════════════════════════════════════════════ */
+
+/* Zero horizontal overflow insurance */
+html, body, #root {
+  max-width: 100vw;
+  overflow-x: hidden !important;
+}
+
+/* Tablet / Laptop (< 1100px) About layout */
+@media (max-width: 1100px) {
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+  }
+  .about-photo-col {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* Mobile Devices (< 768px) */
+@media (max-width: 768px) {
+  .section {
+    padding: 5.5rem 1.25rem 3.5rem !important;
+  }
+  .about-grid {
+    gap: 2.5rem !important;
+  }
+}
+
+/* Phones (< 600px) - Single column info grid, perfect readable typography */
+@media (max-width: 600px) {
+  .about-photo-col {
+    max-width: 270px !important;
+  }
+  .photo-frame {
+    width: 100% !important;
+    max-width: 270px !important;
+    height: 320px !important;
+    margin: 0 auto !important;
+  }
+  .about-badges {
+    width: 100% !important;
+    max-width: 270px !important;
+    margin: 0 auto !important;
+  }
+  .about-intro {
+    font-size: 1.15rem !important;
+    line-height: 1.55 !important;
+  }
+  .about-body {
+    font-size: 0.92rem !important;
+    line-height: 1.75 !important;
+  }
+  .about-info-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.55rem !important;
+  }
+  .info-item {
+    padding: 0.75rem 1rem !important;
+  }
+  .info-value {
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    font-size: 0.88rem !important;
+  }
+  .about-info-col button.btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* Skills Experience Timeline responsive vertical stacking */
+  .exp-timeline {
+    padding-left: 1.25rem !important;
+  }
+  .exp-item {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.35rem !important;
+    padding: 1rem 0 !important;
+  }
+  .exp-year {
+    text-align: left !important;
+    font-size: 0.72rem !important;
+    color: #c084fc !important;
+  }
+  .exp-dot {
+    left: -4.5px !important;
+    top: 1.15rem !important;
+  }
+}
+
+/* Extra Small Phones (< 380px) */
+@media (max-width: 380px) {
+  .section {
+    padding: 5rem 0.9rem 3rem !important;
+  }
+  .photo-frame {
+    max-width: 250px !important;
+    height: 300px !important;
+  }
+  .about-badges {
+    max-width: 250px !important;
+  }
+}
