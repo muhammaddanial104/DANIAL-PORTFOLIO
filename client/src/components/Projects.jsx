@@ -166,7 +166,7 @@ export default function Projects() {
   return (
     <section id="projects" className="section projects-section">
       <div className="section-header">
-        <span className="section-num">03</span>
+        <span className="section-num">04</span>
         <h2 className="section-title">
           PROJECT <span className="accent">VAULT</span>
         </h2>

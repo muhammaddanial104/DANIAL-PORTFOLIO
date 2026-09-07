@@ -6311,3 +6311,237 @@ html, body, #root {
     max-width: 250px !important;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   SERVICES SECTION — FUTURISTIC SOLUTIONS
+   ══════════════════════════════════════════════════════════════ */
+.services-section {
+  position: relative;
+  background: radial-gradient(ellipse 70% 50% at 80% 50%, rgba(168, 85, 247, 0.04) 0%, transparent 70%);
+}
+
+.services-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  color: rgba(196, 181, 212, 0.75);
+  max-width: 680px;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(168, 85, 247, 0.18);
+  border-radius: 14px;
+  padding: 2.2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+}
+
+.service-card:hover {
+  border-color: rgba(168, 85, 247, 0.5);
+  background: rgba(168, 85, 247, 0.04);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(168, 85, 247, 0.15);
+}
+
+.service-card-soon {
+  border-color: rgba(16, 185, 129, 0.25);
+}
+
+.service-card-soon:hover {
+  border-color: rgba(16, 185, 129, 0.55);
+  background: rgba(16, 185, 129, 0.04);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(16, 185, 129, 0.15);
+}
+
+.service-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.service-icon-box {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c084fc;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon-box {
+  background: rgba(168, 85, 247, 0.18);
+  color: #f1e8ff;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+}
+
+.service-card-soon .service-icon-box {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #10b981;
+}
+
+.service-card-soon:hover .service-icon-box {
+  background: rgba(16, 185, 129, 0.18);
+  color: #4ade80;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+.service-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.service-card-num {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  color: rgba(168, 85, 247, 0.5);
+  letter-spacing: 0.15em;
+}
+
+.service-badge {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.service-badge-purple {
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  color: #c084fc;
+}
+
+.service-badge-cyan {
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  color: #22d3ee;
+}
+
+.service-badge-emerald {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #10b981;
+}
+
+.service-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f1e8ff;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.8rem;
+}
+
+.service-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  color: rgba(196, 181, 212, 0.72);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.service-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 1.8rem;
+  flex-grow: 1;
+}
+
+.service-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.84rem;
+  color: rgba(241, 232, 255, 0.82);
+}
+
+.service-feature-check {
+  color: #a855f7;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.service-card-soon .service-feature-check {
+  color: #10b981;
+}
+
+.service-footer {
+  border-top: 1px solid rgba(168, 85, 247, 0.1);
+  padding-top: 1.2rem;
+}
+
+.service-action-btn {
+  background: transparent;
+  border: none;
+  color: #a855f7;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.service-arrow {
+  transition: transform 0.3s ease;
+}
+
+.service-action-btn:hover {
+  color: #22d3ee;
+}
+
+.service-action-btn:hover .service-arrow {
+  transform: translateX(5px);
+}
+
+.service-card-soon .service-action-btn {
+  color: #10b981;
+}
+
+.service-card-soon .service-action-btn:hover {
+  color: #4ade80;
+}
+
+/* Responsive Services */
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-card {
+    padding: 1.8rem 1.4rem;
+  }
+  .service-title {
+    font-size: 1.12rem;
+  }
+  .service-desc {
+    font-size: 0.88rem;
+  }
+}

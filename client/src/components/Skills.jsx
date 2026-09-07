@@ -148,7 +148,7 @@ export default function Skills() {
     <section id="skills" className="section skills-section">
       {/* Header */}
       <div className="section-header">
-        <span className="section-num">02</span>
+        <span className="section-num">03</span>
         <h2 className="section-title">
           SKILL <span className="accent">MATRIX</span>
         </h2>

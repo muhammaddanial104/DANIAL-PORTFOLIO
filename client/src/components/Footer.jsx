@@ -72,7 +72,7 @@ export default function Footer() {
         {/* Navigate */}
         <div className="footer-col">
           <h4 className="footer-col-title">NAVIGATE</h4>
-          {["home","about","skills","projects","contact"].map(id => (
+          {["home","about","services","skills","projects","contact"].map(id => (
             <button key={id} className="footer-link" onClick={() => scrollTo(id)}>
               <span className="footer-link-arrow">&#8250;</span> {id.toUpperCase()}
             </button>
