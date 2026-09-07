@@ -1,115 +1,75 @@
 // ═══════════════════════════════════════════════════
-// COMPONENT: Skills.jsx — ALIGNED WITH SERVICES
-// Features: Web Design, AI Agents, SEO, Full Stack, Robotics
+// COMPONENT: Skills.jsx — 4 PRECISE CATEGORIES
+// AI & Agents | Development | Automation | Other
 // ═══════════════════════════════════════════════════
 import { useEffect, useRef } from "react";
 
 const CATEGORIES = [
   {
-    title: "WEB DESIGN & UI/UX",
-    icon: "🎨",
-    color: "#22d3ee",
-    skills: [
-      { name: "Modern UI/UX & Prototyping", pct: 92 },
-      { name: "Responsive & Mobile-First",   pct: 95 },
-      { name: "Micro-Animations & Effects",  pct: 88 },
-      { name: "HTML5 / CSS3 / Tailwind",     pct: 90 },
-    ],
-  },
-  {
-    title: "AI AGENTS & LLMS",
+    title: "AI & AGENTS",
     icon: "🤖",
     color: "#a855f7",
     skills: [
-      { name: "Autonomous AI Agents",       pct: 88 },
-      { name: "LangChain & Custom Chains",   pct: 85 },
-      { name: "OpenAI GPT-4 & Claude APIs",  pct: 90 },
-      { name: "Vector DBs & RAG Workflows",  pct: 84 },
+      { name: "AI Agents",          pct: 92 },
+      { name: "LLM Integration",    pct: 90 },
+      { name: "Prompt Engineering", pct: 88 },
+      { name: "AI Automation",      pct: 86 },
     ],
   },
   {
-    title: "SEO & PERFORMANCE",
-    icon: "📈",
-    color: "#f59e0b",
+    title: "DEVELOPMENT",
+    icon: "💻",
+    color: "#22d3ee",
     skills: [
-      { name: "Technical & On-Page SEO",    pct: 90 },
-      { name: "Core Web Vitals & Speed",     pct: 88 },
-      { name: "Schema.org & Rich Snippets",  pct: 86 },
-      { name: "Google Search Console",       pct: 85 },
+      { name: "Python",             pct: 90 },
+      { name: "JavaScript",         pct: 86 },
+      { name: "React / Next.js",    pct: 88 },
+      { name: "Node.js",            pct: 85 },
     ],
   },
   {
-    title: "FULL STACK & BACKEND",
-    icon: "⚡",
+    title: "AUTOMATION",
+    icon: "⚙️",
     color: "#ec4899",
     skills: [
-      { name: "React / Vite / Next.js",      pct: 90 },
-      { name: "Node.js & Express.js",        pct: 88 },
-      { name: "MongoDB & Database Systems",  pct: 87 },
-      { name: "RESTful & GraphQL APIs",      pct: 86 },
+      { name: "API Integration",     pct: 90 },
+      { name: "Browser Automation",  pct: 88 },
+      { name: "Workflow Automation", pct: 86 },
     ],
   },
   {
-    title: "ROBOTICS & AUTOMATION",
-    icon: "🦾",
+    title: "OTHER",
+    icon: "🛠️",
     color: "#10b981",
-    isComingSoon: true,
     skills: [
-      { name: "Robotic Programming", comingSoon: true, pct: 60 },
-      { name: "ROS & ROS 2 Framework", comingSoon: true, pct: 50 },
-      { name: "Embedded C / C++",     comingSoon: true, pct: 55 },
-      { name: "Autonomous Kinematics", comingSoon: true, pct: 52 },
+      { name: "Git / GitHub",        pct: 88 },
+      { name: "SEO",                 pct: 85 },
+      { name: "Deployment",          pct: 82 },
     ],
-  },
-];
-
-const EXPERIENCE = [
-  {
-    year: "2025 - NOW",
-    role: "Full Stack & AI Agent Developer",
-    company: "Freelance",
-    desc: "Building production MERN web applications and autonomous AI agents for clients worldwide."
-  },
-  {
-    year: "2024 - NOW",
-    role: "Web Designer & SEO Specialist",
-    company: "Client Projects",
-    desc: "Designing high-converting responsive interfaces, optimizing technical SEO and Google search rankings."
-  },
-  {
-    year: "COMING SOON",
-    role: "Robotics & Automation",
-    company: "Coming Soon",
-    desc: "BS Robotics (Coming Soon) — Robotic Programming, ROS, kinematics & intelligent machines."
   },
 ];
 
 const TECH_TAGS = [
-  "Web Design",
   "AI Agents",
-  "SEO Optimization",
-  "MERN Stack",
+  "LLM Integration",
+  "Prompt Engineering",
+  "AI Automation",
   "Python",
-  "UI / UX",
-  "LangChain",
-  "OpenAI GPT-4",
+  "JavaScript",
   "React",
+  "Next.js",
   "Node.js",
-  "Express",
-  "MongoDB",
-  "Core Web Vitals",
-  "Robotic Programming (Coming Soon)",
-  "ROS & ROS 2",
-  "Embedded C++",
+  "API Integration",
+  "Browser Automation",
+  "Workflow Automation",
+  "Git / GitHub",
+  "SEO",
+  "Deployment",
   "FastAPI",
-  "Django",
-  "Tailwind CSS",
-  "Git & GitHub",
-  "REST APIs",
-  "Vector DBs",
+  "MongoDB",
 ];
 
-function SkillBar({ name, pct, color, comingSoon }) {
+function SkillBar({ name, pct, color }) {
   const fillRef = useRef(null);
   const itemRef = useRef(null);
 
@@ -127,23 +87,20 @@ function SkillBar({ name, pct, color, comingSoon }) {
   }, [pct]);
 
   return (
-    <div className={`skill-item ${comingSoon ? "item-coming-soon" : ""}`} ref={itemRef}>
+    <div className="skill-item" ref={itemRef}>
       <div className="skill-info">
-        <span className="skill-name">
-          {name}
-          {comingSoon && <span className="tag-soon">SOON</span>}
-        </span>
-        <span className="skill-pct" style={{ color: comingSoon ? "#10b981" : color }}>
-          {comingSoon ? "COMMENCING" : `${pct}%`}
+        <span className="skill-name">{name}</span>
+        <span className="skill-pct" style={{ color: color }}>
+          {pct}%
         </span>
       </div>
       <div className="skill-bar-bg">
         <div
           ref={fillRef}
-          className={`skill-bar-fill ${comingSoon ? "fill-soon" : ""}`}
+          className="skill-bar-fill"
           style={{
-            backgroundColor: comingSoon ? "#10b981" : color,
-            boxShadow: comingSoon ? "0 0 10px #10b981" : `0 0 10px ${color}`,
+            backgroundColor: color,
+            boxShadow: `0 0 10px ${color}`,
             width: "0%",
             transition: "width 1.2s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
@@ -158,24 +115,21 @@ export default function Skills() {
     <section id="skills" className="section skills-section">
       {/* Header */}
       <div className="section-header">
-        <span className="section-num">03</span>
+        <span className="section-num">02</span>
         <h2 className="section-title">
-          SKILL <span className="accent">MATRIX</span>
+          TECH <span className="accent">SKILLS</span>
         </h2>
         <div className="section-line" />
       </div>
 
-      {/* Skill Bars Grid (Aligned with Services) */}
-      <div className="skills-grid">
+      {/* 4 Clean Categories Grid */}
+      <div className="skills-grid skills-grid-4">
         {CATEGORIES.map(cat => (
-          <div className={`skill-category ${cat.isComingSoon ? "cat-coming-soon" : ""}`} key={cat.title}>
+          <div className="skill-category" key={cat.title}>
             <div className="cat-header">
               <h3 className="cat-title">
                 <span style={{ color: cat.color }}>{cat.icon}</span> {cat.title}
               </h3>
-              {cat.isComingSoon && (
-                <span className="cat-badge-soon">COMING SOON</span>
-              )}
             </div>
             <div className="skill-bars">
               {cat.skills.map(sk => (
@@ -184,7 +138,6 @@ export default function Skills() {
                   name={sk.name}
                   pct={sk.pct}
                   color={cat.color}
-                  comingSoon={sk.comingSoon}
                 />
               ))}
             </div>
@@ -192,28 +145,13 @@ export default function Skills() {
         ))}
       </div>
 
-      {/* Experience Timeline */}
+      {/* Tech Arsenal Tags */}
       <div className="skills-lower">
-        <div className="exp-timeline">
-          {EXPERIENCE.map((item, i) => (
-            <div className="exp-item" key={i}>
-              <div className="exp-year">{item.year}</div>
-              <div className="exp-dot" />
-              <div className="exp-content">
-                <h4 className="exp-role">{item.role}</h4>
-                <span className="exp-company">{item.company}</span>
-                <p className="exp-desc">{item.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Tech Cloud */}
-        <div className="tech-cloud">
-          <h4 className="cloud-title">TECHNOLOGY ARSENAL</h4>
+        <div className="tech-cloud" style={{ width: "100%" }}>
+          <h4 className="cloud-title">ACTUAL TECH STACK</h4>
           <div className="tags-cloud">
             {TECH_TAGS.map((t, idx) => (
-              <span key={idx} className={`cloud-tag ${t.includes("Coming Soon") ? "tag-soon" : ""}`}>
+              <span key={idx} className="cloud-tag">
                 {t}
               </span>
             ))}

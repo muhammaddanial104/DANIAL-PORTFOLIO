@@ -6623,3 +6623,687 @@ html, body, #root {
     width: 100%;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   PORTFOLIO OVERHAUL MASTER STYLES (NOVA AI & CLEAN UNIFIED UI)
+   ══════════════════════════════════════════════════════════════ */
+
+/* Hero Positioning Title */
+.hero-position-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+  color: #22d3ee;
+  letter-spacing: 0.08em;
+  margin: 0.8rem 0 1.2rem;
+  font-weight: 600;
+  text-shadow: 0 0 16px rgba(34, 211, 238, 0.4);
+}
+
+/* About Pillars & Focus Box */
+.about-pillars-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.about-pillar-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.9rem;
+  background: rgba(168, 85, 247, 0.05);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 8px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.78rem;
+  color: #f1e8ff;
+  transition: all 0.3s ease;
+}
+
+.about-pillar-tag:hover {
+  background: rgba(168, 85, 247, 0.12);
+  border-color: #a855f7;
+  transform: translateX(4px);
+}
+
+.about-focus-box {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(34, 211, 238, 0.04) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  border-radius: 12px;
+  padding: 1.4rem 1.6rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.focus-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.focus-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22d3ee;
+  box-shadow: 0 0 10px #22d3ee;
+  animation: pulse-glow 2s infinite;
+}
+
+.focus-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.68rem;
+  color: #22d3ee;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+}
+
+.focus-project-name {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.focus-project-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  color: rgba(241, 232, 255, 0.85);
+  line-height: 1.65;
+}
+
+.about-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+}
+
+.fact-card {
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.fact-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.62rem;
+  color: #a855f7;
+  letter-spacing: 0.15em;
+}
+
+.fact-val {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #f1e8ff;
+}
+
+.fact-green {
+  color: #10b981;
+}
+
+/* Skills 4-Grid */
+.skills-grid-4 {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 1.8rem !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   PROJECTS: NOVA AI FLAGSHIP SHOWCASE CARD
+   ══════════════════════════════════════════════════════════════ */
+.projects-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  color: rgba(196, 181, 212, 0.75);
+  max-width: 680px;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.nova-flagship-card {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.06) 0%, rgba(34, 211, 238, 0.04) 50%, rgba(10, 0, 24, 0.8) 100%);
+  border: 2px solid rgba(168, 85, 247, 0.45);
+  border-radius: 18px;
+  padding: 2.8rem 2.4rem;
+  position: relative;
+  margin-bottom: 4rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(168, 85, 247, 0.2);
+  transition: all 0.4s ease;
+}
+
+.nova-flagship-card:hover {
+  border-color: rgba(34, 211, 238, 0.6);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.7), 0 0 50px rgba(34, 211, 238, 0.25);
+}
+
+.nova-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.nova-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.nova-crown-tag {
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.5);
+  color: #c084fc;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.nova-status-badge {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  color: #fbbf24;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.nova-year {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  color: rgba(196, 181, 212, 0.6);
+}
+
+.nova-title {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+  text-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
+}
+
+.nova-subtitle {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1rem;
+  color: #22d3ee;
+  letter-spacing: 0.06em;
+  margin-bottom: 1.2rem;
+}
+
+.nova-description {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  color: rgba(241, 232, 255, 0.9);
+  line-height: 1.8;
+  max-width: 900px;
+  margin-bottom: 2rem;
+}
+
+.nova-features-wrap {
+  margin-bottom: 2rem;
+}
+
+.nova-features-label {
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(168, 85, 247, 0.8);
+  letter-spacing: 0.15em;
+  margin-bottom: 0.85rem;
+}
+
+.nova-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.65rem;
+}
+
+.nova-feat-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.85rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+.nova-feat-pill:hover {
+  background: rgba(168, 85, 247, 0.1);
+  border-color: #a855f7;
+  transform: translateY(-2px);
+}
+
+.nova-feat-icon {
+  font-size: 1rem;
+}
+
+.nova-feat-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.84rem;
+  color: #f1e8ff;
+  font-weight: 500;
+}
+
+.nova-tech-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2.2rem;
+}
+
+.tech-chip {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  padding: 0.35rem 0.75rem;
+  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  color: #22d3ee;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+}
+
+.nova-actions-row {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+/* Other Projects Grid */
+.other-projects-heading {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.35rem;
+  color: #f1e8ff;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.8rem;
+}
+
+.other-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.proj-card-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+}
+
+.proj-btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.proj-btn-gh {
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  color: #f1e8ff;
+}
+
+.proj-btn-gh:hover {
+  background: rgba(168, 85, 247, 0.25);
+  border-color: #a855f7;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.35);
+}
+
+.proj-btn-details {
+  background: transparent;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  color: #22d3ee;
+}
+
+.proj-btn-details:hover {
+  background: rgba(34, 211, 238, 0.12);
+  border-color: #22d3ee;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.3);
+}
+
+.proj-btn-live {
+  background: #10b981;
+  border: 1px solid #10b981;
+  color: #000000;
+  font-weight: 700;
+}
+
+/* Modal */
+.proj-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 0, 10, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.proj-modal {
+  background: #0d001e;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  border-radius: 16px;
+  max-width: 650px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2.2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(168, 85, 247, 0.2);
+}
+
+.proj-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.proj-modal-header h3 {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.proj-modal-close {
+  background: transparent;
+  border: none;
+  color: rgba(241, 232, 255, 0.6);
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.proj-modal-close:hover {
+  color: #ffffff;
+}
+
+.modal-status {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.proj-modal-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(241, 232, 255, 0.85);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.proj-modal-details-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: 10px;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.proj-modal-details-box h4,
+.proj-modal-features h4 {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: #a855f7;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.6rem;
+}
+
+.proj-modal-details-box p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: rgba(241, 232, 255, 0.8);
+  line-height: 1.65;
+}
+
+.proj-modal-features {
+  margin-bottom: 1.5rem;
+}
+
+.proj-modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.8rem;
+}
+
+.proj-modal-footer {
+  border-top: 1px solid rgba(168, 85, 247, 0.15);
+  padding-top: 1.2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Services 5-Grid */
+.services-grid-5 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.8rem;
+}
+
+.service-card-emoji {
+  font-size: 1.5rem;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CONTACT: HAVE AN IDEA? LET'S BUILD IT.
+   ══════════════════════════════════════════════════════════════ */
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-main-heading {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+.contact-lead-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  color: rgba(196, 181, 212, 0.8);
+  text-align: center;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.contact-channels-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.channel-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.2rem 0.8rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.channel-btn:hover {
+  transform: translateY(-4px);
+}
+
+.channel-wa:hover {
+  border-color: #25d366;
+  background: rgba(37, 211, 102, 0.08);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.2);
+}
+
+.channel-email:hover {
+  border-color: #a855f7;
+  background: rgba(168, 85, 247, 0.08);
+  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.2);
+}
+
+.channel-gh:hover {
+  border-color: #f1e8ff;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+}
+
+.channel-li:hover {
+  border-color: #0077b5;
+  background: rgba(0, 119, 181, 0.08);
+  box-shadow: 0 10px 25px rgba(0, 119, 181, 0.2);
+}
+
+.channel-icon {
+  font-size: 1.5rem;
+}
+
+.channel-name {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  color: #f1e8ff;
+  letter-spacing: 0.1em;
+}
+
+.contact-form-wrap {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 16px;
+  padding: 2.4rem 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.contact-simple-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.form-simple-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.form-simple-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-simple-group label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: #c084fc;
+  letter-spacing: 0.15em;
+}
+
+.form-simple-group input,
+.form-simple-group textarea {
+  background: rgba(10, 0, 24, 0.6);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  border-radius: 8px;
+  padding: 0.85rem 1.1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-simple-group input:focus,
+.form-simple-group textarea:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+  background: rgba(15, 0, 35, 0.8);
+}
+
+.contact-submit-btn {
+  align-self: flex-start;
+  padding: 0.85rem 2.2rem;
+  font-size: 0.85rem;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   MOBILE OVERHAUL RESPONSIVENESS
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 850px) {
+  .nova-flagship-card {
+    padding: 2rem 1.5rem;
+  }
+  .other-projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-channels-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .skills-grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-simple-row {
+    grid-template-columns: 1fr;
+  }
+  .contact-submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .contact-channels-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .channel-btn {
+    padding: 0.9rem 0.5rem;
+  }
+  .nova-title {
+    font-size: 1.7rem;
+  }
+  .nova-actions-row a,
+  .nova-actions-row button {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}

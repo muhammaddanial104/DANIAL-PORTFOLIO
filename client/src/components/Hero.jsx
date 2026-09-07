@@ -1,21 +1,9 @@
 // ═══════════════════════════════════════════════════
-// COMPONENT: Hero.jsx — ROBOTICS COMING SOON + CLEAN
-// MUHAMMAD: letter-by-letter (solid white)
-// DANIAL: whole-word animation (gradient)
+// COMPONENT: Hero.jsx — AI AGENT & AUTOMATION ENGINEER
 // ═══════════════════════════════════════════════════
 import { useEffect, useRef, useState } from "react";
 
-const ROLES = [
-  "Full Stack Developer",
-  "AI Agent Developer",
-  "Web Designer",
-  "SEO Specialist",
-  "Python Developer",
-  "MERN Stack Expert",
-  "Robotics Engineer (Coming Soon)",
-];
-
-// Letter-by-letter ONLY for solid-color words
+// Letter-by-letter for solid-color word
 function AnimatedLetters({ text, className, baseDelay = 0 }) {
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -34,11 +22,8 @@ function AnimatedLetters({ text, className, baseDelay = 0 }) {
           style={{
             display: "inline-block",
             opacity: i < count ? 1 : 0,
-            transform: i < count
-              ? "translateY(0) scale(1)"
-              : "translateY(28px) scale(0.85)",
-            transition:
-              "opacity 0.45s cubic-bezier(0.34,1.56,0.64,1), transform 0.45s cubic-bezier(0.34,1.56,0.64,1)",
+            transform: i < count ? "translateY(0) scale(1)" : "translateY(16px) scale(0.9)",
+            transition: "opacity 0.35s ease, transform 0.35s ease",
           }}
         >
           {ch}
@@ -48,7 +33,7 @@ function AnimatedLetters({ text, className, baseDelay = 0 }) {
   );
 }
 
-// Whole-word slide-up for gradient words (gradient + child spans don't mix)
+// Whole-word animation for gradient text
 function AnimatedWord({ text, className, delay = 0 }) {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -60,11 +45,10 @@ function AnimatedWord({ text, className, delay = 0 }) {
     <span
       className={className}
       style={{
+        display: "inline-block",
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0) scale(1)" : "translateY(40px) scale(0.9)",
-        transition:
-          "opacity 0.8s cubic-bezier(0.34,1.56,0.64,1), transform 0.8s cubic-bezier(0.34,1.56,0.64,1)",
-        display: "block",
+        transform: visible ? "translateY(0) scale(1)" : "translateY(20px) scale(0.92)",
+        transition: "opacity 0.6s ease, transform 0.6s cubic-bezier(0.2,0.8,0.4,1)",
       }}
     >
       {text}
@@ -72,65 +56,41 @@ function AnimatedWord({ text, className, delay = 0 }) {
   );
 }
 
-// Animated counter
-function Counter({ target, suffix }) {
+// Number ticker
+function Counter({ target, suffix = "" }) {
   const [val, setVal] = useState(0);
   const ref = useRef(null);
+
   useEffect(() => {
-    const ob = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) {
-        let n = 0;
-        const iv = setInterval(() => {
-          n = Math.min(n + target / 50, target);
-          setVal(Math.floor(n));
-          if (n >= target) clearInterval(iv);
-        }, 28);
-      }
-    });
+    const ob = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          let cur = 0;
+          const step = Math.ceil(target / 40);
+          const t = setInterval(() => {
+            cur += step;
+            if (cur >= target) {
+              setVal(target);
+              clearInterval(t);
+            } else setVal(cur);
+          }, 35);
+          ob.disconnect();
+        }
+      },
+      { threshold: 0.5 }
+    );
     if (ref.current) ob.observe(ref.current);
     return () => ob.disconnect();
   }, [target]);
+
   return (
     <span ref={ref} className="stat-num">
-      {val}
-      {suffix}
+      {val}{suffix}
     </span>
   );
 }
 
 export default function Hero() {
-  const [displayed, setDisplayed] = useState("");
-  const [roleIdx,   setRoleIdx]   = useState(0);
-  const [deleting,  setDeleting]  = useState(false);
-  const [charIdx,   setCharIdx]   = useState(0);
-
-  useEffect(() => {
-    const current = ROLES[roleIdx];
-    const timer = setTimeout(
-      () => {
-        if (!deleting) {
-          setDisplayed(current.slice(0, charIdx + 1));
-          if (charIdx + 1 === current.length) {
-            setTimeout(() => setDeleting(true), 2000);
-          } else {
-            setCharIdx(c => c + 1);
-          }
-        } else {
-          setDisplayed(current.slice(0, charIdx - 1));
-          if (charIdx <= 0) {
-            setDeleting(false);
-            setRoleIdx(r => (r + 1) % ROLES.length);
-            setCharIdx(0);
-          } else {
-            setCharIdx(c => c - 1);
-          }
-        }
-      },
-      deleting ? 40 : 80
-    );
-    return () => clearTimeout(timer);
-  }, [charIdx, deleting, roleIdx]);
-
   const scrollTo = id => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -145,46 +105,38 @@ export default function Hero() {
           SYSTEM ONLINE &bull; ALL MODULES ACTIVE
         </div>
 
-        {/* -- NAME -- */}
+        {/* 1. Name */}
         <h1 className="hero-name" aria-label="Muhammad Danial">
-          <AnimatedLetters text="MUHAMMAD" className="hero-fname" baseDelay={400} />
-          <AnimatedWord text="DANIAL" className="hero-lname" delay={1050} />
+          <AnimatedLetters text="MUHAMMAD" className="hero-fname" baseDelay={300} />
+          <AnimatedWord text="DANIAL" className="hero-lname" delay={850} />
         </h1>
 
-        <div className="hero-role">
-          <span className="role-prefix">&#62;</span>
-          <span id="typed-role">{displayed}</span>
-          <span className="cursor-blink">_</span>
-        </div>
+        {/* 2. Position / Title */}
+        <h2 className="hero-position-title">
+          AI Agent Developer &amp; Automation Engineer
+        </h2>
 
-        {/* Robotics Coming Soon Badge */}
-        <div className="hero-edu-badge">
-          <span className="edu-icon">&#x1F393;</span>
-          <span className="edu-text">BS IN ROBOTICS</span>
-          <span className="edu-divider">&middot;</span>
-          <span className="edu-soon-tag">COMING SOON</span>
-        </div>
-
+        {/* 3. Short Line */}
         <p className="hero-desc">
-          Based in <span className="highlight">Gujrat, Pakistan</span> &mdash; crafting
-          intelligent <span className="highlight">AI agents</span>,{" "}
-          <span className="highlight">MERN</span> apps &amp; futuristic digital experiences.
+          I build AI-powered applications, intelligent agents and automation systems.
         </p>
 
+        {/* 4. Action Buttons */}
         <div className="hero-buttons">
           <button className="btn btn-primary" onClick={() => scrollTo("projects")}>
             <span className="btn-glow" />
-            &#x1F680; VIEW PROJECTS
+            View Projects
           </button>
           <button className="btn btn-outline" onClick={() => scrollTo("contact")}>
-            &#x1F4E1; CONTACT ME
+            Let&apos;s Work Together
           </button>
         </div>
 
+        {/* Quick Highlights / Stats */}
         <div className="hero-stats">
           <div className="stat">
-            <Counter target={4} suffix="+" />
-            <span className="stat-label">PROJECTS</span>
+            <Counter target={5} suffix="+" />
+            <span className="stat-label">AI &amp; WEB APPS</span>
           </div>
           <div className="stat-divider" />
           <div className="stat">
@@ -193,18 +145,18 @@ export default function Hero() {
           </div>
           <div className="stat-divider" />
           <div className="stat">
-            <Counter target={85} suffix="%" />
-            <span className="stat-label">PROFICIENCY</span>
+            <Counter target={90} suffix="%" />
+            <span className="stat-label">AUTOMATION</span>
           </div>
           <div className="stat-divider" />
           <div className="stat">
-            <Counter target={10} suffix="+" />
-            <span className="stat-label">TECHNOLOGIES</span>
+            <Counter target={12} suffix="+" />
+            <span className="stat-label">CORE TOOLS</span>
           </div>
         </div>
       </div>
 
-      {/* Right Orb */}
+      {/* Right Visual Orb */}
       <div className="hero-visual">
         <div className="orb-float-wrap">
           <div className="orb-ring ring-1" />
@@ -217,14 +169,14 @@ export default function Hero() {
           <div className="orb-particle op-1" />
           <div className="orb-particle op-2" />
           <div className="orb-particle op-3" />
-          <div className="orb-data-tag odt-1">AI DEV</div>
-          <div className="orb-data-tag odt-2">MERN</div>
-          <div className="orb-data-tag odt-3">ROBOTICS</div>
+          <div className="orb-data-tag odt-1">AI AGENTS</div>
+          <div className="orb-data-tag odt-2">AUTOMATION</div>
+          <div className="orb-data-tag odt-3">NOVA AI</div>
         </div>
         <span className="orb-label">MD &bull; AI DEV &bull; ONLINE</span>
       </div>
 
-      <div className="scroll-indicator">
+      <div className="scroll-indicator" onClick={() => scrollTo("about")}>
         <span>SCROLL</span>
         <div className="scroll-line" />
       </div>

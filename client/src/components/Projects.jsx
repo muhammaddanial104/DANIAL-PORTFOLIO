@@ -1,185 +1,292 @@
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-// COMPONENT: Projects.jsx â€” PROJECT VAULT WITH IMAGES
-// Guaranteed image fallbacks + interactive 3D tilt
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-import { useState, useEffect, useRef } from "react";
-import api from "../api";
+// ═══════════════════════════════════════════════════
+// COMPONENT: Projects.jsx — MAIN PORTFOLIO SHOWCASE
+// Featuring Flagship NOVA AI + Other Projects
+// No fake Live Demo links — Only verified actions!
+// ═══════════════════════════════════════════════════
+import { useState, useRef } from "react";
 
-const FALLBACK = [
+const NOVA_FEATURES = [
+  { name: "AI Brain",            icon: "🧠" },
+  { name: "Voice Assistant",     icon: "🎙️" },
+  { name: "Desktop Control",     icon: "🖥️" },
+  { name: "File Management",     icon: "📁" },
+  { name: "Browser Control",     icon: "🌐" },
+  { name: "Coding Assistant",    icon: "💻" },
+  { name: "Video Generator",     icon: "🎥" },
+  { name: "YouTube Automation",  icon: "▶️" },
+  { name: "TikTok Automation",   icon: "📱" },
+  { name: "Facebook Automation", icon: "👥" },
+  { name: "Task Automation",     icon: "⚙️" },
+  { name: "AI Agents",           icon: "🤖" },
+];
+
+const OTHER_PROJECTS = [
   {
-    _id: "1",
-    featured: true,
-    status: "live",
-    year: "2024",
+    id: "proj-1",
     title: "E-Commerce Platform",
-    description: "Full-featured MERN e-commerce with product management, shopping cart, JWT authentication, Stripe payments and admin dashboard.",
+    desc: "Full-featured MERN e-commerce application with product catalog, cart system, JWT authentication, and Stripe payment integration.",
     image: "/proj1.jpg",
-    tags: ["React", "Node.js", "MongoDB", "Express", "Stripe", "JWT"],
-    liveUrl: "#",
+    tags: ["React", "Node.js", "Express", "MongoDB", "Stripe", "JWT"],
     githubUrl: "https://github.com/muhammaddanial104",
+    liveUrl: null, // No fake live demo!
+    details: "Built with secure token-based authentication, an administrative product management dashboard, relational schema modeling, and seamless checkout with Stripe webhook processing.",
   },
   {
-    _id: "2",
-    featured: true,
-    status: "live",
-    year: "2025",
+    id: "proj-2",
     title: "AI Software Engineering Agent",
-    description: "Autonomous AI platform that writes, tests and deploys code. Uses LangChain + GPT-4 for end-to-end software engineering tasks.",
+    desc: "Autonomous AI platform that writes, tests, and refactors code using LangChain and GPT-4 for automated software development tasks.",
     image: "/proj2.jpg",
-    tags: ["Python", "LangChain", "OpenAI", "FastAPI", "React", "Docker"],
-    liveUrl: "#",
+    tags: ["Python", "LangChain", "OpenAI", "FastAPI", "Docker", "React"],
     githubUrl: "https://github.com/muhammaddanial104",
+    liveUrl: null,
+    details: "Utilizes multi-step autonomous planning, static code analysis, unit test generation, and containerized sandboxes for reliable, isolated code execution.",
   },
   {
-    _id: "3",
-    featured: false,
-    status: "live",
-    year: "2025",
+    id: "proj-3",
     title: "AI Content Creation Agent",
-    description: "Multi-modal content generator creating blog posts, social media content and marketing copy using custom AI agent workflows.",
+    desc: "Multi-modal AI engine generating high-engagement marketing copy, social media posts, and scripts through custom AI agent workflows.",
     image: "/proj3.jpg",
     tags: ["Python", "OpenAI", "Django", "Celery", "Redis", "React"],
-    liveUrl: "#",
     githubUrl: "https://github.com/muhammaddanial104",
+    liveUrl: null,
+    details: "Orchestrates asynchronous content generation pipelines with Celery and Redis, capable of generating niche-tailored articles, video scripts, and social carousel posts in seconds.",
   },
   {
-    _id: "4",
-    featured: false,
-    status: "wip",
-    year: "2025",
+    id: "proj-4",
     title: "Full Stack SaaS Platform",
-    description: "Production-ready SaaS combining MERN with Python microservices for AI processing â€” subscription billing, multi-tenancy, real-time analytics.",
+    desc: "Scalable cloud SaaS web platform featuring multi-tenant authentication, subscription billing, and real-time user analytics.",
     image: "/proj4.jpg",
-    tags: ["MERN", "Python", "FastAPI", "Next.js", "PostgreSQL", "AWS"],
-    liveUrl: "#",
+    tags: ["Next.js", "React", "Node.js", "MongoDB", "Tailwind CSS"],
     githubUrl: "https://github.com/muhammaddanial104",
+    liveUrl: null,
+    details: "Architected for high throughput with server-side rendering, responsive dark mode interface, role-based access control, and real-time metric tracking.",
   },
 ];
 
-function ProjectCard({ proj, index }) {
-  const cardRef = useRef(null);
-  const [hovered, setHovered] = useState(false);
-  const fallbackImg = `/proj${(index % 4) + 1}.jpg`;
-  const imgSrc = proj.image || fallbackImg;
-
-  const handleMove = e => {
-    const c = cardRef.current;
-    if (!c) return;
-    const r = c.getBoundingClientRect();
-    const dx = (e.clientX - r.left - r.width / 2) / (r.width / 2);
-    const dy = (e.clientY - r.top - r.height / 2) / (r.height / 2);
-    c.style.transform = `perspective(1000px) translateY(-6px) rotateX(${-dy * 5}deg) rotateY(${dx * 5}deg)`;
-  };
-
-  const handleLeave = () => {
-    const c = cardRef.current;
-    if (!c) return;
-    c.style.transform = "perspective(1000px) translateY(0) rotateX(0) rotateY(0)";
-    setHovered(false);
-  };
-
-  return (
-    <div
-      ref={cardRef}
-      className={`project-card ${proj.featured ? "featured" : ""}`}
-      onMouseMove={handleMove}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={handleLeave}
-    >
-      {proj.featured && <div className="featured-badge">&#9733; FEATURED</div>}
-
-      {/* Thumbnail with overlay */}
-      <div className="proj-thumb-wrap">
-        <img
-          src={imgSrc}
-          alt={proj.title}
-          className="proj-thumb"
-          loading="lazy"
-          onError={e => {
-            if (e.target.src !== fallbackImg) {
-              e.target.src = fallbackImg;
-            }
-          }}
-        />
-        <div className={`proj-thumb-overlay ${hovered ? "show" : ""}`}>
-          <div className="proj-thumb-actions">
-            <a href={proj.liveUrl} className="thumb-btn" target="_blank" rel="noreferrer">
-              &#10148; LIVE DEMO
-            </a>
-            <a href={proj.githubUrl} className="thumb-btn thumb-btn-sec" target="_blank" rel="noreferrer">
-              &#9670; VIEW CODE
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="proj-body">
-        <div className="card-header">
-          <span className="proj-num">0{index + 1}</span>
-          <span className={`proj-status-badge ${proj.status === "live" ? "status-live" : "status-wip"}`}>
-            {proj.status === "live" ? "â— LIVE" : "â—‰ IN PROGRESS"}
-          </span>
-        </div>
-        <h3 className="proj-title">{proj.title}</h3>
-        <p className="proj-desc">{proj.description}</p>
-        <div className="proj-tags">
-          {proj.tags && proj.tags.map(t => <span key={t}>{t}</span>)}
-        </div>
-        <div className="card-footer">
-          <div className="card-links">
-            <a href={proj.liveUrl} className="card-link" target="_blank" rel="noreferrer">
-              Live Demo â†—
-            </a>
-            <a href={proj.githubUrl} className="card-link" target="_blank" rel="noreferrer">
-              GitHub â†—
-            </a>
-          </div>
-          <span className="proj-year">{proj.year || "2025"}</span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function Projects() {
-  const [projects, setProjects] = useState(FALLBACK);
-
-  useEffect(() => {
-    api
-      .get("/api/projects")
-      .then(r => {
-        if (r.data && r.data.success && Array.isArray(r.data.data) && r.data.data.length > 0) {
-          // Merge API data with guaranteed images
-          const withImages = r.data.data.map((p, idx) => ({
-            ...p,
-            image: p.image || `/proj${(idx % 4) + 1}.jpg`
-          }));
-          setProjects(withImages);
-        }
-      })
-      .catch(() => {
-        // Keeps fallback
-      });
-  }, []);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   return (
     <section id="projects" className="section projects-section">
+      {/* Header */}
       <div className="section-header">
-        <span className="section-num">04</span>
+        <span className="section-num">03</span>
         <h2 className="section-title">
-          PROJECT <span className="accent">VAULT</span>
+          FEATURED <span className="accent">PROJECTS</span>
         </h2>
         <div className="section-line" />
       </div>
-      <p className="projects-subtext">
-        Real-world solutions built with <span className="highlight">MERN</span>, <span className="highlight">Python</span> &amp; <span className="highlight">AI</span>.
+
+      <p className="projects-subtitle">
+        Engineering autonomous AI systems, intelligent desktop assistants, and scalable full-stack applications.
       </p>
-      <div className="projects-grid">
-        {projects.map((p, i) => (
-          <ProjectCard key={p._id || i} proj={p} index={i} />
+
+      {/* ══════════════════════════════════════════════════
+          FLAGSHIP PROJECT CARD: NOVA AI 🤖
+          ══════════════════════════════════════════════════ */}
+      <div className="nova-flagship-card">
+        <div className="nova-card-header">
+          <div className="nova-meta-left">
+            <span className="nova-crown-tag">★ FLAGSHIP PROJECT</span>
+            <span className="nova-status-badge">🚧 In Development</span>
+          </div>
+          <span className="nova-year">2026</span>
+        </div>
+
+        <div className="nova-main-grid">
+          <div className="nova-content-col">
+            <h3 className="nova-title">NOVA AI 🤖</h3>
+            <h4 className="nova-subtitle">Autonomous AI Desktop Assistant &amp; Automation Engine</h4>
+
+            <p className="nova-description">
+              An AI-powered desktop assistant designed to control your computer, manage files, interact with browsers, assist with coding, generate content and automate tasks.
+            </p>
+
+            {/* 12 Features Grid */}
+            <div className="nova-features-wrap">
+              <span className="nova-features-label">KEY CAPABILITIES &amp; FEATURES:</span>
+              <div className="nova-features-grid">
+                {NOVA_FEATURES.map((f) => (
+                  <div className="nova-feat-pill" key={f.name}>
+                    <span className="nova-feat-icon">{f.icon}</span>
+                    <span className="nova-feat-text">{f.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Tech Stack */}
+            <div className="nova-tech-row">
+              <span className="tech-chip">Python</span>
+              <span className="tech-chip">LangChain</span>
+              <span className="tech-chip">OpenAI GPT-4</span>
+              <span className="tech-chip">Desktop Automation</span>
+              <span className="tech-chip">Browser Control</span>
+              <span className="tech-chip">Speech Recognition</span>
+              <span className="tech-chip">FastAPI</span>
+            </div>
+
+            {/* Buttons */}
+            <div className="nova-actions-row">
+              <a
+                href="https://github.com/muhammaddanial104"
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-primary"
+              >
+                <span className="btn-glow" />
+                View on GitHub
+              </a>
+              <button
+                className="btn btn-outline"
+                onClick={() =>
+                  setSelectedProject({
+                    title: "NOVA AI 🤖",
+                    desc: "An AI-powered desktop assistant designed to control your computer, manage files, interact with browsers, assist with coding, generate content and automate tasks.",
+                    tags: ["Python", "LangChain", "OpenAI GPT-4", "PyAutoGUI", "Speech Recognition", "FastAPI"],
+                    status: "🚧 In Development",
+                    details: "NOVA AI integrates natural language voice and text input with OS-level execution hooks. It automates repetitive browsing tasks, synthesizes content, manages directory structures, and performs intelligent multi-agent tasks seamlessly on your local desktop.",
+                    githubUrl: "https://github.com/muhammaddanial104",
+                    features: NOVA_FEATURES,
+                  })
+                }
+              >
+                Project Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════════════
+          OTHER PROJECTS SECTION
+          ══════════════════════════════════════════════════ */}
+      <h3 className="other-projects-heading">OTHER NOTEWORTHY PROJECTS</h3>
+
+      <div className="other-projects-grid">
+        {OTHER_PROJECTS.map((p, idx) => (
+          <div className="project-card" key={p.id}>
+            {/* Thumbnail */}
+            <div className="proj-thumb-wrap">
+              <img
+                src={p.image}
+                alt={p.title}
+                className="proj-thumb"
+                loading="lazy"
+                onError={e => {
+                  e.target.src = `/proj${(idx % 4) + 1}.jpg`;
+                }}
+              />
+            </div>
+
+            {/* Content */}
+            <div className="proj-body">
+              <h4 className="proj-title">{p.title}</h4>
+              <p className="proj-desc">{p.desc}</p>
+
+              {/* Tags */}
+              <div className="proj-tags">
+                {p.tags.map((t) => (
+                  <span className="proj-tag" key={t}>{t}</span>
+                ))}
+              </div>
+
+              {/* Action Buttons: Only valid buttons */}
+              <div className="proj-card-actions">
+                <a
+                  href={p.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="proj-btn proj-btn-gh"
+                >
+                  GitHub
+                </a>
+                <button
+                  className="proj-btn proj-btn-details"
+                  onClick={() => setSelectedProject(p)}
+                >
+                  Details
+                </button>
+                {/* Notice: No fake live demo! */}
+                {p.liveUrl && (
+                  <a
+                    href={p.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="proj-btn proj-btn-live"
+                  >
+                    Live Demo
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
         ))}
       </div>
+
+      {/* ══════════════════════════════════════════════════
+          DETAILS MODAL
+          ══════════════════════════════════════════════════ */}
+      {selectedProject && (
+        <div className="proj-modal-backdrop" onClick={() => setSelectedProject(null)}>
+          <div className="proj-modal" onClick={e => e.stopPropagation()}>
+            <div className="proj-modal-header">
+              <h3>{selectedProject.title}</h3>
+              <button
+                className="proj-modal-close"
+                onClick={() => setSelectedProject(null)}
+              >
+                ✕
+              </button>
+            </div>
+
+            {selectedProject.status && (
+              <span className="nova-status-badge modal-status">
+                {selectedProject.status}
+              </span>
+            )}
+
+            <p className="proj-modal-desc">{selectedProject.desc}</p>
+
+            <div className="proj-modal-details-box">
+              <h4>ARCHITECTURE &amp; OVERVIEW</h4>
+              <p>{selectedProject.details}</p>
+            </div>
+
+            {selectedProject.features && (
+              <div className="proj-modal-features">
+                <h4>CAPABILITIES</h4>
+                <div className="nova-features-grid">
+                  {selectedProject.features.map(f => (
+                    <div className="nova-feat-pill" key={f.name}>
+                      <span>{f.icon}</span>
+                      <span>{f.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="proj-modal-tags">
+              {selectedProject.tags?.map(t => (
+                <span className="tech-chip" key={t}>{t}</span>
+              ))}
+            </div>
+
+            <div className="proj-modal-footer">
+              <a
+                href={selectedProject.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-primary"
+              >
+                <span className="btn-glow" />
+                View Source on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

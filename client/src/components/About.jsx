@@ -1,15 +1,21 @@
 // ═══════════════════════════════════════════════════
-// COMPONENT: About.jsx — WITH ROBOTICS (COMING SOON)
+// COMPONENT: About.jsx — SHORT & GENUINE
+// Highlights: BS Robotics, AI Agents, Automation,
+// Web Dev, APIs & Current Focus: NOVA AI
 // ═══════════════════════════════════════════════════
+
 export default function About() {
-  const INFO = [
-    { label: "NAME",       value: "Muhammad Danial" },
-    { label: "LOCATION",   value: "Gujrat, Pakistan" },
-    { label: "EDUCATION",  value: "BS IN ROBOTICS (COMING SOON)" },
-    { label: "EXPERIENCE", value: "1+ Year" },
-    { label: "EMAIL",      value: "innocentdanial00@gmail.com" },
-    { label: "STATUS",     value: "Available for Hire", avail: true },
+  const PILLARS = [
+    { title: "BS ROBOTICS",     icon: "🎓", desc: "Engineering & Intelligent Machines" },
+    { title: "AI Agents",       icon: "🤖", desc: "Autonomous Systems & LLM Workflows" },
+    { title: "Automation",      icon: "⚙️", desc: "Task & Browser Automation" },
+    { title: "Web Development", icon: "🌐", desc: "Modern Full-Stack Applications" },
+    { title: "APIs",            icon: "🔌", desc: "Robust API Integration & Pipelines" },
   ];
+
+  const scrollTo = id => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section id="about" className="section about-section">
@@ -22,64 +28,81 @@ export default function About() {
       </div>
 
       <div className="about-grid">
-        {/* ── Photo Column ── */}
+        {/* Photo Column */}
         <div className="about-photo-col">
           <div className="photo-frame">
-            {/* Corner decorators */}
             <div className="pf-corner pf-tl" />
             <div className="pf-corner pf-tr" />
             <div className="pf-corner pf-bl" />
             <div className="pf-corner pf-br" />
-            {/* Real photo */}
             <img
               src="/danial.jpg"
               alt="Muhammad Danial"
               className="profile-photo"
+              loading="lazy"
             />
-            {/* Scan line */}
             <div className="photo-scan" />
           </div>
 
-          {/* Quick badges */}
-          <div className="about-badges">
-            <div className="badge">&#9670; Full Stack Developer</div>
-            <div className="badge">&#9670; AI Agent Developer</div>
-            <div className="badge">&#9670; Python Developer</div>
-            <div className="badge badge-soon">&#9670; Robotics (Coming Soon)</div>
-          </div>
-        </div>
-
-        {/* ── Info Column ── */}
-        <div className="about-info-col">
-          <p className="about-intro">
-            Hey, I&apos;m <span className="text-purple">Muhammad Danial</span> —
-            a passionate developer from Gujrat, Pakistan.
-          </p>
-          <p className="about-body">
-            I specialize in building full-stack web applications using the
-            <span className="highlight"> MERN stack</span> and intelligent
-            <span className="highlight"> AI agents</span> with Python.
-            Preparing for <span className="highlight">BS in Robotics (Coming Soon)</span>, where
-            I combine engineering and software to solve
-            real-world problems.
-          </p>
-
-          {/* Info grid — clean */}
-          <div className="about-info-grid">
-            {INFO.map(({ label, value, avail }) => (
-              <div className="info-item" key={label}>
-                <span className="info-label">{label}</span>
-                <span className={`info-value ${avail ? "available" : ""}`}>{value}</span>
+          {/* Quick Pillars */}
+          <div className="about-pillars-list">
+            {PILLARS.map((p) => (
+              <div className="about-pillar-tag" key={p.title}>
+                <span className="pillar-icon">{p.icon}</span>
+                <span className="pillar-title">{p.title}</span>
               </div>
             ))}
           </div>
+        </div>
 
-          <button
-            className="btn btn-primary"
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-          >
+        {/* Info Column */}
+        <div className="about-info-col">
+          <p className="about-intro">
+            Hey, I&apos;m <span className="text-purple">Muhammad Danial</span> —
+            an AI Agent Developer &amp; Automation Engineer from Gujrat, Pakistan.
+          </p>
+
+          <p className="about-body">
+            I specialize in building autonomous AI agents, automated workflows, and robust web applications with seamless API integrations.
+            Currently pursuing <span className="highlight">BS in Robotics</span>, combining engineering principles with modern software to create intelligent, production-ready systems.
+          </p>
+
+          {/* Current Focus Card */}
+          <div className="about-focus-box">
+            <div className="focus-header">
+              <span className="focus-pulse" />
+              <span className="focus-label">CURRENT FOCUS</span>
+            </div>
+            <h3 className="focus-project-name">NOVA AI 🤖</h3>
+            <p className="focus-project-desc">
+              Building an autonomous AI desktop assistant designed to control computers, manage files, automate browsers, generate content, and orchestrate complex tasks.
+            </p>
+          </div>
+
+          {/* Key Facts */}
+          <div className="about-facts-grid">
+            <div className="fact-card">
+              <span className="fact-label">LOCATION</span>
+              <span className="fact-val">Gujrat, Pakistan</span>
+            </div>
+            <div className="fact-card">
+              <span className="fact-label">EDUCATION</span>
+              <span className="fact-val">BS in Robotics</span>
+            </div>
+            <div className="fact-card">
+              <span className="fact-label">CORE FOCUS</span>
+              <span className="fact-val">AI Agents &amp; Automation</span>
+            </div>
+            <div className="fact-card">
+              <span className="fact-label">AVAILABILITY</span>
+              <span className="fact-val fact-green">Available for Projects</span>
+            </div>
+          </div>
+
+          {/* Action CTA */}
+          <button className="btn btn-primary" onClick={() => scrollTo("contact")}>
             <span className="btn-glow" />
-            &#x1F4E8; LET&apos;S WORK TOGETHER
+            Let&apos;s Work Together
           </button>
         </div>
       </div>

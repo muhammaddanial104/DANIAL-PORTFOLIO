@@ -1,16 +1,15 @@
 // ═══════════════════════════════════════════════════
-// COMPONENT: Navbar.jsx — FULLY RESPONSIVE
-// Clean mobile drawer, animated hamburger, accessible
+// COMPONENT: Navbar.jsx — CLEAN & RESPONSIVE
 // ═══════════════════════════════════════════════════
 import { useState, useEffect } from "react";
 
 const LINKS = [
-  { id: "home",     label: "HOME"     },
-  { id: "about",    label: "ABOUT"    },
-  { id: "services", label: "SERVICES" },
-  { id: "skills",   label: "SKILLS"   },
-  { id: "projects", label: "PROJECTS" },
-  { id: "contact",  label: "CONTACT"  },
+  { id: "home",     label: "Home"     },
+  { id: "about",    label: "About"    },
+  { id: "skills",   label: "Skills"   },
+  { id: "projects", label: "Projects" },
+  { id: "services", label: "Services" },
+  { id: "contact",  label: "Contact"  },
 ];
 
 export default function Navbar() {
@@ -23,7 +22,7 @@ export default function Navbar() {
       setScrolled(window.scrollY > 40);
       [...LINKS].reverse().forEach(({ id }) => {
         const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= 160) {
+        if (el && el.getBoundingClientRect().top <= 180) {
           setActive(id);
         }
       });
@@ -62,7 +61,7 @@ export default function Navbar() {
           <span className="logo-name">Muhammad Danial</span>
         </div>
 
-        {/* Desktop Navigation Links (hidden on mobile/tablet) */}
+        {/* Desktop Navigation Links */}
         <ul className="nav-links">
           {LINKS.map(({ id, label }) => (
             <li key={id}>
@@ -79,13 +78,8 @@ export default function Navbar() {
 
         {/* Right Section */}
         <div className="nav-right">
-          <div className="nav-status">
-            <span className="status-dot" />
-            <span className="status-text">AVAILABLE</span>
-          </div>
-
           <button className="nav-hire-btn" onClick={() => scrollTo("contact")}>
-            HIRE ME
+            Let&apos;s Talk
           </button>
 
           {/* Mobile Hamburger Toggle */}
@@ -131,12 +125,8 @@ export default function Navbar() {
               onClick={() => scrollTo("contact")}
             >
               <span className="btn-glow" />
-              ⚡ HIRE ME
+              Let&apos;s Talk
             </button>
-            <div className="mobile-status-row">
-              <span className="status-dot" />
-              <span className="status-text">AVAILABLE FOR WORK</span>
-            </div>
           </div>
         </div>
       </div>
