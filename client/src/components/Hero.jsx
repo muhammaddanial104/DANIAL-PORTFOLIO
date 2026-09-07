@@ -161,8 +161,6 @@ export default function Hero() {
           <span className="edu-text">BS IN ROBOTICS</span>
           <span className="edu-divider">&middot;</span>
           <span className="edu-soon-tag">COMING SOON</span>
-          <span className="edu-divider">&middot;</span>
-          <span className="edu-soon">BAHRIA UNIVERSITY</span>
         </div>
 
         <p className="hero-desc">
@@ -221,7 +219,7 @@ export default function Hero() {
           <div className="orb-data-tag odt-2">MERN</div>
           <div className="orb-data-tag odt-3">ROBOTICS</div>
         </div>
-        <span className="orb-label">MD &bull; NEXUS v3 &bull; ONLINE</span>
+        <span className="orb-label">MD &bull; AI DEV &bull; ONLINE</span>
       </div>
 
       <div className="scroll-indicator">

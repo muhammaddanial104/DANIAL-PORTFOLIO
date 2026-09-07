@@ -67,8 +67,8 @@ const EXPERIENCE = [
   {
     year: "COMING SOON",
     role: "Robotics & Automation",
-    company: "Bahria University",
-    desc: "Pursuing BS Robotics — Robotic Programming, ROS, kinematics & intelligent machines."
+    company: "Coming Soon",
+    desc: "BS Robotics (Coming Soon) — Robotic Programming, ROS, kinematics & intelligent machines."
   },
 ];
 

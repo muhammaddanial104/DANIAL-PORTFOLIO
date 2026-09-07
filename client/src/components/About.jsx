@@ -5,7 +5,7 @@ export default function About() {
   const INFO = [
     { label: "NAME",       value: "Muhammad Danial" },
     { label: "LOCATION",   value: "Gujrat, Pakistan" },
-    { label: "EDUCATION",  value: "BS IN ROBOTICS (COMING SOON) · Bahria Uni" },
+    { label: "EDUCATION",  value: "BS IN ROBOTICS (COMING SOON)" },
     { label: "EXPERIENCE", value: "1+ Year" },
     { label: "EMAIL",      value: "innocentdanial00@gmail.com" },
     { label: "STATUS",     value: "Available for Hire", avail: true },
@@ -59,8 +59,8 @@ export default function About() {
             I specialize in building full-stack web applications using the
             <span className="highlight"> MERN stack</span> and intelligent
             <span className="highlight"> AI agents</span> with Python.
-            Currently pursuing <span className="highlight">BS in Robotics</span> at
-            Bahria University, where I combine engineering and software to solve
+            Preparing for <span className="highlight">BS in Robotics (Coming Soon)</span>, where
+            I combine engineering and software to solve
             real-world problems.
           </p>
 

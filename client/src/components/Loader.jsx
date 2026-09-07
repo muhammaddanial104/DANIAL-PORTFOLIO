@@ -1,5 +1,5 @@
 // ---------------------------------------------------
-// COMPONENT: Loader.jsx — REDESIGNED v3
+// COMPONENT: Loader.jsx ï¿½ REDESIGNED v3
 // Clean minimal: pulsing MD + scanning line + counter
 // ---------------------------------------------------
 import { useState, useEffect } from "react";
@@ -10,7 +10,7 @@ export default function Loader({ onDone }) {
   const [lineIdx,  setLineIdx]  = useState(0);
 
   const LINES = [
-    "BOOTING NEXUS OS...",
+    "BOOTING AI DEV OS...",
     "LOADING THREE.JS RENDERER...",
     "CONNECTING NEURAL NETWORK...",
     "COMPILING MERN MODULES...",
