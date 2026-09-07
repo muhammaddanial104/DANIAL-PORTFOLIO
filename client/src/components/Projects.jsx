@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════
 // COMPONENT: Projects.jsx — MAIN PORTFOLIO SHOWCASE
-// Featured NOVA AI (Largest Card & Screenshot) + In Development Status
+// Featured NOVA AI (Largest Card & Clean Desktop Window Screenshot)
 // Other Projects with Screenshot, Description, Tech Stack, GitHub & No fake Live Demo
 // ═══════════════════════════════════════════════════
 import { useState } from "react";
@@ -83,7 +83,7 @@ export default function Projects() {
 
       {/* ══════════════════════════════════════════════════
           FLAGSHIP FEATURED PROJECT: NOVA AI 🤖
-          Largest Card & Dedicated Screenshot
+          Largest Card & Sleek Window Interface Screenshot
           ══════════════════════════════════════════════════ */}
       <div className="nova-flagship-card">
         <div className="nova-card-header">
@@ -94,8 +94,17 @@ export default function Projects() {
           <span className="nova-year">2026</span>
         </div>
 
-        {/* Big NOVA AI Screenshot Banner */}
+        {/* Clean Window Frame around Screenshot */}
         <div className="nova-screenshot-banner">
+          <div className="nova-window-bar">
+            <div className="nova-window-dots">
+              <span className="w-dot dot-red" />
+              <span className="w-dot dot-yellow" />
+              <span className="w-dot dot-green" />
+            </div>
+            <span className="nova-window-title">NOVA AI &bull; Desktop Assistant Interface</span>
+            <span className="nova-window-status">● ACTIVE</span>
+          </div>
           <div className="nova-screenshot-wrap">
             <img
               src="/nova-preview.jpg"
@@ -103,9 +112,6 @@ export default function Projects() {
               className="nova-screenshot-img"
               loading="lazy"
             />
-            <div className="nova-screenshot-overlay">
-              <span className="nova-overlay-pill">NOVA AI INTERFACE &bull; SYSTEM HUD PREVIEW</span>
-            </div>
           </div>
         </div>
 
