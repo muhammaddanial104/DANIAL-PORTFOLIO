@@ -6557,22 +6557,24 @@ html, body, #root {
    SERVICES SCROLL-TRIGGERED ENTRANCE ANIMATION (ONLY SERVICES)
    ══════════════════════════════════════════════════════════════ */
 .services-section .service-card {
-  opacity: 0;
-  transform: translateY(50px) scale(0.94);
-  filter: blur(8px);
+  opacity: 0 !important;
+  transform: translateY(60px) scale(0.92) !important;
+  filter: blur(10px) !important;
+  position: relative !important;
+  overflow: hidden !important;
   transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
               filter 0.75s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.35s ease,
               background 0.35s ease,
-              box-shadow 0.35s ease;
+              box-shadow 0.35s ease !important;
   will-change: opacity, transform, filter;
 }
 
 .services-section .service-card.service-card-animated {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  filter: blur(0) !important;
 }
 
 /* Neon laser sweep highlight on card reveal */
@@ -6585,23 +6587,24 @@ html, body, #root {
   height: 100%;
   background: linear-gradient(
     90deg,
-    transparent,
-    rgba(168, 85, 247, 0.16) 50%,
-    transparent
+    transparent 0%,
+    rgba(168, 85, 247, 0.35) 50%,
+    transparent 100%
   );
   transform: skewX(-25deg);
   animation: serviceLaserSweep 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
   border-radius: 14px;
 }
 
-.services-section .service-card-soon.service-card-animated::before {
+.services-section .service-card.service-card-emerald.service-card-animated::before,
+.services-section .service-card.service-card-soon.service-card-animated::before {
   background: linear-gradient(
     90deg,
-    transparent,
-    rgba(16, 185, 129, 0.22) 50%,
-    transparent
+    transparent 0%,
+    rgba(16, 185, 129, 0.40) 50%,
+    transparent 100%
   );
 }
 
@@ -6612,6 +6615,12 @@ html, body, #root {
   100% {
     left: 200%;
   }
+}
+
+.services-section .service-card.service-card-animated:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55), 0 0 35px rgba(168, 85, 247, 0.25) !important;
+  border-color: rgba(168, 85, 247, 0.6) !important;
 }
 
 /* 5th Category (Robotics) Centered Span */

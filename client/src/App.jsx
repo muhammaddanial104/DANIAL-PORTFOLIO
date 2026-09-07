@@ -1,15 +1,16 @@
 // --------------------------------------------------------
-// APP.JSX � Main App with Loader
+// APP.JSX — Main App with Loader
+// Aligned in exact Navbar order: Home -> About -> Skills -> Projects -> Services -> Contact
 // --------------------------------------------------------
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Loader         from "./components/Loader";
 import ThreeBackground from "./components/ThreeBackground";
 import Navbar         from "./components/Navbar";
 import Hero           from "./components/Hero";
 import About          from "./components/About";
-import Services       from "./components/Services";
 import Skills         from "./components/Skills";
 import Projects       from "./components/Projects";
+import Services       from "./components/Services";
 import Contact        from "./components/Contact";
 import Footer         from "./components/Footer";
 import useRipple      from "./hooks/useRipple";
@@ -44,9 +45,9 @@ export default function App() {
         <main>
           <Hero />
           <About />
-          <Services />
           <Skills />
           <Projects />
+          <Services />
           <Contact />
         </main>
         <Footer />

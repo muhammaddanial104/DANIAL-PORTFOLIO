@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════
 // COMPONENT: Services.jsx — SHORT DESCRIPTIONS (4-5 CORE SERVICES)
-// Dedicated Scroll-Triggered Entrance Animation
+// Dedicated Scroll-Triggered Entrance Animation (Dynamic On-Scroll Reveal)
 // ═══════════════════════════════════════════════════
 import { useEffect, useRef, useState } from "react";
 
@@ -90,11 +90,16 @@ function ServiceCard({ s, index, onDiscuss }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.disconnect();
+        } else {
+          // Reset when scrolled out of view so animation triggers on scroll
+          setIsVisible(false);
         }
       },
       {
@@ -103,9 +108,7 @@ function ServiceCard({ s, index, onDiscuss }) {
       }
     );
 
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
+    observer.observe(el);
 
     return () => observer.disconnect();
   }, []);
@@ -113,9 +116,9 @@ function ServiceCard({ s, index, onDiscuss }) {
   return (
     <div
       ref={cardRef}
-      className={`service-card ${s.badgeClass === "service-badge-emerald" ? "service-card-emerald" : ""} ${isVisible ? "service-card-animated" : ""}`}
+      className={`service-card ${s.badgeClass === "service-badge-emerald" ? "service-card-emerald service-card-soon" : ""} ${isVisible ? "service-card-animated" : ""}`}
       style={{
-        transitionDelay: `${(index % 3) * 120}ms`,
+        transitionDelay: `${(index % 3) * 150}ms`,
       }}
     >
       {/* Header */}
