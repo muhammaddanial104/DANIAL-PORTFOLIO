@@ -1,12 +1,11 @@
 // ═══════════════════════════════════════════════════
 // COMPONENT: Contact.jsx — LET'S BUILD SOMETHING INTELLIGENT.
-// Verified WhatsApp (+923137525862), Email, GitHub, LinkedIn + Simple Form
+// Direct WhatsApp chat trigger (number hidden from UI), Email, GitHub, LinkedIn
 // ═══════════════════════════════════════════════════
 import { useState } from "react";
 import api from "../api";
 
 const MAIL = "innocentdanial00@gmail.com";
-const PHONE = "+923137525862";
 const GH_URL = "https://github.com/muhammaddanial104";
 const LI_URL = "https://www.linkedin.com/in/muhammad-danial-2584b4432";
 const WA_URL = "https://wa.me/923137525862?text=Hi%20Danial,%20I'd%20like%20to%20discuss%20a%20project!";
@@ -54,7 +53,7 @@ export default function Contact() {
       </div>
 
       <div className="contact-container">
-        {/* Strong Heading Requested */}
+        {/* Strong Heading */}
         <h3 className="contact-main-heading">
           Let&apos;s Build <span className="accent">Something Intelligent.</span>
         </h3>
@@ -73,7 +72,7 @@ export default function Contact() {
             <span className="channel-icon">💬</span>
             <div className="channel-text-wrap">
               <span className="channel-name">WhatsApp</span>
-              <span className="channel-sub">+92 313 7525862</span>
+              <span className="channel-sub">Start Chat</span>
             </div>
           </a>
 
