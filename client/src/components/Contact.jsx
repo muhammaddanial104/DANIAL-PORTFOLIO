@@ -1,9 +1,8 @@
 // ═══════════════════════════════════════════════════
-// COMPONENT: Contact.jsx — LET'S BUILD SOMETHING INTELLIGENT.
-// Direct WhatsApp chat trigger (number hidden from UI), Email, GitHub, LinkedIn
+// COMPONENT: Contact.jsx — DIRECT GMAIL INBOX DELIVERY
+// Delivers directly to innocentdanial00@gmail.com via FormSubmit AJAX
 // ═══════════════════════════════════════════════════
 import { useState } from "react";
-import api from "../api";
 
 const MAIL = "innocentdanial00@gmail.com";
 const GH_URL = "https://github.com/muhammaddanial104";
@@ -12,33 +11,59 @@ const WA_URL = "https://wa.me/923137525862?text=Hi%20Danial,%20I'd%20like%20to%2
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [state, setState] = useState("idle");
+  const [state, setState] = useState("idle"); // idle | sending | success | error
+  const [feedback, setFeedback] = useState("");
 
   const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async e => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.message) return;
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) return;
+
     setState("sending");
+    setFeedback("");
+
     try {
-      const res = await api.post("/api/contact", {
-        ...form,
-        subject: "New Project Inquiry from Portfolio",
+      const response = await fetch(`https://formsubmit.co/ajax/${MAIL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          email: form.email.trim(),
+          message: form.message.trim(),
+          _subject: `New Portfolio Message from ${form.name.trim()}`,
+          _template: "table",
+          _captcha: "false",
+        }),
       });
-      if (res.data && res.data.success) {
+
+      const data = await response.json();
+
+      if (response.ok || data.success === "true" || data.success === true) {
         setState("success");
+        setFeedback("Message transmitted directly to Muhammad Danial! You will receive a response shortly.");
         setForm({ name: "", email: "", message: "" });
-        setTimeout(() => setState("idle"), 4000);
+        setTimeout(() => {
+          setState("idle");
+          setFeedback("");
+        }, 6000);
         return;
       }
-      throw new Error("API fallback");
+      throw new Error(data.message || "Failed to deliver");
     } catch {
-      // Direct email fallback
-      const mailtoUrl = `mailto:${MAIL}?subject=Project%20Inquiry%20from%20Portfolio&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`)}`;
+      // Fallback: direct email transmission
+      const mailtoUrl = `mailto:${MAIL}?subject=${encodeURIComponent(`Project Inquiry from ${form.name}`)}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`)}`;
       window.location.href = mailtoUrl;
       setState("success");
+      setFeedback("Message ready in your email client for Muhammad Danial.");
       setForm({ name: "", email: "", message: "" });
-      setTimeout(() => setState("idle"), 4000);
+      setTimeout(() => {
+        setState("idle");
+        setFeedback("");
+      }, 5000);
     }
   };
 
@@ -114,7 +139,7 @@ export default function Contact() {
           </a>
         </div>
 
-        {/* Simple Contact Form */}
+        {/* Contact Form with Direct Gmail Delivery */}
         <div className="contact-form-wrap">
           <form className="contact-simple-form" onSubmit={handleSubmit} noValidate>
             <div className="form-simple-row">
@@ -169,9 +194,9 @@ export default function Contact() {
               {state === "sending" ? "TRANSMITTING..." : state === "success" ? "✓ MESSAGE SENT!" : "Send Message"}
             </button>
 
-            {state === "success" && (
+            {feedback && (
               <p className="form-status-msg status-success">
-                Message transmitted successfully! Muhammad Danial will respond shortly.
+                ✓ {feedback}
               </p>
             )}
           </form>
