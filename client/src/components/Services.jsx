@@ -1,7 +1,9 @@
 // ═══════════════════════════════════════════════════
 // COMPONENT: Services.jsx — WHAT I OFFER & SOLUTIONS
-// Featuring Web Design, AI Agents, SEO & Engineering
+// Features: Web Design, AI Agents, SEO, Engineering
+// Dedicated Scroll-Triggered Entrance Animation
 // ═══════════════════════════════════════════════════
+import { useEffect, useRef, useState } from "react";
 
 const SERVICES = [
   {
@@ -138,6 +140,75 @@ const SERVICES = [
   },
 ];
 
+function ServiceCard({ s, index, onDiscuss }) {
+  const cardRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -40px 0px",
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={cardRef}
+      className={`service-card ${s.badgeClass === "service-badge-emerald" ? "service-card-soon" : ""} ${isVisible ? "service-card-animated" : ""}`}
+      style={{
+        transitionDelay: `${(index % 3) * 140}ms`,
+      }}
+    >
+      {/* Top row with icon & number */}
+      <div className="service-card-header">
+        <div className="service-icon-box">
+          {s.icon}
+        </div>
+        <div className="service-header-meta">
+          <span className="service-card-num">{s.num}</span>
+          <span className={`service-badge ${s.badgeClass}`}>{s.badge}</span>
+        </div>
+      </div>
+
+      {/* Title & Description */}
+      <h3 className="service-title">{s.title}</h3>
+      <p className="service-desc">{s.desc}</p>
+
+      {/* Features list */}
+      <div className="service-features">
+        {s.features.map((f, idx) => (
+          <div className="service-feature-item" key={idx}>
+            <span className="service-feature-check">✓</span>
+            <span>{f}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Card Action */}
+      <div className="service-footer">
+        <button className="service-action-btn" onClick={onDiscuss}>
+          <span>DISCUSS PROJECT</span>
+          <span className="service-arrow">→</span>
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function Services() {
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
@@ -158,41 +229,13 @@ export default function Services() {
       </p>
 
       <div className="services-grid">
-        {SERVICES.map((s) => (
-          <div className={`service-card ${s.badgeClass === "service-badge-emerald" ? "service-card-soon" : ""}`} key={s.num}>
-            {/* Top row with icon & number */}
-            <div className="service-card-header">
-              <div className="service-icon-box">
-                {s.icon}
-              </div>
-              <div className="service-header-meta">
-                <span className="service-card-num">{s.num}</span>
-                <span className={`service-badge ${s.badgeClass}`}>{s.badge}</span>
-              </div>
-            </div>
-
-            {/* Title & Description */}
-            <h3 className="service-title">{s.title}</h3>
-            <p className="service-desc">{s.desc}</p>
-
-            {/* Features list */}
-            <div className="service-features">
-              {s.features.map((f, idx) => (
-                <div className="service-feature-item" key={idx}>
-                  <span className="service-feature-check">✓</span>
-                  <span>{f}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Card Action */}
-            <div className="service-footer">
-              <button className="service-action-btn" onClick={scrollToContact}>
-                <span>DISCUSS PROJECT</span>
-                <span className="service-arrow">→</span>
-              </button>
-            </div>
-          </div>
+        {SERVICES.map((s, idx) => (
+          <ServiceCard
+            key={s.num}
+            s={s}
+            index={idx}
+            onDiscuss={scrollToContact}
+          />
         ))}
       </div>
     </section>
