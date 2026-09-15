@@ -1,6 +1,9 @@
 // ═══════════════════════════════════════════════════
 // COMPONENT: Projects.jsx — MAIN PORTFOLIO SHOWCASE
-// Featured Flagships: AEGIS-AI (Cyber Defense) & NOVA AI (Desktop Assistant)
+// Featured Key Projects:
+// 1. AEGIS-AI 🛡️ (Cyber Defense & Self-Healing SOC)
+// 2. AUTO-DEV AI 💻 (Autonomous AI Software Engineering Agent)
+// 3. NOVA AI 🤖 (Autonomous Desktop Assistant & Automation Engine)
 // Other Noteworthy Projects with clean screenshots & verified links
 // ═══════════════════════════════════════════════════
 import { useState } from "react";
@@ -18,6 +21,21 @@ const AEGIS_FEATURES = [
   { name: "Sandboxed Patches",      icon: "📦" },
   { name: "Security Audits",        icon: "📋" },
   { name: "SecOps Multi-Agent",     icon: "🌐" },
+];
+
+const AUTODEV_FEATURES = [
+  { name: "Multi-Step Planning",    icon: "📋" },
+  { name: "Autonomous Coding",      icon: "💻" },
+  { name: "AST Code Parsing",       icon: "🌳" },
+  { name: "Unit Test Generator",    icon: "🧪" },
+  { name: "Docker Sandbox Exec",    icon: "📦" },
+  { name: "Git Diffs & Commits",    icon: "🔀" },
+  { name: "Static Type Analysis",   icon: "🔍" },
+  { name: "Auto Bug Refactoring",   icon: "🩹" },
+  { name: "Telemetry & Profiling",  icon: "📊" },
+  { name: "Dependency Resolver",    icon: "⚙️" },
+  { name: "Multi-File Reasoning",   icon: "🧠" },
+  { name: "CI/CD Auto-Pipeline",    icon: "🚀" },
 ];
 
 const NOVA_FEATURES = [
@@ -45,16 +63,6 @@ const OTHER_PROJECTS = [
     githubUrl: "https://github.com/muhammaddanial104",
     liveUrl: null, // No fake live demo!
     details: "Built with secure token-based authentication, an administrative product management dashboard, relational schema modeling, and seamless checkout with Stripe webhook processing.",
-  },
-  {
-    id: "proj-2",
-    title: "AI Software Engineering Agent",
-    desc: "Autonomous AI platform that writes, tests, and refactors code using LangChain and GPT-4 for automated software development tasks.",
-    image: "/proj2.jpg",
-    tags: ["Python", "LangChain", "OpenAI", "FastAPI", "Docker", "React"],
-    githubUrl: "https://github.com/muhammaddanial104",
-    liveUrl: null,
-    details: "Utilizes multi-step autonomous planning, static code analysis, unit test generation, and containerized sandboxes for reliable, isolated code execution.",
   },
   {
     id: "proj-3",
@@ -93,7 +101,7 @@ export default function Projects() {
       </div>
 
       <p className="projects-subtitle">
-        Engineering autonomous AI systems, enterprise cyber defense platforms, and scalable full-stack software solutions.
+        Engineering autonomous AI systems, enterprise cyber defense platforms, and autonomous software engineering agents.
       </p>
 
       {/* ══════════════════════════════════════════════════
@@ -103,7 +111,7 @@ export default function Projects() {
       <div className="nova-flagship-card aegis-flagship-card">
         <div className="nova-card-header">
           <div className="nova-meta-left">
-            <span className="nova-crown-tag aegis-crown-tag">★ FEATURED FLAGSHIP</span>
+            <span className="nova-crown-tag aegis-crown-tag">★ KEY FEATURED PROJECT</span>
             <span className="nova-status-badge aegis-status-badge">🛡️ Active Defense System</span>
           </div>
           <span className="nova-year">2026</span>
@@ -197,13 +205,113 @@ export default function Projects() {
       </div>
 
       {/* ══════════════════════════════════════════════════
-          FLAGSHIP PROJECT 2: NOVA AI 🤖
+          FLAGSHIP PROJECT 2: AUTO-DEV AI 💻
+          Autonomous AI Software Engineering Agent
+          ══════════════════════════════════════════════════ */}
+      <div className="nova-flagship-card autodev-flagship-card">
+        <div className="nova-card-header">
+          <div className="nova-meta-left">
+            <span className="nova-crown-tag autodev-crown-tag">★ KEY FEATURED PROJECT</span>
+            <span className="nova-status-badge autodev-status-badge">⚡ Autonomous Coding Engine</span>
+          </div>
+          <span className="nova-year">2026</span>
+        </div>
+
+        {/* Desktop Window Frame with Real Generated Screenshot */}
+        <div className="nova-screenshot-banner">
+          <div className="nova-window-bar">
+            <div className="nova-window-dots">
+              <span className="w-dot dot-red" />
+              <span className="w-dot dot-yellow" />
+              <span className="w-dot dot-green" />
+            </div>
+            <span className="nova-window-title">AUTO-DEV AI &bull; Autonomous Software Engineering Agent</span>
+            <span className="nova-window-status">● AGENT ACTIVE</span>
+          </div>
+          <div className="nova-screenshot-wrap">
+            <img
+              src="/coder-agent-preview.jpg"
+              alt="AUTO-DEV AI Autonomous Software Engineering Agent IDE Interface"
+              className="nova-screenshot-img"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        {/* AUTO-DEV Content Details */}
+        <div className="nova-content-details">
+          <h3 className="nova-title">AUTO-DEV AI 💻</h3>
+          <h4 className="nova-subtitle" style={{ color: "#60a5fa" }}>Autonomous AI Software Engineering Agent &amp; Code Generation Platform</h4>
+
+          <p className="nova-description">
+            An autonomous AI software engineer designed to plan, write, test, debug, and refactor production codebases. Features multi-step reasoning, AST-level syntax tree parsing, automated pytest test suite generation, and containerized Docker sandboxes for fully isolated, verified code execution.
+          </p>
+
+          {/* 12 Features Badges */}
+          <div className="nova-features-wrap">
+            <span className="nova-features-label">12 CORE ENGINEERING CAPABILITIES:</span>
+            <div className="nova-features-grid">
+              {AUTODEV_FEATURES.map(f => (
+                <div className="nova-feat-pill" key={f.name}>
+                  <span className="nova-feat-icon">{f.icon}</span>
+                  <span className="nova-feat-text">{f.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Tech Stack Chips */}
+          <div className="nova-tech-row">
+            <span className="tech-chip">Python</span>
+            <span className="tech-chip">LangChain / LangGraph</span>
+            <span className="tech-chip">OpenAI GPT-4 / Claude</span>
+            <span className="tech-chip">Tree-sitter AST</span>
+            <span className="tech-chip">Docker Sandboxes</span>
+            <span className="tech-chip">Pytest Suite</span>
+            <span className="tech-chip">FastAPI</span>
+            <span className="tech-chip">Git Automation</span>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="nova-actions-row">
+            <a
+              href="https://github.com/muhammaddanial104"
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-primary"
+            >
+              <span className="btn-glow" />
+              View on GitHub
+            </a>
+            <button
+              className="btn btn-outline"
+              onClick={() =>
+                setSelectedProject({
+                  title: "AUTO-DEV AI 💻",
+                  desc: "Autonomous AI software engineer that reads requirements, explores multi-file repos, parses abstract syntax trees (AST), generates unit tests, and implements verified code changes.",
+                  tags: ["Python", "LangChain", "OpenAI GPT-4", "FastAPI", "Docker", "Tree-sitter", "Pytest"],
+                  status: "⚡ Autonomous Coding Engine",
+                  image: "/coder-agent-preview.jpg",
+                  details: "AUTO-DEV AI operates with an autonomous agent loop: Planning -> AST Analysis -> Code Synthesis -> Containerized Test Execution -> Self-Correction -> Git Branch / Pull Request generation. All code is verified within isolated Docker containers to guarantee zero regressions.",
+                  githubUrl: "https://github.com/muhammaddanial104",
+                  features: AUTODEV_FEATURES,
+                })
+              }
+            >
+              Project Details
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════════════
+          FLAGSHIP PROJECT 3: NOVA AI 🤖
           Autonomous AI Desktop Assistant & Automation Engine
           ══════════════════════════════════════════════════ */}
       <div className="nova-flagship-card">
         <div className="nova-card-header">
           <div className="nova-meta-left">
-            <span className="nova-crown-tag">★ FEATURED FLAGSHIP</span>
+            <span className="nova-crown-tag">★ KEY FEATURED PROJECT</span>
             <span className="nova-status-badge">🚧 In Development</span>
           </div>
           <span className="nova-year">2026</span>

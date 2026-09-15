@@ -83,10 +83,8 @@ export default function About() {
               <span className="focus-pulse" />
               <span className="focus-label">CURRENT FOCUS</span>
             </div>
-            <h3 className="focus-project-name">AEGIS-AI 🛡️ &bull; NOVA AI 🤖</h3>
-            <p className="focus-project-desc">
-              Architecting AEGIS-AI (Autonomous SOC &amp; Cyber Defense Platform with self-healing security remediation) alongside NOVA AI (Intelligent Autonomous Desktop Assistant &amp; Automation Engine).
-            </p>
+            <h3 className="focus-project-name">AEGIS-AI 🛡️ &bull; AUTO-DEV AI 💻 &bull; NOVA AI 🤖</h3>
+            <p className="focus-project-desc">Architecting autonomous AI ecosystems: AEGIS-AI (Autonomous SOC &amp; Cyber Defense), AUTO-DEV AI (Autonomous AI Software Engineering Agent), and NOVA AI (Intelligent Desktop Assistant &amp; Automation Engine).</p>
           </div>
 
           {/* Core Info Tags */}
