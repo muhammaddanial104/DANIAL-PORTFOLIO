@@ -56,13 +56,13 @@ const NOVA_FEATURES = [
 const OTHER_PROJECTS = [
   {
     id: "proj-1",
-    title: "E-Commerce Platform",
-    desc: "Full-featured MERN e-commerce application with product catalog, cart system, JWT authentication, and Stripe payment integration.",
+    title: "E-Commerce Platforms (ITS Gujrat)",
+    desc: "2 full-featured MERN e-commerce platforms engineered during a 6-month internship at ITS Gujrat (Mar 2024 – Aug 2024) with product catalogs, JWT auth, and Stripe integration.",
     image: "/proj1.jpg",
-    tags: ["React", "Node.js", "Express", "MongoDB", "Stripe", "JWT"],
+    tags: ["React", "Node.js", "Express", "MongoDB", "Stripe", "JWT Auth"],
     githubUrl: "https://github.com/muhammaddanial104",
     liveUrl: null, // No fake live demo!
-    details: "Built with secure token-based authentication, an administrative product management dashboard, relational schema modeling, and seamless checkout with Stripe webhook processing.",
+    details: "Built during a 6-month intensive MERN Stack software engineering internship at ITS Gujrat (March 2024 – August 2024). Completed 2 full production-ready platforms featuring secure token-based authentication, admin product management dashboards, high-efficiency MongoDB relational schemas, and checkout processing with Stripe webhooks.",
   },
   {
     id: "proj-3",

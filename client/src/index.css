@@ -8285,3 +8285,137 @@ html, body, #root {
     margin-bottom: 0.8rem !important;
   }
 }
+
+
+/* ══════════════════════════════════════════════════════
+   ABOUT: PROFESSIONAL EXPERIENCE (ITS GUJRAT INTERNSHIP)
+   ══════════════════════════════════════════════════════ */
+.about-exp-box {
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.07) 0%, rgba(168, 85, 247, 0.05) 50%, rgba(10, 0, 24, 0.85) 100%);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  border-radius: 14px;
+  padding: 1.4rem 1.6rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 25px rgba(34, 211, 238, 0.12);
+  transition: all 0.3s ease;
+  margin-top: 1.2rem;
+}
+
+.about-exp-box:hover {
+  border-color: rgba(34, 211, 238, 0.6);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 35px rgba(34, 211, 238, 0.2);
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.exp-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.exp-badge {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #22d3ee;
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  letter-spacing: 0.1em;
+}
+
+.exp-duration {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.74rem;
+  color: #a7f3d0;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.exp-location {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: rgba(196, 181, 212, 0.65);
+}
+
+.exp-role-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
+}
+
+.exp-role {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.03em;
+}
+
+.exp-company {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.95rem;
+  color: #22d3ee;
+  font-weight: 700;
+}
+
+.exp-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(241, 232, 255, 0.88);
+  line-height: 1.65;
+  margin-bottom: 1.1rem;
+}
+
+.exp-highlights-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.exp-chip {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  padding: 0.3rem 0.65rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(34, 211, 238, 0.22);
+  border-radius: 6px;
+  color: #e0f2fe;
+  transition: all 0.2s ease;
+}
+
+.exp-chip:hover {
+  background: rgba(34, 211, 238, 0.1);
+  border-color: #22d3ee;
+  color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .about-exp-box {
+    padding: 1.2rem 1rem;
+  }
+  .exp-role {
+    font-size: 1.02rem;
+  }
+  .exp-desc {
+    font-size: 0.84rem;
+  }
+  .exp-chip {
+    font-size: 0.66rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
