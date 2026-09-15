@@ -7726,3 +7726,258 @@ html, body, #root {
   border: 1px solid rgba(59, 130, 246, 0.5) !important;
   color: #60a5fa !important;
 }
+
+/* ══════════════════════════════════════════════════════
+   BIRTHDAY & ROBOTICS MILESTONE CELEBRATION STYLES
+   ══════════════════════════════════════════════════════ */
+.bday-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #04000b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow: hidden;
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.bday-backdrop-out {
+  opacity: 0;
+  transform: scale(1.02);
+  pointer-events: none;
+}
+
+.bday-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.bday-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 50% 30%, rgba(168, 85, 247, 0.15) 0%, transparent 60%),
+                    radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.12) 0%, transparent 60%),
+                    linear-gradient(rgba(34, 211, 238, 0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bday-card {
+  position: relative;
+  z-index: 10;
+  max-width: 650px;
+  width: 100%;
+  background: rgba(11, 2, 24, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  border-radius: 20px;
+  padding: 2.8rem 2.2rem;
+  text-align: center;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.8), 0 0 50px rgba(16, 185, 129, 0.22);
+  animation: bdayCardIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  box-sizing: border-box;
+}
+
+.bday-card-out {
+  transform: scale(0.96);
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+@keyframes bdayCardIn {
+  0% { transform: translateY(24px) scale(0.94); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.bday-milestone-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 1.1rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  border-radius: 30px;
+  color: #6ee7b7;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+
+.bday-title {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, #c084fc 0%, #38bdf8 50%, #34d399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  line-height: 1.25;
+}
+
+.bday-wish-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.96rem;
+  color: rgba(241, 232, 255, 0.9);
+  line-height: 1.7;
+  margin-bottom: 1.4rem;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bday-quote-box {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: 12px;
+  padding: 1.1rem 1.3rem;
+  margin-bottom: 1.4rem;
+  box-shadow: inset 0 0 20px rgba(16, 185, 129, 0.08);
+}
+
+.bday-quote-heading {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #a7f3d0;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.bday-quote-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  color: rgba(196, 181, 212, 0.8);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.bday-pillars-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-bottom: 1.4rem;
+}
+
+.bday-pillar-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+
+.bday-tag-purple {
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  color: #c084fc;
+}
+
+.bday-tag-blue {
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #93c5fd;
+}
+
+.bday-tag-cyan {
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  color: #67e8f9;
+}
+
+.bday-tag-green {
+  background: rgba(16, 185, 129, 0.18);
+  border: 1px solid rgba(16, 185, 129, 0.55);
+  color: #6ee7b7;
+  font-weight: 700;
+}
+
+.bday-timer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 1rem;
+  background: rgba(17, 2, 36, 0.75);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 10px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: #22d3ee;
+  margin-bottom: 1.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.bday-timer-val {
+  color: #10b981;
+  font-weight: 700;
+  font-size: 0.84rem;
+  letter-spacing: 0.1em;
+}
+
+.bday-btn-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.bday-enter-btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 2rem;
+  background: linear-gradient(135deg, #10b981 0%, #22d3ee 50%, #a855f7 100%);
+  color: #000000;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
+  transition: all 0.3s ease;
+}
+
+.bday-enter-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 14px 35px rgba(16, 185, 129, 0.5);
+}
+
+.bday-auto-note {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(196, 181, 212, 0.55);
+}
+
+@media (max-width: 600px) {
+  .bday-card {
+    padding: 2rem 1.2rem;
+  }
+  .bday-title {
+    font-size: 1.45rem;
+  }
+  .bday-wish-text {
+    font-size: 0.86rem;
+  }
+  .bday-enter-btn {
+    width: 100%;
+  }
+}
