@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// COMPONENT: Hero.jsx — AI AGENT & AUTOMATION ENGINEER
+// COMPONENT: Hero.jsx — AI AGENT DEVELOPER & SOFTWARE ENGINEER
 // Exact positioning, buttons, BS Robotics (Coming Soon), NO fake metrics
 // ═══════════════════════════════════════════════════
 import { useEffect, useState } from "react";
@@ -78,7 +78,7 @@ export default function Hero() {
 
         {/* 2. Position / Title */}
         <h2 className="hero-position-title">
-          AI Agent Developer &amp; Automation Engineer
+          AI Agent Developer &bull; Software Engineer &bull; Automation Engineer
         </h2>
 
         {/* Robotics Coming Soon Badge in Emerald Green */}
@@ -91,7 +91,7 @@ export default function Hero() {
 
         {/* 3. Short Line */}
         <p className="hero-desc">
-          I build AI-powered applications, intelligent agents and automation systems.
+          I build autonomous AI systems, cyber defense platforms, and scalable software solutions.
         </p>
 
         {/* 4. Action Buttons */}
@@ -120,10 +120,10 @@ export default function Hero() {
           <div className="orb-particle op-2" />
           <div className="orb-particle op-3" />
           <div className="orb-data-tag odt-1">AI AGENTS</div>
-          <div className="orb-data-tag odt-2">AUTOMATION</div>
-          <div className="orb-data-tag odt-3">NOVA AI</div>
+          <div className="orb-data-tag odt-2">SOFTWARE ENG</div>
+          <div className="orb-data-tag odt-3">AEGIS-AI</div>
         </div>
-        <span className="orb-label">MD &bull; AI DEV &bull; ONLINE</span>
+        <span className="orb-label">MD &bull; SOFTWARE ENG &bull; ONLINE</span>
       </div>
 
       <div className="scroll-indicator" onClick={() => scrollTo("about")}>

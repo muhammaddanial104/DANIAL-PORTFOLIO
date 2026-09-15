@@ -7670,3 +7670,33 @@ html, body, #root {
     padding: 0.35rem 0.65rem;
   }
 }
+
+/* ══════════════════════════════════════════════════════
+   AEGIS-AI CYBER DEFENSE FLAGSHIP STYLES
+   ══════════════════════════════════════════════════════ */
+.aegis-flagship-card {
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.08) 0%, rgba(16, 185, 129, 0.05) 45%, rgba(10, 0, 24, 0.85) 100%) !important;
+  border-color: rgba(34, 211, 238, 0.45) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65), 0 0 45px rgba(34, 211, 238, 0.22) !important;
+}
+
+.aegis-flagship-card:hover {
+  border-color: rgba(16, 185, 129, 0.65) !important;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.75), 0 0 55px rgba(16, 185, 129, 0.28) !important;
+}
+
+.aegis-crown-tag {
+  background: rgba(34, 211, 238, 0.15) !important;
+  border: 1px solid rgba(34, 211, 238, 0.5) !important;
+  color: #22d3ee !important;
+}
+
+.aegis-status-badge {
+  background: rgba(16, 185, 129, 0.15) !important;
+  border: 1px solid rgba(16, 185, 129, 0.5) !important;
+  color: #10b981 !important;
+}
+
+.aegis-subtitle {
+  color: #22d3ee !important;
+}

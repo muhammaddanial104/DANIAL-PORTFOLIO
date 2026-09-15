@@ -1,9 +1,24 @@
 // ═══════════════════════════════════════════════════
 // COMPONENT: Projects.jsx — MAIN PORTFOLIO SHOWCASE
-// Featured NOVA AI (Largest Card & Clean Desktop Window Screenshot)
-// Other Projects with Screenshot, Description, Tech Stack, GitHub & No fake Live Demo
+// Featured Flagships: AEGIS-AI (Cyber Defense) & NOVA AI (Desktop Assistant)
+// Other Noteworthy Projects with clean screenshots & verified links
 // ═══════════════════════════════════════════════════
 import { useState } from "react";
+
+const AEGIS_FEATURES = [
+  { name: "Threat Detection",       icon: "🛡️" },
+  { name: "Phishing Defense",       icon: "📧" },
+  { name: "Fraud & Anomaly AI",     icon: "🔍" },
+  { name: "Autonomous Bug Fix",     icon: "🩹" },
+  { name: "AI Self-Healing",        icon: "⚡" },
+  { name: "Vulnerability Scan",     icon: "🔬" },
+  { name: "SOC Telemetry",          icon: "📊" },
+  { name: "Incident Response",      icon: "🤖" },
+  { name: "Zero-Day Shield",        icon: "🛑" },
+  { name: "Sandboxed Patches",      icon: "📦" },
+  { name: "Security Audits",        icon: "📋" },
+  { name: "SecOps Multi-Agent",     icon: "🌐" },
+];
 
 const NOVA_FEATURES = [
   { name: "AI Brain",            icon: "🧠" },
@@ -78,17 +93,117 @@ export default function Projects() {
       </div>
 
       <p className="projects-subtitle">
-        Engineering autonomous AI systems, intelligent desktop assistants, and scalable full-stack applications.
+        Engineering autonomous AI systems, enterprise cyber defense platforms, and scalable full-stack software solutions.
       </p>
 
       {/* ══════════════════════════════════════════════════
-          FLAGSHIP FEATURED PROJECT: NOVA AI 🤖
-          Largest Card & Sleek Window Interface Screenshot
+          FLAGSHIP PROJECT 1: AEGIS-AI 🛡️
+          Autonomous Cyber Defense & Self-Healing SOC Platform
+          ══════════════════════════════════════════════════ */}
+      <div className="nova-flagship-card aegis-flagship-card">
+        <div className="nova-card-header">
+          <div className="nova-meta-left">
+            <span className="nova-crown-tag aegis-crown-tag">★ FEATURED FLAGSHIP</span>
+            <span className="nova-status-badge aegis-status-badge">🛡️ Active Defense System</span>
+          </div>
+          <span className="nova-year">2026</span>
+        </div>
+
+        {/* Desktop Window Frame with Real Generated Screenshot */}
+        <div className="nova-screenshot-banner">
+          <div className="nova-window-bar">
+            <div className="nova-window-dots">
+              <span className="w-dot dot-red" />
+              <span className="w-dot dot-yellow" />
+              <span className="w-dot dot-green" />
+            </div>
+            <span className="nova-window-title">AEGIS-AI &bull; Autonomous SOC &amp; Cyber Defense Operations</span>
+            <span className="nova-window-status">● ARMED &amp; SECURED</span>
+          </div>
+          <div className="nova-screenshot-wrap">
+            <img
+              src="/aegis-preview.jpg"
+              alt="AEGIS-AI Autonomous Cyber Defense Platform Interface"
+              className="nova-screenshot-img"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        {/* AEGIS Content Details */}
+        <div className="nova-content-details">
+          <h3 className="nova-title">AEGIS-AI 🛡️</h3>
+          <h4 className="nova-subtitle aegis-subtitle">Autonomous AI Cyber Defense &amp; Self-Healing SOC Platform</h4>
+
+          <p className="nova-description">
+            An enterprise-grade autonomous cyber defense and Security Operations Center (SOC) platform engineered to detect multi-vector cyber attacks, phishing emails, and malicious fraud in real time. Features autonomous vulnerability detection, automated bug fixing, and sandboxed self-healing system remediation.
+          </p>
+
+          {/* 12 Features Badges */}
+          <div className="nova-features-wrap">
+            <span className="nova-features-label">12 CORE DEFENSE CAPABILITIES:</span>
+            <div className="nova-features-grid">
+              {AEGIS_FEATURES.map(f => (
+                <div className="nova-feat-pill" key={f.name}>
+                  <span className="nova-feat-icon">{f.icon}</span>
+                  <span className="nova-feat-text">{f.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Tech Stack Chips */}
+          <div className="nova-tech-row">
+            <span className="tech-chip">Python</span>
+            <span className="tech-chip">FastAPI</span>
+            <span className="tech-chip">LangChain / LangGraph</span>
+            <span className="tech-chip">Claude 3.5 Sonnet</span>
+            <span className="tech-chip">Suricata / Zeek</span>
+            <span className="tech-chip">Docker Sandboxes</span>
+            <span className="tech-chip">ChromaDB</span>
+            <span className="tech-chip">React / Tailwind</span>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="nova-actions-row">
+            <a
+              href="https://github.com/muhammaddanial104"
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-primary"
+            >
+              <span className="btn-glow" />
+              View on GitHub
+            </a>
+            <button
+              className="btn btn-outline"
+              onClick={() =>
+                setSelectedProject({
+                  title: "AEGIS-AI 🛡️",
+                  desc: "An enterprise-grade autonomous cyber defense and Security Operations Center (SOC) platform engineered to detect multi-vector cyber attacks, phishing emails, and fraudulent behaviors in real time.",
+                  tags: ["Python", "FastAPI", "LangChain", "Claude 3.5 Sonnet", "Suricata / Zeek", "Docker Sandboxes", "ChromaDB"],
+                  status: "🛡️ Active Defense System",
+                  image: "/aegis-preview.jpg",
+                  details: "AEGIS-AI connects network packet analyzers (Suricata/Zeek) and system telemetry with a multi-agent AI mesh. When an intrusion, zero-day threat, or malicious payload is spotted, specialized agents isolate the affected node, generate an AST-level source code patch, verify it in an ephemeral Docker sandbox, and deploy fixes automatically.",
+                  githubUrl: "https://github.com/muhammaddanial104",
+                  features: AEGIS_FEATURES,
+                })
+              }
+            >
+              Project Details
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════════════
+          FLAGSHIP PROJECT 2: NOVA AI 🤖
+          Autonomous AI Desktop Assistant & Automation Engine
           ══════════════════════════════════════════════════ */}
       <div className="nova-flagship-card">
         <div className="nova-card-header">
           <div className="nova-meta-left">
-            <span className="nova-crown-tag">★ FEATURED PROJECT</span>
+            <span className="nova-crown-tag">★ FEATURED FLAGSHIP</span>
             <span className="nova-status-badge">🚧 In Development</span>
           </div>
           <span className="nova-year">2026</span>
@@ -121,7 +236,7 @@ export default function Projects() {
           <h4 className="nova-subtitle">Autonomous AI Desktop Assistant &amp; Automation Engine</h4>
 
           <p className="nova-description">
-            An AI-powered desktop assistant designed to control your computer, manage files, interact with browsers, assist with coding, generate content and automate tasks.
+            An AI-powered desktop assistant designed to control your computer, manage files, interact with browsers, assist with coding, generate content and automate complex workflows.
           </p>
 
           {/* 12 Features Badges */}

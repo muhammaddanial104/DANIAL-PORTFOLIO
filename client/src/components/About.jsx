@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════
 // COMPONENT: About.jsx — SHORT & GENUINE (MAX 3-4 LINES)
-// BS Robotics (Coming Soon), AI Agents, Automation, Web Dev, APIs, NOVA AI
+// BS Robotics (Coming Soon), Software Engineering, AI Agents, AEGIS-AI & NOVA AI
 // ═══════════════════════════════════════════════════
 
 export default function About() {
@@ -47,16 +47,20 @@ export default function About() {
               <span className="pillar-title">AI Agents</span>
             </div>
             <div className="about-pillar-tag">
+              <span className="pillar-icon">💻</span>
+              <span className="pillar-title">Software Engineering</span>
+            </div>
+            <div className="about-pillar-tag">
+              <span className="pillar-icon">🛡️</span>
+              <span className="pillar-title">Cyber Defense</span>
+            </div>
+            <div className="about-pillar-tag">
               <span className="pillar-icon">⚙️</span>
               <span className="pillar-title">Automation</span>
             </div>
             <div className="about-pillar-tag">
               <span className="pillar-icon">🌐</span>
-              <span className="pillar-title">Web Development</span>
-            </div>
-            <div className="about-pillar-tag">
-              <span className="pillar-icon">🔌</span>
-              <span className="pillar-title">APIs</span>
+              <span className="pillar-title">Web Dev &amp; APIs</span>
             </div>
           </div>
         </div>
@@ -65,23 +69,23 @@ export default function About() {
         <div className="about-info-col">
           <p className="about-intro">
             Hey, I&apos;m <span className="text-purple">Muhammad Danial</span> —
-            an AI Agent Developer &amp; Automation Engineer based in Gujrat, Pakistan.
+            an AI Agent Developer, Software Engineer &amp; Automation Engineer based in Gujrat, Pakistan.
           </p>
 
           <p className="about-body">
-            I specialize in building autonomous AI agents, intelligent workflow automations, and modern web applications with scalable API integrations.
+            I specialize in building autonomous AI agents, enterprise cyber defense platforms, scalable software systems, and modern web applications with robust API integrations.
             Preparing for <span className="highlight" style={{ color: "#10b981", fontWeight: 600 }}>BS in Robotics (Coming Soon)</span>, combining software intelligence with upcoming hardware engineering.
           </p>
 
-          {/* Current Focus Card: NOVA AI */}
+          {/* Current Focus Card: AEGIS-AI & NOVA AI */}
           <div className="about-focus-box">
             <div className="focus-header">
               <span className="focus-pulse" />
               <span className="focus-label">CURRENT FOCUS</span>
             </div>
-            <h3 className="focus-project-name">NOVA AI 🤖</h3>
+            <h3 className="focus-project-name">AEGIS-AI 🛡️ &bull; NOVA AI 🤖</h3>
             <p className="focus-project-desc">
-              Engineering an autonomous AI desktop assistant designed to control computers, manage files, automate browsers, assist with coding, and orchestrate complex tasks.
+              Architecting AEGIS-AI (Autonomous SOC &amp; Cyber Defense Platform with self-healing security remediation) alongside NOVA AI (Intelligent Autonomous Desktop Assistant &amp; Automation Engine).
             </p>
           </div>
 
@@ -97,7 +101,7 @@ export default function About() {
             </div>
             <div className="fact-card">
               <span className="fact-label">SPECIALTY</span>
-              <span className="fact-val">AI Agents &amp; Automations</span>
+              <span className="fact-val">AI Agents &amp; Software Eng</span>
             </div>
             <div className="fact-card">
               <span className="fact-label">AVAILABILITY</span>
