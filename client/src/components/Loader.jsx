@@ -1,92 +1,115 @@
-// ---------------------------------------------------
-// COMPONENT: Loader.jsx � REDESIGNED v3
-// Clean minimal: pulsing MD + scanning line + counter
-// ---------------------------------------------------
+// ═══════════════════════════════════════════════════
+// COMPONENT: Loader.jsx — LUXURY MINIMALIST COMMAND CENTER LOADER
+// High-fashion typography, swift 1.3s duration, sleek curtain-wipe reveal
+// ═══════════════════════════════════════════════════
 import { useState, useEffect } from "react";
 
-export default function Loader({ onDone }) {
-  const [phase,    setPhase]    = useState("show");
-  const [progress, setProgress] = useState(0);
-  const [lineIdx,  setLineIdx]  = useState(0);
+const STATUS_STAGES = [
+  "INITIALIZING NEURAL RUNTIME...",
+  "CALIBRATING AUTONOMOUS AGENTS...",
+  "SYNCHRONIZING GALAXY VORTEX...",
+  "COMMAND CENTER READY.",
+];
 
-  const LINES = [
-    "BOOTING AI DEV OS...",
-    "LOADING THREE.JS RENDERER...",
-    "CONNECTING NEURAL NETWORK...",
-    "COMPILING MERN MODULES...",
-    "AI SYSTEMS ONLINE...",
-    "READY ?",
-  ];
+export default function Loader({ onDone }) {
+  const [phase, setPhase] = useState("show"); // "show" | "wipe" | "done"
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // progress 0?100 in 2.2s
-    const step = 100 / (2200 / 35);
-    const prog = setInterval(() => setProgress(p => Math.min(p + step, 100)), 35);
+    const startTime = performance.now();
+    const duration = 1200; // Snappy 1.2s load
 
-    // cycle lines
-    const lineTimer = setInterval(() => setLineIdx(i => Math.min(i + 1, LINES.length - 1)), 380);
+    const frame = (now) => {
+      const elapsed = now - startTime;
+      const pct = Math.min((elapsed / duration) * 100, 100);
+      setProgress(pct);
 
-    const t1 = setTimeout(() => setPhase("fade"), 2200);
-    const t2 = setTimeout(() => { setPhase("done"); onDone?.(); }, 2900);
+      if (pct < 100) {
+        requestAnimationFrame(frame);
+      } else {
+        // Trigger smooth upward curtain wipe
+        setTimeout(() => setPhase("wipe"), 80);
+        // Complete loader removal
+        setTimeout(() => {
+          setPhase("done");
+          onDone?.();
+        }, 650);
+      }
+    };
 
-    return () => { clearInterval(prog); clearInterval(lineTimer); clearTimeout(t1); clearTimeout(t2); };
-  }, []);
+    const animId = requestAnimationFrame(frame);
+    return () => cancelAnimationFrame(animId);
+  }, [onDone]);
 
   if (phase === "done") return null;
 
+  // Determine stage label
+  const stageIdx =
+    progress < 30 ? 0 : progress < 65 ? 1 : progress < 92 ? 2 : 3;
+
   return (
-    <div className={`ldr ${phase === "fade" ? "ldr-out" : ""}`}>
+    <div className={`lux-loader ${phase === "wipe" ? "lux-loader-wipe" : ""}`}>
+      {/* Ambient center spotlight */}
+      <div className="lux-ldr-spotlight" />
 
-      {/* -- Background grid -- */}
-      <div className="ldr-grid" />
+      {/* Subtle top HUD header */}
+      <div className="lux-ldr-hud">
+        <div className="lux-hud-left">
+          <span className="lux-hud-dot" />
+          <span className="lux-hud-tag">SYSTEM // ONLINE</span>
+        </div>
+        <div className="lux-hud-right">
+          <span className="lux-hud-sub">AI AGENT ARCHITECTURE &bull; 2026</span>
+        </div>
+      </div>
 
-      {/* -- Corner accents -- */}
-      <div className="ldr-corner ldr-tl" />
-      <div className="ldr-corner ldr-tr" />
-      <div className="ldr-corner ldr-bl" />
-      <div className="ldr-corner ldr-br" />
-
-      {/* -- Scanning line -- */}
-      <div className="ldr-scan" style={{ top: `${progress}%` }} />
-
-      {/* -- Center content -- */}
-      <div className="ldr-center">
-
-        {/* Hex frame with MD */}
-        <div className="ldr-hex-wrap">
-          <div className="ldr-hex-ring lhr-1" />
-          <div className="ldr-hex-ring lhr-2" />
-          <div className="ldr-hex-ring lhr-3" />
-
-          {/* Orbiting dots */}
-          <div className="ldr-orb-dot lod-1" />
-          <div className="ldr-orb-dot lod-2" />
-
-          {/* MD core */}
-          <div className="ldr-md-core">
-            <span className="ldr-md">MD</span>
-          </div>
+      {/* Main Center Stage */}
+      <div className="lux-ldr-center">
+        {/* Monogram Badge */}
+        <div className="lux-ldr-badge">
+          <span className="lux-badge-bracket">[</span>
+          <span className="lux-badge-text">MD</span>
+          <span className="lux-badge-bracket">]</span>
         </div>
 
-        {/* Name below */}
-        <div className="ldr-name">MUHAMMAD DANIAL</div>
-        <div className="ldr-subtitle">FULL STACK &bull; AI AGENT &bull; ROBOTICS</div>
+        {/* Brand Name matching Hero Luxury Outline */}
+        <div className="lux-ldr-name-row">
+          <span className="lux-fname">MUHAMMAD</span>
+          <span className="lux-lname">DANIAL</span>
+        </div>
 
-        {/* Progress bar */}
-        <div className="ldr-bar-track">
-          <div className="ldr-bar-fill" style={{ width: `${progress}%` }} />
+        <p className="lux-ldr-subtitle">
+          AI AGENTS &bull; BUSINESS AUTOMATION &bull; FULL-STACK
+        </p>
+
+        {/* Minimal Progress Track */}
+        <div className="lux-ldr-bar-track">
           <div
-            className="ldr-bar-cursor"
+            className="lux-ldr-bar-fill"
+            style={{ width: `${progress}%` }}
+          />
+          <div
+            className="lux-ldr-bar-glow"
             style={{ left: `${progress}%` }}
           />
         </div>
 
-        {/* Percent + status */}
-        <div className="ldr-bottom">
-          <span className="ldr-pct">{Math.floor(progress)}%</span>
-          <span className="ldr-line">{LINES[lineIdx]}</span>
+        {/* Numeric Counter & Live Status */}
+        <div className="lux-ldr-status-row">
+          <span className="lux-ldr-pct font-mono">
+            {String(Math.floor(progress)).padStart(2, "0")}%
+          </span>
+          <span className="lux-ldr-status font-mono">
+            {STATUS_STAGES[stageIdx]}
+          </span>
         </div>
+      </div>
 
+      {/* Bottom Minimal Meta */}
+      <div className="lux-ldr-footer">
+        <span>GUJRAT, PK</span>
+        <span>&bull;</span>
+        <span>AUTONOMOUS WORKFLOWS</span>
       </div>
     </div>
   );
