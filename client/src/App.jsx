@@ -1,6 +1,6 @@
 // --------------------------------------------------------
 // APP.JSX — Main App with Lenis Smooth Momentum Scroll & 3D Aura
-// Aligned in exact Navbar order: Home -> About -> Skills -> Projects -> Services -> Contact
+// Masterplan Order: Hero -> AI Lab -> Projects -> Services -> Architecture -> ROI Calculator -> About -> Skills -> Contact
 // --------------------------------------------------------
 import { useState, useEffect } from "react";
 import BirthdayOverlay from "./components/BirthdayOverlay";
@@ -9,10 +9,12 @@ import ThreeBackground from "./components/ThreeBackground";
 import Navbar         from "./components/Navbar";
 import Hero           from "./components/Hero";
 import AILab          from "./components/AILab";
-import About          from "./components/About";
-import Skills         from "./components/Skills";
 import Projects       from "./components/Projects";
 import Services       from "./components/Services";
+import SystemArchitecture from "./components/SystemArchitecture";
+import RoiCalculator  from "./components/RoiCalculator";
+import About          from "./components/About";
+import Skills         from "./components/Skills";
 import Contact        from "./components/Contact";
 import Footer         from "./components/Footer";
 import useRipple      from "./hooks/useRipple";
@@ -89,10 +91,12 @@ export default function App() {
         <main>
           <Hero />
           <AILab />
-          <About />
-          <Skills />
           <Projects />
           <Services />
+          <SystemArchitecture />
+          <RoiCalculator />
+          <About />
+          <Skills />
           <Contact />
         </main>
         <Footer />

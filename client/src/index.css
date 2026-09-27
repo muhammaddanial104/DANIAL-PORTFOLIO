@@ -9334,3 +9334,952 @@ html.lenis, html.lenis body {
   }
 }
 
+/* ========================================================
+   SECTION: CASE STUDIES (Projects.jsx Upgrade)
+   ======================================================== */
+.case-study-hero-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+}
+
+.case-study-type-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  background: rgba(34, 211, 238, 0.08);
+  color: #22d3ee;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.case-study-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 1.25rem 0 1.5rem;
+}
+
+.cs-block {
+  padding: 0.9rem 1.15rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(10, 10, 20, 0.65);
+  backdrop-filter: blur(8px);
+}
+
+.cs-problem {
+  border-left: 3px solid #f59e0b;
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.06), rgba(10, 10, 20, 0.6));
+}
+
+.cs-solution {
+  border-left: 3px solid #22d3ee;
+  background: linear-gradient(90deg, rgba(34, 211, 238, 0.06), rgba(10, 10, 20, 0.6));
+}
+
+.cs-workflow {
+  border-left: 3px solid #a855f7;
+  background: linear-gradient(90deg, rgba(168, 85, 247, 0.06), rgba(10, 10, 20, 0.6));
+}
+
+.cs-result {
+  border-left: 3px solid #10b981;
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.06), rgba(10, 10, 20, 0.6));
+}
+
+.cs-block-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.4rem;
+}
+
+.cs-icon {
+  font-size: 0.95rem;
+}
+
+.cs-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #e2e8f0;
+}
+
+.cs-text {
+  font-size: 0.86rem;
+  color: #cbd5e1;
+  line-height: 1.55;
+  margin: 0;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.95);
+}
+
+.cs-flow-steps {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  overflow-x: auto;
+  padding: 0.4rem 0 0.2rem;
+}
+
+.cs-step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 8px;
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  min-width: 140px;
+  flex-shrink: 0;
+}
+
+.cs-step-num {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #a855f7;
+  font-weight: 700;
+}
+
+.cs-step-name {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.cs-step-sub {
+  font-size: 0.68rem;
+  color: #94a3b8;
+  line-height: 1.3;
+}
+
+.cs-step-arrow {
+  color: #a855f7;
+  font-weight: 700;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Mini Case Studies */
+.case-study-mini-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.mini-cs-row {
+  margin: 0.4rem 0;
+}
+
+.mini-cs-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 0.1rem;
+}
+
+.mini-cs-val {
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.text-amber { color: #f59e0b; }
+.text-emerald { color: #10b981; }
+
+/* ========================================================
+   SECTION: WHAT I CAN AUTOMATE (Services.jsx)
+   ======================================================== */
+.services-grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.auto-service-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(13, 11, 24, 0.75);
+  border: 1px solid rgba(168, 85, 247, 0.18);
+  border-radius: 14px;
+  padding: 1.5rem;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.auto-service-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(34, 211, 238, 0.45);
+  box-shadow: 0 18px 40px rgba(34, 211, 238, 0.15), 0 0 25px rgba(168, 85, 247, 0.15);
+}
+
+.service-impact-box {
+  margin: 1.1rem 0;
+  padding: 0.65rem 0.9rem;
+  border-radius: 8px;
+  background: rgba(34, 211, 238, 0.06);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.impact-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #22d3ee;
+  letter-spacing: 0.1em;
+}
+
+.impact-val {
+  font-size: 0.78rem;
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.commercial-guarantee-banner {
+  margin-top: 2.5rem;
+  padding: 1.25rem 1.75rem;
+  border-radius: 12px;
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.guarantee-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.guarantee-body h4 {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.3rem;
+}
+
+.guarantee-body p {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ========================================================
+   SECTION: SYSTEM ARCHITECTURE (SystemArchitecture.jsx)
+   ======================================================== */
+.architecture-section {
+  padding: 5rem 0 3rem;
+}
+
+.architecture-subtitle, .roi-subtitle {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  max-width: 650px;
+  margin: -1rem 0 2.2rem;
+  line-height: 1.6;
+}
+
+.arch-pipeline-container {
+  overflow-x: auto;
+  padding: 0.5rem 0 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.arch-pipeline-track {
+  display: flex;
+  align-items: center;
+  min-width: 950px;
+  gap: 0.4rem;
+}
+
+.arch-node-wrapper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.arch-node-btn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  background: rgba(15, 14, 28, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: left;
+}
+
+.arch-node-btn:hover {
+  background: rgba(168, 85, 247, 0.12);
+  border-color: rgba(168, 85, 247, 0.4);
+  transform: translateY(-2px);
+}
+
+.arch-node-active {
+  background: linear-gradient(145deg, rgba(34, 211, 238, 0.18), rgba(168, 85, 247, 0.18)) !important;
+  border-color: #22d3ee !important;
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.25);
+}
+
+.arch-node-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0.35rem;
+}
+
+.arch-node-num {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.arch-node-active .arch-node-num {
+  color: #22d3ee;
+}
+
+.arch-node-icon {
+  font-size: 1.15rem;
+}
+
+.arch-node-label {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.15rem;
+}
+
+.arch-node-role {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #a855f7;
+  letter-spacing: 0.08em;
+}
+
+.arch-node-active .arch-node-role {
+  color: #22d3ee;
+}
+
+.arch-connector {
+  display: flex;
+  align-items: center;
+  padding: 0 0.35rem;
+  color: rgba(168, 85, 247, 0.45);
+}
+
+.arch-connector-line {
+  width: 14px;
+  height: 2px;
+  background: rgba(168, 85, 247, 0.3);
+}
+
+.arch-connector-arrow {
+  font-size: 0.55rem;
+  margin-left: -2px;
+}
+
+/* Inspector Card */
+.arch-inspector-card {
+  border-radius: 14px;
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  background: rgba(11, 10, 22, 0.85);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(34, 211, 238, 0.08);
+  padding: 1.75rem 2rem;
+  backdrop-filter: blur(14px);
+}
+
+.arch-inspector-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.inspector-title-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.inspector-icon {
+  font-size: 2.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.6rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.inspector-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.inspector-step {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.inspector-role-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #22d3ee;
+  background: rgba(34, 211, 238, 0.12);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.inspector-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.inspector-summary-chip {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #cbd5e1;
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.arch-inspector-body {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.inspector-h4 {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.6rem;
+}
+
+.inspector-desc {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.inspector-tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-chip-cyan {
+  border-color: rgba(34, 211, 238, 0.35) !important;
+  color: #22d3ee !important;
+  background: rgba(34, 211, 238, 0.08) !important;
+}
+
+.inspector-safeguard-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.75rem 0.95rem;
+  border-radius: 8px;
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.safeguard-icon {
+  font-size: 1rem;
+}
+
+.safeguard-text {
+  font-size: 0.78rem;
+  color: #a7f3d0;
+  line-height: 1.45;
+}
+
+/* ========================================================
+   SECTION: AI ROI CALCULATOR (RoiCalculator.jsx)
+   ======================================================== */
+.roi-section {
+  padding: 4rem 0 3rem;
+}
+
+.roi-calculator-container {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.roi-controls-card, .roi-results-card {
+  border-radius: 14px;
+  padding: 1.75rem;
+  background: rgba(13, 11, 24, 0.8);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+}
+
+.roi-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.roi-card-icon {
+  font-size: 1.6rem;
+}
+
+.roi-card-title {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.roi-card-sub {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.roi-input-group {
+  margin-bottom: 1.4rem;
+}
+
+.roi-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.roi-label-row label {
+  font-size: 0.84rem;
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+.roi-val-badge {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #22d3ee;
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  padding: 0.15rem 0.55rem;
+  border-radius: 6px;
+}
+
+.roi-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.12);
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.roi-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #22d3ee;
+  box-shadow: 0 0 10px #22d3ee;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.roi-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.roi-slider-range {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #64748b;
+  margin-top: 0.35rem;
+}
+
+.roi-assumptions-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 1.5rem;
+}
+
+.notice-icon {
+  font-size: 1rem;
+}
+
+.notice-body {
+  font-size: 0.74rem;
+  color: #94a3b8;
+  line-height: 1.45;
+}
+
+.roi-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.roi-stat-box {
+  padding: 1.1rem;
+  border-radius: 10px;
+  background: rgba(10, 10, 20, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.roi-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.roi-stat-number {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.roi-stat-unit {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+.roi-stat-sub {
+  font-size: 0.7rem;
+  color: #64748b;
+}
+
+.roi-annual-highlight {
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(16, 185, 129, 0.12), rgba(168, 85, 247, 0.12));
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  margin-bottom: 1.5rem;
+}
+
+.annual-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #10b981;
+  letter-spacing: 0.12em;
+}
+
+.annual-val-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin: 0.35rem 0;
+}
+
+.annual-amount {
+  font-family: var(--font-mono);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+.annual-term {
+  font-size: 0.85rem;
+  color: #a7f3d0;
+}
+
+.annual-note {
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.roi-action-btn {
+  width: 100%;
+  text-align: center;
+}
+
+/* ========================================================
+   SECTION: ABOUT UPGRADES (Why Work With Me & Availability)
+   ======================================================== */
+.why-work-card {
+  margin-top: 1.5rem;
+  padding: 1.4rem;
+  border-radius: 12px;
+  background: rgba(14, 12, 26, 0.8);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+.why-work-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.3rem;
+}
+
+.why-work-icon {
+  font-size: 1.25rem;
+}
+
+.why-work-title {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+.why-work-sub {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin: 0 0 1.1rem;
+}
+
+.why-work-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.why-pillar-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.65rem 0.8rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.why-pillar-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #22d3ee;
+  background: rgba(34, 211, 238, 0.12);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.why-pillar-head {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.15rem;
+}
+
+.why-pillar-desc {
+  font-size: 0.76rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Availability Card */
+.availability-card {
+  padding: 1.25rem 1.4rem;
+  border-radius: 12px;
+  background: rgba(10, 10, 22, 0.8);
+  border: 1px solid rgba(34, 211, 238, 0.25);
+}
+
+.avail-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.85rem;
+}
+
+.avail-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 12px #10b981;
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+.avail-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+.avail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.avail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.avail-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-green {
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.dot-cyan {
+  background: #22d3ee;
+  box-shadow: 0 0 8px #22d3ee;
+}
+
+.avail-type {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: block;
+}
+
+.avail-note {
+  font-size: 0.68rem;
+  color: #94a3b8;
+  display: block;
+}
+
+/* ========================================================
+   SECTION: FINAL CTA & CONTACT UPGRADE
+   ======================================================== */
+.final-cta-banner {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 2.5rem;
+}
+
+.cta-highlight-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #22d3ee;
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.form-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #a855f7;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.25rem;
+}
+
+.badge-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a855f7;
+  box-shadow: 0 0 8px #a855f7;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .arch-inspector-body {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .roi-calculator-container {
+    grid-template-columns: 1fr;
+  }
+  .cs-flow-steps {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .cs-step-arrow {
+    display: none;
+  }
+}
+
+
