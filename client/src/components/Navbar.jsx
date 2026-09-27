@@ -5,8 +5,7 @@ import { useState, useEffect } from "react";
 
 const LINKS = [
   { id: "home",     label: "Home"     },
-  { id: "about",    label: "About"    },
-  { id: "skills",   label: "Skills"   },
+  { id: "ai-lab",   label: "AI Lab"   },
   { id: "projects", label: "Projects" },
   { id: "services", label: "Services" },
   { id: "contact",  label: "Contact"  },
@@ -79,7 +78,7 @@ export default function Navbar() {
         {/* Right Section */}
         <div className="nav-right">
           <button className="nav-hire-btn" onClick={() => scrollTo("contact")}>
-            Let&apos;s Talk
+            Start a Project
           </button>
 
           {/* Mobile Hamburger Toggle */}
@@ -125,7 +124,7 @@ export default function Navbar() {
               onClick={() => scrollTo("contact")}
             >
               <span className="btn-glow" />
-              Let&apos;s Talk
+              Start a Project
             </button>
           </div>
         </div>

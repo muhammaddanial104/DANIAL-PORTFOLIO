@@ -8,6 +8,7 @@ import Loader         from "./components/Loader";
 import ThreeBackground from "./components/ThreeBackground";
 import Navbar         from "./components/Navbar";
 import Hero           from "./components/Hero";
+import AILab          from "./components/AILab";
 import About          from "./components/About";
 import Skills         from "./components/Skills";
 import Projects       from "./components/Projects";
@@ -87,6 +88,7 @@ export default function App() {
         <Navbar />
         <main>
           <Hero />
+          <AILab />
           <About />
           <Skills />
           <Projects />

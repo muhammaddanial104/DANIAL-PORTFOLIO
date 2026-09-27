@@ -67,7 +67,7 @@ export default function Hero() {
       <div className="hero-content">
         <div className="hero-tag">
           <span className="hero-tag-dot" />
-          SYSTEM ONLINE &bull; ALL MODULES ACTIVE
+          INTERACTIVE AI COMMAND CENTER &bull; ALL SYSTEMS ACTIVE
         </div>
 
         {/* 1. Name */}
@@ -76,10 +76,15 @@ export default function Hero() {
           <AnimatedWord text="DANIAL" className="hero-lname" delay={850} />
         </h1>
 
-        {/* 2. Position / Title */}
-        <h2 className="hero-position-title">
-          AI Agent Developer &bull; Software Engineer &bull; Automation Engineer
+        {/* 2. New Outcome-Driven Headline */}
+        <h2 className="hero-outcome-headline">
+          &ldquo;I Build AI Agents That Do The Work.&rdquo;
         </h2>
+
+        {/* 3. Supporting Core Specializations */}
+        <p className="hero-supporting-line">
+          AI Agents &bull; Business Automation &bull; Full-Stack Systems &bull; Intelligent Workflows
+        </p>
 
         {/* Robotics Coming Soon Badge in Emerald Green */}
         <div className="hero-edu-badge">
@@ -89,19 +94,14 @@ export default function Hero() {
           <span className="edu-soon-tag">COMING SOON</span>
         </div>
 
-        {/* 3. Short Line */}
-        <p className="hero-desc">
-          I build autonomous AI systems, cyber defense platforms, and scalable software solutions.
-        </p>
-
-        {/* 4. Action Buttons */}
+        {/* 4. Action Buttons (Upgrade Plan Primary CTAs) */}
         <div className="hero-buttons">
-          <button className="btn btn-primary" onClick={() => scrollTo("projects")}>
+          <button className="btn btn-primary" onClick={() => scrollTo("ai-lab")}>
             <span className="btn-glow" />
-            View Projects
+            <span style={{ marginRight: "0.4rem" }}>⚡</span> Try My AI
           </button>
-          <button className="btn btn-outline" onClick={() => scrollTo("contact")}>
-            Let&apos;s Work Together
+          <button className="btn btn-outline" onClick={() => scrollTo("projects")}>
+            View Real Projects
           </button>
         </div>
       </div>
