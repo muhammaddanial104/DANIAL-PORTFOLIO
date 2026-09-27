@@ -200,17 +200,17 @@ export default function useGSAPAnimations(loaded) {
         // ═══════════════════════════════════════════════════
         const aboutSection = document.querySelector("#about");
         if (aboutSection) {
-          // Photo frame — 3D flip in
+          // Photo frame — clean cinematic entrance
           gsap.to(".photo-frame", {
             scrollTrigger: {
               trigger: aboutSection,
-              start: "top 78%",
+              start: "top 80%",
               toggleActions: "play none none reverse",
             },
             opacity: 1,
-            rotateY: 0,
+            y: 0,
             scale: 1,
-            duration: 1.2,
+            duration: 1,
             ease: ease3D,
           });
 

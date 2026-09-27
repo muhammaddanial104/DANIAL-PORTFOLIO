@@ -26,7 +26,8 @@ export default function ThreeBackground() {
       alpha: true,
       powerPreference: "high-performance",
     });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    const isMobileDevice = window.innerWidth < 768;
+    renderer.setPixelRatio(isMobileDevice ? 1.0 : Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     // -- 2. STARFIELD DEEP SPACE (1,800 Stars) --
@@ -162,7 +163,7 @@ export default function ThreeBackground() {
     const baseRotZ = -0.42; // 25-deg upward aerodynamic tilt matching reference photo
     rocketGroup.rotation.set(baseRotX, baseRotY, baseRotZ);
 
-    const ROCKET_PARTICLE_COUNT = 12500;
+    const ROCKET_PARTICLE_COUNT = isMobile ? 3800 : 12500;
     const rGeo = new THREE.BufferGeometry();
     const rPos = new Float32Array(ROCKET_PARTICLE_COUNT * 3);
     const rBasePos = new Float32Array(ROCKET_PARTICLE_COUNT * 3);
@@ -394,17 +395,19 @@ export default function ThreeBackground() {
       // 0.05 -> 0.22: Rocket blasts apart into floating constellation!
       // 0.22 -> 0.78: Particles drift, swirl, and illuminate space
       // 0.78 -> 1.00: Particles magnetically recombine back into the rocket!
+      // Target dispersion curve based on scroll:
+      // Hero (p < 0.06): 0 (Fully assembled, thick 3D rocket)
+      // 0.06 -> 0.24: Rocket blasts apart into floating stardust
+      // 0.24 -> 1.00: Particles remain gently dispersed in the distant background
+      // (Recombines automatically when user scrolls back UP to Hero!)
       let targetDisperse = 0;
-      if (scrollProgress < 0.05) {
+      if (scrollProgress < 0.06) {
         targetDisperse = 0;
-      } else if (scrollProgress < 0.22) {
-        const u = (scrollProgress - 0.05) / 0.17;
+      } else if (scrollProgress < 0.24) {
+        const u = (scrollProgress - 0.06) / 0.18;
         targetDisperse = u * u * (3 - 2 * u); // Smoothstep 0 -> 1 (Blast!)
-      } else if (scrollProgress < 0.78) {
-        targetDisperse = 1.0; // Fully dispersed floating nebula
       } else {
-        const u = (scrollProgress - 0.78) / 0.22;
-        targetDisperse = 1.0 - u * u * (3 - 2 * u); // Smoothstep 1 -> 0 (Recombine!)
+        targetDisperse = 1.0; // Stays dispersed in background
       }
 
       // Smooth lerp for buttery organic blast & reassembly
@@ -420,9 +423,21 @@ export default function ThreeBackground() {
       rocketGroup.rotation.y = baseRotY + mouseX * 0.45;
       rocketGroup.rotation.z = baseRotZ + mouseX * -0.15;
 
-      // Smooth opacity & particle size attenuation: softens to gentle ambient star dust when blasted
-      rocketPoints.material.opacity = 0.95 - currentDisperse * 0.58;
-      rocketPoints.material.size = 0.72 - currentDisperse * 0.30;
+      // Glare & Eye-Strain Protection:
+      // - Hero (p < 0.06): 0.95 (Solid bright rocket)
+      // - Middle sections: 0.28 (Soft gentle cosmic dust)
+      // - Contact & Footer (p > 0.68): Fades away to 0.03 so Contact & Footer are calm, dark, and zero glare!
+      let targetOpacity = 0.95;
+      if (scrollProgress < 0.06) {
+        targetOpacity = 0.95;
+      } else if (scrollProgress < 0.68) {
+        targetOpacity = 0.28;
+      } else {
+        const fadeU = Math.min((scrollProgress - 0.68) / 0.20, 1);
+        targetOpacity = THREE.MathUtils.lerp(0.28, 0.03, fadeU);
+      }
+      rocketPoints.material.opacity = targetOpacity;
+      rocketPoints.material.size = 0.72 - currentDisperse * 0.32;
 
       // Update every single particle for blast / dispersion & reassembly
       // Particles are pushed DEEPLY backward into space (-Z) and to the periphery,
