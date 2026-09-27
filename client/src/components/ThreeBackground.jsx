@@ -144,17 +144,17 @@ export default function ThreeBackground() {
 
     // ═══════════════════════════════════════════════════
     // 4B. 3D GLOWING PARTICLE ROCKET (PINTEREST INSPIRATION)
-    // Hyper-detailed Point Cloud Spacecraft:
-    // - Cockpit Dome: Glowing Electric Cyan / Blue Sphere
-    // - Fuselage & Nose: Golden Amber, Warm Orange & Diamond White
-    // - Swept Delta Wings: Aerodynamic stabilizers with white & cyan borders
-    // - Thruster Exhaust: Dynamic flickering particle plume
+    // Thicker, bulkier volumetric particle cloud with:
+    // - Dense Cyan Cockpit Sphere
+    // - Volumetric Amber/Gold Fuselage
+    // - Wide Swept Delta Wings
+    // - Scroll-Driven Blast / Dispersion & Reassembly
     // ═══════════════════════════════════════════════════
     const rocketGroup = new THREE.Group();
     const isMobile = window.innerWidth < 768;
     const baseRocketX = isMobile ? 0 : 25;
-    const baseRocketY = isMobile ? -12 : 2;
-    const baseRocketZ = isMobile ? -10 : 12;
+    const baseRocketY = isMobile ? -10 : 2;
+    const baseRocketZ = isMobile ? -8 : 12;
     rocketGroup.position.set(baseRocketX, baseRocketY, baseRocketZ);
 
     const baseRotX = 0.22;
@@ -162,9 +162,13 @@ export default function ThreeBackground() {
     const baseRotZ = -0.42; // 25-deg upward aerodynamic tilt matching reference photo
     rocketGroup.rotation.set(baseRotX, baseRotY, baseRotZ);
 
-    const ROCKET_PARTICLE_COUNT = 7500;
+    const ROCKET_PARTICLE_COUNT = 12500;
     const rGeo = new THREE.BufferGeometry();
     const rPos = new Float32Array(ROCKET_PARTICLE_COUNT * 3);
+    const rBasePos = new Float32Array(ROCKET_PARTICLE_COUNT * 3);
+    const rExplodeDirs = new Float32Array(ROCKET_PARTICLE_COUNT * 3);
+    const rExplodeDist = new Float32Array(ROCKET_PARTICLE_COUNT);
+    const rPhase = new Float32Array(ROCKET_PARTICLE_COUNT);
     const rCol = new Float32Array(ROCKET_PARTICLE_COUNT * 3);
     const rSpeeds = new Float32Array(ROCKET_PARTICLE_COUNT);
 
@@ -175,78 +179,103 @@ export default function ThreeBackground() {
     const C_ORANGE = [0.95, 0.44, 0.08]; // Warm Orange
     const C_WHITE  = [1.0, 1.0, 1.0];    // Diamond White Sparkles
 
+    const thrusterStartIdx = Math.floor(ROCKET_PARTICLE_COUNT * 0.88);
+
     for (let i = 0; i < ROCKET_PARTICLE_COUNT; i++) {
       const part = Math.random();
       let x = 0, y = 0, z = 0;
       let col = C_WHITE;
 
-      if (part < 0.25) {
-        // 1. COCKPIT DOME: Dense Glowing Cyan/Blue Sphere atop fuselage
+      if (part < 0.26) {
+        // 1. COCKPIT DOME: Thicker, bold glowing Cyan/Blue sphere dome
         const theta = Math.random() * Math.PI * 2;
         const phi = Math.acos(Math.random() * 2 - 1);
-        const r = 4.2 * Math.cbrt(Math.random());
+        const r = 6.4 * Math.cbrt(Math.random());
         x = r * Math.sin(phi) * Math.cos(theta);
-        y = 3.4 + r * Math.sin(phi) * Math.sin(theta) * 0.85;
-        z = 2.8 + r * Math.cos(phi);
-        col = Math.random() < 0.22 ? C_WHITE : Math.random() < 0.6 ? C_CYAN : C_BLUE;
-      } else if (part < 0.68) {
-        // 2. MAIN FUSELAGE & NOSE CONE (Golden Amber & Diamond White)
+        y = 5.2 + r * Math.sin(phi) * Math.sin(theta) * 0.85;
+        z = 3.6 + r * Math.cos(phi);
+        col = Math.random() < 0.22 ? C_WHITE : Math.random() < 0.62 ? C_CYAN : C_BLUE;
+      } else if (part < 0.70) {
+        // 2. MAIN FUSELAGE & NOSE CONE (Thick, robust volumetric body)
         const tZ = Math.random();
-        z = -13 + tZ * 29; // z from -13 to 16
+        z = -15 + tZ * 33; // z from -15 to 18
         let radius;
         if (z > 4) {
           // Streamlined parabolic nose cone
-          const f = (16 - z) / 12;
-          radius = 7.2 * Math.pow(Math.max(0, f), 0.75);
+          const f = (18 - z) / 14;
+          radius = 11.2 * Math.pow(Math.max(0, f), 0.72);
         } else if (z < -8) {
           // Tapered aft fuselage
-          const f = (z + 13) / 5;
-          radius = 5.8 + f * 1.4;
+          const f = (z + 15) / 7;
+          radius = 8.8 + f * 2.4;
         } else {
-          radius = 7.2;
+          radius = 11.2;
         }
         const theta = Math.random() * Math.PI * 2;
-        const r = radius * (0.84 + 0.16 * Math.random());
-        x = r * Math.cos(theta) * 1.08;
-        y = r * Math.sin(theta) * 0.92;
+        // Volumetric filling: shell + interior volume
+        const r = radius * (0.65 + 0.35 * Math.random());
+        x = r * Math.cos(theta) * 1.1;
+        y = r * Math.sin(theta) * 0.94;
 
-        if (z > 11) {
+        if (z > 12) {
           col = Math.random() < 0.45 ? C_WHITE : C_GOLD;
-        } else if (y > 1.2 && z > -2 && z < 7) {
-          col = Math.random() < 0.35 ? C_CYAN : C_GOLD;
+        } else if (y > 2.0 && z > -2 && z < 9) {
+          col = Math.random() < 0.38 ? C_CYAN : C_GOLD;
         } else {
-          col = Math.random() < 0.28 ? C_WHITE : Math.random() < 0.65 ? C_GOLD : C_ORANGE;
+          col = Math.random() < 0.26 ? C_WHITE : Math.random() < 0.65 ? C_GOLD : C_ORANGE;
         }
-      } else if (part < 0.86) {
-        // 3. SWEPT DELTA FINS / WINGS
+      } else if (part < 0.88) {
+        // 3. SWEPT DELTA FINS / WINGS (Substantially wider, thicker wings)
         const side = Math.random() < 0.5 ? 1 : -1;
         const wingT = Math.random();
-        const span = 6.2 + wingT * 11.5;
-        const chordZ = -11 + (1 - wingT) * 11 - Math.random() * 3.0;
+        const span = 9.5 + wingT * 18.0;
+        const chordZ = -13 + (1 - wingT) * 15 - Math.random() * 4.5;
         x = side * span;
-        y = (Math.random() - 0.5) * 1.0;
+        y = (Math.random() - 0.5) * 2.4;
         z = chordZ;
         col = wingT > 0.55 ? (Math.random() < 0.5 ? C_CYAN : C_WHITE) : (Math.random() < 0.5 ? C_GOLD : C_WHITE);
       } else {
         // 4. THRUSTER EXHAUST PLUME
         const plumeT = Math.random();
-        z = -13 - plumeT * 18;
-        const plumeR = (0.8 + plumeT * 3.8) * Math.random();
+        z = -15 - plumeT * 24;
+        const plumeR = (1.5 + plumeT * 5.5) * Math.random();
         const pAngle = Math.random() * Math.PI * 2;
         x = plumeR * Math.cos(pAngle);
         y = plumeR * Math.sin(pAngle);
-        col = plumeT < 0.3 ? (Math.random() < 0.5 ? C_CYAN : C_WHITE) : (Math.random() < 0.65 ? C_ORANGE : C_GOLD);
+        col = plumeT < 0.35 ? (Math.random() < 0.5 ? C_CYAN : C_WHITE) : (Math.random() < 0.65 ? C_ORANGE : C_GOLD);
       }
 
       rPos[i * 3]     = x;
       rPos[i * 3 + 1] = y;
       rPos[i * 3 + 2] = z;
 
+      rBasePos[i * 3]     = x;
+      rBasePos[i * 3 + 1] = y;
+      rBasePos[i * 3 + 2] = z;
+
+      // Compute outward explosion vector from rocket central axis + spherical chaos
+      const rDistFromAxis = Math.hypot(x, y) + 0.1;
+      const nx = x / rDistFromAxis;
+      const ny = y / rDistFromAxis;
+      const nz = (Math.random() - 0.5) * 0.8;
+
+      const randAngle = Math.random() * Math.PI * 2;
+      const randZ = Math.random() * 2 - 1;
+      const randR = Math.sqrt(1 - randZ * randZ);
+      const rx = randR * Math.cos(randAngle);
+      const ry = randR * Math.sin(randAngle);
+
+      rExplodeDirs[i * 3]     = nx * 0.65 + rx * 0.35;
+      rExplodeDirs[i * 3 + 1] = ny * 0.65 + ry * 0.35;
+      rExplodeDirs[i * 3 + 2] = nz * 0.5 + randZ * 0.5;
+
+      rExplodeDist[i] = 35 + Math.random() * 55;
+      rPhase[i]       = Math.random() * Math.PI * 2;
+      rSpeeds[i]      = Math.random() * 0.8 + 0.4;
+
       rCol[i * 3]     = col[0];
       rCol[i * 3 + 1] = col[1];
       rCol[i * 3 + 2] = col[2];
-
-      rSpeeds[i] = Math.random() * 0.8 + 0.4;
     }
 
     rGeo.setAttribute("position", new THREE.BufferAttribute(rPos, 3));
@@ -255,7 +284,7 @@ export default function ThreeBackground() {
     const rocketPoints = new THREE.Points(
       rGeo,
       new THREE.PointsMaterial({
-        size: 0.58,
+        size: 0.72,
         vertexColors: true,
         transparent: true,
         opacity: 0.95,
@@ -297,6 +326,7 @@ export default function ThreeBackground() {
     // We map scroll percentage [0, 1] to cinematic camera waypoints
     let scrollProgress = 0;
     let targetScroll = 0;
+    let currentDisperse = 0;
 
     const onScroll = () => {
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -353,29 +383,71 @@ export default function ThreeBackground() {
       });
 
       // ═══════════════════════════════════════════════════
-      // 3D PARTICLE ROCKET PHYSICS (PINTEREST INTERACTIVE MESH)
-      // Zero-gravity float + Real-time mouse flight banking + Streaming thruster
+      // 3D PARTICLE ROCKET: BLAST / DISPERSE & REASSEMBLE
+      // Scroll-driven: blasts apart on scroll, particles swirl & float,
+      // then recombine back into the thick rocket at the end of scroll or top!
       // ═══════════════════════════════════════════════════
       const pPositions = rGeo.attributes.position.array;
-      const boostFactor = Math.min(scrollProgress / 0.18, 1);
 
-      // Floating wave in zero gravity + scroll boost
-      rocketGroup.position.x = baseRocketX + Math.cos(t * 1.4) * 0.9 + boostFactor * 28;
-      rocketGroup.position.y = baseRocketY + Math.sin(t * 1.8) * 1.5 + boostFactor * 38;
-      rocketGroup.position.z = baseRocketZ + boostFactor * 55;
+      // Target dispersion curve based on scroll:
+      // Hero (p < 0.05): 0 (Fully assembled, thick 3D rocket)
+      // 0.05 -> 0.22: Rocket blasts apart into floating constellation!
+      // 0.22 -> 0.78: Particles drift, swirl, and illuminate space
+      // 0.78 -> 1.00: Particles magnetically recombine back into the rocket!
+      let targetDisperse = 0;
+      if (scrollProgress < 0.05) {
+        targetDisperse = 0;
+      } else if (scrollProgress < 0.22) {
+        const u = (scrollProgress - 0.05) / 0.17;
+        targetDisperse = u * u * (3 - 2 * u); // Smoothstep 0 -> 1 (Blast!)
+      } else if (scrollProgress < 0.78) {
+        targetDisperse = 1.0; // Fully dispersed floating nebula
+      } else {
+        const u = (scrollProgress - 0.78) / 0.22;
+        targetDisperse = 1.0 - u * u * (3 - 2 * u); // Smoothstep 1 -> 0 (Recombine!)
+      }
 
-      // Mouse tracking 3D tilt (spacecraft banking towards cursor)
+      // Smooth lerp for buttery organic blast & reassembly
+      currentDisperse += (targetDisperse - currentDisperse) * 0.08;
+
+      // Floating wave in zero gravity
+      rocketGroup.position.x = baseRocketX + Math.cos(t * 1.4) * 0.9;
+      rocketGroup.position.y = baseRocketY + Math.sin(t * 1.8) * 1.5;
+      rocketGroup.position.z = baseRocketZ;
+
+      // Mouse tracking 3D tilt
       rocketGroup.rotation.x = baseRotX - mouseY * 0.35;
       rocketGroup.rotation.y = baseRotY + mouseX * 0.45;
       rocketGroup.rotation.z = baseRotZ + mouseX * -0.15;
 
-      // Thruster exhaust particles flicker and stream backwards
-      const thrusterStartIdx = Math.floor(ROCKET_PARTICLE_COUNT * 0.86);
-      for (let i = thrusterStartIdx; i < ROCKET_PARTICLE_COUNT; i++) {
+      // Update every single particle for blast / dispersion & reassembly
+      for (let i = 0; i < ROCKET_PARTICLE_COUNT; i++) {
         const i3 = i * 3;
-        pPositions[i3 + 2] -= rSpeeds[i] * (0.9 + boostFactor * 2.2);
-        if (pPositions[i3 + 2] < -34) {
-          pPositions[i3 + 2] = -13 - Math.random() * 2.5;
+        const bx = rBasePos[i3];
+        const by = rBasePos[i3 + 1];
+        const bz = rBasePos[i3 + 2];
+
+        // Explosion outward offset along direction
+        const dist = rExplodeDist[i] * currentDisperse;
+        const ex = rExplodeDirs[i3] * dist;
+        const ey = rExplodeDirs[i3 + 1] * dist;
+        const ez = rExplodeDirs[i3 + 2] * dist;
+
+        // Floating swirl turbulence while particles are blasted
+        const swirlX = currentDisperse * Math.sin(t * 1.6 + rPhase[i]) * 4.5;
+        const swirlY = currentDisperse * Math.cos(t * 1.4 + rPhase[i]) * 4.5;
+        const swirlZ = currentDisperse * Math.sin(t * 1.2 + rPhase[i]) * 3.5;
+
+        pPositions[i3]     = bx + ex + swirlX;
+        pPositions[i3 + 1] = by + ey + swirlY;
+        pPositions[i3 + 2] = bz + ez + swirlZ;
+
+        // Streaming thruster sparks when rocket is assembled
+        if (currentDisperse < 0.25 && i >= thrusterStartIdx) {
+          pPositions[i3 + 2] -= rSpeeds[i] * 1.2;
+          if (pPositions[i3 + 2] < -38) {
+            pPositions[i3 + 2] = -15 - Math.random() * 3;
+          }
         }
       }
       rGeo.attributes.position.needsUpdate = true;
