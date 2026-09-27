@@ -589,19 +589,24 @@ nav#navbar.scrolled {
 
 .hero-fname {
   display: block;
-  color: var(--text-0);
-  text-shadow: 0 0 80px rgba(168, 85, 247, 0.3);
+  color: transparent !important;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 25px rgba(34, 211, 238, 0.4), 0 0 50px rgba(168, 85, 247, 0.3);
+  letter-spacing: 0.08em;
+  filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.3));
 }
 
 .hero-lname {
   display: block;
-  background: linear-gradient(135deg, #a855f7 0%, #22d3ee 50%, #ec4899 100%);
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 35%, #a855f7 75%, #22d3ee 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   background-size: 200% auto;
   animation: gradientShift 5s ease infinite;
-  filter: drop-shadow(0 0 30px rgba(168, 85, 247, 0.4));
+  filter: drop-shadow(0 0 35px rgba(168, 85, 247, 0.55)) drop-shadow(0 0 70px rgba(34, 211, 238, 0.35));
+  letter-spacing: 0.04em;
 }
 
 .hero-role {
@@ -739,19 +744,22 @@ nav#navbar.scrolled {
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #c026d3, #7c3aed, #4c1d95, transparent);
-  box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.4), 0 0 40px rgba(168, 85, 247, 0.8), 0 0 80px rgba(168, 85, 247, 0.4), 0 0 120px rgba(168, 85, 247, 0.2);
+  background: radial-gradient(circle at 35% 35%, rgba(192, 38, 211, 0.15), rgba(124, 58, 237, 0.1), transparent);
+  border: 1px dashed rgba(34, 211, 238, 0.45);
+  box-shadow: 0 0 25px rgba(34, 211, 238, 0.25) inset, 0 0 35px rgba(168, 85, 247, 0.3);
   animation: orbPulse 3s ease-in-out infinite;
   position: relative;
   z-index: 2;
+  backdrop-filter: blur(4px);
 }
 
 .orb-core::after {
   content: '';
   position: absolute;
-  inset: 8px;
+  inset: 6px;
   border-radius: 50%;
-  background: radial-gradient(circle at 40% 30%, rgba(255, 255, 255, 0.3), transparent 60%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  pointer-events: none;
 }
 
 .orb-label {

@@ -142,6 +142,131 @@ export default function ThreeBackground() {
 
     scene.add(coreGroup);
 
+    // ═══════════════════════════════════════════════════
+    // 4B. 3D GLOWING PARTICLE ROCKET (PINTEREST INSPIRATION)
+    // Hyper-detailed Point Cloud Spacecraft:
+    // - Cockpit Dome: Glowing Electric Cyan / Blue Sphere
+    // - Fuselage & Nose: Golden Amber, Warm Orange & Diamond White
+    // - Swept Delta Wings: Aerodynamic stabilizers with white & cyan borders
+    // - Thruster Exhaust: Dynamic flickering particle plume
+    // ═══════════════════════════════════════════════════
+    const rocketGroup = new THREE.Group();
+    const isMobile = window.innerWidth < 768;
+    const baseRocketX = isMobile ? 0 : 25;
+    const baseRocketY = isMobile ? -12 : 2;
+    const baseRocketZ = isMobile ? -10 : 12;
+    rocketGroup.position.set(baseRocketX, baseRocketY, baseRocketZ);
+
+    const baseRotX = 0.22;
+    const baseRotY = 0.38;
+    const baseRotZ = -0.42; // 25-deg upward aerodynamic tilt matching reference photo
+    rocketGroup.rotation.set(baseRotX, baseRotY, baseRotZ);
+
+    const ROCKET_PARTICLE_COUNT = 7500;
+    const rGeo = new THREE.BufferGeometry();
+    const rPos = new Float32Array(ROCKET_PARTICLE_COUNT * 3);
+    const rCol = new Float32Array(ROCKET_PARTICLE_COUNT * 3);
+    const rSpeeds = new Float32Array(ROCKET_PARTICLE_COUNT);
+
+    // Exact color palette matching reference photo:
+    const C_CYAN   = [0.0, 0.94, 1.0];   // Electric Cyan Cockpit
+    const C_BLUE   = [0.12, 0.65, 1.0];  // Deep Sky Blue
+    const C_GOLD   = [0.98, 0.72, 0.14]; // Golden Amber Fuselage
+    const C_ORANGE = [0.95, 0.44, 0.08]; // Warm Orange
+    const C_WHITE  = [1.0, 1.0, 1.0];    // Diamond White Sparkles
+
+    for (let i = 0; i < ROCKET_PARTICLE_COUNT; i++) {
+      const part = Math.random();
+      let x = 0, y = 0, z = 0;
+      let col = C_WHITE;
+
+      if (part < 0.25) {
+        // 1. COCKPIT DOME: Dense Glowing Cyan/Blue Sphere atop fuselage
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(Math.random() * 2 - 1);
+        const r = 4.2 * Math.cbrt(Math.random());
+        x = r * Math.sin(phi) * Math.cos(theta);
+        y = 3.4 + r * Math.sin(phi) * Math.sin(theta) * 0.85;
+        z = 2.8 + r * Math.cos(phi);
+        col = Math.random() < 0.22 ? C_WHITE : Math.random() < 0.6 ? C_CYAN : C_BLUE;
+      } else if (part < 0.68) {
+        // 2. MAIN FUSELAGE & NOSE CONE (Golden Amber & Diamond White)
+        const tZ = Math.random();
+        z = -13 + tZ * 29; // z from -13 to 16
+        let radius;
+        if (z > 4) {
+          // Streamlined parabolic nose cone
+          const f = (16 - z) / 12;
+          radius = 7.2 * Math.pow(Math.max(0, f), 0.75);
+        } else if (z < -8) {
+          // Tapered aft fuselage
+          const f = (z + 13) / 5;
+          radius = 5.8 + f * 1.4;
+        } else {
+          radius = 7.2;
+        }
+        const theta = Math.random() * Math.PI * 2;
+        const r = radius * (0.84 + 0.16 * Math.random());
+        x = r * Math.cos(theta) * 1.08;
+        y = r * Math.sin(theta) * 0.92;
+
+        if (z > 11) {
+          col = Math.random() < 0.45 ? C_WHITE : C_GOLD;
+        } else if (y > 1.2 && z > -2 && z < 7) {
+          col = Math.random() < 0.35 ? C_CYAN : C_GOLD;
+        } else {
+          col = Math.random() < 0.28 ? C_WHITE : Math.random() < 0.65 ? C_GOLD : C_ORANGE;
+        }
+      } else if (part < 0.86) {
+        // 3. SWEPT DELTA FINS / WINGS
+        const side = Math.random() < 0.5 ? 1 : -1;
+        const wingT = Math.random();
+        const span = 6.2 + wingT * 11.5;
+        const chordZ = -11 + (1 - wingT) * 11 - Math.random() * 3.0;
+        x = side * span;
+        y = (Math.random() - 0.5) * 1.0;
+        z = chordZ;
+        col = wingT > 0.55 ? (Math.random() < 0.5 ? C_CYAN : C_WHITE) : (Math.random() < 0.5 ? C_GOLD : C_WHITE);
+      } else {
+        // 4. THRUSTER EXHAUST PLUME
+        const plumeT = Math.random();
+        z = -13 - plumeT * 18;
+        const plumeR = (0.8 + plumeT * 3.8) * Math.random();
+        const pAngle = Math.random() * Math.PI * 2;
+        x = plumeR * Math.cos(pAngle);
+        y = plumeR * Math.sin(pAngle);
+        col = plumeT < 0.3 ? (Math.random() < 0.5 ? C_CYAN : C_WHITE) : (Math.random() < 0.65 ? C_ORANGE : C_GOLD);
+      }
+
+      rPos[i * 3]     = x;
+      rPos[i * 3 + 1] = y;
+      rPos[i * 3 + 2] = z;
+
+      rCol[i * 3]     = col[0];
+      rCol[i * 3 + 1] = col[1];
+      rCol[i * 3 + 2] = col[2];
+
+      rSpeeds[i] = Math.random() * 0.8 + 0.4;
+    }
+
+    rGeo.setAttribute("position", new THREE.BufferAttribute(rPos, 3));
+    rGeo.setAttribute("color", new THREE.BufferAttribute(rCol, 3));
+
+    const rocketPoints = new THREE.Points(
+      rGeo,
+      new THREE.PointsMaterial({
+        size: 0.58,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.95,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        sizeAttenuation: true,
+      })
+    );
+    rocketGroup.add(rocketPoints);
+    scene.add(rocketGroup);
+
     // -- 5. FLOATING ARCHITECTURAL POLYHEDRA (About & Skills Waypoints) --
     const mkPoly = (geo, col, x, y, z, rx, ry) => {
       const m = new THREE.Mesh(
@@ -226,6 +351,34 @@ export default function ThreeBackground() {
         p.rotation.y += p.userData.ry;
         p.position.y = p.userData.origY + Math.sin(t * 1.5 + idx * 1.2) * 1.6;
       });
+
+      // ═══════════════════════════════════════════════════
+      // 3D PARTICLE ROCKET PHYSICS (PINTEREST INTERACTIVE MESH)
+      // Zero-gravity float + Real-time mouse flight banking + Streaming thruster
+      // ═══════════════════════════════════════════════════
+      const pPositions = rGeo.attributes.position.array;
+      const boostFactor = Math.min(scrollProgress / 0.18, 1);
+
+      // Floating wave in zero gravity + scroll boost
+      rocketGroup.position.x = baseRocketX + Math.cos(t * 1.4) * 0.9 + boostFactor * 28;
+      rocketGroup.position.y = baseRocketY + Math.sin(t * 1.8) * 1.5 + boostFactor * 38;
+      rocketGroup.position.z = baseRocketZ + boostFactor * 55;
+
+      // Mouse tracking 3D tilt (spacecraft banking towards cursor)
+      rocketGroup.rotation.x = baseRotX - mouseY * 0.35;
+      rocketGroup.rotation.y = baseRotY + mouseX * 0.45;
+      rocketGroup.rotation.z = baseRotZ + mouseX * -0.15;
+
+      // Thruster exhaust particles flicker and stream backwards
+      const thrusterStartIdx = Math.floor(ROCKET_PARTICLE_COUNT * 0.86);
+      for (let i = thrusterStartIdx; i < ROCKET_PARTICLE_COUNT; i++) {
+        const i3 = i * 3;
+        pPositions[i3 + 2] -= rSpeeds[i] * (0.9 + boostFactor * 2.2);
+        if (pPositions[i3 + 2] < -34) {
+          pPositions[i3 + 2] = -13 - Math.random() * 2.5;
+        }
+      }
+      rGeo.attributes.position.needsUpdate = true;
 
       // ═══════════════════════════════════════════════════
       // 3D CAMERA TRAVEL WAYPOINTS — 6 SECTIONS (SKYBLOOM & BLACK TIDE)
