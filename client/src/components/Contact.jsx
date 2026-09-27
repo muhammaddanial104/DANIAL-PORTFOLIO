@@ -144,7 +144,7 @@ export default function Contact() {
           <form className="contact-simple-form" onSubmit={handleSubmit} noValidate>
             <div className="form-simple-row">
               <div className="form-simple-group">
-                <label htmlFor="simple-name">YOUR NAME</label>
+                <label htmlFor="simple-name"><span className="term-num">01 //</span> SENDER IDENTIFIER (NAME)</label>
                 <input
                   id="simple-name"
                   type="text"
@@ -158,7 +158,7 @@ export default function Contact() {
               </div>
 
               <div className="form-simple-group">
-                <label htmlFor="simple-email">YOUR EMAIL</label>
+                <label htmlFor="simple-email"><span className="term-num">02 //</span> COMM FREQUENCY (EMAIL)</label>
                 <input
                   id="simple-email"
                   type="email"
@@ -173,7 +173,7 @@ export default function Contact() {
             </div>
 
             <div className="form-simple-group">
-              <label htmlFor="simple-message">YOUR MESSAGE</label>
+              <label htmlFor="simple-message"><span className="term-num">03 //</span> TRANSMISSION PAYLOAD (MESSAGE)</label>
               <textarea
                 id="simple-message"
                 name="message"
@@ -191,7 +191,7 @@ export default function Contact() {
               disabled={state === "sending"}
             >
               <span className="btn-glow" />
-              {state === "sending" ? "TRANSMITTING..." : state === "success" ? "✓ MESSAGE SENT!" : "Send Message"}
+              {state === "sending" ? "TRANSMITTING..." : state === "success" ? "✓ MESSAGE SENT!" : "EXECUTE TRANSMISSION →"}
             </button>
 
             {feedback && (

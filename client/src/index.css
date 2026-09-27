@@ -8419,3 +8419,59 @@ html, body, #root {
     padding: 0.25rem 0.5rem;
   }
 }
+
+
+/* ══════════════════════════════════════════════════════
+   LUXURY AURA: DYNAMIC MOUSE SPOTLIGHT (VIDEO 1 INSPIRATION)
+   ══════════════════════════════════════════════════════ */
+.ambient-cursor-spotlight {
+  position: fixed;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, rgba(34, 211, 238, 0.03) 45%, transparent 70%);
+  transition: opacity 0.3s ease;
+  will-change: left, top;
+}
+
+@media (max-width: 1024px) {
+  .ambient-cursor-spotlight {
+    display: none;
+  }
+}
+
+/* Lenis Smooth Scroll Setup */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Sci-Fi Terminal Contact Field Styling */
+.term-num {
+  color: #22d3ee;
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 700;
+  margin-right: 0.4rem;
+  letter-spacing: 0.05em;
+}
+
+/* 3D Tilt Card Perspectives */
+.nova-flagship-card,
+.project-card,
+.about-exp-box,
+.about-focus-box,
+.fact-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}

@@ -1,8 +1,8 @@
 // --------------------------------------------------------
-// APP.JSX — Main App with Birthday Celebration & Loader
+// APP.JSX — Main App with Lenis Smooth Momentum Scroll & 3D Aura
 // Aligned in exact Navbar order: Home -> About -> Skills -> Projects -> Services -> Contact
 // --------------------------------------------------------
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BirthdayOverlay from "./components/BirthdayOverlay";
 import Loader         from "./components/Loader";
 import ThreeBackground from "./components/ThreeBackground";
@@ -15,6 +15,8 @@ import Services       from "./components/Services";
 import Contact        from "./components/Contact";
 import Footer         from "./components/Footer";
 import useRipple      from "./hooks/useRipple";
+import useSmoothScroll from "./hooks/useSmoothScroll";
+import useTilt        from "./hooks/useTilt";
 
 // Active exclusively on September 15, 2026 until 12:00 AM Midnight
 const isBirthdayActive = () => {
@@ -31,17 +33,39 @@ const isBirthdayActive = () => {
 export default function App() {
   const [bdayDone, setBdayDone] = useState(!isBirthdayActive());
   const [loaded, setLoaded]     = useState(false);
+  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+
   useRipple();
+  useSmoothScroll();
+  useTilt();
+
+  // Atmospheric mouse spotlight (Video 1 Luxury Aura)
+  useEffect(() => {
+    const handleMouse = e => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouse, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouse);
+  }, []);
 
   return (
     <>
+      {/* -- ATMOSPHERIC SPOTLIGHT AURA (Follows cursor, Video 1 Aura) -- */}
+      <div
+        className="ambient-cursor-spotlight"
+        style={{
+          left: `${mousePos.x}px`,
+          top: `${mousePos.y}px`,
+        }}
+      />
+
       {/* -- BIRTHDAY & ROBOTICS MILESTONE OVERLAY (Before 12 AM Midnight) -- */}
       {!bdayDone && <BirthdayOverlay onDone={() => setBdayDone(true)} />}
 
       {/* -- LOADER -- (Runs after birthday overlay or immediately if expired) */}
       {bdayDone && !loaded && <Loader onDone={() => setLoaded(true)} />}
 
-      {/* -- THREE.JS BACKGROUND -- */}
+      {/* -- THREE.JS SCROLLYTELLING BACKGROUND -- */}
       <ThreeBackground />
 
       {/* -- SCANLINES -- */}
