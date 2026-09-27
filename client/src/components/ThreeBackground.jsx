@@ -199,8 +199,15 @@ export default function ThreeBackground() {
       rafId = requestAnimationFrame(animate);
       t += 0.003;
 
+      // Sample sub-pixel smooth scroll from Lenis or window
+      const currentScrollY = window.__lenis ? window.__lenis.scroll : window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (maxScroll > 0) {
+        targetScroll = Math.min(Math.max(currentScrollY / maxScroll, 0), 1);
+      }
+
       // Smooth lerp for scroll and mouse
-      scrollProgress += (targetScroll - scrollProgress) * 0.06;
+      scrollProgress += (targetScroll - scrollProgress) * 0.08;
       mouseX += (targetMX - mouseX) * 0.05;
       mouseY += (targetMY - mouseY) * 0.05;
 
@@ -221,61 +228,84 @@ export default function ThreeBackground() {
       });
 
       // ═══════════════════════════════════════════════════
-      // 3D CAMERA TRAVEL WAYPOINTS (Scrollytelling Physics)
-      // Section 0 (Hero):      (0, 10, 75)
-      // Section 1 (About):     (12, 0, 42)
-      // Section 2 (Skills):    (-14, 4, 18)
-      // Section 3 (Projects):  (0, -6, 5)
-      // Section 4 (Contact):   (0, -20, -18)
+      // 3D CAMERA TRAVEL WAYPOINTS — 6 SECTIONS (SKYBLOOM & BLACK TIDE)
+      // Section 0 (Hero):      Pos(0, 10, 85)     Look(0, 0, -40)     Roll: 0
+      // Section 1 (About):     Pos(24, -4, 52)    Look(-8, 0, -20)    Roll: 0.08
+      // Section 2 (Skills):    Pos(-26, 8, 26)    Look(10, -2, -30)   Roll: -0.10
+      // Section 3 (Projects):  Pos(0, -14, 8)     Look(0, -5, -45)    Roll: 0.05
+      // Section 4 (Services):  Pos(20, 10, -8)    Look(-12, -2, -50)  Roll: -0.07
+      // Section 5 (Contact):   Pos(0, -24, -28)   Look(0, -18, -75)   Roll: 0
       // ═══════════════════════════════════════════════════
       const p = scrollProgress;
 
-      let camX, camY, camZ, lookX, lookY, lookZ;
+      let camX, camY, camZ, lookX, lookY, lookZ, roll;
 
-      if (p < 0.25) {
-        // Hero -> About
-        const u = p / 0.25;
-        camX = THREE.MathUtils.lerp(0, 12, u);
-        camY = THREE.MathUtils.lerp(10, 0, u);
-        camZ = THREE.MathUtils.lerp(75, 42, u);
-        lookX = THREE.MathUtils.lerp(0, -4, u);
-        lookY = THREE.MathUtils.lerp(0, -2, u);
-        lookZ = THREE.MathUtils.lerp(-40, -20, u);
-      } else if (p < 0.50) {
-        // About -> Skills
-        const u = (p - 0.25) / 0.25;
-        camX = THREE.MathUtils.lerp(12, -14, u);
-        camY = THREE.MathUtils.lerp(0, 4, u);
-        camZ = THREE.MathUtils.lerp(42, 18, u);
-        lookX = THREE.MathUtils.lerp(-4, 6, u);
-        lookY = THREE.MathUtils.lerp(-2, 0, u);
-        lookZ = THREE.MathUtils.lerp(-20, -35, u);
-      } else if (p < 0.75) {
-        // Skills -> Projects
-        const u = (p - 0.50) / 0.25;
-        camX = THREE.MathUtils.lerp(-14, 0, u);
-        camY = THREE.MathUtils.lerp(4, -6, u);
-        camZ = THREE.MathUtils.lerp(18, 5, u);
-        lookX = THREE.MathUtils.lerp(6, 0, u);
-        lookY = THREE.MathUtils.lerp(0, -4, u);
-        lookZ = THREE.MathUtils.lerp(-35, -45, u);
+      if (p < 0.20) {
+        // Section 0 -> 1: Hero to About (Gliding right and down around the Neural Core)
+        const u = p / 0.20;
+        const easeU = 0.5 - 0.5 * Math.cos(u * Math.PI);
+        camX = THREE.MathUtils.lerp(0, 24, easeU);
+        camY = THREE.MathUtils.lerp(10, -4, easeU);
+        camZ = THREE.MathUtils.lerp(85, 52, easeU);
+        lookX = THREE.MathUtils.lerp(0, -8, easeU);
+        lookY = THREE.MathUtils.lerp(0, 0, easeU);
+        lookZ = THREE.MathUtils.lerp(-40, -20, easeU);
+        roll = THREE.MathUtils.lerp(0, 0.08, easeU);
+      } else if (p < 0.40) {
+        // Section 1 -> 2: About to Skills (Swooping to the left through the cyber nebula)
+        const u = (p - 0.20) / 0.20;
+        const easeU = 0.5 - 0.5 * Math.cos(u * Math.PI);
+        camX = THREE.MathUtils.lerp(24, -26, easeU);
+        camY = THREE.MathUtils.lerp(-4, 8, easeU);
+        camZ = THREE.MathUtils.lerp(52, 26, easeU);
+        lookX = THREE.MathUtils.lerp(-8, 10, easeU);
+        lookY = THREE.MathUtils.lerp(0, -2, easeU);
+        lookZ = THREE.MathUtils.lerp(-20, -30, easeU);
+        roll = THREE.MathUtils.lerp(0.08, -0.10, easeU);
+      } else if (p < 0.60) {
+        // Section 2 -> 3: Skills to Projects (Centering and diving low over the Matrix grid)
+        const u = (p - 0.40) / 0.20;
+        const easeU = 0.5 - 0.5 * Math.cos(u * Math.PI);
+        camX = THREE.MathUtils.lerp(-26, 0, easeU);
+        camY = THREE.MathUtils.lerp(8, -14, easeU);
+        camZ = THREE.MathUtils.lerp(26, 8, easeU);
+        lookX = THREE.MathUtils.lerp(10, 0, easeU);
+        lookY = THREE.MathUtils.lerp(-2, -5, easeU);
+        lookZ = THREE.MathUtils.lerp(-30, -45, easeU);
+        roll = THREE.MathUtils.lerp(-0.10, 0.05, easeU);
+      } else if (p < 0.80) {
+        // Section 3 -> 4: Projects to Services (Climbing diagonally right into upper cyber orbit)
+        const u = (p - 0.60) / 0.20;
+        const easeU = 0.5 - 0.5 * Math.cos(u * Math.PI);
+        camX = THREE.MathUtils.lerp(0, 20, easeU);
+        camY = THREE.MathUtils.lerp(-14, 10, easeU);
+        camZ = THREE.MathUtils.lerp(8, -8, easeU);
+        lookX = THREE.MathUtils.lerp(0, -12, easeU);
+        lookY = THREE.MathUtils.lerp(-5, -2, easeU);
+        lookZ = THREE.MathUtils.lerp(-45, -50, easeU);
+        roll = THREE.MathUtils.lerp(0.05, -0.07, easeU);
       } else {
-        // Projects -> Contact
-        const u = (p - 0.75) / 0.25;
-        camX = THREE.MathUtils.lerp(0, 0, u);
-        camY = THREE.MathUtils.lerp(-6, -18, u);
-        camZ = THREE.MathUtils.lerp(5, -16, u);
-        lookX = 0;
-        lookY = THREE.MathUtils.lerp(-4, -14, u);
-        lookZ = THREE.MathUtils.lerp(-45, -60, u);
+        // Section 4 -> 5: Services to Contact (Final descent into the deep Nexus vortex)
+        const u = (p - 0.80) / 0.20;
+        const easeU = 0.5 - 0.5 * Math.cos(u * Math.PI);
+        camX = THREE.MathUtils.lerp(20, 0, easeU);
+        camY = THREE.MathUtils.lerp(10, -24, easeU);
+        camZ = THREE.MathUtils.lerp(-8, -28, easeU);
+        lookX = THREE.MathUtils.lerp(-12, 0, easeU);
+        lookY = THREE.MathUtils.lerp(-2, -18, easeU);
+        lookZ = THREE.MathUtils.lerp(-50, -75, easeU);
+        roll = THREE.MathUtils.lerp(-0.07, 0, easeU);
       }
 
       // Add Mouse Parallax
-      camera.position.x = camX + mouseX * 3.5;
-      camera.position.y = camY - mouseY * 2.5;
+      camera.position.x = camX + mouseX * 4.5;
+      camera.position.y = camY - mouseY * 3.0;
       camera.position.z = camZ;
 
-      camera.lookAt(lookX + mouseX * 1.5, lookY - mouseY * 1.0, lookZ);
+      camera.lookAt(lookX + mouseX * 2.0, lookY - mouseY * 1.5, lookZ);
+
+      // Camera Banking / Aircraft Roll for cinematic flight feel
+      camera.rotation.z += roll + mouseX * -0.03;
 
       renderer.render(scene, camera);
     };

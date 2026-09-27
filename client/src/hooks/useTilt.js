@@ -15,6 +15,10 @@ export default function useTilt() {
       let bounds;
 
       const onMouseEnter = () => {
+        // Only tilt if the card is visible/revealed by GSAP
+        if (document.body.classList.contains("gsap-ready") && !card.classList.contains("gsap-revealed")) {
+          return;
+        }
         bounds = card.getBoundingClientRect();
         card.style.transition = "transform 0.15s ease-out, box-shadow 0.25s ease-out, border-color 0.25s ease-out";
       };

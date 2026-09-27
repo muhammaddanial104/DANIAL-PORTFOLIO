@@ -17,6 +17,7 @@ import Footer         from "./components/Footer";
 import useRipple      from "./hooks/useRipple";
 import useSmoothScroll from "./hooks/useSmoothScroll";
 import useTilt        from "./hooks/useTilt";
+import useGSAPAnimations from "./hooks/useGSAPAnimations";
 
 // Active exclusively on September 15, 2026 until 12:00 AM Midnight
 const isBirthdayActive = () => {
@@ -38,6 +39,7 @@ export default function App() {
   useRipple();
   useSmoothScroll();
   useTilt();
+  useGSAPAnimations(loaded);
 
   // Atmospheric mouse spotlight (Video 1 Luxury Aura)
   useEffect(() => {

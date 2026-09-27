@@ -8426,15 +8426,17 @@ html, body, #root {
    ══════════════════════════════════════════════════════ */
 .ambient-cursor-spotlight {
   position: fixed;
-  width: 650px;
-  height: 650px;
+  width: 900px;
+  height: 900px;
   border-radius: 50%;
   pointer-events: none;
   z-index: 1;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, rgba(34, 211, 238, 0.03) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.22) 0%, rgba(34, 211, 238, 0.12) 30%, rgba(16, 185, 129, 0.05) 55%, transparent 75%);
   transition: opacity 0.3s ease;
   will-change: left, top;
+  mix-blend-mode: screen;
+  filter: blur(40px);
 }
 
 @media (max-width: 1024px) {
@@ -8474,4 +8476,385 @@ html.lenis, html.lenis body {
 .fact-card {
   transform-style: preserve-3d;
   will-change: transform;
+}
+
+/* ══════════════════════════════════════════════════════
+   CINEMATIC GSAP SCROLLTRIGGER ANIMATION SYSTEM
+   Inspired by: Hassan Dev, Skybloom, Black Tide
+   ══════════════════════════════════════════════════════ */
+
+/* --- GLOBAL: All sections get perspective context --- */
+.section {
+  perspective: 1200px;
+  overflow: visible;
+}
+
+/* --- SECTION HEADERS: Line expand + 3D title reveal --- */
+.section-header {
+  perspective: 800px;
+}
+
+.gsap-ready .section-line {
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.gsap-ready .section-num {
+  opacity: 0;
+  transform: rotateY(90deg);
+}
+
+.gsap-ready .section-title {
+  opacity: 0;
+  transform: translateY(30px) rotateX(15deg);
+  transform-origin: bottom center;
+}
+
+/* --- HERO SECTION: Cinematic 3D entrance --- */
+.gsap-ready .hero-tag {
+  opacity: 0;
+  transform: translateX(-80px) rotateY(-25deg);
+  transform-origin: left center;
+}
+
+.gsap-ready .hero-position-title {
+  opacity: 0;
+  transform: translateX(100px);
+  filter: blur(12px);
+}
+
+.gsap-ready .hero-edu-badge {
+  opacity: 0;
+  transform: scale(0.3) rotateZ(-10deg);
+}
+
+.gsap-ready .hero-desc {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+}
+
+.gsap-ready .hero-buttons .btn {
+  opacity: 0;
+  transform: translateY(40px) rotateX(25deg);
+  transform-origin: bottom center;
+}
+
+.gsap-ready .scroll-indicator {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* --- HERO ORB: Enhanced floating animation --- */
+.gsap-ready .orb-float-wrap {
+  opacity: 0;
+  transform: scale(0.4) rotate(-45deg);
+}
+
+.gsap-ready .orb-data-tag {
+  opacity: 0;
+  transform: scale(0) rotate(20deg);
+}
+
+/* --- ABOUT SECTION: 3D flip + slide animations --- */
+.gsap-ready .photo-frame {
+  opacity: 0;
+  transform: rotateY(-90deg) scale(0.8);
+  transform-origin: left center;
+}
+
+.gsap-ready .about-pillar-tag {
+  opacity: 0;
+  transform: scale(0) rotateZ(15deg);
+}
+
+.gsap-ready .about-intro {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+
+.gsap-ready .about-body {
+  opacity: 0;
+  transform: translateX(60px);
+}
+
+.gsap-ready .about-exp-box {
+  opacity: 0;
+  transform: translateY(80px) rotateX(8deg);
+  transform-origin: bottom center;
+}
+
+.gsap-ready .about-focus-box {
+  opacity: 0;
+  clip-path: circle(0% at 50% 50%);
+}
+
+.gsap-ready .fact-card {
+  opacity: 0;
+  transform: scale(0) rotateZ(-10deg);
+}
+
+/* --- SKILLS SECTION: 3D card flip entrance --- */
+.gsap-ready .skill-category {
+  opacity: 0;
+  transform: rotateY(-90deg) translateZ(-50px);
+  transform-origin: left center;
+  backface-visibility: hidden;
+}
+
+.gsap-ready .actual-tech-card {
+  opacity: 0;
+  transform: translateY(60px) rotateX(6deg);
+  transform-origin: bottom center;
+}
+
+.gsap-ready .tech-pill {
+  opacity: 0;
+  transform: translateX(-30px) rotateZ(-5deg);
+}
+
+/* --- PROJECTS SECTION: Dramatic staggered entrance --- */
+.gsap-ready .nova-flagship-card {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.gsap-ready .aegis-flagship-card {
+  opacity: 0;
+  transform: translateX(-120px) rotateY(15deg);
+  transform-origin: left center;
+}
+
+.gsap-ready .autodev-flagship-card {
+  opacity: 0;
+  transform: translateX(120px) rotateY(-15deg);
+  transform-origin: right center;
+}
+
+.gsap-ready .nova-flagship-card:not(.aegis-flagship-card):not(.autodev-flagship-card) {
+  opacity: 0;
+  transform: translateY(100px) scale(0.85);
+  transform-origin: bottom center;
+}
+
+.gsap-ready .nova-feat-pill {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.gsap-ready .tech-chip {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.gsap-ready .project-card {
+  opacity: 0;
+  transform: translateY(80px) rotateX(12deg) scale(0.9);
+  transform-origin: bottom center;
+}
+
+/* --- SERVICES SECTION: Enhanced entrance --- */
+.gsap-ready .services-subtitle {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(8px);
+}
+
+/* --- CONTACT SECTION: Cinematic reveals --- */
+.gsap-ready .contact-main-heading {
+  opacity: 0;
+  transform: translateY(50px) rotateX(15deg);
+  transform-origin: bottom center;
+}
+
+.gsap-ready .contact-lead-text {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(10px);
+}
+
+.gsap-ready .channel-btn {
+  opacity: 0;
+}
+
+.gsap-ready .channel-btn:nth-child(1) { transform: translateX(-80px); }
+.gsap-ready .channel-btn:nth-child(2) { transform: translateY(-60px); }
+.gsap-ready .channel-btn:nth-child(3) { transform: translateX(80px); }
+.gsap-ready .channel-btn:nth-child(4) { transform: translateY(60px); }
+
+.gsap-ready .contact-form-wrap {
+  opacity: 0;
+  transform: translateY(80px) rotateX(12deg);
+  transform-origin: bottom center;
+}
+
+.gsap-ready .contact-simple-form input,
+.gsap-ready .contact-simple-form textarea {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+.gsap-ready .contact-submit-btn {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* --- FOOTER: Stagger up --- */
+.gsap-ready .footer-inner > * {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.gsap-ready .footer-bottom {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* ══════════════════════════════════════════════════════
+   CINEMATIC GLOW PULSES & ENHANCED VISUAL EFFECTS
+   ══════════════════════════════════════════════════════ */
+
+/* Section divider glow pulse on scroll */
+.section-line {
+  position: relative;
+}
+
+.section-line::after {
+  content: '';
+  position: absolute;
+  inset: -2px 0;
+  background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.6), rgba(34, 211, 238, 0.6), transparent);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  filter: blur(4px);
+}
+
+.section-line.gsap-glow::after {
+  animation: lineGlowPulse 2s ease-in-out;
+}
+
+@keyframes lineGlowPulse {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Flagship card border glow on scroll reveal */
+.nova-flagship-card {
+  position: relative;
+}
+
+.nova-flagship-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.4), rgba(34, 211, 238, 0.4), rgba(16, 185, 129, 0.3));
+  opacity: 0;
+  z-index: -1;
+  filter: blur(8px);
+  transition: opacity 0.8s ease;
+}
+
+.nova-flagship-card.gsap-revealed::before {
+  animation: cardBorderGlow 2.5s ease-in-out;
+}
+
+@keyframes cardBorderGlow {
+  0% { opacity: 0; filter: blur(8px); }
+  30% { opacity: 0.8; filter: blur(12px); }
+  100% { opacity: 0; filter: blur(8px); }
+}
+
+/* Contact submit button continuous glow */
+.contact-submit-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-submit-btn::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -100%;
+  width: 60%;
+  height: calc(100% + 4px);
+  background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.4), rgba(34, 211, 238, 0.4), transparent);
+  animation: submitShimmer 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes submitShimmer {
+  0% { left: -60%; }
+  100% { left: 160%; }
+}
+
+/* Skill category enhanced hover glow */
+.skill-category {
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.skill-category:hover {
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.15), 0 0 60px rgba(34, 211, 238, 0.08);
+}
+
+/* Enhanced photo frame scan line */
+.photo-frame {
+  overflow: hidden;
+}
+
+.photo-frame .photo-scan {
+  background: linear-gradient(180deg, transparent, rgba(34, 211, 238, 0.25), rgba(168, 85, 247, 0.15), transparent);
+  height: 40%;
+}
+
+/* Channel button hover magnetic effect */
+.channel-btn {
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.channel-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 40px rgba(168, 85, 247, 0.2), 0 0 25px rgba(34, 211, 238, 0.1);
+}
+
+/* Scroll indicator bounce */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.scroll-indicator .scroll-line {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE: Disable heavy 3D on mobile
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .gsap-ready .photo-frame {
+    transform: translateX(-40px);
+  }
+  
+  .gsap-ready .skill-category {
+    transform: translateY(40px);
+  }
+  
+  .gsap-ready .nova-flagship-card {
+    transform: translateY(60px);
+  }
+  
+  .gsap-ready .project-card {
+    transform: translateY(40px);
+  }
+  
+  .gsap-ready .channel-btn:nth-child(1),
+  .gsap-ready .channel-btn:nth-child(2),
+  .gsap-ready .channel-btn:nth-child(3),
+  .gsap-ready .channel-btn:nth-child(4) {
+    transform: translateY(30px);
+  }
+  
+  .gsap-ready .contact-form-wrap {
+    transform: translateY(40px);
+  }
 }
