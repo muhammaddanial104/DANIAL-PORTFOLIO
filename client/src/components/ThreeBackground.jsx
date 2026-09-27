@@ -144,148 +144,151 @@ export default function ThreeBackground() {
     scene.add(coreGroup);
 
     // ═══════════════════════════════════════════════════
-    // 4B. 3D GLOWING PARTICLE ROCKET (PINTEREST INSPIRATION)
-    // Thicker, bulkier volumetric particle cloud with:
-    // - Dense Cyan Cockpit Sphere
-    // - Volumetric Amber/Gold Fuselage
-    // - Wide Swept Delta Wings
-    // - Scroll-Driven Blast / Dispersion & Reassembly
+    // 4B. 3D GLOWING MILKY WAY GALAXY (COSMIC SPIRAL VORTEX)
+    // - 5 Majestic Logarithmic Spiral Arms
+    // - Supermassive Galactic Core with brilliant diamond-white & gold nucleus
+    // - Dense 3D Bulge tapering to an ethereal cosmic dust disc
+    // - Continuous orbital Keplerian swirl + mouse perspective tilt
+    // - Gentle scroll expansion and deep-space fade (zero glare in footer)
     // ═══════════════════════════════════════════════════
-    const rocketGroup = new THREE.Group();
+    const galaxyGroup = new THREE.Group();
     const isMobile = window.innerWidth < 768;
-    const baseRocketX = isMobile ? 0 : 25;
-    const baseRocketY = isMobile ? -10 : 2;
-    const baseRocketZ = isMobile ? -8 : 12;
-    rocketGroup.position.set(baseRocketX, baseRocketY, baseRocketZ);
+    const baseGalaxyX = isMobile ? 0 : 20;
+    const baseGalaxyY = isMobile ? -5 : 4;
+    const baseGalaxyZ = isMobile ? -14 : -6;
+    galaxyGroup.position.set(baseGalaxyX, baseGalaxyY, baseGalaxyZ);
 
-    const baseRotX = 0.22;
-    const baseRotY = 0.38;
-    const baseRotZ = -0.42; // 25-deg upward aerodynamic tilt matching reference photo
-    rocketGroup.rotation.set(baseRotX, baseRotY, baseRotZ);
+    const baseRotX = 1.05; // ~60 degree 3D oblique tilt revealing spiral arms
+    const baseRotY = 0.22;
+    const baseRotZ = -0.48;
+    galaxyGroup.rotation.set(baseRotX, baseRotY, baseRotZ);
 
-    const ROCKET_PARTICLE_COUNT = isMobile ? 3800 : 12500;
-    const rGeo = new THREE.BufferGeometry();
-    const rPos = new Float32Array(ROCKET_PARTICLE_COUNT * 3);
-    const rBasePos = new Float32Array(ROCKET_PARTICLE_COUNT * 3);
-    const rExplodeDirs = new Float32Array(ROCKET_PARTICLE_COUNT * 3);
-    const rExplodeDist = new Float32Array(ROCKET_PARTICLE_COUNT);
-    const rPhase = new Float32Array(ROCKET_PARTICLE_COUNT);
-    const rCol = new Float32Array(ROCKET_PARTICLE_COUNT * 3);
-    const rSpeeds = new Float32Array(ROCKET_PARTICLE_COUNT);
+    const GALAXY_COUNT = isMobile ? 6500 : 24000;
+    const NUM_ARMS = 5;
+    const SPIRAL_TWIST = 3.8;
+    const MAX_RADIUS = 68.0;
 
-    // Exact color palette matching reference photo:
-    const C_CYAN   = [0.0, 0.94, 1.0];   // Electric Cyan Cockpit
-    const C_BLUE   = [0.12, 0.65, 1.0];  // Deep Sky Blue
-    const C_GOLD   = [0.98, 0.72, 0.14]; // Golden Amber Fuselage
-    const C_ORANGE = [0.95, 0.44, 0.08]; // Warm Orange
-    const C_WHITE  = [1.0, 1.0, 1.0];    // Diamond White Sparkles
+    const gGeo = new THREE.BufferGeometry();
+    const gPos = new Float32Array(GALAXY_COUNT * 3);
+    const gCol = new Float32Array(GALAXY_COUNT * 3);
 
-    const thrusterStartIdx = Math.floor(ROCKET_PARTICLE_COUNT * 0.88);
+    // Cosmic Palette:
+    // Core: Diamond White, Warm Gold, Sunburst Amber
+    // Arms: Electric Cyan, Royal Purple, Nebula Magenta, Azure Blue
+    // Outer Halo: Deep Violet, Sapphire, Stardust Silver
+    for (let i = 0; i < GALAXY_COUNT; i++) {
+      // Non-linear power distribution: dense at core, extended spiral arms
+      const r = Math.pow(Math.random(), 2.0) * MAX_RADIUS + 0.3;
+      const armIndex = i % NUM_ARMS;
+      const armAngle = (armIndex / NUM_ARMS) * Math.PI * 2;
+      const spiralAngle = armAngle + Math.log(r + 1.2) * SPIRAL_TWIST;
 
-    for (let i = 0; i < ROCKET_PARTICLE_COUNT; i++) {
-      const part = Math.random();
-      let x = 0, y = 0, z = 0;
-      let col = C_WHITE;
+      // Natural arm dispersion that widens outwards
+      const scatterSpread = Math.pow(r / MAX_RADIUS, 1.25) * 5.2 + 0.6;
+      const scatterAngle = (Math.random() - 0.5) * 0.45;
+      const rx = (Math.random() - 0.5) * scatterSpread;
+      const ry = (Math.random() - 0.5) * scatterSpread;
 
-      if (part < 0.26) {
-        // 1. COCKPIT DOME: Thicker, bold glowing Cyan/Blue sphere dome
-        const theta = Math.random() * Math.PI * 2;
-        const phi = Math.acos(Math.random() * 2 - 1);
-        const r = 6.4 * Math.cbrt(Math.random());
-        x = r * Math.sin(phi) * Math.cos(theta);
-        y = 5.2 + r * Math.sin(phi) * Math.sin(theta) * 0.85;
-        z = 3.6 + r * Math.cos(phi);
-        col = Math.random() < 0.22 ? C_WHITE : Math.random() < 0.62 ? C_CYAN : C_BLUE;
-      } else if (part < 0.70) {
-        // 2. MAIN FUSELAGE & NOSE CONE (Thick, robust volumetric body)
-        const tZ = Math.random();
-        z = -15 + tZ * 33; // z from -15 to 18
-        let radius;
-        if (z > 4) {
-          // Streamlined parabolic nose cone
-          const f = (18 - z) / 14;
-          radius = 11.2 * Math.pow(Math.max(0, f), 0.72);
-        } else if (z < -8) {
-          // Tapered aft fuselage
-          const f = (z + 15) / 7;
-          radius = 8.8 + f * 2.4;
+      // 3D thickness: dense spherical bulge at center, thin disc at perimeter
+      const zThickness = 15.0 * Math.exp(-r / 12.0) + 1.6 + (r / MAX_RADIUS) * 1.8;
+      const rz = (Math.random() + Math.random() + Math.random() - 1.5) * zThickness * 0.7;
+
+      const px = Math.cos(spiralAngle + scatterAngle) * r + rx;
+      const py = Math.sin(spiralAngle + scatterAngle) * r + ry;
+      const pz = rz;
+
+      gPos[i * 3]     = px;
+      gPos[i * 3 + 1] = py;
+      gPos[i * 3 + 2] = pz;
+
+      // Color gradation across the galaxy
+      let cr, cg, cb;
+      if (r < 7.5) {
+        // Galactic Nucleus: Intense White, Gold & Warm Core Glow
+        const pick = Math.random();
+        if (pick < 0.45) {
+          cr = 1.0; cg = 1.0; cb = 1.0; // Diamond White
+        } else if (pick < 0.78) {
+          cr = 1.0; cg = 0.88; cb = 0.55; // Luminous Gold
         } else {
-          radius = 11.2;
+          cr = 0.35; cg = 0.95; cb = 1.0; // Core Cyan Spark
         }
-        const theta = Math.random() * Math.PI * 2;
-        // Volumetric filling: shell + interior volume
-        const r = radius * (0.65 + 0.35 * Math.random());
-        x = r * Math.cos(theta) * 1.1;
-        y = r * Math.sin(theta) * 0.94;
-
-        if (z > 12) {
-          col = Math.random() < 0.45 ? C_WHITE : C_GOLD;
-        } else if (y > 2.0 && z > -2 && z < 9) {
-          col = Math.random() < 0.38 ? C_CYAN : C_GOLD;
+      } else if (r < 36.0) {
+        // Main Spiral Arms: Electric Cyan, Royal Purple, Cosmic Magenta
+        const pick = Math.random();
+        if (pick < 0.38) {
+          cr = 0.10; cg = 0.85; cb = 1.0; // Cyan
+        } else if (pick < 0.72) {
+          cr = 0.68; cg = 0.33; cb = 0.98; // Royal Purple
+        } else if (pick < 0.90) {
+          cr = 0.95; cg = 0.26; cb = 0.75; // Nebula Magenta
         } else {
-          col = Math.random() < 0.26 ? C_WHITE : Math.random() < 0.65 ? C_GOLD : C_ORANGE;
+          cr = 0.25; cg = 0.65; cb = 1.0; // Azure
         }
-      } else if (part < 0.88) {
-        // 3. SWEPT DELTA FINS / WINGS (Substantially wider, thicker wings)
-        const side = Math.random() < 0.5 ? 1 : -1;
-        const wingT = Math.random();
-        const span = 9.5 + wingT * 18.0;
-        const chordZ = -13 + (1 - wingT) * 15 - Math.random() * 4.5;
-        x = side * span;
-        y = (Math.random() - 0.5) * 2.4;
-        z = chordZ;
-        col = wingT > 0.55 ? (Math.random() < 0.5 ? C_CYAN : C_WHITE) : (Math.random() < 0.5 ? C_GOLD : C_WHITE);
       } else {
-        // 4. THRUSTER EXHAUST PLUME
-        const plumeT = Math.random();
-        z = -15 - plumeT * 24;
-        const plumeR = (1.5 + plumeT * 5.5) * Math.random();
-        const pAngle = Math.random() * Math.PI * 2;
-        x = plumeR * Math.cos(pAngle);
-        y = plumeR * Math.sin(pAngle);
-        col = plumeT < 0.35 ? (Math.random() < 0.5 ? C_CYAN : C_WHITE) : (Math.random() < 0.65 ? C_ORANGE : C_GOLD);
+        // Outer Spiral Halo: Royal Violet, Deep Sapphire, Diamond Dust
+        const pick = Math.random();
+        if (pick < 0.50) {
+          cr = 0.55; cg = 0.25; cb = 0.92; // Violet
+        } else if (pick < 0.80) {
+          cr = 0.20; cg = 0.45; cb = 0.95; // Deep Sapphire
+        } else {
+          cr = 0.88; cg = 0.94; cb = 1.0; // Silver dust
+        }
       }
 
-      rPos[i * 3]     = x;
-      rPos[i * 3 + 1] = y;
-      rPos[i * 3 + 2] = z;
-
-      rBasePos[i * 3]     = x;
-      rBasePos[i * 3 + 1] = y;
-      rBasePos[i * 3 + 2] = z;
-
-      // Compute outward explosion vector from rocket central axis + spherical chaos
-      const rDistFromAxis = Math.hypot(x, y) + 0.1;
-      const nx = x / rDistFromAxis;
-      const ny = y / rDistFromAxis;
-      const nz = (Math.random() - 0.5) * 0.8;
-
-      const randAngle = Math.random() * Math.PI * 2;
-      const randZ = Math.random() * 2 - 1;
-      const randR = Math.sqrt(1 - randZ * randZ);
-      const rx = randR * Math.cos(randAngle);
-      const ry = randR * Math.sin(randAngle);
-
-      rExplodeDirs[i * 3]     = nx * 0.65 + rx * 0.35;
-      rExplodeDirs[i * 3 + 1] = ny * 0.65 + ry * 0.35;
-      rExplodeDirs[i * 3 + 2] = nz * 0.5 + randZ * 0.5;
-
-      rExplodeDist[i] = 35 + Math.random() * 55;
-      rPhase[i]       = Math.random() * Math.PI * 2;
-      rSpeeds[i]      = Math.random() * 0.8 + 0.4;
-
-      rCol[i * 3]     = col[0];
-      rCol[i * 3 + 1] = col[1];
-      rCol[i * 3 + 2] = col[2];
+      // Subtle brightness variation
+      const brightness = 0.75 + Math.random() * 0.25;
+      gCol[i * 3]     = cr * brightness;
+      gCol[i * 3 + 1] = cg * brightness;
+      gCol[i * 3 + 2] = cb * brightness;
     }
 
-    rGeo.setAttribute("position", new THREE.BufferAttribute(rPos, 3));
-    rGeo.setAttribute("color", new THREE.BufferAttribute(rCol, 3));
+    gGeo.setAttribute("position", new THREE.BufferAttribute(gPos, 3));
+    gGeo.setAttribute("color", new THREE.BufferAttribute(gCol, 3));
 
-    const rocketPoints = new THREE.Points(
-      rGeo,
+    const galaxyPoints = new THREE.Points(
+      gGeo,
       new THREE.PointsMaterial({
-        size: 0.72,
+        size: isMobile ? 0.70 : 0.88,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.92,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        sizeAttenuation: true,
+      })
+    );
+    galaxyGroup.add(galaxyPoints);
+
+    // Radiant Central Supermassive Core Nucleus
+    const CORE_POINTS_COUNT = isMobile ? 600 : 1600;
+    const cGeo = new THREE.BufferGeometry();
+    const cPos = new Float32Array(CORE_POINTS_COUNT * 3);
+    const cCol = new Float32Array(CORE_POINTS_COUNT * 3);
+    for (let i = 0; i < CORE_POINTS_COUNT; i++) {
+      const cr = Math.pow(Math.random(), 1.8) * 6.5;
+      const cTheta = Math.random() * Math.PI * 2;
+      const cPhi = Math.acos(Math.random() * 2 - 1);
+      cPos[i * 3]     = cr * Math.sin(cPhi) * Math.cos(cTheta) * 1.2;
+      cPos[i * 3 + 1] = cr * Math.sin(cPhi) * Math.sin(cTheta) * 1.2;
+      cPos[i * 3 + 2] = cr * Math.cos(cPhi) * 0.7;
+
+      const pick = Math.random();
+      if (pick < 0.55) {
+        cCol[i * 3] = 1.0; cCol[i * 3 + 1] = 1.0; cCol[i * 3 + 2] = 1.0;
+      } else if (pick < 0.85) {
+        cCol[i * 3] = 1.0; cCol[i * 3 + 1] = 0.90; cCol[i * 3 + 2] = 0.60;
+      } else {
+        cCol[i * 3] = 0.30; cCol[i * 3 + 1] = 0.95; cCol[i * 3 + 2] = 1.0;
+      }
+    }
+    cGeo.setAttribute("position", new THREE.BufferAttribute(cPos, 3));
+    cGeo.setAttribute("color", new THREE.BufferAttribute(cCol, 3));
+    const coreGlowPoints = new THREE.Points(
+      cGeo,
+      new THREE.PointsMaterial({
+        size: isMobile ? 1.0 : 1.35,
         vertexColors: true,
         transparent: true,
         opacity: 0.95,
@@ -294,8 +297,9 @@ export default function ThreeBackground() {
         sizeAttenuation: true,
       })
     );
-    rocketGroup.add(rocketPoints);
-    scene.add(rocketGroup);
+    galaxyGroup.add(coreGlowPoints);
+
+    scene.add(galaxyGroup);
 
     // -- 5. FLOATING ARCHITECTURAL POLYHEDRA (About & Skills Waypoints) --
     const mkPoly = (geo, col, x, y, z, rx, ry) => {
@@ -327,7 +331,6 @@ export default function ThreeBackground() {
     // We map scroll percentage [0, 1] to cinematic camera waypoints
     let scrollProgress = 0;
     let targetScroll = 0;
-    let currentDisperse = 0;
 
     const onScroll = () => {
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -384,95 +387,45 @@ export default function ThreeBackground() {
       });
 
       // ═══════════════════════════════════════════════════
-      // 3D PARTICLE ROCKET: BLAST / DISPERSE & REASSEMBLE
-      // Scroll-driven: blasts apart on scroll, particles swirl & float,
-      // then recombine back into the thick rocket at the end of scroll or top!
+      // 3D MILKY WAY GALAXY: CONTINUOUS SWIRL & SCROLL TRAVERSAL
+      // - Smooth continuous orbital Keplerian spinning around galactic pole
+      // - Interactive 3D mouse parallax tilt
+      // - Gentle scroll expansion and deep-space perspective drift
+      // - Opacity dimming in footer to protect eyes from glare
       // ═══════════════════════════════════════════════════
-      const pPositions = rGeo.attributes.position.array;
-
-      // Target dispersion curve based on scroll:
-      // Hero (p < 0.05): 0 (Fully assembled, thick 3D rocket)
-      // 0.05 -> 0.22: Rocket blasts apart into floating constellation!
-      // 0.22 -> 0.78: Particles drift, swirl, and illuminate space
-      // 0.78 -> 1.00: Particles magnetically recombine back into the rocket!
-      // Target dispersion curve based on scroll:
-      // Hero (p < 0.06): 0 (Fully assembled, thick 3D rocket)
-      // 0.06 -> 0.24: Rocket blasts apart into floating stardust
-      // 0.24 -> 1.00: Particles remain gently dispersed in the distant background
-      // (Recombines automatically when user scrolls back UP to Hero!)
-      let targetDisperse = 0;
-      if (scrollProgress < 0.06) {
-        targetDisperse = 0;
-      } else if (scrollProgress < 0.24) {
-        const u = (scrollProgress - 0.06) / 0.18;
-        targetDisperse = u * u * (3 - 2 * u); // Smoothstep 0 -> 1 (Blast!)
-      } else {
-        targetDisperse = 1.0; // Stays dispersed in background
-      }
-
-      // Smooth lerp for buttery organic blast & reassembly
-      currentDisperse += (targetDisperse - currentDisperse) * 0.08;
+      galaxyPoints.rotation.z += 0.0009;
+      coreGlowPoints.rotation.z += 0.0016;
 
       // Floating wave in zero gravity
-      rocketGroup.position.x = baseRocketX + Math.cos(t * 1.4) * 0.9;
-      rocketGroup.position.y = baseRocketY + Math.sin(t * 1.8) * 1.5;
-      rocketGroup.position.z = baseRocketZ;
+      galaxyGroup.position.x = baseGalaxyX + Math.cos(t * 1.2) * 1.0;
+      galaxyGroup.position.y = baseGalaxyY + Math.sin(t * 1.6) * 1.2;
+      galaxyGroup.position.z = baseGalaxyZ - scrollProgress * 18.0;
 
-      // Mouse tracking 3D tilt
-      rocketGroup.rotation.x = baseRotX - mouseY * 0.35;
-      rocketGroup.rotation.y = baseRotY + mouseX * 0.45;
-      rocketGroup.rotation.z = baseRotZ + mouseX * -0.15;
+      // Smooth mouse-tracking 3D tilt
+      galaxyGroup.rotation.x = baseRotX - mouseY * 0.30;
+      galaxyGroup.rotation.y = baseRotY + mouseX * 0.38;
+      galaxyGroup.rotation.z = baseRotZ + mouseX * 0.15;
+
+      // Subtle scale expansion as user scrolls into cosmic deep
+      const galaxyScale = 1.0 + scrollProgress * 0.35;
+      galaxyGroup.scale.set(galaxyScale, galaxyScale, galaxyScale);
 
       // Glare & Eye-Strain Protection:
-      // - Hero (p < 0.06): 0.95 (Solid bright rocket)
-      // - Middle sections: 0.28 (Soft gentle cosmic dust)
-      // - Contact & Footer (p > 0.68): Fades away to 0.03 so Contact & Footer are calm, dark, and zero glare!
-      let targetOpacity = 0.95;
+      // - Hero (p < 0.06): 0.92 (Brilliant, radiant Milky Way)
+      // - Middle sections (0.06 -> 0.68): Soft 0.30 cosmic backdrop behind cards
+      // - Contact & Footer (p > 0.68): Fades smoothly down to 0.03 for zero eye strain!
+      let targetOpacity = 0.92;
       if (scrollProgress < 0.06) {
-        targetOpacity = 0.95;
+        targetOpacity = 0.92;
       } else if (scrollProgress < 0.68) {
-        targetOpacity = 0.28;
+        const u = (scrollProgress - 0.06) / 0.15;
+        targetOpacity = THREE.MathUtils.lerp(0.92, 0.30, Math.min(u, 1.0));
       } else {
-        const fadeU = Math.min((scrollProgress - 0.68) / 0.20, 1);
-        targetOpacity = THREE.MathUtils.lerp(0.28, 0.03, fadeU);
+        const fadeU = Math.min((scrollProgress - 0.68) / 0.20, 1.0);
+        targetOpacity = THREE.MathUtils.lerp(0.30, 0.03, fadeU);
       }
-      rocketPoints.material.opacity = targetOpacity;
-      rocketPoints.material.size = 0.72 - currentDisperse * 0.32;
-
-      // Update every single particle for blast / dispersion & reassembly
-      // Particles are pushed DEEPLY backward into space (-Z) and to the periphery,
-      // keeping the reading plane 100% crystal clear for text readability
-      for (let i = 0; i < ROCKET_PARTICLE_COUNT; i++) {
-        const i3 = i * 3;
-        const bx = rBasePos[i3];
-        const by = rBasePos[i3 + 1];
-        const bz = rBasePos[i3 + 2];
-
-        // Explosion outward offset along direction: pushed deep into background
-        const dist = rExplodeDist[i] * currentDisperse;
-        const spreadX = rExplodeDirs[i3] * dist * 1.35;
-        const spreadY = rExplodeDirs[i3 + 1] * dist * 1.25;
-        // Deep -Z push puts particles far behind text plane, blending into dark fog
-        const ez = (rExplodeDirs[i3 + 2] * 0.35 - 0.85) * dist - currentDisperse * 38;
-
-        // Floating swirl turbulence while particles are blasted
-        const swirlX = currentDisperse * Math.sin(t * 1.5 + rPhase[i]) * 3.5;
-        const swirlY = currentDisperse * Math.cos(t * 1.3 + rPhase[i]) * 3.5;
-        const swirlZ = currentDisperse * Math.sin(t * 1.1 + rPhase[i]) * 2.5;
-
-        pPositions[i3]     = bx + spreadX + swirlX;
-        pPositions[i3 + 1] = by + spreadY + swirlY;
-        pPositions[i3 + 2] = bz + ez + swirlZ;
-
-        // Streaming thruster sparks when rocket is assembled
-        if (currentDisperse < 0.25 && i >= thrusterStartIdx) {
-          pPositions[i3 + 2] -= rSpeeds[i] * 1.2;
-          if (pPositions[i3 + 2] < -38) {
-            pPositions[i3 + 2] = -15 - Math.random() * 3;
-          }
-        }
-      }
-      rGeo.attributes.position.needsUpdate = true;
+      galaxyPoints.material.opacity = targetOpacity;
+      coreGlowPoints.material.opacity = targetOpacity;
 
       // ═══════════════════════════════════════════════════
       // 3D CAMERA TRAVEL WAYPOINTS — 6 SECTIONS (SKYBLOOM & BLACK TIDE)
