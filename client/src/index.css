@@ -968,14 +968,17 @@ nav#navbar.scrolled {
 .about-intro {
   font-size: 1.3rem;
   font-weight: 600;
-  color: var(--text-0);
+  color: #ffffff;
   margin-bottom: 1.2rem;
   line-height: 1.65;
   font-family: var(--font-sub);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.98), 0 0 28px rgba(0, 0, 0, 0.95), 0 0 2px #000;
+  position: relative;
+  z-index: 2;
 }
 
 .text-purple {
-  background: linear-gradient(135deg, var(--purple), var(--cyan));
+  background: linear-gradient(135deg, #c084fc, #38bdf8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -984,10 +987,13 @@ nav#navbar.scrolled {
 }
 
 .about-body {
-  font-size: 1rem;
-  color: var(--text-2);
+  font-size: 1.02rem;
+  color: rgba(245, 240, 255, 0.96);
   line-height: 1.95;
   margin-bottom: 2rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.98), 0 0 24px rgba(0, 0, 0, 0.95), 0 0 2px #000;
+  position: relative;
+  z-index: 2;
 }
 
 .about-info-grid {
@@ -4095,21 +4101,29 @@ nav#navbar {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  position: relative;
+  z-index: 2;
 }
 
 .about-intro {
   font-family: 'Inter', sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
-  color: #f1e8ff;
+  color: #ffffff !important;
   line-height: 1.6;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.98), 0 0 28px rgba(0, 0, 0, 0.95), 0 0 2px #000;
+  position: relative;
+  z-index: 2;
 }
 
 .about-body {
   font-family: 'Inter', sans-serif;
-  font-size: 0.97rem;
-  color: rgba(196, 181, 212, 0.75);
+  font-size: 1rem;
+  color: rgba(245, 240, 255, 0.95) !important;
   line-height: 1.9;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.98), 0 0 24px rgba(0, 0, 0, 0.95), 0 0 2px #000;
+  position: relative;
+  z-index: 2;
 }
 
 .text-purple {

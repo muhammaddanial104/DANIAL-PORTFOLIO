@@ -420,26 +420,33 @@ export default function ThreeBackground() {
       rocketGroup.rotation.y = baseRotY + mouseX * 0.45;
       rocketGroup.rotation.z = baseRotZ + mouseX * -0.15;
 
+      // Smooth opacity & particle size attenuation: softens to gentle ambient star dust when blasted
+      rocketPoints.material.opacity = 0.95 - currentDisperse * 0.58;
+      rocketPoints.material.size = 0.72 - currentDisperse * 0.30;
+
       // Update every single particle for blast / dispersion & reassembly
+      // Particles are pushed DEEPLY backward into space (-Z) and to the periphery,
+      // keeping the reading plane 100% crystal clear for text readability
       for (let i = 0; i < ROCKET_PARTICLE_COUNT; i++) {
         const i3 = i * 3;
         const bx = rBasePos[i3];
         const by = rBasePos[i3 + 1];
         const bz = rBasePos[i3 + 2];
 
-        // Explosion outward offset along direction
+        // Explosion outward offset along direction: pushed deep into background
         const dist = rExplodeDist[i] * currentDisperse;
-        const ex = rExplodeDirs[i3] * dist;
-        const ey = rExplodeDirs[i3 + 1] * dist;
-        const ez = rExplodeDirs[i3 + 2] * dist;
+        const spreadX = rExplodeDirs[i3] * dist * 1.35;
+        const spreadY = rExplodeDirs[i3 + 1] * dist * 1.25;
+        // Deep -Z push puts particles far behind text plane, blending into dark fog
+        const ez = (rExplodeDirs[i3 + 2] * 0.35 - 0.85) * dist - currentDisperse * 38;
 
         // Floating swirl turbulence while particles are blasted
-        const swirlX = currentDisperse * Math.sin(t * 1.6 + rPhase[i]) * 4.5;
-        const swirlY = currentDisperse * Math.cos(t * 1.4 + rPhase[i]) * 4.5;
-        const swirlZ = currentDisperse * Math.sin(t * 1.2 + rPhase[i]) * 3.5;
+        const swirlX = currentDisperse * Math.sin(t * 1.5 + rPhase[i]) * 3.5;
+        const swirlY = currentDisperse * Math.cos(t * 1.3 + rPhase[i]) * 3.5;
+        const swirlZ = currentDisperse * Math.sin(t * 1.1 + rPhase[i]) * 2.5;
 
-        pPositions[i3]     = bx + ex + swirlX;
-        pPositions[i3 + 1] = by + ey + swirlY;
+        pPositions[i3]     = bx + spreadX + swirlX;
+        pPositions[i3 + 1] = by + spreadY + swirlY;
         pPositions[i3 + 2] = bz + ez + swirlZ;
 
         // Streaming thruster sparks when rocket is assembled
