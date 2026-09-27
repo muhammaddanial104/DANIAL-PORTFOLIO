@@ -155,7 +155,7 @@ export default function ThreeBackground() {
     const isMobile = window.innerWidth < 768;
     const baseGalaxyX = isMobile ? 0 : 20;
     const baseGalaxyY = isMobile ? -5 : 4;
-    const baseGalaxyZ = isMobile ? -14 : -6;
+    const baseGalaxyZ = isMobile ? -18 : -12;
     galaxyGroup.position.set(baseGalaxyX, baseGalaxyY, baseGalaxyZ);
 
     const baseRotX = 1.05; // ~60 degree 3D oblique tilt revealing spiral arms
@@ -237,8 +237,8 @@ export default function ThreeBackground() {
         }
       }
 
-      // Subtle brightness variation
-      const brightness = 0.75 + Math.random() * 0.25;
+      // Softer, calm stellar brightness (reduced glow to prevent harsh glare)
+      const brightness = 0.38 + Math.random() * 0.22;
       gCol[i * 3]     = cr * brightness;
       gCol[i * 3 + 1] = cg * brightness;
       gCol[i * 3 + 2] = cb * brightness;
@@ -250,10 +250,10 @@ export default function ThreeBackground() {
     const galaxyPoints = new THREE.Points(
       gGeo,
       new THREE.PointsMaterial({
-        size: isMobile ? 0.70 : 0.88,
+        size: isMobile ? 0.40 : 0.52,
         vertexColors: true,
         transparent: true,
-        opacity: 0.92,
+        opacity: 0.45,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
         sizeAttenuation: true,
@@ -261,8 +261,8 @@ export default function ThreeBackground() {
     );
     galaxyGroup.add(galaxyPoints);
 
-    // Radiant Central Supermassive Core Nucleus
-    const CORE_POINTS_COUNT = isMobile ? 600 : 1600;
+    // Subtle Central Core Star Nucleus
+    const CORE_POINTS_COUNT = isMobile ? 250 : 550;
     const cGeo = new THREE.BufferGeometry();
     const cPos = new Float32Array(CORE_POINTS_COUNT * 3);
     const cCol = new Float32Array(CORE_POINTS_COUNT * 3);
@@ -275,12 +275,13 @@ export default function ThreeBackground() {
       cPos[i * 3 + 2] = cr * Math.cos(cPhi) * 0.7;
 
       const pick = Math.random();
+      const coreDim = 0.45;
       if (pick < 0.55) {
-        cCol[i * 3] = 1.0; cCol[i * 3 + 1] = 1.0; cCol[i * 3 + 2] = 1.0;
+        cCol[i * 3] = 1.0 * coreDim; cCol[i * 3 + 1] = 1.0 * coreDim; cCol[i * 3 + 2] = 1.0 * coreDim;
       } else if (pick < 0.85) {
-        cCol[i * 3] = 1.0; cCol[i * 3 + 1] = 0.90; cCol[i * 3 + 2] = 0.60;
+        cCol[i * 3] = 1.0 * coreDim; cCol[i * 3 + 1] = 0.88 * coreDim; cCol[i * 3 + 2] = 0.55 * coreDim;
       } else {
-        cCol[i * 3] = 0.30; cCol[i * 3 + 1] = 0.95; cCol[i * 3 + 2] = 1.0;
+        cCol[i * 3] = 0.30 * coreDim; cCol[i * 3 + 1] = 0.90 * coreDim; cCol[i * 3 + 2] = 1.0 * coreDim;
       }
     }
     cGeo.setAttribute("position", new THREE.BufferAttribute(cPos, 3));
@@ -288,10 +289,10 @@ export default function ThreeBackground() {
     const coreGlowPoints = new THREE.Points(
       cGeo,
       new THREE.PointsMaterial({
-        size: isMobile ? 1.0 : 1.35,
+        size: isMobile ? 0.60 : 0.78,
         vertexColors: true,
         transparent: true,
-        opacity: 0.95,
+        opacity: 0.45,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
         sizeAttenuation: true,
@@ -410,22 +411,22 @@ export default function ThreeBackground() {
       const galaxyScale = 1.0 + scrollProgress * 0.35;
       galaxyGroup.scale.set(galaxyScale, galaxyScale, galaxyScale);
 
-      // Glare & Eye-Strain Protection:
-      // - Hero (p < 0.06): 0.92 (Brilliant, radiant Milky Way)
-      // - Middle sections (0.06 -> 0.68): Soft 0.30 cosmic backdrop behind cards
-      // - Contact & Footer (p > 0.68): Fades smoothly down to 0.03 for zero eye strain!
-      let targetOpacity = 0.92;
+      // Soft, Calm Galactic Glow (Subtle & Eye-Pleasing)
+      // - Hero (p < 0.06): 0.45 (Soft, delicate cosmic spiral)
+      // - Middle sections (0.06 -> 0.68): 0.16 (Gentle background nebula)
+      // - Contact & Footer (p > 0.68): 0.02 (Zero eye strain & zero glare)
+      let targetOpacity = 0.45;
       if (scrollProgress < 0.06) {
-        targetOpacity = 0.92;
+        targetOpacity = 0.45;
       } else if (scrollProgress < 0.68) {
         const u = (scrollProgress - 0.06) / 0.15;
-        targetOpacity = THREE.MathUtils.lerp(0.92, 0.30, Math.min(u, 1.0));
+        targetOpacity = THREE.MathUtils.lerp(0.45, 0.16, Math.min(u, 1.0));
       } else {
         const fadeU = Math.min((scrollProgress - 0.68) / 0.20, 1.0);
-        targetOpacity = THREE.MathUtils.lerp(0.30, 0.03, fadeU);
+        targetOpacity = THREE.MathUtils.lerp(0.16, 0.02, fadeU);
       }
       galaxyPoints.material.opacity = targetOpacity;
-      coreGlowPoints.material.opacity = targetOpacity;
+      coreGlowPoints.material.opacity = targetOpacity * 0.85;
 
       // ═══════════════════════════════════════════════════
       // 3D CAMERA TRAVEL WAYPOINTS — 6 SECTIONS (SKYBLOOM & BLACK TIDE)
