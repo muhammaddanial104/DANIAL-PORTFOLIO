@@ -106,10 +106,20 @@ export default function AILab() {
   const [inputVal, setInputVal] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
-  const chatEndRef = useRef(null);
+  const chatMessagesRef = useRef(null);
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    if (chatMessagesRef.current) {
+      chatMessagesRef.current.scrollTo({
+        top: chatMessagesRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
   }, [messages, isTyping]);
 
   // Rotate workflow pipeline preview
@@ -200,7 +210,7 @@ export default function AILab() {
           </div>
 
           {/* Chat Messages Log */}
-          <div className="ai-chat-messages">
+          <div className="ai-chat-messages" ref={chatMessagesRef}>
             {messages.map(m => (
               <div key={m.id} className={`ai-message ${m.sender === "user" ? "user-msg" : "ai-msg"}`}>
                 <div className="msg-sender-tag">
@@ -223,7 +233,6 @@ export default function AILab() {
                 </div>
               </div>
             )}
-            <div ref={chatEndRef} />
           </div>
 
           {/* Input Bar */}

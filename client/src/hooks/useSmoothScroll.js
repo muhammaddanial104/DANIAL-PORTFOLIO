@@ -36,6 +36,9 @@ export default function useSmoothScroll() {
     });
 
     window.__lenis = lenis;
+    if (!window.location.hash || window.location.hash === "#home") {
+      lenis.scrollTo(0, { immediate: true });
+    }
 
     // Sync Lenis scroll with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);

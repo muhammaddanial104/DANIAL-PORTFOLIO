@@ -44,6 +44,28 @@ export default function App() {
   useTilt();
   useGSAPAnimations(loaded);
 
+  // Prevent browser from restoring old scroll position on refresh/load
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    if (!window.location.hash || window.location.hash === "#home") {
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
+  // Ensure scroll is at top (Home) when loader completes
+  useEffect(() => {
+    if (loaded) {
+      if (!window.location.hash || window.location.hash === "#home") {
+        window.scrollTo(0, 0);
+        if (window.__lenis) {
+          window.__lenis.scrollTo(0, { immediate: true });
+        }
+      }
+    }
+  }, [loaded]);
+
   // Atmospheric mouse spotlight (Video 1 Luxury Aura)
   useEffect(() => {
     const handleMouse = e => {
