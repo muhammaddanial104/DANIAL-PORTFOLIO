@@ -30,7 +30,7 @@ export default function About() {
             <div className="pf-corner pf-bl" />
             <div className="pf-corner pf-br" />
             <img
-              src="/danial.jpg"
+              src="/images/danial.jpg"
               alt="Muhammad Danial"
               className="profile-photo"
               loading="lazy"

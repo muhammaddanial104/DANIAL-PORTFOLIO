@@ -61,7 +61,7 @@ const OTHER_PROJECTS = [
     solution: "Architected 2 full-featured production MERN platforms during a 6-month software engineering internship at ITS Gujrat (Mar 2024 – Aug 2024).",
     tech: ["React", "Node.js", "Express.js", "MongoDB", "Stripe API", "JWT Auth"],
     result: "Full checkout lifecycle with sub-second product filtering, resilient Stripe webhook processing, and tokenized session security.",
-    image: "/proj1.jpg",
+    image: "/images/proj1.jpg",
     githubUrl: "https://github.com/muhammaddanial104",
     liveUrl: null,
   },
@@ -72,7 +72,7 @@ const OTHER_PROJECTS = [
     solution: "Engineered an asynchronous multi-modal AI generation engine that transforms briefs into articles, video scripts, and social carousels.",
     tech: ["Python", "OpenAI API", "Django", "Celery", "Redis", "React"],
     result: "Eliminated manual content drafting bottlenecks with background queue rendering and customized brand voice constraints.",
-    image: "/proj3.jpg",
+    image: "/images/proj3.jpg",
     githubUrl: "https://github.com/muhammaddanial104",
     liveUrl: null,
   },
@@ -83,7 +83,7 @@ const OTHER_PROJECTS = [
     solution: "Built a high-throughput cloud web application with server-side rendering, role-based access control (RBAC), and subscription workflows.",
     tech: ["Next.js", "React", "Node.js", "MongoDB", "Tailwind CSS"],
     result: "High-throughput server rendering with sub-second page transitions and secure multi-tenant isolation.",
-    image: "/proj4.jpg",
+    image: "/images/proj4.jpg",
     githubUrl: "https://github.com/muhammaddanial104",
     liveUrl: null,
   },
@@ -135,7 +135,7 @@ export default function Projects() {
           </div>
           <div className="nova-screenshot-wrap">
             <img
-              src="/nova-preview.jpg"
+              src="/images/nova-preview.jpg"
               alt="NOVA AI Desktop Assistant Interface Screenshot"
               className="nova-screenshot-img"
               loading="lazy"
@@ -264,7 +264,7 @@ export default function Projects() {
                 setSelectedModal({
                   title: "NOVA AI 🤖",
                   badge: "Autonomous Desktop Assistant & Automation Engine",
-                  image: "/nova-preview.jpg",
+                  image: "/images/nova-preview.jpg",
                   problem: "Constant context-switching across browser tabs, file managers, and standalone media generation tools causes severe operational friction.",
                   solution: "Engineered a local desktop AI agent with native OS capabilities, web scraping, and voice interaction.",
                   flow: "User Voice/Text Command → Intent Analysis → Tool Selection → OS/Browser Execution → Feedback Output",
@@ -305,7 +305,7 @@ export default function Projects() {
           </div>
           <div className="nova-screenshot-wrap">
             <img
-              src="/aegis-preview.jpg"
+              src="/images/aegis-preview.jpg"
               alt="AEGIS-AI Autonomous Cyber Defense Platform Screenshot"
               className="nova-screenshot-img"
               loading="lazy"
@@ -432,7 +432,7 @@ export default function Projects() {
                 setSelectedModal({
                   title: "AEGIS-AI 🛡️",
                   badge: "Autonomous Cyber Defense & Self-Healing SOC Platform",
-                  image: "/aegis-preview.jpg",
+                  image: "/images/aegis-preview.jpg",
                   problem: "Manual security log parsing causes alert fatigue and slow incident remediation, leaving systems exposed.",
                   solution: "Engineered an autonomous multi-agent defense system that ingests telemetry, isolates threats, and deploys sandboxed AST patches.",
                   flow: "Packet Stream → Multi-Agent Triage → Quarantine → AST Patching → Docker Verification → Merge",
@@ -473,7 +473,7 @@ export default function Projects() {
           </div>
           <div className="nova-screenshot-wrap">
             <img
-              src="/coder-agent-preview.jpg"
+              src="/images/coder-agent-preview.jpg"
               alt="AUTO-DEV AI Software Engineering Agent IDE Interface"
               className="nova-screenshot-img"
               loading="lazy"
@@ -600,7 +600,7 @@ export default function Projects() {
                 setSelectedModal({
                   title: "AUTO-DEV AI 💻",
                   badge: "Autonomous AI Software Engineering Agent",
-                  image: "/coder-agent-preview.jpg",
+                  image: "/images/coder-agent-preview.jpg",
                   problem: "Developers spend significant hours on repetitive code scaffolding, bug recreation, and test authoring.",
                   solution: "Engineered an autonomous coding agent with AST parsing and isolated Docker test verification.",
                   flow: "User Requirement → AST Parse → Plan → Code Generation → Docker Pytest → Self-Reflection Loop → Git Diff",
@@ -635,7 +635,7 @@ export default function Projects() {
                 className="proj-thumb"
                 loading="lazy"
                 onError={e => {
-                  e.target.src = `/proj${(idx % 4) + 1}.jpg`;
+                  e.target.src = `/images/proj${(idx % 4) + 1}.jpg`;
                 }}
               />
             </div>
