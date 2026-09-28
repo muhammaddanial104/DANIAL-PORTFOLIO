@@ -86,12 +86,10 @@ export default function Hero() {
           Full-Stack Web Development &bull; Modern Websites &bull; AI Agents &bull; Business Automation
         </p>
 
-        {/* Robotics Coming Soon Badge in Emerald Green */}
+        {/* Bachelor in Robotics Badge */}
         <div className="hero-edu-badge">
           <span className="edu-icon">🎓</span>
-          <span className="edu-text">BS IN ROBOTICS</span>
-          <span className="edu-divider">&middot;</span>
-          <span className="edu-soon-tag">COMING SOON</span>
+          <span className="edu-text">Bachelor in Robotics</span>
         </div>
 
         {/* 4. Action Buttons (Upgrade Plan Primary CTAs) */}

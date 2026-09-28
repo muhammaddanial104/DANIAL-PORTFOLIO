@@ -40,10 +40,17 @@ export default function About() {
 
           {/* Quick Pillars */}
           <div className="about-pillars-list">
-            <div className="about-pillar-tag about-pillar-soon">
+            <div
+              className="about-pillar-tag"
+              style={{
+                borderColor: "rgba(16, 185, 129, 0.4)",
+                background: "rgba(16, 185, 129, 0.08)",
+              }}
+            >
               <span className="pillar-icon">🎓</span>
-              <span className="pillar-title">BS IN ROBOTICS</span>
-              <span className="edu-soon-tag">COMING SOON</span>
+              <span className="pillar-title" style={{ color: "#10b981" }}>
+                Bachelor in Robotics
+              </span>
             </div>
             <div
               className="about-pillar-tag"
