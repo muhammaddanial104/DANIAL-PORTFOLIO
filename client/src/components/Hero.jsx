@@ -67,7 +67,7 @@ export default function Hero() {
       <div className="hero-content">
         <div className="hero-tag">
           <span className="hero-tag-dot" />
-          INTERACTIVE AI COMMAND CENTER &bull; ALL SYSTEMS ACTIVE
+          FULL-STACK SOFTWARE ENGINEER &bull; AI AGENT ARCHITECT &bull; ONLINE
         </div>
 
         {/* 1. Name */}
@@ -83,7 +83,7 @@ export default function Hero() {
 
         {/* 3. Supporting Core Specializations */}
         <p className="hero-supporting-line">
-          AI Agents &bull; Business Automation &bull; Full-Stack Systems &bull; Intelligent Workflows
+          Full-Stack Web Development &bull; Modern Websites &bull; AI Agents &bull; Business Automation
         </p>
 
         {/* Robotics Coming Soon Badge in Emerald Green */}
@@ -119,11 +119,11 @@ export default function Hero() {
           <div className="orb-particle op-1" />
           <div className="orb-particle op-2" />
           <div className="orb-particle op-3" />
-          <div className="orb-data-tag odt-1">AI AGENTS</div>
-          <div className="orb-data-tag odt-2">SOFTWARE ENG</div>
-          <div className="orb-data-tag odt-3">AEGIS-AI</div>
+          <div className="orb-data-tag odt-1">FULL-STACK DEV</div>
+          <div className="orb-data-tag odt-2">AI AGENTS</div>
+          <div className="orb-data-tag odt-3">MERN WEBSITES</div>
         </div>
-        <span className="orb-label">MD &bull; SOFTWARE ENG &bull; ONLINE</span>
+        <span className="orb-label">MD &bull; FULL-STACK &amp; AI &bull; ONLINE</span>
       </div>
 
       <div className="scroll-indicator" onClick={() => scrollTo("about")}>

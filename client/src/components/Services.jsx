@@ -1,57 +1,153 @@
 // ═══════════════════════════════════════════════════
-// COMPONENT: Services.jsx — WHAT I CAN AUTOMATE
-// Aligned with PDF Masterplan Section 04:
-// 1. AI Customer Support
-// 2. AI Voice Agents
-// 3. WhatsApp Automation
-// 4. Email Automation
-// 5. Lead Qualification
-// 6. Business Intelligence
-// 7. Custom AI Agents
-// 8. API Integrations
+// COMPONENT: Services.jsx — FULL-STACK WEB DEVELOPMENT & AI AUTOMATION
+// Complete Spectrum:
+// 1. Full-Stack Web Applications (MERN)
+// 2. Modern Business Websites & Landing Pages
+// 3. E-Commerce Platforms & Storefronts
+// 4. SaaS Platforms & MVP Engineering
+// 5. Custom AI Agents & Workflows
+// 6. AI Customer Support Systems
+// 7. AI Voice Agents & Reception
+// 8. WhatsApp Business Automation
+// 9. Email Automation & Triage
+// 10. API & System Integrations
 // ═══════════════════════════════════════════════════
 import { useEffect, useRef, useState } from "react";
 
-const AUTOMATION_SERVICES = [
+const ALL_SERVICES = [
+  // ─── FULL-STACK WEB DEVELOPMENT PILLAR ───
   {
     num: "01",
-    icon: "🎧",
-    title: "AI Customer Support",
-    badge: "24/7 AUTONOMOUS RESOLUTION",
+    category: "web",
+    categoryLabel: "FULL-STACK WEB",
+    icon: "🌐",
+    title: "Full-Stack Web Applications (MERN)",
+    badge: "MERN & NEXT.JS STACK",
+    badgeClass: "badge-purple",
+    desc: "Custom, scalable cloud web applications built from scratch with React, Next.js, Node.js, Express, and MongoDB. Secure, high-performance, and production-tested.",
+    points: [
+      "Scalable RESTful API architecture & microservice endpoints",
+      "Secure token-based JWT authentication & role permissions (RBAC)",
+      "Clean, modern React/Next.js UI with sub-second page transitions",
+      "MongoDB & PostgreSQL schema modeling with query optimization",
+    ],
+    impact: "Production-ready architecture • 99+ Core Web Vitals",
+  },
+  {
+    num: "02",
+    category: "web",
+    categoryLabel: "FULL-STACK WEB",
+    icon: "💻",
+    title: "Modern Websites & Landing Pages",
+    badge: "HIGH-CONVERTING UI/UX",
     badgeClass: "badge-cyan",
-    desc: "Autonomous frontline support agents trained on your docs, knowledge bases, and previous ticket resolutions.",
+    desc: "Bespoke, high-converting responsive websites engineered to turn visitors into clients. Pixel-perfect, fast-loading, and mobile-optimized.",
+    points: [
+      "High-fashion modern dark UI with smooth GSAP animations & interactions",
+      "100% mobile-first responsive layout (silky 60fps on all mobile screens)",
+      "Technical SEO optimization, OpenGraph meta tags, and structured data",
+      "Modular, clean semantic code with zero bloat and instant load times",
+    ],
+    impact: "3x higher visitor conversion • 100/100 Lighthouse score",
+  },
+  {
+    num: "03",
+    category: "web",
+    categoryLabel: "FULL-STACK WEB",
+    icon: "🛍️",
+    title: "E-Commerce Platforms & Storefronts",
+    badge: "STRIPE & ORDERS PIPELINE",
+    badgeClass: "badge-emerald",
+    desc: "Full-featured online stores with product catalogs, shopping carts, checkout processing, and admin management dashboards.",
+    points: [
+      "Seamless Stripe, PayPal, and credit card payment gateway integration",
+      "Comprehensive admin dashboard for inventory, orders, and pricing",
+      "Resilient webhook listeners for payment confirmation and receipt emails",
+      "Proven experience: engineered 2 production platforms at ITS Gujrat",
+    ],
+    impact: "Sub-second catalog search • Automated order fulfillment",
+  },
+  {
+    num: "04",
+    category: "web",
+    categoryLabel: "FULL-STACK WEB",
+    icon: "🚀",
+    title: "SaaS Platforms & MVP Engineering",
+    badge: "MVP TO PRODUCTION",
+    badgeClass: "badge-purple",
+    desc: "Turn your startup idea into a launched SaaS product in weeks. Engineered with multi-tenancy, subscription billing, and real-time user analytics.",
+    points: [
+      "Recurring subscription billing tiers via Stripe Billing webhooks",
+      "Multi-tenant database isolation & secure user account workspaces",
+      "Interactive analytics dashboards with real-time metric visualization",
+      "Containerized Docker setup with CI/CD GitHub deployment pipelines",
+    ],
+    impact: "Rapid time-to-market • Built to support paying users",
+  },
+
+  // ─── AI AGENTS & AUTOMATION PILLAR ───
+  {
+    num: "05",
+    category: "ai",
+    categoryLabel: "AI & AUTOMATION",
+    icon: "🤖",
+    title: "Custom AI Agents & Workflows",
+    badge: "AUTONOMOUS REASONING",
+    badgeClass: "badge-cyan",
+    desc: "Bespoke LangGraph/LangChain multi-agent systems engineered to execute multi-step planning, tool calling, and autonomous reasoning.",
+    points: [
+      "Multi-step planning, self-correction, and tool routing loops",
+      "Unstructured document, PDF, invoice, and contract data extraction",
+      "Multi-agent coordination pipelines (Research → Synthesize → Review)",
+      "Deployments with local or cloud models (Claude 3.5 / GPT-4o)",
+    ],
+    impact: "Eliminates complex operational friction end-to-end",
+  },
+  {
+    num: "06",
+    category: "ai",
+    categoryLabel: "AI & AUTOMATION",
+    icon: "🎧",
+    title: "AI Customer Support Systems",
+    badge: "24/7 AUTONOMOUS RESOLUTION",
+    badgeClass: "badge-purple",
+    desc: "Autonomous frontline support agents trained on your documentation, tickets, and knowledge bases with zero hallucination guarantee.",
     points: [
       "Resolves 70%+ of Tier-1 inquiries with 0 response latency",
-      "Grounded RAG retrieval — zero hallucination guarantee",
-      "Seamless human escalation with full conversation context",
+      "Grounded RAG vector retrieval over verified business docs",
+      "Seamless human escalation with complete conversation history",
       "Live synchronization with Zendesk, Intercom, or Slack",
     ],
     impact: "94% faster ticket resolution • 24/7 coverage",
   },
   {
-    num: "02",
+    num: "07",
+    category: "ai",
+    categoryLabel: "AI & AUTOMATION",
     icon: "🎙️",
-    title: "AI Voice Agents",
-    badge: "SUB-SECOND SPEECH LATENCY",
-    badgeClass: "badge-purple",
+    title: "AI Voice Agents & Reception",
+    badge: "SUB-SECOND LATENCY",
+    badgeClass: "badge-cyan",
     desc: "Natural-sounding conversational voice agents for inbound receptionist duties and outbound appointment booking.",
     points: [
-      "Human-like conversational cadence and inflection",
+      "Natural human cadence, tone, and realistic conversational inflection",
       "Real-time calendar booking (Google Calendar / Cal.com)",
-      "Automated phone lead qualification & intent logging",
-      "Direct integration with Twilio, SIP, and CRM pipelines",
+      "Inbound caller qualification & structured CRM note logging",
+      "Direct integration with Twilio, SIP, and telephony APIs",
     ],
-    impact: "Zero missed phone inquiries • 100% automated booking",
+    impact: "Zero missed client calls • 100% automated booking",
   },
   {
-    num: "03",
+    num: "08",
+    category: "ai",
+    categoryLabel: "AI & AUTOMATION",
     icon: "💬",
-    title: "WhatsApp Automation",
+    title: "WhatsApp Business Automation",
     badge: "OMNICHANNEL MESSAGING",
     badgeClass: "badge-emerald",
-    desc: "Interactive conversational WhatsApp bots powered by official Meta Cloud APIs for seamless client onboarding.",
+    desc: "Conversational WhatsApp bots powered by official Meta Cloud APIs for client onboarding, catalog queries, and customer messaging.",
     points: [
-      "Interactive multi-turn product catalog lookup",
+      "Multi-turn interactive product catalog lookup",
       "Instant order status tracking and appointment confirmations",
       "Automated client onboarding questionnaire workflows",
       "Direct webhook sync into PostgreSQL / Google Sheets",
@@ -59,11 +155,13 @@ const AUTOMATION_SERVICES = [
     impact: "Instant lead engagement • 80%+ message open rate",
   },
   {
-    num: "04",
+    num: "09",
+    category: "ai",
+    categoryLabel: "AI & AUTOMATION",
     icon: "✉️",
-    title: "Email Automation & Triage",
+    title: "Email Automation & Zero-Inbox Triage",
     badge: "ZERO-INBOX WORKFLOW",
-    badgeClass: "badge-cyan",
+    badgeClass: "badge-purple",
     desc: "Intelligent email ingestion, categorization, draft generation, and automated multi-touch follow-ups.",
     points: [
       "Auto-categorizes emails (Urgent, Quote Request, Billing)",
@@ -74,57 +172,14 @@ const AUTOMATION_SERVICES = [
     impact: "Saves 10-15 human hours/week per team member",
   },
   {
-    num: "05",
-    icon: "🎯",
-    title: "Lead Qualification & Inbound",
-    badge: "REVENUE ACCELERATOR",
-    badgeClass: "badge-purple",
-    desc: "Autonomous agents that evaluate inbound prospects against your Ideal Customer Profile (ICP) around the clock.",
-    points: [
-      "Instant public company data enrichment & persona scoring",
-      "Answers complex technical & pricing questions 24/7",
-      "Automatically routes high-value prospects to AE calendars",
-      "Eliminates tire-kickers before manual sales calls",
-    ],
-    impact: "3x faster lead response • High-intent pipeline",
-  },
-  {
-    num: "06",
-    icon: "📊",
-    title: "Business Intelligence & Reports",
-    badge: "DATA SYNTHESIS",
-    badgeClass: "badge-cyan",
-    desc: "AI data pipelines that pull raw metrics from your databases, analyze KPIs, and generate executive summaries.",
-    points: [
-      "Runs automated SQL analytical queries on schedules",
-      "Detects revenue anomalies and customer churn patterns",
-      "Dispatches weekly formatted Slack or email executive briefings",
-      "Natural language querying over internal database schemas",
-    ],
-    impact: "Zero manual spreadsheet crunching • Real-time clarity",
-  },
-  {
-    num: "07",
-    icon: "🤖",
-    title: "Custom AI Agents & Workflows",
-    badge: "AUTONOMOUS REASONING",
-    badgeClass: "badge-emerald",
-    desc: "Bespoke LangGraph/LangChain multi-agent systems engineered for your specific internal operational bottlenecks.",
-    points: [
-      "Multi-step planning and self-correction reasoning loops",
-      "Multi-agent coordination (Research → Write → Review)",
-      "Unstructured PDF, contract, and document data extraction",
-      "Secure local or cloud model deployments (Claude / GPT-4o)",
-    ],
-    impact: "Eliminates repetitive manual friction end-to-end",
-  },
-  {
-    num: "08",
+    num: "10",
+    category: "ai",
+    categoryLabel: "AI & AUTOMATION",
     icon: "🔌",
     title: "API & System Integrations",
     badge: "ENTERPRISE CONNECTIVITY",
-    badgeClass: "badge-purple",
-    desc: "Connecting AI agents seamlessly with your existing tech stack, databases, payment gateways, and custom REST APIs.",
+    badgeClass: "badge-cyan",
+    desc: "Connecting AI agents, web applications, databases, payment gateways, and custom REST APIs into one unified system.",
     points: [
       "Bridges LLMs with Stripe, Slack, Notion, and HubSpot",
       "High-throughput RESTful & GraphQL API microservices",
@@ -152,8 +207,8 @@ function ServiceCard({ s, index, onSelect }) {
         }
       },
       {
-        threshold: 0.1,
-        rootMargin: "0px 0px -40px 0px",
+        threshold: 0.08,
+        rootMargin: "0px 0px -30px 0px",
       }
     );
 
@@ -166,7 +221,7 @@ function ServiceCard({ s, index, onSelect }) {
       ref={cardRef}
       className={`service-card auto-service-card ${isVisible ? "service-card-animated" : ""}`}
       style={{
-        transitionDelay: `${(index % 4) * 80}ms`,
+        transitionDelay: `${(index % 3) * 70}ms`,
       }}
     >
       <div className="service-card-header">
@@ -174,7 +229,7 @@ function ServiceCard({ s, index, onSelect }) {
           <span className="service-card-emoji">{s.icon}</span>
         </div>
         <div className="service-header-meta">
-          <span className="service-card-num">{s.num}</span>
+          <span className="service-cat-pill">{s.categoryLabel}</span>
           <span className={`service-badge ${s.badgeClass}`}>{s.badge}</span>
         </div>
       </div>
@@ -192,7 +247,7 @@ function ServiceCard({ s, index, onSelect }) {
       </div>
 
       <div className="service-impact-box">
-        <span className="impact-tag">⚡ VERIFIED IMPACT:</span>
+        <span className="impact-tag">⚡ VERIFIED VALUE:</span>
         <span className="impact-val">{s.impact}</span>
       </div>
 
@@ -201,7 +256,7 @@ function ServiceCard({ s, index, onSelect }) {
           className="service-action-btn"
           onClick={() => onSelect(s.title)}
         >
-          <span>DISCUSS THIS AUTOMATION</span>
+          <span>DISCUSS THIS SERVICE</span>
           <span className="service-arrow">→</span>
         </button>
       </div>
@@ -210,15 +265,21 @@ function ServiceCard({ s, index, onSelect }) {
 }
 
 export default function Services() {
+  const [filter, setFilter] = useState("all"); // "all" | "web" | "ai"
+
+  const filteredServices = ALL_SERVICES.filter((s) => {
+    if (filter === "all") return true;
+    return s.category === filter;
+  });
+
   const handleDiscuss = (serviceTitle) => {
     const contactElem = document.getElementById("contact");
     if (contactElem) {
       contactElem.scrollIntoView({ behavior: "smooth" });
-      // Pre-fill message if input exists
       setTimeout(() => {
         const msgField = document.getElementById("simple-message");
-        if (msgField && !msgField.value) {
-          msgField.value = `Hi Danial, I'm interested in discussing automation for: ${serviceTitle}. Could you show me what can be automated in our workflow?`;
+        if (msgField) {
+          msgField.value = `Hi Danial, I'm interested in discussing your service: ${serviceTitle}. Could you tell me more about your approach and how we can get started?`;
           msgField.focus();
         }
       }, 500);
@@ -230,17 +291,43 @@ export default function Services() {
       <div className="section-header">
         <span className="section-num">04</span>
         <h2 className="section-title">
-          WHAT I CAN <span className="accent">AUTOMATE</span>
+          SERVICES &amp; <span className="accent">SOLUTIONS</span>
         </h2>
         <div className="section-line" />
       </div>
 
       <p className="services-subtitle">
-        Turn slow, repetitive manual operations into 24/7 autonomous systems. Engineered for measurable business ROI, reliability, and zero hallucination risk.
+        High-performance Full-Stack Web Development, modern responsive websites, and autonomous AI automation systems engineered for measurable business ROI.
       </p>
 
+      {/* Interactive Category Filter Pills */}
+      <div className="services-filter-row">
+        <button
+          type="button"
+          className={`service-filter-btn ${filter === "all" ? "filter-active" : ""}`}
+          onClick={() => setFilter("all")}
+        >
+          ALL SERVICES ({ALL_SERVICES.length})
+        </button>
+        <button
+          type="button"
+          className={`service-filter-btn ${filter === "web" ? "filter-active" : ""}`}
+          onClick={() => setFilter("web")}
+        >
+          🌐 FULL-STACK WEBSITES &amp; APPS (4)
+        </button>
+        <button
+          type="button"
+          className={`service-filter-btn ${filter === "ai" ? "filter-active" : ""}`}
+          onClick={() => setFilter("ai")}
+        >
+          🤖 AI AGENTS &amp; AUTOMATION (6)
+        </button>
+      </div>
+
+      {/* Services Cards Grid */}
       <div className="services-grid services-grid-auto">
-        {AUTOMATION_SERVICES.map((s, idx) => (
+        {filteredServices.map((s, idx) => (
           <ServiceCard
             key={s.num}
             s={s}
@@ -256,7 +343,7 @@ export default function Services() {
         <div className="guarantee-body">
           <h4>ENGINEERED FOR PRODUCTION — ZERO FLUFF</h4>
           <p>
-            Every automation system is deployed with sandboxed tool execution, rigorous input validation, rate limiting, and fallback safeguards. No fake claims, no unmonitored scripts.
+            Whether building a high-converting full-stack web platform or an autonomous AI agent, every system is delivered with clean architecture, strict error handling, responsive 60fps design, and production-tested security.
           </p>
         </div>
       </div>

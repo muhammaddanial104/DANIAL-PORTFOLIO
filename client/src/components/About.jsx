@@ -58,16 +58,20 @@ export default function About() {
               </span>
             </div>
             <div className="about-pillar-tag">
+              <span className="pillar-icon">🌐</span>
+              <span className="pillar-title">Full-Stack MERN</span>
+            </div>
+            <div className="about-pillar-tag">
+              <span className="pillar-icon">💻</span>
+              <span className="pillar-title">Modern Websites</span>
+            </div>
+            <div className="about-pillar-tag">
               <span className="pillar-icon">🤖</span>
               <span className="pillar-title">AI Agents</span>
             </div>
             <div className="about-pillar-tag">
               <span className="pillar-icon">⚡</span>
               <span className="pillar-title">Workflow Automation</span>
-            </div>
-            <div className="about-pillar-tag">
-              <span className="pillar-icon">💻</span>
-              <span className="pillar-title">Full-Stack Systems</span>
             </div>
             <div className="about-pillar-tag">
               <span className="pillar-icon">🛡️</span>
@@ -80,11 +84,11 @@ export default function About() {
         <div className="about-info-col">
           <p className="about-intro">
             Hey, I&apos;m <span className="text-purple">Muhammad Danial</span> —
-            an AI Agent Developer, Software Engineer &amp; Automation Engineer based in Gujrat, Pakistan.
+            a Full-Stack Web Developer, Software Engineer &amp; AI Agent Developer based in Gujrat, Pakistan.
           </p>
 
           <p className="about-body">
-            I build autonomous AI agents and intelligent workflows that do the work for businesses. Rather than superficial chat wrappers, I engineer multi-step reasoning systems, automated customer pipelines, and full-stack applications with grounded vector retrieval and reliable third-party integrations.
+            I build modern, high-performance web applications, high-converting business websites, and autonomous AI agents that do the real work. With 6 months of hands-on software engineering experience at ITS Gujrat building production MERN e-commerce platforms, I bridge cutting-edge frontend UI/UX, robust Node/Express/Python backends, and intelligent AI automation workflows.
           </p>
 
           {/* PDF Section 10: WHY WORK WITH ME */}

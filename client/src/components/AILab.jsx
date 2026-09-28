@@ -6,6 +6,7 @@
 import { useState, useRef, useEffect } from "react";
 
 const SUGGESTED_PROMPTS = [
+  "What web development services does Danial offer?",
   "What kind of AI agents can Danial build?",
   "Can Danial automate customer support?",
   "Show me a project that uses AI",
@@ -23,6 +24,12 @@ const WORKFLOW_STEPS = [
 ];
 
 const KNOWLEDGE_BASE = {
+  web: `Yes! Muhammad Danial is an experienced Full-Stack Software Engineer & Web Developer:
+• MERN Stack Web Applications: Full-stack applications built with React, Next.js, Node.js, Express, and MongoDB.
+• High-Converting Websites & Landing Pages: Responsive 60fps modern websites with clean animations, technical SEO, and 100/100 Lighthouse performance.
+• E-Commerce Storefronts: Complete digital stores with Stripe checkout, shopping cart state, and order webhooks (engineered 2 production platforms during his 6-month software engineering internship at ITS Gujrat).
+• SaaS MVP Development: Multi-tenant platforms with subscription billing, admin dashboards, and cloud deployment.`,
+
   agents: `Danial engineers production-grade autonomous AI agents tailored for real business operations:
 • AI Customer Support & Voice Agents: 24/7 intelligent ticketing, instant multi-turn resolutions, and sentiment-aware escalations.
 • Workflow & Process Automation: WhatsApp Business bots, email sorting, invoice extraction, and lead qualification.
@@ -40,10 +47,10 @@ const KNOWLEDGE_BASE = {
 🤖 NOVA AI: Voice & vision-enabled desktop intelligence assistant powered by Whisper, PyTorch, and local OS tooling for hands-free productivity.`,
 
   tech: `Danial's production technology stack:
+• Full-Stack & Web: React.js, Next.js, Node.js, Express.js, MongoDB, PostgreSQL, Tailwind CSS, TypeScript, Vite.
 • AI & Agents: LangChain, LangGraph, OpenAI / Anthropic APIs, Ollama, Whisper, PyTorch, Vector DBs (Pinecone, ChromaDB).
-• Backend & APIs: Python, FastAPI, Node.js, Express, RESTful APIs, WebSockets, Celery.
-• Frontend & Systems: React.js, Vite, Three.js, GSAP, Tailwind CSS, TypeScript.
-• Database & DevOps: MongoDB, PostgreSQL, Redis, Docker, Git, Linux.`,
+• Backend & APIs: Python, FastAPI, RESTful APIs, WebSockets, Celery, Stripe Payments.
+• DevOps & Tools: Docker, Git, Linux, Vercel, CI/CD.`,
 
   automate: `To automate your business process, Danial follows a structured 4-step framework:
 1. Workflow Diagnosis: Map your repetitive manual steps and identify data bottlenecks.
@@ -56,6 +63,9 @@ const KNOWLEDGE_BASE = {
 
 function getAIResponse(query) {
   const q = query.toLowerCase();
+  if (q.includes("web") || q.includes("site") || q.includes("full stack") || q.includes("mern") || q.includes("frontend") || q.includes("backend") || q.includes("ecommerce") || q.includes("landing")) {
+    return KNOWLEDGE_BASE.web;
+  }
   if (q.includes("what kind") || q.includes("agent") || q.includes("build") || q.includes("type")) {
     return KNOWLEDGE_BASE.agents;
   }
@@ -72,13 +82,14 @@ function getAIResponse(query) {
     return KNOWLEDGE_BASE.automate;
   }
   // Default helpful response
-  return `Danial specializes in engineering autonomous AI agents, enterprise automation workflows, and full-stack software systems. 
+  return `Danial is a Full-Stack Software Engineer & AI Agent Developer specializing in modern MERN web applications, high-converting websites, autonomous AI agents, and enterprise workflow automation.
 
 You can ask me specifically about:
-1. AI Customer Support & Voice Agents
-2. Featured Projects (AEGIS-AI, AUTO-DEV AI, NOVA AI)
-3. Production Technology Stack
-4. How to automate your business process
+1. Full-Stack Web Development & Modern Websites
+2. AI Customer Support & Voice Agents
+3. Featured Projects (AEGIS-AI, AUTO-DEV AI, NOVA AI)
+4. Production Technology Stack
+5. How to automate your business process
 
 What would you like to explore?`;
 }
