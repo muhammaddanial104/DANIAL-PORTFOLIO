@@ -3,6 +3,7 @@
 // ═══════════════════════════════════════════════════
 import { useEffect } from "react";
 import Lenis from "lenis";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function useSmoothScroll() {
   useEffect(() => {
@@ -36,6 +37,9 @@ export default function useSmoothScroll() {
 
     window.__lenis = lenis;
 
+    // Sync Lenis scroll with GSAP ScrollTrigger
+    lenis.on("scroll", ScrollTrigger.update);
+
     let rafId;
     function raf(time) {
       lenis.raf(time);
@@ -62,6 +66,7 @@ export default function useSmoothScroll() {
     return () => {
       cancelAnimationFrame(rafId);
       document.removeEventListener("click", handleAnchorClick);
+      lenis.off("scroll", ScrollTrigger.update);
       lenis.destroy();
       delete window.__lenis;
     };

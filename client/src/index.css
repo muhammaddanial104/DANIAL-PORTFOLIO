@@ -8481,20 +8481,20 @@ html.lenis, html.lenis body {
   transform-origin: left center;
 }
 
-.gsap-ready .hero-position-title {
+.gsap-ready .hero-outcome-headline {
   opacity: 0;
-  transform: translateX(100px);
-  filter: blur(12px);
+  transform: translateY(35px) rotateX(15deg);
+  transform-origin: bottom center;
+}
+
+.gsap-ready .hero-supporting-line {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .gsap-ready .hero-edu-badge {
   opacity: 0;
   transform: scale(0.3) rotateZ(-10deg);
-}
-
-.gsap-ready .hero-desc {
-  opacity: 0;
-  clip-path: inset(0 100% 0 0);
 }
 
 .gsap-ready .hero-buttons .btn {
@@ -8617,10 +8617,66 @@ html.lenis, html.lenis body {
 }
 
 /* --- SERVICES SECTION: Enhanced entrance --- */
+/* --- AI LAB SECTION --- */
+.gsap-ready .ai-lab-subtitle {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.gsap-ready .ai-lab-terminal {
+  opacity: 0;
+  transform: translateY(60px) rotateX(10deg);
+  transform-origin: bottom center;
+}
+
+.gsap-ready .ai-prompt-btn {
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+/* --- SERVICES SECTION: Enhanced entrance --- */
 .gsap-ready .services-subtitle {
   opacity: 0;
   transform: translateY(20px);
-  filter: blur(8px);
+}
+
+.gsap-ready .service-card {
+  opacity: 0;
+  transform: translateY(60px) rotateX(12deg) scale(0.96);
+  transform-origin: bottom center;
+}
+
+.gsap-ready .services-category-btn {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* --- ARCHITECTURE SECTION --- */
+.gsap-ready .arch-node-wrapper {
+  opacity: 0;
+  transform: translateY(40px) scale(0.9);
+}
+
+.gsap-ready .arch-node-detail-card {
+  opacity: 0;
+  transform: translateY(50px) rotateX(8deg);
+  transform-origin: bottom center;
+}
+
+/* --- ROI CALCULATOR SECTION --- */
+.gsap-ready .roi-controls-card {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.gsap-ready .roi-results-card {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.gsap-ready .roi-value-card {
+  opacity: 0;
+  transform: scale(0.85);
 }
 
 /* --- CONTACT SECTION: Cinematic reveals --- */
@@ -8663,7 +8719,13 @@ html.lenis, html.lenis body {
 }
 
 /* --- FOOTER: Stagger up --- */
-.gsap-ready .footer-inner > * {
+.gsap-ready .footer-cta-card {
+  opacity: 0;
+  transform: translateY(50px) scale(0.96);
+  transform-origin: bottom center;
+}
+
+.gsap-ready .footer-inner > .footer-col {
   opacity: 0;
   transform: translateY(40px);
 }
