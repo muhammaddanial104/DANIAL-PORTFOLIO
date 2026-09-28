@@ -1,6 +1,8 @@
 // ═══════════════════════════════════════════════════
 // COMPONENT: Footer.jsx — LUXURY CYBERNETIC FOOTER
 // ═══════════════════════════════════════════════════
+import FooterGalaxy from "./FooterGalaxy";
+
 const FB_URL = "https://www.facebook.com/share/1EPnhc4Zon/";
 const IG_URL = "https://www.instagram.com/d4_danial";
 const LI_URL = "https://www.linkedin.com/in/muhammad-danial-2584b4432";
@@ -86,6 +88,9 @@ export default function Footer() {
 
   return (
     <footer className="footer" id="footer">
+      {/* ─── Realistic Galaxy & Shooting Stars Engine ─── */}
+      <FooterGalaxy />
+
       {/* Subtle Glowing Header Divider */}
       <div className="footer-line" />
 
