@@ -302,6 +302,237 @@ export default function ThreeBackground() {
 
     scene.add(galaxyGroup);
 
+    // ═══════════════════════════════════════════════════
+    // 3D SHOOTING STARS / METEORS (ACROSS MILKY WAY GALAXY)
+    // ═══════════════════════════════════════════════════
+    const METEOR_COUNT = isMobile ? 4 : 7;
+    const meteors3D = [];
+    const meteorGroup = new THREE.Group();
+    scene.add(meteorGroup);
+
+    // Dynamic glowing particle sprite texture for meteor heads and sparks
+    const createParticleTexture = () => {
+      const c = document.createElement("canvas");
+      c.width = 64;
+      c.height = 64;
+      const cctx = c.getContext("2d");
+      const gr = cctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+      gr.addColorStop(0, "rgba(255, 255, 255, 1)");
+      gr.addColorStop(0.25, "rgba(165, 243, 252, 0.9)");
+      gr.addColorStop(0.55, "rgba(103, 232, 249, 0.35)");
+      gr.addColorStop(1, "rgba(0, 0, 0, 0)");
+      cctx.fillStyle = gr;
+      cctx.fillRect(0, 0, 64, 64);
+      return new THREE.CanvasTexture(c);
+    };
+    const meteorTex = createParticleTexture();
+
+    class ShootingStar3D {
+      constructor(idx) {
+        this.idx = idx;
+        const SEGMENTS = 14;
+        this.SEGMENTS = SEGMENTS;
+
+        // Trail Line Geometry
+        const lineGeo = new THREE.BufferGeometry();
+        this.posArray = new Float32Array((SEGMENTS + 1) * 3);
+        this.colArray = new Float32Array((SEGMENTS + 1) * 3);
+        lineGeo.setAttribute("position", new THREE.BufferAttribute(this.posArray, 3));
+        lineGeo.setAttribute("color", new THREE.BufferAttribute(this.colArray, 3));
+
+        const lineMat = new THREE.LineBasicMaterial({
+          vertexColors: true,
+          transparent: true,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+        });
+        this.line = new THREE.Line(lineGeo, lineMat);
+        meteorGroup.add(this.line);
+
+        // Radiant Glowing Head
+        const headGeo = new THREE.BufferGeometry();
+        headGeo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(3), 3));
+        const headMat = new THREE.PointsMaterial({
+          map: meteorTex,
+          size: isMobile ? 3.5 : 5.5,
+          transparent: true,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+        });
+        this.head = new THREE.Points(headGeo, headMat);
+        meteorGroup.add(this.head);
+
+        // Stardust Sparks shedding behind meteor
+        const SPARK_COUNT = 16;
+        this.SPARK_COUNT = SPARK_COUNT;
+        const sparkGeo = new THREE.BufferGeometry();
+        this.sparkPos = new Float32Array(SPARK_COUNT * 3);
+        this.sparkCol = new Float32Array(SPARK_COUNT * 3);
+        sparkGeo.setAttribute("position", new THREE.BufferAttribute(this.sparkPos, 3));
+        sparkGeo.setAttribute("color", new THREE.BufferAttribute(this.sparkCol, 3));
+
+        const sparkMat = new THREE.PointsMaterial({
+          map: meteorTex,
+          size: isMobile ? 1.8 : 2.6,
+          vertexColors: true,
+          transparent: true,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+        });
+        this.sparks = new THREE.Points(sparkGeo, sparkMat);
+        this.sparkData = [];
+        for (let i = 0; i < SPARK_COUNT; i++) {
+          this.sparkData.push({ x: 0, y: 0, z: 0, vx: 0, vy: 0, vz: 0, alpha: 0 });
+        }
+        meteorGroup.add(this.sparks);
+
+        this.history = [];
+        this.active = false;
+        this.delay = idx * 0.7 + Math.random() * 0.5; // Staggered start
+      }
+
+      spawn() {
+        // Spawn near Milky Way Galaxy volume
+        const spawnRight = Math.random() > 0.35;
+        const startX = spawnRight
+          ? (Math.random() * 55 + 15)
+          : (-Math.random() * 45 - 10);
+        const startY = Math.random() * 45 + 15;
+        const startZ = (Math.random() - 0.5) * 50 - 15;
+
+        this.currentPos = new THREE.Vector3(startX, startY, startZ);
+
+        // Shoot diagonally across the Milky Way Galaxy
+        const dirX = spawnRight ? (-1.35 - Math.random() * 0.7) : (1.35 + Math.random() * 0.7);
+        const dirY = -1.0 - Math.random() * 0.5;
+        const dirZ = 0.2 + (Math.random() - 0.5) * 0.6;
+        const dir = new THREE.Vector3(dirX, dirY, dirZ).normalize();
+
+        this.speed = 1.8 + Math.random() * 1.6;
+        this.velocity = dir.multiplyScalar(this.speed);
+
+        // Color theme: Brilliant Cyan or Celestial Purple
+        const isCyan = Math.random() > 0.4;
+        this.coreColor = new THREE.Color(1.0, 1.0, 1.0);
+        this.glowColor = isCyan
+          ? new THREE.Color(0.25, 0.90, 1.0)
+          : new THREE.Color(0.92, 0.40, 1.0);
+
+        this.life = 0;
+        this.maxLife = 50 + Math.floor(Math.random() * 32);
+        this.history = [];
+        for (let i = 0; i <= this.SEGMENTS; i++) {
+          this.history.push(this.currentPos.clone());
+        }
+
+        for (let i = 0; i < this.SPARK_COUNT; i++) {
+          this.sparkData[i].alpha = 0;
+        }
+
+        this.active = true;
+      }
+
+      update() {
+        if (!this.active) {
+          this.delay -= 0.016;
+          if (this.delay <= 0) {
+            this.spawn();
+          }
+          return;
+        }
+
+        this.currentPos.add(this.velocity);
+        this.history.unshift(this.currentPos.clone());
+        if (this.history.length > this.SEGMENTS + 1) {
+          this.history.pop();
+        }
+
+        this.life++;
+
+        // Smooth fade-in & fade-out
+        const p = this.life / this.maxLife;
+        let alpha = 1.0;
+        if (p < 0.12) {
+          alpha = p / 0.12;
+        } else if (p > 0.68) {
+          alpha = (1.0 - p) / 0.32;
+        }
+
+        // Update trail line vertices and gradient colors
+        for (let i = 0; i <= this.SEGMENTS; i++) {
+          const pt = this.history[i] || this.currentPos;
+          this.posArray[i * 3]     = pt.x;
+          this.posArray[i * 3 + 1] = pt.y;
+          this.posArray[i * 3 + 2] = pt.z;
+
+          const segFade = Math.pow(1 - (i / this.SEGMENTS), 1.6) * alpha;
+          const r = THREE.MathUtils.lerp(this.glowColor.r, this.coreColor.r, Math.max(0, 1 - i * 0.2)) * segFade;
+          const g = THREE.MathUtils.lerp(this.glowColor.g, this.coreColor.g, Math.max(0, 1 - i * 0.2)) * segFade;
+          const b = THREE.MathUtils.lerp(this.glowColor.b, this.coreColor.b, Math.max(0, 1 - i * 0.2)) * segFade;
+          this.colArray[i * 3]     = r;
+          this.colArray[i * 3 + 1] = g;
+          this.colArray[i * 3 + 2] = b;
+        }
+        this.line.geometry.attributes.position.needsUpdate = true;
+        this.line.geometry.attributes.color.needsUpdate = true;
+        this.line.material.opacity = alpha;
+
+        // Update glowing head
+        const hPos = this.head.geometry.attributes.position;
+        hPos.setXYZ(0, this.currentPos.x, this.currentPos.y, this.currentPos.z);
+        hPos.needsUpdate = true;
+        this.head.material.opacity = alpha;
+
+        // Shed trailing spark particles
+        if (Math.random() > 0.30) {
+          for (let i = 0; i < this.SPARK_COUNT; i++) {
+            if (this.sparkData[i].alpha <= 0) {
+              this.sparkData[i].x = this.currentPos.x + (Math.random() - 0.5) * 1.6;
+              this.sparkData[i].y = this.currentPos.y + (Math.random() - 0.5) * 1.6;
+              this.sparkData[i].z = this.currentPos.z + (Math.random() - 0.5) * 1.6;
+              this.sparkData[i].vx = -this.velocity.x * 0.09 + (Math.random() - 0.5) * 0.45;
+              this.sparkData[i].vy = -this.velocity.y * 0.09 + (Math.random() - 0.5) * 0.45;
+              this.sparkData[i].vz = -this.velocity.z * 0.09 + (Math.random() - 0.5) * 0.45;
+              this.sparkData[i].alpha = 0.95;
+              break;
+            }
+          }
+        }
+
+        // Update sparks
+        for (let i = 0; i < this.SPARK_COUNT; i++) {
+          const sp = this.sparkData[i];
+          if (sp.alpha > 0) {
+            sp.x += sp.vx;
+            sp.y += sp.vy;
+            sp.z += sp.vz;
+            sp.alpha -= 0.035;
+          }
+          this.sparkPos[i * 3]     = sp.x;
+          this.sparkPos[i * 3 + 1] = sp.y;
+          this.sparkPos[i * 3 + 2] = sp.z;
+
+          const sAlpha = Math.max(0, sp.alpha);
+          this.sparkCol[i * 3]     = this.glowColor.r * sAlpha;
+          this.sparkCol[i * 3 + 1] = this.glowColor.g * sAlpha;
+          this.sparkCol[i * 3 + 2] = this.glowColor.b * sAlpha;
+        }
+        this.sparks.geometry.attributes.position.needsUpdate = true;
+        this.sparks.geometry.attributes.color.needsUpdate = true;
+
+        if (this.life >= this.maxLife) {
+          this.active = false;
+          this.line.material.opacity = 0;
+          this.head.material.opacity = 0;
+          this.delay = 0.5 + Math.random() * 1.8; // Quick next shooting star
+        }
+      }
+    }
+
+    for (let i = 0; i < METEOR_COUNT; i++) {
+      meteors3D.push(new ShootingStar3D(i));
+    }
+
     // -- 5. FLOATING ARCHITECTURAL POLYHEDRA (About & Skills Waypoints) --
     const mkPoly = (geo, col, x, y, z, rx, ry) => {
       const m = new THREE.Mesh(
@@ -411,22 +642,27 @@ export default function ThreeBackground() {
       const galaxyScale = 1.0 + scrollProgress * 0.35;
       galaxyGroup.scale.set(galaxyScale, galaxyScale, galaxyScale);
 
-      // Soft, Calm Galactic Glow (Subtle & Eye-Pleasing)
-      // - Hero (p < 0.06): 0.45 (Soft, delicate cosmic spiral)
-      // - Middle sections (0.06 -> 0.68): 0.16 (Gentle background nebula)
-      // - Contact & Footer (p > 0.68): 0.02 (Zero eye strain & zero glare)
-      let targetOpacity = 0.45;
+      // Soft, Majestic Galactic Glow (Rich & Balanced)
+      // - Hero (p < 0.06): 0.58 (Rich, luminous cosmic spiral)
+      // - Middle sections (0.06 -> 0.68): 0.28 (Gentle background nebula)
+      // - Contact & Footer (p > 0.68): 0.08 (Subtle & clean)
+      let targetOpacity = 0.58;
       if (scrollProgress < 0.06) {
-        targetOpacity = 0.45;
+        targetOpacity = 0.58;
       } else if (scrollProgress < 0.68) {
         const u = (scrollProgress - 0.06) / 0.15;
-        targetOpacity = THREE.MathUtils.lerp(0.45, 0.16, Math.min(u, 1.0));
+        targetOpacity = THREE.MathUtils.lerp(0.58, 0.28, Math.min(u, 1.0));
       } else {
         const fadeU = Math.min((scrollProgress - 0.68) / 0.20, 1.0);
-        targetOpacity = THREE.MathUtils.lerp(0.16, 0.02, fadeU);
+        targetOpacity = THREE.MathUtils.lerp(0.28, 0.08, fadeU);
       }
       galaxyPoints.material.opacity = targetOpacity;
-      coreGlowPoints.material.opacity = targetOpacity * 0.85;
+      coreGlowPoints.material.opacity = targetOpacity * 0.9;
+
+      // ═══════════════════════════════════════════════════
+      // 3D SHOOTING STARS: Continuous hypersonic streaks across Milky Way Galaxy
+      // ═══════════════════════════════════════════════════
+      meteors3D.forEach(m => m.update());
 
       // ═══════════════════════════════════════════════════
       // 3D CAMERA TRAVEL WAYPOINTS — 6 SECTIONS (SKYBLOOM & BLACK TIDE)
@@ -524,6 +760,11 @@ export default function ThreeBackground() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("resize", onResize);
+      meteorTex.dispose();
+      meteorGroup.traverse(child => {
+        if (child.geometry) child.geometry.dispose();
+        if (child.material) child.material.dispose();
+      });
       renderer.dispose();
     };
   }, []);
