@@ -10258,7 +10258,7 @@ html.lenis, html.lenis body {
 .footer {
   position: relative;
   z-index: 10;
-  padding: 0 7rem 2.5rem !important;
+  padding: 4rem 7rem 2.5rem !important;
   overflow: hidden;
   background: radial-gradient(ellipse 100% 70% at 50% 0%, #070014 0%, #020008 100%);
 }
@@ -10811,7 +10811,7 @@ html.lenis, html.lenis body {
 /* â”€â”€â”€ Responsive â€” Space Adapts â”€â”€â”€ */
 @media (max-width: 1200px) {
   .footer {
-    padding: 0 3.5rem 2rem !important;
+    padding: 3.5rem 3.5rem 2rem !important;
   }
   .footer-inner {
     grid-template-columns: 1fr 1fr !important;
@@ -10821,7 +10821,7 @@ html.lenis, html.lenis body {
 
 @media (max-width: 768px) {
   .footer {
-    padding: 0 1.25rem 1.5rem !important;
+    padding: 2.5rem 1.25rem 1.75rem !important;
   }
   .footer-cta-card {
     flex-direction: column;

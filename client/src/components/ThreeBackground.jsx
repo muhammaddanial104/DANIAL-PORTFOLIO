@@ -27,7 +27,7 @@ export default function ThreeBackground() {
       powerPreference: "high-performance",
     });
     const isMobileDevice = window.innerWidth < 768;
-    renderer.setPixelRatio(isMobileDevice ? 1.0 : Math.min(window.devicePixelRatio, 1.5));
+    renderer.setPixelRatio(isMobileDevice ? 1.0 : Math.min(window.devicePixelRatio, 2.0));
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     // -- 2. STARFIELD DEEP SPACE (1,800 Stars) --
@@ -310,20 +310,24 @@ export default function ThreeBackground() {
     const meteorGroup = new THREE.Group();
     scene.add(meteorGroup);
 
-    // Dynamic glowing particle sprite texture for meteor heads and sparks
+    // High-precision 128x128 glowing particle sprite texture for meteor heads, trails, and sparks
     const createParticleTexture = () => {
       const c = document.createElement("canvas");
-      c.width = 64;
-      c.height = 64;
+      c.width = 128;
+      c.height = 128;
       const cctx = c.getContext("2d");
-      const gr = cctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+      const gr = cctx.createRadialGradient(64, 64, 0, 64, 64, 64);
       gr.addColorStop(0, "rgba(255, 255, 255, 1)");
-      gr.addColorStop(0.25, "rgba(165, 243, 252, 0.9)");
-      gr.addColorStop(0.55, "rgba(103, 232, 249, 0.35)");
+      gr.addColorStop(0.18, "rgba(255, 255, 255, 0.95)");
+      gr.addColorStop(0.42, "rgba(165, 243, 252, 0.7)");
+      gr.addColorStop(0.72, "rgba(103, 232, 249, 0.2)");
       gr.addColorStop(1, "rgba(0, 0, 0, 0)");
       cctx.fillStyle = gr;
-      cctx.fillRect(0, 0, 64, 64);
-      return new THREE.CanvasTexture(c);
+      cctx.fillRect(0, 0, 128, 128);
+      const tex = new THREE.CanvasTexture(c);
+      tex.minFilter = THREE.LinearFilter;
+      tex.magFilter = THREE.LinearFilter;
+      return tex;
     };
     const meteorTex = createParticleTexture();
 
@@ -333,7 +337,7 @@ export default function ThreeBackground() {
         const SEGMENTS = 14;
         this.SEGMENTS = SEGMENTS;
 
-        // Trail Line Geometry
+        // Trail Line Geometry (Core Filament)
         const lineGeo = new THREE.BufferGeometry();
         this.posArray = new Float32Array((SEGMENTS + 1) * 3);
         this.colArray = new Float32Array((SEGMENTS + 1) * 3);
@@ -349,12 +353,29 @@ export default function ThreeBackground() {
         this.line = new THREE.Line(lineGeo, lineMat);
         meteorGroup.add(this.line);
 
-        // Radiant Glowing Head
+        // Volumetric Glow Trail (Luminous Plasma Beam)
+        const bodyGeo = new THREE.BufferGeometry();
+        this.bodyPos = new Float32Array(SEGMENTS * 3);
+        this.bodyCol = new Float32Array(SEGMENTS * 3);
+        bodyGeo.setAttribute("position", new THREE.BufferAttribute(this.bodyPos, 3));
+        bodyGeo.setAttribute("color", new THREE.BufferAttribute(this.bodyCol, 3));
+        const bodyMat = new THREE.PointsMaterial({
+          map: meteorTex,
+          size: isMobile ? 3.2 : 5.0,
+          vertexColors: true,
+          transparent: true,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+        });
+        this.bodyPoints = new THREE.Points(bodyGeo, bodyMat);
+        meteorGroup.add(this.bodyPoints);
+
+        // Radiant Glowing Head Nucleus
         const headGeo = new THREE.BufferGeometry();
         headGeo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(3), 3));
         const headMat = new THREE.PointsMaterial({
           map: meteorTex,
-          size: isMobile ? 3.5 : 5.5,
+          size: isMobile ? 4.5 : 7.0,
           transparent: true,
           blending: THREE.AdditiveBlending,
           depthWrite: false,
@@ -499,6 +520,22 @@ export default function ThreeBackground() {
           }
         }
 
+        // Update volumetric body trail points (plasma glow beam)
+        for (let i = 0; i < this.SEGMENTS; i++) {
+          const pt = this.history[i] || this.currentPos;
+          this.bodyPos[i * 3]     = pt.x;
+          this.bodyPos[i * 3 + 1] = pt.y;
+          this.bodyPos[i * 3 + 2] = pt.z;
+
+          const bFade = Math.pow(1 - (i / this.SEGMENTS), 1.3) * alpha * 0.9;
+          this.bodyCol[i * 3]     = this.glowColor.r * bFade;
+          this.bodyCol[i * 3 + 1] = this.glowColor.g * bFade;
+          this.bodyCol[i * 3 + 2] = this.glowColor.b * bFade;
+        }
+        this.bodyPoints.geometry.attributes.position.needsUpdate = true;
+        this.bodyPoints.geometry.attributes.color.needsUpdate = true;
+        this.bodyPoints.material.opacity = alpha;
+
         // Update sparks
         for (let i = 0; i < this.SPARK_COUNT; i++) {
           const sp = this.sparkData[i];
@@ -523,6 +560,7 @@ export default function ThreeBackground() {
         if (this.life >= this.maxLife) {
           this.active = false;
           this.line.material.opacity = 0;
+          this.bodyPoints.material.opacity = 0;
           this.head.material.opacity = 0;
           this.delay = 0.5 + Math.random() * 1.8; // Quick next shooting star
         }
