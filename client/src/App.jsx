@@ -1,20 +1,18 @@
-// --------------------------------------------------------
-// APP.JSX — Main App with Lenis Smooth Momentum Scroll & 3D Aura
-// Masterplan Order: Hero -> AI Lab -> Projects -> Services -> Architecture -> ROI Calculator -> About -> Skills -> Contact
-// --------------------------------------------------------
+// ═══════════════════════════════════════════════════════════════════
+// APP.JSX — CLEAN COSMIC PORTFOLIO ROOT (REFERENCE MATCH)
+// Strict Reference Layout Order:
+// Navbar -> Hero -> 01 About -> 02 Skills -> 03 Projects -> 04 Services -> 07 Contact -> Footer
+// ═══════════════════════════════════════════════════════════════════
 import { useState, useEffect } from "react";
 import BirthdayOverlay from "./components/BirthdayOverlay";
 import Loader         from "./components/Loader";
 import ThreeBackground from "./components/ThreeBackground";
 import Navbar         from "./components/Navbar";
 import Hero           from "./components/Hero";
-import AILab          from "./components/AILab";
-import Projects       from "./components/Projects";
-import Services       from "./components/Services";
-import SystemArchitecture from "./components/SystemArchitecture";
-import RoiCalculator  from "./components/RoiCalculator";
 import About          from "./components/About";
 import Skills         from "./components/Skills";
+import Projects       from "./components/Projects";
+import Services       from "./components/Services";
 import Contact        from "./components/Contact";
 import Footer         from "./components/Footer";
 import useRipple      from "./hooks/useRipple";
@@ -66,9 +64,9 @@ export default function App() {
     }
   }, [loaded]);
 
-  // Atmospheric mouse spotlight (Video 1 Luxury Aura)
+  // Ambient mouse spotlight
   useEffect(() => {
-    const handleMouse = e => {
+    const handleMouse = (e) => {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener("mousemove", handleMouse, { passive: true });
@@ -77,7 +75,7 @@ export default function App() {
 
   return (
     <>
-      {/* -- ATMOSPHERIC SPOTLIGHT AURA (Follows cursor, Video 1 Aura) -- */}
+      {/* Ambient cursor spotlight */}
       <div
         className="ambient-cursor-spotlight"
         style={{
@@ -86,39 +84,27 @@ export default function App() {
         }}
       />
 
-      {/* -- BIRTHDAY & ROBOTICS MILESTONE OVERLAY (Before 12 AM Midnight) -- */}
+      {/* Birthday overlay (Sep 15 only) */}
       {!bdayDone && <BirthdayOverlay onDone={() => setBdayDone(true)} />}
 
-      {/* -- LOADER -- (Runs after birthday overlay or immediately if expired) */}
+      {/* Loader */}
       {bdayDone && !loaded && <Loader onDone={() => setLoaded(true)} />}
 
-      {/* -- THREE.JS SCROLLYTELLING BACKGROUND -- */}
+      {/* 3D Cosmic Space Background */}
       <ThreeBackground />
 
-      {/* -- SCANLINES -- */}
-      <div className="scanlines" />
-
-      {/* -- HUD CORNERS -- */}
-      <div className="hud-corner top-left" />
-      <div className="hud-corner top-right" />
-      <div className="hud-corner bottom-left" />
-      <div className="hud-corner bottom-right" />
-
-      {/* -- RIPPLE PORTAL -- */}
+      {/* Ripple container */}
       <div id="ripple-root" />
 
-      {/* -- CONTENT (shown after loader) -- */}
+      {/* Clean Site Wrapper matching exact reference layout */}
       <div className={`site-wrapper ${loaded ? "site-visible" : ""}`}>
         <Navbar />
         <main>
           <Hero />
-          <AILab />
-          <Projects />
-          <Services />
-          <SystemArchitecture />
-          <RoiCalculator />
           <About />
           <Skills />
+          <Projects />
+          <Services />
           <Contact />
         </main>
         <Footer />

@@ -98,50 +98,7 @@ export default function ThreeBackground() {
     );
     scene.add(nebula);
 
-    // -- 4. CENTRAL 3D NEURAL CORE (Hero Key Element) --
-    const coreGroup = new THREE.Group();
-    coreGroup.position.set(0, 0, -40);
-
-    // Outer Wireframe Core Icosahedron
-    const coreIcosa = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(12, 1),
-      new THREE.MeshBasicMaterial({
-        color: 0x22d3ee,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.22,
-      })
-    );
-    coreGroup.add(coreIcosa);
-
-    // Inner Glowing Core Octahedron
-    const coreInner = new THREE.Mesh(
-      new THREE.OctahedronGeometry(6, 0),
-      new THREE.MeshBasicMaterial({
-        color: 0xa855f7,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.35,
-      })
-    );
-    coreGroup.add(coreInner);
-
-    // Double Orbit Torus Rings
-    const mkRing = (r, col, rx, rz) => {
-      const ring = new THREE.Mesh(
-        new THREE.TorusGeometry(r, 0.16, 12, 120),
-        new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.28 })
-      );
-      ring.rotation.x = rx;
-      ring.rotation.z = rz;
-      return ring;
-    };
-    const ring1 = mkRing(22, 0x10b981, Math.PI / 3, 0.2);
-    const ring2 = mkRing(26, 0xa855f7, -Math.PI / 4, -0.3);
-    const ring3 = mkRing(18, 0x22d3ee, Math.PI / 2, 0);
-    coreGroup.add(ring1, ring2, ring3);
-
-    scene.add(coreGroup);
+    // -- 4. PURE DEEP SPACE COSMOS (No wireframe clutter) --
 
     // ═══════════════════════════════════════════════════
     // 4B. 3D GLOWING MILKY WAY GALAXY (COSMIC SPIRAL VORTEX)
@@ -571,31 +528,7 @@ export default function ThreeBackground() {
       meteors3D.push(new ShootingStar3D(i));
     }
 
-    // -- 5. FLOATING ARCHITECTURAL POLYHEDRA (About & Skills Waypoints) --
-    const mkPoly = (geo, col, x, y, z, rx, ry) => {
-      const m = new THREE.Mesh(
-        geo,
-        new THREE.MeshBasicMaterial({ color: col, wireframe: true, transparent: true, opacity: 0.24 })
-      );
-      m.position.set(x, y, z);
-      m.userData = { rx, ry, origY: y };
-      scene.add(m);
-      return m;
-    };
-
-    const polyhedra = [
-      mkPoly(new THREE.DodecahedronGeometry(5, 0), 0x22d3ee, -38, 14, 10, 0.005, 0.006),
-      mkPoly(new THREE.IcosahedronGeometry(6, 0), 0xa855f7, 36, -10, -5, 0.004, 0.005),
-      mkPoly(new THREE.OctahedronGeometry(4.5, 0), 0x10b981, -28, -22, -20, 0.006, 0.004),
-      mkPoly(new THREE.TetrahedronGeometry(4, 0), 0xec4899, 30, 20, -30, 0.005, 0.007),
-    ];
-
-    // -- 6. CYBER MATRIX GROUND GRID --
-    const gridHelper = new THREE.GridHelper(260, 48, 0x22d3ee, 0xa855f7);
-    gridHelper.position.set(0, -35, -20);
-    gridHelper.material.transparent = true;
-    gridHelper.material.opacity = 0.12;
-    scene.add(gridHelper);
+    // -- 5. SCROLL-DRIVEN 3D CAMERA TRAVEL --
 
     // -- 7. SCROLL-DRIVEN 3D CAMERA TRAVEL (Videos 2 & 3 Traversal) --
     // We map scroll percentage [0, 1] to cinematic camera waypoints
@@ -642,19 +575,6 @@ export default function ThreeBackground() {
 
       // Orbit rotating geometries
       nebula.rotation.y = t * 0.015;
-      coreIcosa.rotation.x = t * 0.12;
-      coreIcosa.rotation.y = t * 0.16;
-      coreInner.rotation.x = -t * 0.18;
-      coreInner.rotation.y = t * 0.14;
-      ring1.rotation.z = t * 0.08;
-      ring2.rotation.z = -t * 0.06;
-      ring3.rotation.y = t * 0.05;
-
-      polyhedra.forEach((p, idx) => {
-        p.rotation.x += p.userData.rx;
-        p.rotation.y += p.userData.ry;
-        p.position.y = p.userData.origY + Math.sin(t * 1.5 + idx * 1.2) * 1.6;
-      });
 
       // ═══════════════════════════════════════════════════
       // 3D MILKY WAY GALAXY: CONTINUOUS SWIRL & SCROLL TRAVERSAL

@@ -139,13 +139,21 @@ export default function Hero() {
 
         <div className="hero-visual-col">
           <div className="hero-photo-container">
-            <div className="hero-photo-glow"></div>
-            <img src="/images/danial.jpg" alt="Muhammad Danial" className="hero-photo" />
+            <div className="hero-planet-glow"></div>
+            <img src="/images/hero-planet-avatar.jpg" alt="Muhammad Danial" className="hero-photo" />
             
-            <div className="hero-float-tag tag-1">Web Apps</div>
-            <div className="hero-float-tag tag-2">AI Tools</div>
-            <div className="hero-float-tag tag-3">Automation</div>
-            <div className="hero-float-tag tag-4">Cyber Security</div>
+            <div className="hero-float-tag tag-1">
+              <span className="hft-icon">🌐</span> Web Apps
+            </div>
+            <div className="hero-float-tag tag-2">
+              <span className="hft-icon">✨</span> AI Tools
+            </div>
+            <div className="hero-float-tag tag-3">
+              <span className="hft-icon">⚡</span> Automation
+            </div>
+            <div className="hero-float-tag tag-4">
+              <span className="hft-icon">🛡️</span> Cyber Security
+            </div>
           </div>
         </div>
       </div>
