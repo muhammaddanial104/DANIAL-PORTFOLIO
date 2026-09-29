@@ -19,32 +19,34 @@ export default function About() {
       {/* Section Header */}
       <div className="section-header">
         <div className="section-badge">
-          <span className="badge-num">01</span>
+          <span className="badge-num">02</span>
           <span className="badge-sep">|</span>
           <span className="badge-title">About Me</span>
         </div>
         <h2 className="section-main-heading">
-          Turning Ideas into <span className="gradient-text">Powerful Digital Solutions</span>
+          TURNING IDEAS INTO <span className="gradient-text">POWERFUL DIGITAL SOLUTIONS</span>
         </h2>
+        <p className="section-subtitle">
+          Bridging robotics engineering rigor with enterprise full-stack development and autonomous AI workflows.
+        </p>
       </div>
 
       <div className="about-grid">
         {/* Left Column: Authentic Bio & Highlights */}
         <div className="about-bio-col">
           <p className="about-lead">
-            Hi, I'm <strong className="text-white">Muhammad Danial</strong> — a Full-Stack Software Engineer
-            and Autonomous AI Agent Architect based in Gujrat, Pakistan.
+            Hi, I'm <strong className="text-white">Muhammad Danial</strong> — a Full-Stack Developer and AI Automation Engineer based in Gujrat, Pakistan.
           </p>
 
           <p className="about-paragraph">
             With a formal background in <span className="text-cyan">Bachelor in Robotics</span>, I bridge intelligent computational reasoning
             with enterprise-grade software development. I completed an intensive{" "}
-            <span className="text-purple">6-Month Software Engineering Internship at ITS Gujrat</span>, where I built and deployed
-            two production-ready MERN E-Commerce platforms with end-to-end payment integrations, real-time inventory management, and robust authentication.
+            <span className="text-purple">6-Month Software Engineering Internship at ITS Gujrat</span>, where I engineered and deployed
+            two production-ready MERN E-Commerce platforms with end-to-end payment integrations, real-time inventory management, and robust JWT authentication.
           </p>
 
           <p className="about-paragraph">
-            My primary focus today centers on architecting autonomous AI multi-agent workflows, scalable full-stack applications, and high-concurrency automated systems that drive real business impact.
+            My primary focus today centers on architecting autonomous AI multi-agent workflows, scalable full-stack web applications, and high-concurrency automated pipelines that deliver tangible business value.
           </p>
 
           {/* Key Highlights Grid */}
@@ -53,7 +55,7 @@ export default function About() {
               <div className="highlight-icon">🎓</div>
               <div className="highlight-info">
                 <h4>Robotics Degree</h4>
-                <p>Bachelor in Robotics & Autonomous Systems</p>
+                <p>Bachelor in Robotics &amp; Autonomous Systems</p>
               </div>
             </div>
 
@@ -69,7 +71,7 @@ export default function About() {
               <div className="highlight-icon">🤖</div>
               <div className="highlight-info">
                 <h4>AI Agent Architect</h4>
-                <p>Autonomous LLM multi-agents & tool calling</p>
+                <p>Autonomous LLM multi-agents &amp; tool calling</p>
               </div>
             </div>
 
@@ -82,7 +84,7 @@ export default function About() {
             </div>
           </div>
 
-          {/* Action Row */}
+          {/* Action Buttons */}
           <div className="about-actions-row">
             <a
               href="https://wa.me/923137525862?text=Hello%20Danial,%20I%20am%20interested%20in%20discussing%20a%20project."
@@ -103,22 +105,24 @@ export default function About() {
             >
               <span>{copied ? "✓ Email Copied!" : "Copy Email"}</span>
             </button>
+
+            <button
+              onClick={() => scrollTo("projects")}
+              className="about-btn-secondary"
+            >
+              <span>View Projects</span>
+            </button>
           </div>
         </div>
 
-        {/* Right Column: Developer Photo Card & Cosmic Frame */}
+        {/* Right Column: Sleek Photo Card with Glass Frame & Floating Badges */}
         <div className="about-visual-col">
-          <div className="about-card-wrapper">
+          <div className="about-photo-wrapper">
             {/* Glowing neon aura */}
             <div className="about-glow-aura"></div>
 
             {/* Glass photo frame */}
             <div className="about-photo-frame">
-              <div className="frame-corner corner-tl"></div>
-              <div className="frame-corner corner-tr"></div>
-              <div className="frame-corner corner-bl"></div>
-              <div className="frame-corner corner-br"></div>
-
               <img
                 src="/images/danial.jpg"
                 alt="Muhammad Danial"
@@ -129,9 +133,8 @@ export default function About() {
 
               {/* Bottom signature badge */}
               <div className="about-signature-badge">
-                <div className="signature-glow"></div>
                 <span className="signature-name">Danial</span>
-                <span className="signature-role">Full Stack Developer & AI Builder</span>
+                <span className="signature-role">Full-Stack &amp; AI Builder</span>
               </div>
             </div>
 
