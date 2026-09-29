@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function About() {
   const [copied, setCopied] = useState(false);
@@ -17,106 +18,147 @@ export default function About() {
   return (
     <section id="about" className="section-container about-section">
       {/* Section Header */}
-      <div className="section-header">
+      <motion.div
+        className="section-header"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className="section-badge">
           <span className="badge-num">02</span>
           <span className="badge-sep">|</span>
           <span className="badge-title">About Me</span>
         </div>
         <h2 className="section-main-heading">
-          TURNING IDEAS INTO <span className="gradient-text">POWERFUL DIGITAL SOLUTIONS</span>
+          ENGINEERING DISCIPLINE &amp; <span className="gradient-text">DIGITAL EXCELLENCE</span>
         </h2>
         <p className="section-subtitle">
-          Bridging robotics engineering rigor with enterprise full-stack development and autonomous AI workflows.
+          Merging robotics systems engineering with modern full-stack web architecture and autonomous AI workflows.
         </p>
-      </div>
+      </motion.div>
 
       <div className="about-grid">
         {/* Left Column: Authentic Bio & Highlights */}
-        <div className="about-bio-col">
+        <motion.div
+          className="about-bio-col"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
           <p className="about-lead">
-            Hi, I'm <strong className="text-white">Muhammad Danial</strong> — a Full-Stack Developer and AI Automation Engineer based in Gujrat, Pakistan.
+            Hi, I'm <strong className="text-white">Muhammad Danial</strong> — a Full-Stack Software Engineer and AI Automation Specialist based in Gujrat, Pakistan.
           </p>
 
           <p className="about-paragraph">
-            With a formal background in <span className="text-cyan">Bachelor in Robotics</span>, I bridge intelligent computational reasoning
-            with enterprise-grade software development. I completed an intensive{" "}
-            <span className="text-purple">6-Month Software Engineering Internship at ITS Gujrat</span>, where I engineered and deployed
-            two production-ready MERN E-Commerce platforms with end-to-end payment integrations, real-time inventory management, and robust JWT authentication.
+            With a formal foundation in <span className="text-cyan">Bachelor in Robotics &amp; Autonomous Systems</span>, I approach software engineering from a first-principles perspective. Rather than just writing code, I design resilient, modular architectures that eliminate manual inefficiencies and scale reliably under real-world demands.
           </p>
 
           <p className="about-paragraph">
-            My primary focus today centers on architecting autonomous AI multi-agent workflows, scalable full-stack web applications, and high-concurrency automated pipelines that deliver tangible business value.
+            During my intensive <span className="text-purple">6-Month Software Engineering Internship at ITS Gujrat</span>, I engineered and deployed two production-ready MERN e-commerce platforms. Both systems integrated automated Stripe/local payment flows, real-time inventory management, and robust JWT authorization protocols.
+          </p>
+
+          <p className="about-paragraph">
+            Today, my core focus is building modern full-stack web applications and autonomous AI multi-agent workflows—turning complex business requirements into elegant, high-impact digital solutions.
           </p>
 
           {/* Key Highlights Grid */}
           <div className="about-highlights-grid">
-            <div className="highlight-card">
+            <motion.div
+              className="highlight-card"
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
               <div className="highlight-icon">🎓</div>
               <div className="highlight-info">
-                <h4>Robotics Degree</h4>
-                <p>Bachelor in Robotics &amp; Autonomous Systems</p>
+                <h4>BS in Robotics</h4>
+                <p>Systematic logic, algorithms &amp; autonomous systems engineering</p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="highlight-card">
+            <motion.div
+              className="highlight-card"
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
               <div className="highlight-icon">💼</div>
               <div className="highlight-info">
-                <h4>6-Month ITS Internship</h4>
-                <p>Built 2 Full-Scale MERN E-Commerce Stores</p>
+                <h4>ITS Gujrat Internship</h4>
+                <p>Shipped 2 production MERN e-commerce platforms end-to-end</p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="highlight-card">
+            <motion.div
+              className="highlight-card"
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
               <div className="highlight-icon">🤖</div>
               <div className="highlight-info">
                 <h4>AI Agent Architect</h4>
-                <p>Autonomous LLM multi-agents &amp; tool calling</p>
+                <p>Autonomous LLM swarms, custom tool-calling &amp; API workflows</p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="highlight-card">
+            <motion.div
+              className="highlight-card"
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
               <div className="highlight-icon">⚡</div>
               <div className="highlight-info">
                 <h4>Full-Stack Mastery</h4>
-                <p>React, Next.js, Node, Express, MongoDB</p>
+                <p>High-speed React, Next.js, Node.js, Express &amp; MongoDB</p>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Action Buttons */}
           <div className="about-actions-row">
-            <a
+            <motion.a
               href="https://wa.me/923137525862?text=Hello%20Danial,%20I%20am%20interested%20in%20discussing%20a%20project."
               target="_blank"
               rel="noopener noreferrer"
               className="about-btn-primary"
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.97 }}
             >
               <span>Discuss a Project</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
-            </a>
+            </motion.a>
 
-            <button
+            <motion.button
               onClick={copyEmail}
               className="about-btn-secondary"
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.97 }}
             >
               <span>{copied ? "✓ Email Copied!" : "Copy Email"}</span>
-            </button>
+            </motion.button>
 
-            <button
+            <motion.button
               onClick={() => scrollTo("projects")}
               className="about-btn-secondary"
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.97 }}
             >
               <span>View Projects</span>
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Column: Sleek Photo Card with Glass Frame & Floating Badges */}
-        <div className="about-visual-col">
+        <motion.div
+          className="about-visual-col"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
           <div className="about-photo-wrapper">
             {/* Glowing neon aura */}
             <div className="about-glow-aura"></div>
@@ -133,26 +175,45 @@ export default function About() {
 
               {/* Bottom signature badge */}
               <div className="about-signature-badge">
-                <span className="signature-name">Danial</span>
+                <span className="signature-name">Muhammad Danial</span>
                 <span className="signature-role">Full-Stack &amp; AI Builder</span>
               </div>
             </div>
 
-            {/* 4 Floating Badges */}
-            <div className="about-float-tag tag-code">
+            {/* 4 Floating Badges with Subtle Oscillating Animation */}
+            <motion.div
+              className="about-float-tag tag-code"
+              animate={{ y: [-4, 4, -4] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
               <span>&lt;Code /&gt;</span>
-            </div>
-            <div className="about-float-tag tag-create">
+            </motion.div>
+
+            <motion.div
+              className="about-float-tag tag-create"
+              animate={{ y: [4, -4, 4] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+            >
               <span>✨ Create</span>
-            </div>
-            <div className="about-float-tag tag-automate">
+            </motion.div>
+
+            <motion.div
+              className="about-float-tag tag-automate"
+              animate={{ y: [-5, 5, -5] }}
+              transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+            >
               <span>⚡ Automate</span>
-            </div>
-            <div className="about-float-tag tag-innovate">
+            </motion.div>
+
+            <motion.div
+              className="about-float-tag tag-innovate"
+              animate={{ y: [5, -5, 5] }}
+              transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+            >
               <span>🚀 Innovate</span>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

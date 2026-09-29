@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function LiveAgentDemo() {
   const [activeStep, setActiveStep] = useState(0);
@@ -53,7 +54,6 @@ export default function LiveAgentDemo() {
     });
   };
 
-  // Reset to step 6 on initial mount so it displays full workflow
   useEffect(() => {
     setActiveStep(6);
   }, [selectedScenario]);
@@ -61,48 +61,66 @@ export default function LiveAgentDemo() {
   return (
     <section id="demo" className="section-container workflow-demo-section">
       {/* Section Header */}
-      <div className="section-header">
+      <motion.div
+        className="section-header"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className="section-badge">
           <span className="badge-num">05</span>
           <span className="badge-sep">|</span>
-          <span className="badge-title">System Architecture In Action</span>
+          <span className="badge-title">Architecture In Action</span>
         </div>
         <h2 className="section-main-heading">
-          Live <span className="gradient-text">Agent Workflow</span>
+          AUTONOMOUS AGENT WORKFLOW &amp; <span className="gradient-text">EXECUTION PIPELINE</span>
         </h2>
         <p className="section-subtitle">
-          See how an autonomous agent pipeline handles an incoming customer message from start to finish without human intervention.
+          Watch an autonomous agent pipeline ingest, parse, reason, query knowledge bases, and sync databases end-to-end in real-time.
         </p>
-      </div>
+      </motion.div>
 
-      <div className="workflow-demo-box">
+      <motion.div
+        className="workflow-demo-box"
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      >
         {/* Scenario Selector & Run Button */}
         <div className="workflow-control-bar">
           <div className="scenario-selector-wrap">
             <span className="scenario-label">Select Inbound Scenario:</span>
             <div className="scenario-buttons">
-              <button
+              <motion.button
                 onClick={() => setSelectedScenario("lead")}
                 className={`scenario-btn ${selectedScenario === "lead" ? "active" : ""}`}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
               >
                 Inbound Lead Inquiry
-              </button>
-              <button
+              </motion.button>
+              <motion.button
                 onClick={() => setSelectedScenario("quote")}
                 className={`scenario-btn ${selectedScenario === "quote" ? "active" : ""}`}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
               >
                 Custom Scraper Pipeline
-              </button>
+              </motion.button>
             </div>
           </div>
 
-          <button
+          <motion.button
             onClick={runSimulation}
             disabled={isRunning}
             className="run-simulation-btn"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
           >
-            <span>{isRunning ? "Running Pipeline..." : "⚡ Run Live Simulation"}</span>
-          </button>
+            <span>{isRunning ? "Executing Pipeline..." : "⚡ Run Live Simulation"}</span>
+          </motion.button>
         </div>
 
         {/* 6 Step Nodes Progression Bar */}
@@ -130,59 +148,83 @@ export default function LiveAgentDemo() {
 
         {/* Live Execution Telemetry Cards */}
         <div className="workflow-telemetry-grid">
-          <div className="telemetry-card">
+          <motion.div
+            className="telemetry-card"
+            whileHover={{ y: -3 }}
+            transition={{ duration: 0.2 }}
+          >
             <div className="telemetry-header">
               <span className="tel-tag tag-input">1. Inbound Customer Message</span>
               <span className="tel-badge">Channel: WhatsApp / REST</span>
             </div>
             <p className="telemetry-body">"{current.customerMessage}"</p>
-          </div>
+          </motion.div>
 
-          <div className={`telemetry-card ${activeStep >= 2 ? "active" : "dim"}`}>
+          <motion.div
+            className={`telemetry-card ${activeStep >= 2 ? "active" : "dim"}`}
+            whileHover={{ y: -3 }}
+            transition={{ duration: 0.2 }}
+          >
             <div className="telemetry-header">
               <span className="tel-tag tag-intent">2. AI Intent Extraction</span>
               <span className="tel-badge">Confidence: 98.4%</span>
             </div>
             <p className="telemetry-body font-mono">{current.intent}</p>
-          </div>
+          </motion.div>
 
-          <div className={`telemetry-card ${activeStep >= 3 ? "active" : "dim"}`}>
+          <motion.div
+            className={`telemetry-card ${activeStep >= 3 ? "active" : "dim"}`}
+            whileHover={{ y: -3 }}
+            transition={{ duration: 0.2 }}
+          >
             <div className="telemetry-header">
               <span className="tel-tag tag-kb">3. Knowledge Base (RAG)</span>
               <span className="tel-badge">Latency: 140ms</span>
             </div>
             <p className="telemetry-body font-mono">{current.kbResult}</p>
-          </div>
+          </motion.div>
 
-          <div className={`telemetry-card ${activeStep >= 4 ? "active" : "dim"}`}>
+          <motion.div
+            className={`telemetry-card ${activeStep >= 4 ? "active" : "dim"}`}
+            whileHover={{ y: -3 }}
+            transition={{ duration: 0.2 }}
+          >
             <div className="telemetry-header">
               <span className="tel-tag tag-response">4. Grounded AI Response</span>
               <span className="tel-badge">Output Status: Verified</span>
             </div>
             <p className="telemetry-body">"{current.aiResponse}"</p>
-          </div>
+          </motion.div>
 
-          <div className={`telemetry-card ${activeStep >= 5 ? "active" : "dim"}`}>
+          <motion.div
+            className={`telemetry-card ${activeStep >= 5 ? "active" : "dim"}`}
+            whileHover={{ y: -3 }}
+            transition={{ duration: 0.2 }}
+          >
             <div className="telemetry-header">
               <span className="tel-tag tag-crm">5. Automated CRM Sync</span>
               <span className="tel-badge">DB: MongoDB / REST</span>
             </div>
             <p className="telemetry-body font-mono">{current.crmAction}</p>
-          </div>
+          </motion.div>
 
-          <div className={`telemetry-card ${activeStep >= 6 ? "active" : "dim"}`}>
+          <motion.div
+            className={`telemetry-card ${activeStep >= 6 ? "active" : "dim"}`}
+            whileHover={{ y: -3 }}
+            transition={{ duration: 0.2 }}
+          >
             <div className="telemetry-header">
               <span className="tel-tag tag-notify">6. Team Instant Notification</span>
               <span className="tel-badge">Delivered: &lt;1.2s</span>
             </div>
             <p className="telemetry-body">{current.notification}</p>
-          </div>
+          </motion.div>
         </div>
 
         <div className="workflow-footer-note">
-          <span>✓ End-to-end execution completed in <strong>1.48 seconds</strong> with 0 human intervention.</span>
+          <span>✓ End-to-end autonomous pipeline completed in <strong>1.48 seconds</strong> with 0 manual intervention.</span>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

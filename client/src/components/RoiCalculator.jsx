@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function RoiCalculator() {
   const [teamSize, setTeamSize] = useState(5);
@@ -15,21 +16,33 @@ export default function RoiCalculator() {
   return (
     <section id="roi-calc" className="section-container roi-section">
       {/* Section Header */}
-      <div className="section-header">
+      <motion.div
+        className="section-header"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className="section-badge">
-          <span className="badge-num">08</span>
+          <span className="badge-num">06</span>
           <span className="badge-sep">|</span>
-          <span className="badge-title">Business Impact</span>
+          <span className="badge-title">Financial Impact</span>
         </div>
         <h2 className="section-main-heading">
-          AI Automation <span className="gradient-text">ROI Calculator</span>
+          AUTOMATION ROI &amp; <span className="gradient-text">VALUE CALCULATOR</span>
         </h2>
         <p className="section-subtitle">
-          Estimate the time and financial return your business gains by replacing routine manual computer tasks with autonomous AI workflows.
+          Estimate the tangible hours and financial returns your organization unlocks by replacing repetitive manual tasks with intelligent automated pipelines.
         </p>
-      </div>
+      </motion.div>
 
-      <div className="roi-calculator-card">
+      <motion.div
+        className="roi-calculator-card"
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className="roi-card-glow"></div>
 
         <div className="roi-grid-layout">
@@ -40,7 +53,7 @@ export default function RoiCalculator() {
             {/* Slider 1: Team Size */}
             <div className="slider-group">
               <div className="slider-header">
-                <label className="slider-label">Team Size (Employees doing repetitive tasks)</label>
+                <label className="slider-label">Team Members Handling Repetitive Tasks</label>
                 <span className="slider-val-badge">{teamSize} {teamSize === 1 ? "person" : "people"}</span>
               </div>
               <input
@@ -61,7 +74,7 @@ export default function RoiCalculator() {
             {/* Slider 2: Hours Per Week */}
             <div className="slider-group">
               <div className="slider-header">
-                <label className="slider-label">Repetitive Hours / Week per Person</label>
+                <label className="slider-label">Repetitive Hours / Week per Member</label>
                 <span className="slider-val-badge">{hoursPerWeek} hrs/week</span>
               </div>
               <input
@@ -82,7 +95,7 @@ export default function RoiCalculator() {
             {/* Slider 3: Hourly Rate */}
             <div className="slider-group">
               <div className="slider-header">
-                <label className="slider-label">Average Blended Hourly Cost</label>
+                <label className="slider-label">Blended Hourly Employee Cost</label>
                 <span className="slider-val-badge">${hourlyRate} / hr</span>
               </div>
               <input
@@ -116,7 +129,15 @@ export default function RoiCalculator() {
 
             <div className="metric-highlight-card">
               <span className="metric-tag">Estimated Annual Labor Savings</span>
-              <span className="metric-big-number">${annualCostSaved.toLocaleString()}</span>
+              <motion.span
+                key={annualCostSaved}
+                className="metric-big-number"
+                initial={{ scale: 0.95 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.2 }}
+              >
+                ${annualCostSaved.toLocaleString()}
+              </motion.span>
               <span className="metric-subtext">~${monthlyCostSaved.toLocaleString()} saved every single month</span>
             </div>
 
@@ -133,28 +154,30 @@ export default function RoiCalculator() {
                 <span className="mini-card-icon">⚡</span>
                 <div>
                   <span className="mini-card-val">~30–60 Days</span>
-                  <span className="mini-card-lbl">Typical Payback Period</span>
+                  <span className="mini-card-lbl">Typical Payback Window</span>
                 </div>
               </div>
             </div>
 
             {/* Direct Action Link */}
             <div className="roi-cta-wrap">
-              <a
+              <motion.a
                 href="https://wa.me/923137525862?text=Hello%20Danial,%20I%20used%20your%20ROI%20Calculator%20and%20want%20to%20audit%20our%20workflow."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="roi-action-btn"
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.97 }}
               >
                 <span>Audit My Team's Workflow on WhatsApp</span>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
-              </a>
+              </motion.a>
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

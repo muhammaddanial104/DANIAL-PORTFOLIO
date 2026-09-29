@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -22,11 +23,11 @@ export default function Contact() {
       return;
     }
 
-    setStatus({ state: "loading", message: "Preparing your message..." });
+    setStatus({ state: "loading", message: "Preparing your inquiry..." });
 
     // Open WhatsApp with pre-filled message
     const waText = encodeURIComponent(
-      `*New Inquiry / Project Discussion*\nName: ${formData.name}\nContact: ${formData.contactInfo}\nScope: ${formData.service}\nDetails: ${formData.message}`
+      `*New Project Inquiry / Engineering Discussion*\nName: ${formData.name}\nContact: ${formData.contactInfo}\nScope: ${formData.service}\nDetails: ${formData.message}`
     );
     const waUrl = `https://wa.me/923137525862?text=${waText}`;
 
@@ -37,7 +38,7 @@ export default function Contact() {
       });
       window.open(waUrl, "_blank");
       setFormData({ name: "", contactInfo: "", service: "Full-Stack Web App & AI Automation", message: "" });
-    }, 900);
+    }, 800);
   };
 
   const copyEmail = () => {
@@ -48,29 +49,45 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section-container contact-section">
-      {/* Contact Section Header (Section 6 from Report) */}
-      <div className="section-header text-center-header">
+      {/* Contact Section Header */}
+      <motion.div
+        className="section-header text-center-header"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className="section-badge">
           <span className="badge-num">07</span>
           <span className="badge-sep">|</span>
-          <span className="badge-title">Contact &amp; Collaboration</span>
+          <span className="badge-title">Direct Collaboration</span>
         </div>
         <h2 className="section-main-heading final-cta-heading">
-          LET'S WORK <span className="gradient-text">TOGETHER</span>
+          LET'S BUILD <span className="gradient-text">SOMETHING EXCEPTIONAL</span>
         </h2>
         <p className="final-cta-subheading">
-          Have a project in mind, an automation bottleneck, or an open engineering role?
+          Have an ambitious web platform in mind, an automation bottleneck, or an open engineering role?
         </p>
         <p className="final-cta-punchline">
-          <strong>Show me the problem. I’ll show you what can be automated and built.</strong>
+          <strong>Show me the problem. I’ll design, build, and deliver the automated software solution.</strong>
         </p>
-      </div>
+      </motion.div>
 
       <div className="contact-grid">
         {/* Left Column: Direct Channels & Social Proof */}
-        <div className="contact-info-col">
+        <motion.div
+          className="contact-info-col"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        >
           {/* Danial Full-Stack & AI Builder Identity Card */}
-          <div className="contact-profile-card">
+          <motion.div
+            className="contact-profile-card"
+            whileHover={{ y: -3 }}
+            transition={{ duration: 0.2 }}
+          >
             <div className="profile-avatar-box">
               <img
                 src="/images/danial.jpg"
@@ -84,18 +101,22 @@ export default function Contact() {
                 <h3 className="profile-name">Muhammad Danial</h3>
                 <span className="profile-check-tag">✓ Verified</span>
               </div>
-              <p className="profile-role-title">Full-Stack Developer &amp; AI Automation Engineer</p>
+              <p className="profile-role-title">Full-Stack Software Engineer &amp; AI Automation Architect</p>
               <div className="profile-meta-pills">
                 <span className="profile-pill pill-degree">🎓 Robotics Degree</span>
                 <span className="profile-pill pill-intern">💼 6-Mo ITS Gujrat</span>
                 <span className="profile-pill pill-status">● Open for Work</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           <div className="contact-methods-stack">
             {/* WhatsApp Card */}
-            <div className="contact-method-card featured-method">
+            <motion.div
+              className="contact-method-card featured-method"
+              whileHover={{ y: -3, x: 3 }}
+              transition={{ duration: 0.2 }}
+            >
               <div className="method-main-row">
                 <div className="method-icon-box icon-green">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -122,10 +143,14 @@ export default function Contact() {
               >
                 Chat on WhatsApp ↗
               </a>
-            </div>
+            </motion.div>
 
             {/* Email Card */}
-            <div className="contact-method-card">
+            <motion.div
+              className="contact-method-card"
+              whileHover={{ y: -3, x: 3 }}
+              transition={{ duration: 0.2 }}
+            >
               <div className="method-main-row">
                 <div className="method-icon-box icon-cyan">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -143,61 +168,37 @@ export default function Contact() {
               <button
                 type="button"
                 onClick={copyEmail}
-                className="method-action-btn"
-                title="Copy Email Address"
+                className="method-action-btn copy-btn"
               >
-                {copiedEmail ? "✓ Copied to Clipboard" : "Copy Email"}
+                {copiedEmail ? "✓ Copied!" : "Copy Address"}
               </button>
-            </div>
+            </motion.div>
 
-            {/* Request Resume / CV Card */}
-            <div className="contact-method-card">
+            {/* Location & Timezone Card */}
+            <motion.div
+              className="contact-method-card"
+              whileHover={{ y: -3, x: 3 }}
+              transition={{ duration: 0.2 }}
+            >
               <div className="method-main-row">
                 <div className="method-icon-box icon-purple">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                    <polyline points="10 9 9 9 8 9"></polyline>
-                  </svg>
-                </div>
-                <div className="method-details">
-                  <span className="method-label">Recruiter &amp; Hiring</span>
-                  <span className="method-value">Resume / CV Available</span>
-                </div>
-              </div>
-              <a
-                href="https://wa.me/923137525862?text=Hello%20Danial,%20please%20share%20your%20updated%20Resume/CV."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="method-action-btn"
-              >
-                Request CV ↗
-              </a>
-            </div>
-
-            {/* Location Card */}
-            <div className="contact-method-card">
-              <div className="method-main-row">
-                <div className="method-icon-box icon-cyan">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
                   </svg>
                 </div>
                 <div className="method-details">
-                  <span className="method-label">Location &amp; Timezone</span>
+                  <span className="method-label">Base Location &amp; Remote</span>
                   <span className="method-value">Gujrat, Pakistan (PKT / UTC+5)</span>
                 </div>
               </div>
-              <span className="timezone-tag">Flexible overlap US/EU</span>
-            </div>
+              <span className="timezone-tag">Available for Worldwide Remote Work</span>
+            </motion.div>
           </div>
 
-          {/* Social Proof Row */}
+          {/* Social Profiles Shelf */}
           <div className="contact-social-wrap">
-            <span className="social-wrap-title">Verified Profiles:</span>
+            <span className="social-wrap-title">Professional Profiles &amp; Socials:</span>
             <div className="contact-social-icons">
               <a
                 href="https://github.com/muhammaddanial104"
@@ -239,17 +240,35 @@ export default function Contact() {
                   <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                 </svg>
               </a>
+
+              <a
+                href="mailto:innocentdanial00@gmail.com"
+                className="contact-soc-btn"
+                title="Email"
+                aria-label="Email"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </a>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Column: Low Friction Form */}
-        <div className="contact-form-col">
+        <motion.div
+          className="contact-form-col"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        >
           <form className="contact-glass-form" onSubmit={handleSubmit}>
             <div className="form-glow-top"></div>
 
-            <h3 className="form-heading">Start a Project / Inquiry</h3>
-            <p className="form-subheading">Tell me about your goal or project requirement.</p>
+            <h3 className="form-heading">Start a Project / Collaboration</h3>
+            <p className="form-subheading">Tell me about your vision, technical requirements, or workflow bottlenecks.</p>
 
             {status.message && (
               <div className={`form-alert ${status.state}`}>
@@ -300,7 +319,7 @@ export default function Contact() {
                 onChange={handleChange}
                 className="form-select"
               >
-                <option value="Full-Stack Web App & AI Automation">Full-Stack Web Application (React / MERN)</option>
+                <option value="Full-Stack Web App & AI Automation">Full-Stack Web Application (React / Next.js / MERN)</option>
                 <option value="Autonomous AI Agent & Tool Calling">Autonomous AI Multi-Agent System</option>
                 <option value="Business Workflow & Process Automation">Business Process &amp; API Automation</option>
                 <option value="Full-Time / Contract Engineering Hire">Engineering Role / Freelance Contract</option>
@@ -323,19 +342,21 @@ export default function Contact() {
               ></textarea>
             </div>
 
-            <button
+            <motion.button
               type="submit"
               disabled={status.state === "loading"}
               className="form-submit-btn"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <span>{status.state === "loading" ? "Preparing..." : "Let's Work Together"}</span>
+              <span>{status.state === "loading" ? "Preparing..." : "Send Message & Connect"}</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
-            </button>
+            </motion.button>
           </form>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

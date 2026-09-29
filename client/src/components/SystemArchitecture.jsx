@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function SystemArchitecture() {
   const [selectedNode, setSelectedNode] = useState(2); // Default to AI Agent
@@ -120,41 +121,61 @@ export default function SystemArchitecture() {
   return (
     <section id="architecture" className="section-container arch-section">
       {/* Section Header */}
-      <div className="section-header">
+      <motion.div
+        className="section-header"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className="section-badge">
-          <span className="badge-num">09</span>
+          <span className="badge-num">06</span>
           <span className="badge-sep">|</span>
-          <span className="badge-title">Engineering Depth</span>
+          <span className="badge-title">Engineering Rigor</span>
         </div>
         <h2 className="section-main-heading">
-          How I Build <span className="gradient-text">AI Systems</span>
+          ENTERPRISE ARCHITECTURE &amp; <span className="gradient-text">SYSTEM DESIGN</span>
         </h2>
         <p className="section-subtitle">
-          An interactive walkthrough of the end-to-end multi-agent pipeline: from initial user message to autonomous tool execution and database sync.
+          An interactive walkthrough of my fault-tolerant multi-agent pipeline: from edge ingestion to semantic reasoning, tool execution, and state persistence.
         </p>
-      </div>
+      </motion.div>
 
-      <div className="arch-interactive-card">
+      <motion.div
+        className="arch-interactive-card"
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className="arch-glow-bg"></div>
 
         {/* Pipeline Steps Tabs */}
         <div className="arch-nodes-tabs-row">
           {nodes.map((node) => (
-            <button
+            <motion.button
               key={node.id}
               onClick={() => setSelectedNode(node.id)}
               className={`arch-node-tab-btn ${selectedNode === node.id ? "active" : ""}`}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
             >
               <span className="tab-dot"></span>
               <span>{node.shortTitle}</span>
-            </button>
+            </motion.button>
           ))}
         </div>
 
         {/* Selected Node Details Inspector */}
         <div className="arch-inspector-grid">
           {/* Left Details */}
-          <div className="arch-details-col">
+          <motion.div
+            key={selectedNode}
+            className="arch-details-col"
+            initial={{ opacity: 0, x: -12 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.28 }}
+          >
             <div className="arch-details-header">
               <span className="node-stage-badge">{current.badge}</span>
               <h3 className="node-stage-title">{current.title}</h3>
@@ -166,18 +187,24 @@ export default function SystemArchitecture() {
             </div>
 
             <div className="arch-info-block">
-              <span className="arch-block-lbl">Technologies & Protocols:</span>
+              <span className="arch-block-lbl">Technologies &amp; Protocols:</span>
               <p className="arch-block-val text-cyan font-semibold">{current.tech}</p>
             </div>
 
             <div className="arch-info-block">
-              <span className="arch-block-lbl">Security & Reliability Guardrails:</span>
+              <span className="arch-block-lbl">Security &amp; Reliability Guardrails:</span>
               <p className="arch-block-val text-emerald-400 font-medium">🛡️ {current.guardrails}</p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Live JSON Payload Telemetry */}
-          <div className="arch-telemetry-col">
+          <motion.div
+            key={selectedNode + "-code"}
+            className="arch-telemetry-col"
+            initial={{ opacity: 0, x: 12 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.28 }}
+          >
             <div className="code-editor-header">
               <div className="code-dots">
                 <span className="c-dot red"></span>
@@ -190,9 +217,9 @@ export default function SystemArchitecture() {
             <pre className="code-payload-view">
               <code>{current.payload}</code>
             </pre>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

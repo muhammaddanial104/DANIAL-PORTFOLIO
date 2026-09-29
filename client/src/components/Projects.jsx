@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const AEGIS_FEATURES = [
   { name: "Threat Detection",       icon: "🛡️" },
@@ -51,24 +52,36 @@ export default function Projects() {
   return (
     <section id="projects" className="section-container projects-section">
       {/* Section Header */}
-      <div className="section-header">
+      <motion.div
+        className="section-header"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className="section-badge">
           <span className="badge-num">04</span>
           <span className="badge-sep">|</span>
-          <span className="badge-title">Featured Projects</span>
+          <span className="badge-title">Featured Work</span>
         </div>
         <h2 className="section-main-heading">
-          FEATURED PROJECTS &amp; <span className="gradient-text">VERIFIED PROOF</span>
+          FLAGSHIP PROJECTS &amp; <span className="gradient-text">ENGINEERING PROOF</span>
         </h2>
         <p className="section-subtitle">
-          Real problem statements, measurable engineering contributions, and verifiable implementations.
+          Real-world software architectures featuring verified problem statements, clear personal contributions, and production-tested code.
         </p>
-      </div>
+      </motion.div>
 
       {/* ══════════════════════════════════════════════════════════════
           FLAGSHIP 1: AEGIS-AI
           ══════════════════════════════════════════════════════════════ */}
-      <div className="flagship-project-card aegis-card">
+      <motion.div
+        className="flagship-project-card aegis-card"
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className="flagship-top-meta">
           <div className="meta-badge-group">
             <span className="star-tag">★ KEY FEATURED PROJECT</span>
@@ -184,12 +197,18 @@ export default function Projects() {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* ══════════════════════════════════════════════════════════════
           FLAGSHIP 2: AUTO-DEV AI 💻
           ══════════════════════════════════════════════════════════════ */}
-      <div className="flagship-project-card autodev-card">
+      <motion.div
+        className="flagship-project-card autodev-card"
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className="flagship-top-meta">
           <div className="meta-badge-group">
             <span className="star-tag">★ KEY FEATURED PROJECT</span>
@@ -305,12 +324,18 @@ export default function Projects() {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* ══════════════════════════════════════════════════════════════
           FLAGSHIP 3: NOVA AI 🤖 (Clearly marked Private/Beta per Report)
           ══════════════════════════════════════════════════════════════ */}
-      <div className="flagship-project-card nova-card">
+      <motion.div
+        className="flagship-project-card nova-card"
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className="flagship-top-meta">
           <div className="meta-badge-group">
             <span className="star-tag">★ AGENTIC SYSTEM</span>
@@ -425,12 +450,18 @@ export default function Projects() {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* ══════════════════════════════════════════════════════════════
           PROJECT 4: E-COMMERCE PLATFORMS (ITS Gujrat Client Work)
           ══════════════════════════════════════════════════════════════ */}
-      <div className="ecommerce-showcase-card">
+      <motion.div
+        className="ecommerce-showcase-card"
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className="flagship-top-meta">
           <div className="meta-badge-group">
             <span className="star-tag" style={{ color: "#38bdf8", borderColor: "rgba(56, 189, 248, 0.4)", background: "rgba(56, 189, 248, 0.12)" }}>
@@ -519,112 +550,125 @@ export default function Projects() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* ══════════════════════════════════════════════════════════════
           INTERACTIVE CASE STUDY MODAL DIALOG
           ══════════════════════════════════════════════════════════════ */}
-      {selectedModal && (
-        <div className="project-modal-overlay" onClick={() => setSelectedModal(null)}>
-          <div
-            className="project-modal-dialog"
-            onClick={(e) => e.stopPropagation()}
-            role="dialog"
-            aria-modal="true"
+      <AnimatePresence>
+        {selectedModal && (
+          <motion.div
+            className="project-modal-overlay"
+            onClick={() => setSelectedModal(null)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22 }}
           >
-            {/* Header */}
-            <div className="modal-header-row">
-              <div>
-                <span className="modal-badge">{selectedModal.badge}</span>
-                <h3 className="modal-title">{selectedModal.title}</h3>
-              </div>
-              <button
-                className="modal-close-btn"
-                onClick={() => setSelectedModal(null)}
-                aria-label="Close dialog"
-              >
-                ✕
-              </button>
-            </div>
-
-            {/* Modal Body */}
-            <div className="modal-body-content">
-              {selectedModal.image && (
-                <div className="modal-img-wrap">
-                  <img
-                    src={selectedModal.image}
-                    alt={selectedModal.title}
-                    className="modal-banner-img"
-                  />
+            <motion.div
+              className="project-modal-dialog"
+              onClick={(e) => e.stopPropagation()}
+              role="dialog"
+              aria-modal="true"
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 20 }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {/* Header */}
+              <div className="modal-header-row">
+                <div>
+                  <span className="modal-badge">{selectedModal.badge}</span>
+                  <h3 className="modal-title">{selectedModal.title}</h3>
                 </div>
-              )}
-
-              <div className="modal-section-block">
-                <h4 className="modal-section-heading">🎯 Problem Statement</h4>
-                <p className="modal-section-p">{selectedModal.problem}</p>
+                <button
+                  className="modal-close-btn"
+                  onClick={() => setSelectedModal(null)}
+                  aria-label="Close dialog"
+                >
+                  ✕
+                </button>
               </div>
 
-              <div className="modal-section-block">
-                <h4 className="modal-section-heading">💡 Solution Engineered</h4>
-                <p className="modal-section-p">{selectedModal.solution}</p>
-              </div>
+              {/* Modal Body */}
+              <div className="modal-body-content">
+                {selectedModal.image && (
+                  <div className="modal-img-wrap">
+                    <img
+                      src={selectedModal.image}
+                      alt={selectedModal.title}
+                      className="modal-banner-img"
+                    />
+                  </div>
+                )}
 
-              {selectedModal.contribution && (
                 <div className="modal-section-block">
-                  <h4 className="modal-section-heading">🛠️ Key Personal Contributions</h4>
-                  <ul className="modal-bullets-list">
-                    {selectedModal.contribution.map((item, i) => (
-                      <li key={i}>{item}</li>
+                  <h4 className="modal-section-heading">🎯 Problem Statement</h4>
+                  <p className="modal-section-p">{selectedModal.problem}</p>
+                </div>
+
+                <div className="modal-section-block">
+                  <h4 className="modal-section-heading">💡 Solution Engineered</h4>
+                  <p className="modal-section-p">{selectedModal.solution}</p>
+                </div>
+
+                {selectedModal.contribution && (
+                  <div className="modal-section-block">
+                    <h4 className="modal-section-heading">🛠️ Key Personal Contributions</h4>
+                    <ul className="modal-bullets-list">
+                      {selectedModal.contribution.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                <div className="modal-section-block">
+                  <h4 className="modal-section-heading">🔄 Execution Architecture Flow</h4>
+                  <div className="modal-flow-box">{selectedModal.flow}</div>
+                </div>
+
+                <div className="modal-section-block">
+                  <h4 className="modal-section-heading">⚡ Verified Technologies</h4>
+                  <div className="modal-tech-pills">
+                    {selectedModal.tech.map((t) => (
+                      <span className="modal-tech-pill" key={t}>{t}</span>
                     ))}
-                  </ul>
+                  </div>
                 </div>
-              )}
 
-              <div className="modal-section-block">
-                <h4 className="modal-section-heading">🔄 Execution Architecture Flow</h4>
-                <div className="modal-flow-box">{selectedModal.flow}</div>
-              </div>
-
-              <div className="modal-section-block">
-                <h4 className="modal-section-heading">⚡ Verified Technologies</h4>
-                <div className="modal-tech-pills">
-                  {selectedModal.tech.map((t) => (
-                    <span className="modal-tech-pill" key={t}>{t}</span>
-                  ))}
+                <div className="modal-section-block">
+                  <h4 className="modal-section-heading">📊 Measurable Outcome / Result</h4>
+                  <p className="modal-section-result">{selectedModal.result}</p>
                 </div>
               </div>
 
-              <div className="modal-section-block">
-                <h4 className="modal-section-heading">📊 Measurable Outcome / Result</h4>
-                <p className="modal-section-result">{selectedModal.result}</p>
+              {/* Footer */}
+              <div className="modal-footer-row">
+                <a
+                  href={selectedModal.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-primary-glow"
+                >
+                  <span>View on GitHub</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+                <button
+                  className="btn-outline-glass"
+                  onClick={() => setSelectedModal(null)}
+                >
+                  Close
+                </button>
               </div>
-            </div>
-
-            {/* Footer */}
-            <div className="modal-footer-row">
-              <a
-                href={selectedModal.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-primary-glow"
-              >
-                <span>View on GitHub</span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </a>
-              <button
-                className="btn-outline-glass"
-                onClick={() => setSelectedModal(null)}
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
