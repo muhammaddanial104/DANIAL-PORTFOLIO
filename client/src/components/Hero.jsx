@@ -7,68 +7,62 @@ export default function Hero() {
   return (
     <section id="home" className="hero-section">
       <div className="hero-container">
-        {/* Left Column: Outcome-Focused Positioning */}
+        {/* Left Column: Clear Identity, Role & Immediate Value Proposition */}
         <div className="hero-content">
           {/* Greeting Badge */}
           <div className="hero-greeting-badge">
-            <span className="greeting-wave">⚡</span>
-            <span className="greeting-text">AI Agent Architect & Full-Stack Engineer</span>
+            <span className="greeting-wave">👋</span>
+            <span className="greeting-text">Hello, I'm</span>
           </div>
 
-          {/* Outcome Headline from Upgrade Plan */}
+          {/* Primary Name Headline */}
           <h1 className="hero-name">
-            <span className="hero-name-gradient">I Build AI Agents</span>
-            <span className="hero-headline-sub"> That Do the Work.</span>
+            <span className="hero-name-gradient">Muhammad Danial</span>
           </h1>
 
-          {/* Supporting Line */}
-          <div className="hero-supporting-line">
-            <span>AI Agents</span>
-            <span className="sup-dot">•</span>
-            <span>Business Automation</span>
-            <span className="sup-dot">•</span>
-            <span>Full-Stack Systems</span>
-            <span className="sup-dot">•</span>
-            <span>Intelligent Workflows</span>
+          {/* Professional Role Positioning (Section 2 & 7 from Report) */}
+          <div className="hero-role-title">
+            <span className="role-main">Full-Stack Developer</span>
+            <span className="role-divider">|</span>
+            <span className="role-sub">AI Automation Developer</span>
           </div>
+
+          {/* Short, Direct Value Proposition */}
+          <p className="hero-desc">
+            I build modern web applications, AI-powered workflows, and business automation systems that eliminate repetitive tasks and scale operations.
+          </p>
 
           {/* Degree & Verified Background Pill */}
           <div className="hero-pill-badge">
             <span className="pill-dot"></span>
-            <span className="pill-text">🎓 Bachelor in Robotics & 6-Month ITS Gujrat Internship</span>
+            <span className="pill-text">🎓 Bachelor in Robotics • 6-Month ITS Gujrat Internship</span>
           </div>
 
-          {/* Short Value Proposition */}
-          <p className="hero-desc">
-            I engineer autonomous AI multi-agents, high-throughput automation pipelines, and
-            production-grade full-stack software that eliminate repetitive human tasks and connect directly to your business databases and APIs.
-          </p>
-
-          {/* Primary Action Buttons from Upgrade Plan */}
+          {/* Clear Primary & Secondary CTAs (Section 2 from Report) */}
           <div className="hero-buttons">
             <button
-              onClick={() => scrollTo("ask-ai")}
+              onClick={() => scrollTo("projects")}
               className="hero-btn-primary"
             >
-              <span>Try My AI</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-              </svg>
-            </button>
-
-            <button
-              onClick={() => scrollTo("projects")}
-              className="hero-btn-secondary"
-            >
-              <span>View Real Projects</span>
+              <span>View Projects</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </button>
+
+            <button
+              onClick={() => scrollTo("contact")}
+              className="hero-btn-secondary"
+            >
+              <span>Let's Work Together</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+            </button>
           </div>
 
-          {/* Social Row */}
+          {/* Prominent Social Proof Links (Section 6 from Report) */}
           <div className="hero-social-row">
             <a
               href="https://github.com/muhammaddanial104"
@@ -133,17 +127,17 @@ export default function Hero() {
             <div className="hero-stat-divider"></div>
             <div className="hero-stat-item">
               <span className="hero-stat-number">10+</span>
-              <span className="hero-stat-label">AI & MERN Deployments</span>
+              <span className="hero-stat-label">Projects Completed</span>
             </div>
             <div className="hero-stat-divider"></div>
             <div className="hero-stat-item">
               <span className="hero-stat-number">100%</span>
-              <span className="hero-stat-label">Production Focus</span>
+              <span className="hero-stat-label">Commitment & Dedication</span>
             </div>
           </div>
         </div>
 
-        {/* Right Column: Celestial Planet Avatar & 4 System Badges */}
+        {/* Right Column: Clean, Refined Avatar Visual with Floating Badges */}
         <div className="hero-visual-col">
           <div className="hero-avatar-wrapper">
             <div className="cosmic-glow-halo halo-cyan"></div>
@@ -155,43 +149,43 @@ export default function Hero() {
             <div className="hero-planet-sphere">
               <img
                 src="/images/danial.jpg"
-                alt="Muhammad Danial - AI Agent Architect"
+                alt="Muhammad Danial - Full-Stack & AI Automation Developer"
                 className="hero-avatar-img"
               />
               <div className="planet-atmosphere-overlay"></div>
               <div className="planet-rim-light"></div>
             </div>
 
-            {/* 4 Floating Badges Matching System Capabilities */}
+            {/* 4 Clean Floating Tags */}
             <div className="hero-float-badge badge-top-right">
-              <span className="float-badge-icon">🤖</span>
-              <span className="float-badge-text">AI Agents</span>
-            </div>
-
-            <div className="hero-float-badge badge-mid-left">
-              <span className="float-badge-icon">⚡</span>
-              <span className="float-badge-text">Automation</span>
-            </div>
-
-            <div className="hero-float-badge badge-bottom-left">
               <span className="float-badge-icon">🌐</span>
               <span className="float-badge-text">Full-Stack MERN</span>
             </div>
 
+            <div className="hero-float-badge badge-mid-left">
+              <span className="float-badge-icon">🤖</span>
+              <span className="float-badge-text">AI Automation</span>
+            </div>
+
+            <div className="hero-float-badge badge-bottom-left">
+              <span className="float-badge-icon">⚙️</span>
+              <span className="float-badge-text">APIs &amp; Workflows</span>
+            </div>
+
             <div className="hero-float-badge badge-bottom-right">
-              <span className="float-badge-icon">🛡️</span>
-              <span className="float-badge-text">Cyber Defense</span>
+              <span className="float-badge-icon">🦾</span>
+              <span className="float-badge-text">Robotics Degree</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Scroll Down Indicator */}
-      <div className="hero-scroll-indicator" onClick={() => scrollTo("ask-ai")}>
+      <div className="hero-scroll-indicator" onClick={() => scrollTo("about")}>
         <div className="mouse-icon">
           <div className="mouse-wheel"></div>
         </div>
-        <span className="scroll-text">Explore AI Command Center</span>
+        <span className="scroll-text">Explore Background &amp; Projects</span>
       </div>
     </section>
   );

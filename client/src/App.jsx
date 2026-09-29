@@ -1,56 +1,52 @@
 import CosmicBackground from "./components/CosmicBackground";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
 import AskDanialAI from "./components/AskDanialAI";
 import WhatICanAutomate from "./components/WhatICanAutomate";
 import LiveAgentDemo from "./components/LiveAgentDemo";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import RoiCalculator from "./components/RoiCalculator";
 import SystemArchitecture from "./components/SystemArchitecture";
 import WhyWorkWithMe from "./components/WhyWorkWithMe";
+import RoiCalculator from "./components/RoiCalculator";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 export default function App() {
   return (
     <div className="cosmic-app-wrapper">
-      {/* 60FPS Twinkling Starfield Canvas */}
+      {/* Ambient Starfield Canvas */}
       <CosmicBackground />
 
-      {/* Fixed Navbar with "Start a Project" CTA */}
+      {/* Fixed Sticky Navbar */}
       <Navbar />
 
-      {/* Main Content Sections */}
+      {/* Main Page Flow per Professional Improvement Report */}
       <main className="main-content">
-        {/* 01 — Hero: "I Build AI Agents That Do the Work." */}
+        {/* 01 — HERO: Name + Role + Value Proposition + Primary CTAs */}
         <Hero />
 
-        {/* Live Interactive AI Demo */}
-        <AskDanialAI />
+        {/* 02 — ABOUT: Short Story, Degree & 6-Month ITS Gujrat Internship */}
+        <About />
 
-        {/* 8 High-Impact Business Automation Capabilities */}
-        <WhatICanAutomate />
-
-        {/* Complete 6-Step Autonomous Workflow Simulation */}
-        <LiveAgentDemo />
-
-        {/* 02 — TECH SKILLS (From Video: 5 Categories + Actual Tech Stack) */}
+        {/* 03 — SKILLS: Proven Skills by Category + Separated Currently Learning */}
         <Skills />
 
-        {/* 03 — FEATURED PROJECTS (From Video: AEGIS-AI, AUTO-DEV AI, NOVA AI, E-Commerce) */}
+        {/* 04 — FEATURED PROJECTS: 4 Projects with Problem Solved, Contribution & Proof */}
         <Projects />
 
-        {/* AI ROI Calculator with Transparent Assumptions */}
+        {/* 05 — AI / AUTOMATION: Interactive Command Center & Live Workflow Simulation */}
+        <AskDanialAI />
+        <WhatICanAutomate />
+        <LiveAgentDemo />
+
+        {/* 06 — PROCESS & RIGOR: Architecture, Why Work With Me & Transparent ROI */}
+        <SystemArchitecture />
+        <WhyWorkWithMe />
         <RoiCalculator />
 
-        {/* How I Build AI Systems: Interactive Multi-Agent Architecture */}
-        <SystemArchitecture />
-
-        {/* Why Work With Me: Engineering Rigor & Production Experience */}
-        <WhyWorkWithMe />
-
-        {/* Truthful Availability, Final CTA & Action Form */}
+        {/* 07 — CONTACT: Low-Friction Form, Direct WhatsApp, Email & Socials */}
         <Contact />
       </main>
 

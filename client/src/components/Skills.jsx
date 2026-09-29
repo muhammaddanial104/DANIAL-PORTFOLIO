@@ -1,86 +1,85 @@
 import { useEffect, useRef, useState } from "react";
 
-const CATEGORIES = [
+// ── PROVEN PRODUCTION SKILLS ──
+const PROVEN_CATEGORIES = [
   {
-    title: "AI & AGENTS",
+    title: "AI & AGENT ARCHITECTURE",
     icon: "🤖",
     color: "#a855f7",
+    badge: "PROVEN IN PROJECTS",
     skills: [
-      { name: "AI Agents",          pct: 92 },
-      { name: "LLM Integration",    pct: 90 },
-      { name: "Prompt Engineering", pct: 88 },
-      { name: "AI Automation",      pct: 86 },
+      { name: "Autonomous AI Agents",    pct: 92 },
+      { name: "LLM & OpenAI / Claude API", pct: 90 },
+      { name: "LangChain & Multi-Agents", pct: 88 },
+      { name: "Prompt Engineering & Tools", pct: 89 },
     ],
   },
   {
-    title: "DEVELOPMENT",
+    title: "CORE / PROVEN DEVELOPMENT",
     icon: "💻",
     color: "#22d3ee",
+    badge: "PRODUCTION & CLIENT WORK",
     skills: [
-      { name: "Python",             pct: 90 },
-      { name: "JavaScript",         pct: 86 },
-      { name: "React / Next.js",    pct: 88 },
-      { name: "Node.js",            pct: 85 },
+      { name: "React & Next.js",         pct: 88 },
+      { name: "JavaScript (ES6+) / TS",   pct: 86 },
+      { name: "Node.js & Express",        pct: 85 },
+      { name: "MongoDB & RESTful APIs",   pct: 88 },
     ],
   },
   {
-    title: "AUTOMATION",
+    title: "AUTOMATION & WORKFLOWS",
     icon: "⚙️",
     color: "#ec4899",
+    badge: "VERIFIED DEPLOYMENTS",
     skills: [
-      { name: "API Integration",     pct: 90 },
-      { name: "Browser Automation",  pct: 88 },
-      { name: "Workflow Automation", pct: 86 },
+      { name: "API & Webhook Integration", pct: 90 },
+      { name: "Browser Automation",       pct: 88 },
+      { name: "System & Workflow Pipelines", pct: 86 },
+      { name: "Python Scripting & FastAPI", pct: 89 },
     ],
   },
   {
-    title: "OTHER",
+    title: "TOOLING & DEPLOYMENT",
     icon: "🛠️",
     color: "#f59e0b",
+    badge: "DAILY WORKFLOW",
     skills: [
-      { name: "Git / GitHub",        pct: 88 },
-      { name: "SEO",                 pct: 85 },
-      { name: "Deployment",          pct: 82 },
-    ],
-  },
-  {
-    title: "ROBOTICS",
-    icon: "🦾",
-    color: "#10b981",
-    isComingSoon: true,
-    skills: [
-      { name: "Robotic Programming", comingSoon: true, pct: 60 },
-      { name: "ROS & ROS 2",         comingSoon: true, pct: 50 },
-      { name: "Embedded C / C++",     comingSoon: true, pct: 55 },
-      { name: "Autonomous Systems",  comingSoon: true, pct: 52 },
+      { name: "Git & GitHub CI/CD",      pct: 88 },
+      { name: "Docker Containerization", pct: 84 },
+      { name: "Vercel / Cloud Deployment", pct: 85 },
+      { name: "Performance & SEO",       pct: 82 },
     ],
   },
 ];
 
-const TECH_TAGS = [
-  "AI Agents",
-  "LLM Integration",
-  "Prompt Engineering",
-  "AI Automation",
-  "Python",
-  "JavaScript",
+// ── CURRENTLY LEARNING (Separated per Improvement Report) ──
+const LEARNING_SKILLS = [
+  { name: "ROS & ROS 2", desc: "Robot Operating System node architectures & publisher/subscriber topics", tag: "Academic Coursework" },
+  { name: "Embedded C / C++", desc: "Hardware firmware, registers, and sensor communication protocols", tag: "Lab Research" },
+  { name: "Autonomous Navigation", desc: "Kinematics, path planning algorithms, and basic SLAM concepts", tag: "Degree Focus" },
+  { name: "Microcontroller Systems", desc: "Interfacing actuators, ESP32/STM32, and hardware feedback loops", tag: "Hands-on Lab" },
+];
+
+const PROVEN_TECH_TAGS = [
   "React",
-  "Next.js",
   "Node.js",
-  "API Integration",
-  "Browser Automation",
-  "Workflow Automation",
-  "Git / GitHub",
-  "SEO",
-  "Deployment",
-  "FastAPI",
+  "Express.js",
   "MongoDB",
-  "Robotic Programming (Coming Soon)",
-  "ROS & ROS 2",
-  "Embedded C++",
+  "JavaScript ES6+",
+  "Python",
+  "FastAPI",
+  "LangChain",
+  "OpenAI GPT-4",
+  "Claude 3.5 Sonnet",
+  "REST APIs",
+  "Docker Sandboxes",
+  "Git & GitHub",
+  "Vercel",
+  "Tailwind CSS",
+  "Browser Automation",
 ];
 
-function SkillBar({ name, pct, color, comingSoon }) {
+function SkillBar({ name, pct, color }) {
   const [filled, setFilled] = useState(false);
   const itemRef = useRef(null);
 
@@ -98,25 +97,18 @@ function SkillBar({ name, pct, color, comingSoon }) {
     return () => ob.disconnect();
   }, []);
 
-  const barColor = comingSoon ? "#10b981" : color;
-
   return (
-    <div className={`skill-item ${comingSoon ? "item-coming-soon" : ""}`} ref={itemRef}>
+    <div className="skill-item" ref={itemRef}>
       <div className="skill-info">
-        <span className="skill-name">
-          {name}
-          {comingSoon && <span className="tag-soon">SOON</span>}
-        </span>
-        <span className="skill-pct" style={{ color: barColor }}>
-          {comingSoon ? "COMMENCING" : `${pct}%`}
-        </span>
+        <span className="skill-name">{name}</span>
+        <span className="skill-pct" style={{ color }}>{pct}%</span>
       </div>
       <div className="skill-bar-bg">
         <div
-          className={`skill-bar-fill ${comingSoon ? "fill-soon" : ""}`}
+          className="skill-bar-fill"
           style={{
-            backgroundColor: barColor,
-            boxShadow: `0 0 12px ${barColor}`,
+            backgroundColor: color,
+            boxShadow: `0 0 10px ${color}66`,
             width: filled ? `${pct}%` : "0%",
             transition: "width 1.2s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
@@ -132,33 +124,28 @@ export default function Skills() {
       {/* Section Header */}
       <div className="section-header">
         <div className="section-badge">
-          <span className="badge-num">02</span>
+          <span className="badge-num">03</span>
           <span className="badge-sep">|</span>
           <span className="badge-title">Tech Skills</span>
         </div>
         <h2 className="section-main-heading">
-          TECH <span className="gradient-text">SKILLS</span>
+          PROVEN SKILLS &amp; <span className="gradient-text">TECHNICAL CAPABILITIES</span>
         </h2>
         <p className="section-subtitle">
-          Core competencies across AI multi-agents, full-stack software development, automated systems, and robotics engineering.
+          Demonstrated competencies backed by real production code, client deliverables, and verifiable projects.
         </p>
       </div>
 
-      {/* 5 Category Cards Grid (Exact from Video) */}
-      <div className="skills-categories-grid">
-        {CATEGORIES.map((cat) => (
-          <div
-            className={`skill-category-card ${cat.isComingSoon ? "cat-coming-soon" : ""}`}
-            key={cat.title}
-          >
+      {/* 4 Proven Production Skill Cards Grid */}
+      <div className="skills-proven-grid">
+        {PROVEN_CATEGORIES.map((cat) => (
+          <div className="skill-category-card" key={cat.title}>
             <div className="skill-cat-header">
               <h3 className="skill-cat-title">
                 <span className="skill-cat-icon" style={{ color: cat.color }}>{cat.icon}</span>
                 <span>{cat.title}</span>
               </h3>
-              {cat.isComingSoon && (
-                <span className="cat-badge-soon">COMING SOON</span>
-              )}
+              <span className="cat-badge-proven">{cat.badge}</span>
             </div>
 
             <div className="skill-bars-stack">
@@ -168,7 +155,6 @@ export default function Skills() {
                   name={sk.name}
                   pct={sk.pct}
                   color={cat.color}
-                  comingSoon={sk.comingSoon}
                 />
               ))}
             </div>
@@ -178,23 +164,45 @@ export default function Skills() {
         ))}
       </div>
 
-      {/* ACTUAL TECH STACK (Exact from Video) */}
+      {/* ── SEPARATED: CURRENTLY LEARNING SECTION (Section 5 from Report) ── */}
+      <div className="currently-learning-card">
+        <div className="learning-header">
+          <div className="learning-title-group">
+            <span className="learning-badge-pill">🎓 ACADEMIC RESEARCH &amp; CURRENTLY LEARNING</span>
+            <h4 className="learning-heading">Robotics &amp; Embedded Systems Curriculum</h4>
+            <p className="learning-desc">
+              Part of my ongoing Bachelor in Robotics &amp; Autonomous Systems degree. Separated from my production-ready software stack to reflect truthful, verifiable expertise.
+            </p>
+          </div>
+        </div>
+
+        <div className="learning-items-grid">
+          {LEARNING_SKILLS.map((item) => (
+            <div className="learning-item-box" key={item.name}>
+              <div className="learning-item-top">
+                <span className="learning-item-name">{item.name}</span>
+                <span className="learning-item-tag">{item.tag}</span>
+              </div>
+              <p className="learning-item-desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── VERIFIED ACTUAL TECH STACK CHIPS ── */}
       <div className="actual-tech-container">
         <div className="actual-tech-card">
           <div className="actual-tech-header">
             <span className="actual-tech-icon">⚡</span>
             <div>
-              <h4 className="actual-tech-title">ACTUAL TECH STACK</h4>
-              <p className="actual-tech-sub">Core verified technologies &amp; frameworks</p>
+              <h4 className="actual-tech-title">VERIFIED TECH STACK</h4>
+              <p className="actual-tech-sub">Core technologies directly used across featured applications and client work</p>
             </div>
           </div>
 
           <div className="actual-tech-chips">
-            {TECH_TAGS.map((t, idx) => (
-              <span
-                key={idx}
-                className={`tech-pill ${t.includes("Coming Soon") ? "tech-pill-soon" : ""}`}
-              >
+            {PROVEN_TECH_TAGS.map((t, idx) => (
+              <span key={idx} className="tech-pill">
                 <span className="pill-dot" />
                 {t}
               </span>
