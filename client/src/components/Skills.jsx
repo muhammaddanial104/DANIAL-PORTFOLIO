@@ -1,299 +1,282 @@
-// ═══════════════════════════════════════════════════
-// COMPONENT: Skills.jsx — REDESIGNED TO MATCH REFERENCE IMAGE
-// Section 02: My Skills
-// - Glowing 3D Glass Pedestal Tech Icons (React, Next.js, Node.js, Express, MongoDB, Tailwind, Git, Python, JS, etc.)
-// - "Currently Learning" glass panel (Advanced MERN, System Design, Cyber Security, AI & Machine Learning, Robotics)
-// - Preserves all authentic skills categories and tech tags
-// ═══════════════════════════════════════════════════
 import { useState } from "react";
 
-// Top Showcase Tech Cards (Matches the 10 pedestal cards in reference image)
-const FEATURED_TECH = [
-  // Top Row (Primary Core)
-  {
-    name: "React",
-    role: "Frontend",
-    glow: "rgba(34, 211, 238, 0.4)",
-    borderColor: "rgba(34, 211, 238, 0.4)",
-    textColor: "#67e8f9",
-    icon: (
-      <svg viewBox="-11.5 -10.23174 23 20.46348" width="36" height="36" fill="none">
-        <circle cx="0" cy="0" r="2.05" fill="#67e8f9"/>
-        <g stroke="#67e8f9" strokeWidth="1" fill="none">
-          <ellipse rx="11" ry="4.2"/>
-          <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
-          <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
-        </g>
-      </svg>
-    ),
-  },
-  {
-    name: "Next.js",
-    role: "Full-Stack",
-    glow: "rgba(255, 255, 255, 0.3)",
-    borderColor: "rgba(255, 255, 255, 0.35)",
-    textColor: "#ffffff",
-    icon: (
-      <svg viewBox="0 0 180 180" width="36" height="36" fill="none">
-        <mask id="next-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="180" height="180" style={{ maskType: "alpha" }}>
-          <circle cx="90" cy="90" r="90" fill="black" />
-        </mask>
-        <g mask="url(#next-mask)">
-          <circle cx="90" cy="90" r="90" fill="#000000" stroke="#ffffff" strokeWidth="6" />
-          <path d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z" fill="url(#next-paint0)" />
-          <rect x="115" y="54" width="12" height="72" fill="url(#next-paint1)" />
-        </g>
-        <defs>
-          <linearGradient id="next-paint0" x1="109" y1="116.5" x2="144.5" y2="160.5" gradientUnits="userSpaceOnUse">
-            <stop stopColor="white" />
-            <stop offset="1" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient id="next-paint1" x1="121" y1="54" x2="120.799" y2="106.875" gradientUnits="userSpaceOnUse">
-            <stop stopColor="white" />
-            <stop offset="1" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-      </svg>
-    ),
-  },
-  {
-    name: "Node.js",
-    role: "Backend",
-    glow: "rgba(34, 197, 94, 0.4)",
-    borderColor: "rgba(34, 197, 94, 0.4)",
-    textColor: "#4ade80",
-    icon: (
-      <svg viewBox="0 0 32 32" width="36" height="36" fill="#4ade80">
-        <path d="M16 2.375L3.125 9.75v14.75L16 31.875l12.875-7.375V9.75L16 2.375zm-1.25 4.313l9.875 5.687-3.438 2-6.437-3.687v-4zm2.5 0v4l-6.438 3.687-3.437-2 9.875-5.687zm-11.875 8.125l3.438 2v7.375l-3.438-2v-7.375zm13.125 14.125l-9.875-5.688 3.438-2 6.437 3.688v4zm2.5 0v-4l6.438-3.688 3.437 2-9.875 5.688zm10.625-8.75l-3.438 2v-7.375l3.438-2v7.375z"/>
-      </svg>
-    ),
-  },
-  {
-    name: "Express.js",
-    role: "REST APIs",
-    glow: "rgba(168, 85, 247, 0.4)",
-    borderColor: "rgba(168, 85, 247, 0.4)",
-    textColor: "#c084fc",
-    icon: (
-      <svg viewBox="0 0 64 64" width="36" height="36" fill="none">
-        <rect width="64" height="64" rx="14" fill="#0f172a" stroke="rgba(168, 85, 247, 0.5)" strokeWidth="2"/>
-        <text x="32" y="42" textAnchor="middle" fill="#c084fc" fontFamily="'Rajdhani', sans-serif" fontWeight="800" fontSize="24">
-          EX
-        </text>
-      </svg>
-    ),
-  },
-
-  // Bottom Row (Ecosystem & Languages)
-  {
-    name: "MongoDB",
-    role: "Database",
-    glow: "rgba(16, 185, 129, 0.35)",
-    borderColor: "rgba(16, 185, 129, 0.35)",
-    textColor: "#34d399",
-    icon: (
-      <svg viewBox="0 0 24 24" width="32" height="32" fill="#34d399">
-        <path d="M12 0C11.5 3.5 6 9.5 6 15c0 3.5 2.5 6.5 6 9 3.5-2.5 6-5.5 6-9 0-5.5-5.5-11.5-6-15zm.2 21.8c-.1-.7-.2-1.3-.2-1.8 0-4.6 3.2-8.5 3.2-8.5s-1.8 4.2-1.8 7.3c0 1.2.4 2.1 1 2.8-.7.4-1.5.6-2.2.2z"/>
-      </svg>
-    ),
-  },
-  {
-    name: "Tailwind CSS",
-    role: "UI Styling",
-    glow: "rgba(56, 189, 248, 0.35)",
-    borderColor: "rgba(56, 189, 248, 0.35)",
-    textColor: "#38bdf8",
-    icon: (
-      <svg viewBox="0 0 24 24" width="32" height="32" fill="#38bdf8">
-        <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"/>
-      </svg>
-    ),
-  },
-  {
-    name: "Git & GitHub",
-    role: "DevOps",
-    glow: "rgba(244, 63, 94, 0.35)",
-    borderColor: "rgba(244, 63, 94, 0.35)",
-    textColor: "#fb7185",
-    icon: (
-      <svg viewBox="0 0 24 24" width="32" height="32" fill="#fb7185">
-        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-      </svg>
-    ),
-  },
-  {
-    name: "Python",
-    role: "AI & Agents",
-    glow: "rgba(59, 130, 246, 0.4)",
-    borderColor: "rgba(59, 130, 246, 0.4)",
-    textColor: "#60a5fa",
-    icon: (
-      <svg viewBox="0 0 24 24" width="32" height="32" fill="#60a5fa">
-        <path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.006 2.75h5.803v.825H3.92S0 5.77 0 11.902c0 6.134 3.42 5.92 3.42 5.92h2.043v-2.876s-.11-3.428 3.373-3.428h5.77s3.262.052 3.262-3.155V2.656S18.337 0 11.914 0zm-3.16 1.832c.575 0 1.042.467 1.042 1.042 0 .576-.467 1.043-1.042 1.043-.576 0-1.043-.467-1.043-1.043 0-.575.467-1.042 1.043-1.042zM12.086 24c6.094 0 5.714-2.656 5.714-2.656l-.006-2.75h-5.803v-.825h8.089s3.92.46 3.92-5.672c0-6.134-3.42-5.92-3.42-5.92h-2.043v2.876s.11 3.428-3.373 3.428h-5.77s-3.262-.052-3.262 3.155v5.717S5.663 24 12.086 24zm3.16-1.832c-.575 0-1.042-.467-1.042-1.042 0-.576.467-1.043 1.042-1.043.576 0 1.043.467 1.043 1.043 0 .575-.467 1.042-1.043 1.042z"/>
-      </svg>
-    ),
-  },
-  {
-    name: "JavaScript",
-    role: "Language",
-    glow: "rgba(234, 179, 8, 0.4)",
-    borderColor: "rgba(234, 179, 8, 0.4)",
-    textColor: "#facc15",
-    icon: (
-      <svg viewBox="0 0 24 24" width="32" height="32" fill="#facc15">
-        <path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.017-.892-1.819-2.073-2.311-.531-.227-1.043-.377-1.536-.453l-.337-.05c-.657-.099-.958-.273-.958-.568 0-.327.279-.589.782-.589.47 0 .861.189 1.156.558.175.22.378.367.625.367.336 0 .584-.251.584-.6 0-.361-.24-.654-.545-.889-.604-.467-1.397-.7-2.318-.7-1.42 0-2.392.837-2.392 2.052 0 .977.628 1.644 1.765 1.956.76.208 1.154.341 1.341.458.337.21.492.493.492.868 0 .546-.49.923-1.25.923-.748 0-1.272-.349-1.579-.974-.143-.294-.378-.444-.653-.444-.336 0-.584.24-.584.6 0 .428.329.837.799 1.158.749.513 1.706.779 2.766.779 1.634 0 2.673-.837 2.673-2.176zm-8.031-4.887h-1.61v5.929c0 .734-.347 1.09-1.04 1.09-.34 0-.623-.082-.821-.24-.2-.16-.367-.406-.367-.736 0-.36.241-.6.574-.6.182 0 .324.06.444.17.094.08.167.12.247.12.115 0 .193-.08.193-.284v-5.449h-1.61c-.347 0-.613-.267-.613-.613 0-.347.266-.614.613-.614h4.99c.347 0 .613.267.613.614 0 .346-.266.613-.613.613z"/>
-      </svg>
-    ),
-  },
-  {
-    name: "FastAPI",
-    role: "Backend AI",
-    glow: "rgba(20, 184, 166, 0.4)",
-    borderColor: "rgba(20, 184, 166, 0.4)",
-    textColor: "#2dd4bf",
-    icon: (
-      <svg viewBox="0 0 24 24" width="32" height="32" fill="#2dd4bf">
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-.835 4.148l5.24 7.02h-4.32l1.637 8.684-6.992-9.674h4.435z"/>
-      </svg>
-    ),
-  },
-];
-
-// Currently Learning Sidebar Items
-const CURRENTLY_LEARNING = [
-  { name: "Advanced MERN Architecture", progress: "95%", color: "#38bdf8" },
-  { name: "System Design & Microservices", progress: "88%", color: "#818cf8" },
-  { name: "Cyber Security & SOC Telemetry", progress: "85%", color: "#c084fc" },
-  { name: "AI Multi-Agent Swarms (LangGraph)", progress: "92%", color: "#ec4899" },
-  { name: "Bachelor in Robotics & ROS 2", progress: "Commencing", color: "#10b981", isRobotics: true },
-];
-
-// All verified tech tags
-const ALL_TECH_TAGS = [
-  "AI Agents", "LLM Integration", "Prompt Engineering", "Python",
-  "JavaScript", "React", "Next.js", "Node.js", "Express.js",
-  "MongoDB", "FastAPI", "Tailwind CSS", "Stripe API", "JWT Auth",
-  "Git & GitHub", "Docker", "Browser Automation", "Workflow Automation",
-  "Robotic Programming", "ROS & ROS 2", "Embedded C++"
-];
-
 export default function Skills() {
-  const [showAllTags, setShowAllTags] = useState(false);
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  const skillsData = [
+    {
+      id: "react",
+      name: "React",
+      category: "frontend",
+      role: "Frontend Library",
+      level: "95%",
+      color: "#00d8ff",
+      iconSvg: (
+        <svg viewBox="0 0 115.3 100" width="36" height="36" fill="currentColor">
+          <ellipse cx="57.65" cy="50" rx="16.5" ry="49.5" fill="none" stroke="#00d8ff" strokeWidth="4.5" transform="rotate(30 57.65 50)"/>
+          <ellipse cx="57.65" cy="50" rx="16.5" ry="49.5" fill="none" stroke="#00d8ff" strokeWidth="4.5" transform="rotate(90 57.65 50)"/>
+          <ellipse cx="57.65" cy="50" rx="16.5" ry="49.5" fill="none" stroke="#00d8ff" strokeWidth="4.5" transform="rotate(150 57.65 50)"/>
+          <circle cx="57.65" cy="50" r="9" fill="#00d8ff"/>
+        </svg>
+      ),
+    },
+    {
+      id: "nextjs",
+      name: "Next.js",
+      category: "frontend",
+      role: "Full Stack Framework",
+      level: "90%",
+      color: "#ffffff",
+      iconSvg: (
+        <svg viewBox="0 0 180 180" width="36" height="36" fill="none">
+          <circle cx="90" cy="90" r="85" fill="#000000" stroke="#38bdf8" strokeWidth="4"/>
+          <path d="M149.5 153.5L78.8 62H62v56h14.5V81.4l62.4 80.5c3.6-2.5 7.1-5.3 10.6-8.4z" fill="#ffffff"/>
+          <rect x="115" y="62" width="14" height="56" fill="#ffffff"/>
+        </svg>
+      ),
+    },
+    {
+      id: "nodejs",
+      name: "Node.js",
+      category: "backend",
+      role: "Backend Runtime",
+      level: "92%",
+      color: "#22c55e",
+      iconSvg: (
+        <svg viewBox="0 0 256 289" width="36" height="36" fill="#22c55e">
+          <path d="M128 0L6 70.4v148.1l122 70.5 122-70.5V70.4L128 0zm0 25.5l102.5 59.2v124.6L128 268.5 25.5 209.3V84.7L128 25.5z"/>
+          <path d="M128 65l60 34.6v69.3L128 203.5 68 168.9V99.6L128 65z"/>
+        </svg>
+      ),
+    },
+    {
+      id: "express",
+      name: "Express.js",
+      category: "backend",
+      role: "Web Framework",
+      level: "90%",
+      color: "#cbd5e1",
+      iconSvg: (
+        <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#cbd5e1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="4 17 10 11 4 5"></polyline>
+          <line x1="12" y1="19" x2="20" y2="19"></line>
+        </svg>
+      ),
+    },
+    {
+      id: "mongodb",
+      name: "MongoDB",
+      category: "database",
+      role: "NoSQL Database",
+      level: "88%",
+      color: "#10b981",
+      iconSvg: (
+        <svg viewBox="0 0 24 24" width="36" height="36" fill="#10b981">
+          <path d="M12 1.5C11.5 3 7 8 7 13.5c0 3.5 2.5 6.5 5 7.5 2.5-1 5-4 5-7.5C17 8 12.5 3 12 1.5zm.3 17.5v-15c1.8 1.8 3.5 4.8 3.5 8 0 2.5-1.5 5.5-3.5 7z"/>
+        </svg>
+      ),
+    },
+    {
+      id: "tailwind",
+      name: "Tailwind CSS",
+      category: "frontend",
+      role: "Modern Styling",
+      level: "96%",
+      color: "#38bdf8",
+      iconSvg: (
+        <svg viewBox="0 0 24 24" width="36" height="36" fill="#38bdf8">
+          <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/>
+        </svg>
+      ),
+    },
+    {
+      id: "git",
+      name: "Git & GitHub",
+      category: "tools",
+      role: "Version Control",
+      level: "94%",
+      color: "#f97316",
+      iconSvg: (
+        <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="6" y1="3" x2="6" y2="15"></line>
+          <circle cx="18" cy="6" r="3"></circle>
+          <circle cx="6" cy="18" r="3"></circle>
+          <path d="M18 9a9 9 0 0 1-9 9"></path>
+        </svg>
+      ),
+    },
+    {
+      id: "python",
+      name: "Python",
+      category: "ai",
+      role: "AI & Scripting",
+      level: "92%",
+      color: "#facc15",
+      iconSvg: (
+        <svg viewBox="0 0 24 24" width="36" height="36" fill="#facc15">
+          <path d="M11.922 0c-3.327 0-5.467.625-6.31 1.776-.783 1.07-.638 2.875-.638 4.398h6.948v.99H4.975C3.398 7.164 1.93 8.358 1.34 9.945c-.687 1.85-.708 3.864 0 5.76.623 1.684 2.148 2.827 3.635 2.827h1.996v-2.973c0-1.74 1.488-3.21 3.23-3.21h4.945V7.404c0-2.37-1.923-4.404-4.224-4.404zm-1.89 1.485c.548 0 .99.444.99.99 0 .55-.442.99-.99.99a.99.99 0 0 1-.99-.99c0-.546.442-.99.99-.99zM12.078 24c3.327 0 5.467-.625 6.31-1.776.783-1.07.638-2.875.638-4.398h-6.948v-.99h6.947c1.577 0 3.045-1.194 3.635-2.78.687-1.85.708-3.864 0-5.76-.623-1.685-2.148-2.828-3.635-2.828h-1.996v2.973c0 1.74-1.488 3.21-3.23 3.21H8.854v4.945c0 2.37 1.923 4.404 4.224 4.404zm1.89-1.485a.99.99 0 0 1-.99-.99c0-.55.442-.99.99-.99.548 0 .99.44.99.99 0 .546-.442.99-.99.99z"/>
+        </svg>
+      ),
+    },
+    {
+      id: "javascript",
+      name: "JavaScript",
+      category: "frontend",
+      role: "ES6+ Core",
+      level: "95%",
+      color: "#eab308",
+      iconSvg: (
+        <svg viewBox="0 0 24 24" width="36" height="36" fill="#eab308">
+          <path d="M3 3h18v18H3V3zm13.7 13.9c-.8.5-1.8.8-2.7.8-2.2 0-3.6-1.3-3.6-3.4 0-2.4 1.6-3.6 3.7-3.6.9 0 1.7.3 2.3.7l-.7 1.6c-.5-.3-1-.5-1.6-.5-1.1 0-1.8.7-1.8 1.8 0 1.1.7 1.8 1.8 1.8.6 0 1.2-.2 1.6-.4v-1.1h-1.8v-1.6h3.9v3.9zm-7.6-5.8h2.1v6h-2.1v-6z"/>
+        </svg>
+      ),
+    },
+    {
+      id: "fastapi",
+      name: "FastAPI",
+      category: "backend",
+      role: "High-Speed Python APIs",
+      level: "89%",
+      color: "#14b8a6",
+      iconSvg: (
+        <svg viewBox="0 0 24 24" width="36" height="36" fill="#14b8a6">
+          <path d="M12 0a12 12 0 1 0 12 12A12.013 12.013 0 0 0 12 0zm1.09 4.887a.75.75 0 0 1 .74.872l-.74 3.702h3.04a.75.75 0 0 1 .59 1.213l-6.52 8.441a.75.75 0 0 1-1.33-.659l.74-3.702H6.57a.75.75 0 0 1-.59-1.213l6.52-8.441a.75.75 0 0 1 .59-.213z"/>
+        </svg>
+      ),
+    },
+  ];
 
   return (
-    <section id="skills" className="section skills-section">
-      {/* Reference Category Tag */}
-      <div className="section-tag-row">
-        <span className="section-num-tag">02 | Skills</span>
-      </div>
-
-      {/* Header with Title and "View All Skills" button */}
-      <div className="skills-header-row">
+    <section id="skills" className="section-container skills-section">
+      {/* Section Header */}
+      <div className="section-header skills-header-flex">
         <div>
-          <h2 className="skills-main-title">
-            My <span className="accent-gradient">Skills</span>
+          <div className="section-badge">
+            <span className="badge-num">02</span>
+            <span className="badge-sep">|</span>
+            <span className="badge-title">Skills</span>
+          </div>
+          <h2 className="section-main-heading">
+            My <span className="gradient-text">Skills</span>
           </h2>
-          <p className="skills-subhead">
-            Technologies and tools I use to build fast, scalable, and modern applications.
+          <p className="section-subtitle">
+            Technologies and tools I use to bring ideas to life
           </p>
         </div>
 
-        <button
-          className="btn btn-outline skills-toggle-btn"
-          onClick={() => setShowAllTags(!showAllTags)}
+        <a
+          href="https://github.com/muhammaddanial104"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="view-all-skills-btn"
         >
-          {showAllTags ? "Hide Extra Tech" : "View All Skills"}
-        </button>
+          <span>View All on GitHub</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
       </div>
 
-      {/* Main Skills Showcase Grid */}
-      <div className="skills-showcase-layout">
-        {/* Left: 3D Glowing Glass Pedestal Tech Cards */}
-        <div className="skills-pedestal-grid">
-          {FEATURED_TECH.map((tech) => (
+      <div className="skills-layout-grid">
+        {/* Left Area: 10 3D Glass Pedestals */}
+        <div className="skills-pedestals-grid">
+          {skillsData.map((skill) => (
             <div
-              key={tech.name}
+              key={skill.id}
               className="tech-pedestal-card"
-              style={{
-                "--card-glow": tech.glow,
-                borderColor: tech.borderColor,
-              }}
+              style={{ "--tech-color": skill.color }}
             >
-              <div className="pedestal-top-glow" />
-              <div className="pedestal-icon-box">{tech.icon}</div>
-              <h3 className="pedestal-name" style={{ color: tech.textColor }}>
-                {tech.name}
-              </h3>
-              <span className="pedestal-role">{tech.role}</span>
-              <div className="pedestal-base-beam" />
+              {/* 3D Top Rim Glow */}
+              <div className="pedestal-top-glow"></div>
+
+              {/* Floating Tech Icon */}
+              <div className="pedestal-icon-box">
+                {skill.iconSvg}
+              </div>
+
+              {/* Pedestal Title & Role */}
+              <div className="pedestal-info">
+                <h3 className="pedestal-name">{skill.name}</h3>
+                <span className="pedestal-role">{skill.role}</span>
+              </div>
+
+              {/* Bottom 3D Bevel Slab */}
+              <div className="pedestal-bottom-slab">
+                <div className="pedestal-level-track">
+                  <div
+                    className="pedestal-level-fill"
+                    style={{ width: skill.level, backgroundColor: skill.color }}
+                  ></div>
+                </div>
+                <span className="pedestal-level-text">{skill.level}</span>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Right: "Currently Learning" Glass Card */}
-        <div className="skills-learning-card">
-          <div className="learning-card-header">
-            <span className="learning-icon">🚀</span>
-            <div>
-              <h3 className="learning-title">Currently Learning</h3>
-              <span className="learning-sub">Continuous Engineering Growth</span>
+        {/* Right Area: Currently Learning Panel + Astronaut Visual */}
+        <div className="skills-learning-col">
+          <div className="currently-learning-card">
+            <div className="learning-badge">
+              <span className="learning-dot"></span>
+              <span className="learning-title">Currently Mastering</span>
             </div>
-          </div>
 
-          <div className="learning-list">
-            {CURRENTLY_LEARNING.map((item) => (
-              <div className="learning-item" key={item.name}>
-                <div className="learning-meta">
-                  <span className="learning-name">
-                    {item.isRobotics && <span style={{ marginRight: "0.3rem" }}>🎓</span>}
-                    {item.name}
-                  </span>
-                  <span
-                    className="learning-val"
-                    style={{ color: item.color }}
-                  >
-                    {item.progress}
-                  </span>
-                </div>
-                <div className="learning-bar-track">
-                  <div
-                    className="learning-bar-fill"
-                    style={{
-                      backgroundColor: item.color,
-                      boxShadow: `0 0 10px ${item.color}`,
-                      width: item.progress === "Commencing" ? "65%" : item.progress,
-                    }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+            <h3 className="learning-heading">Next-Gen Tech Stack</h3>
 
-          {/* Inspirational Motto */}
-          <div className="learning-footer-quote">
-            <span className="quote-icon">“</span>
-            <p className="quote-text">
-              Better than yesterday. <br />
-              <span className="accent-gradient">That&apos;s the goal.</span>
-            </p>
+            <ul className="learning-list">
+              <li className="learning-item">
+                <span className="item-icon">🚀</span>
+                <div className="item-text">
+                  <strong>AI Multi-Agent Systems</strong>
+                  <p>Autonomous tool-calling, ReAct loops & orchestration</p>
+                </div>
+              </li>
+
+              <li className="learning-item">
+                <span className="item-icon">🛡️</span>
+                <div className="item-text">
+                  <strong>Cyber Security & Recon</strong>
+                  <p>Automated vulnerability scanning & security auditing</p>
+                </div>
+              </li>
+
+              <li className="learning-item">
+                <span className="item-icon">⚡</span>
+                <div className="item-text">
+                  <strong>High-Concurrency System Design</strong>
+                  <p>Distributed backends, Redis caching & microservices</p>
+                </div>
+              </li>
+
+              <li className="learning-item">
+                <span className="item-icon">🎓</span>
+                <div className="item-text">
+                  <strong>Bachelor in Robotics</strong>
+                  <p>Autonomous decision algorithms & embedded AI</p>
+                </div>
+              </li>
+            </ul>
+
+            {/* Quote */}
+            <div className="learning-quote">
+              <span className="quote-mark">“</span>
+              <p>Continuous learning is the minimum requirement for success in any field.</p>
+            </div>
+
+            {/* Astronaut Cosmic Graphic */}
+            <div className="skills-astronaut-box">
+              <img
+                src="/images/skills-astronaut.jpg"
+                alt="Cosmic Astronaut"
+                className="skills-astronaut-img"
+              />
+              <div className="astronaut-glow-overlay"></div>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Expandable All Tech Tags Cloud */}
-      {showAllTags && (
-        <div className="skills-all-tags-container">
-          <h4 className="all-tags-title">FULL TECHNICAL ARSENAL</h4>
-          <div className="all-tags-grid">
-            {ALL_TECH_TAGS.map((tag) => (
-              <span className="arsenal-pill" key={tag}>
-                <span className="pill-dot" />
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
     </section>
   );
 }

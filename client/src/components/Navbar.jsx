@@ -1,135 +1,154 @@
-// ═══════════════════════════════════════════════════
-// COMPONENT: Navbar.jsx — CLEAN & RESPONSIVE
-// ═══════════════════════════════════════════════════
 import { useState, useEffect } from "react";
-
-const LINKS = [
-  { id: "home",     label: "Home"     },
-  { id: "about",    label: "About"    },
-  { id: "projects", label: "Projects" },
-  { id: "skills",   label: "Skills"   },
-  { id: "services", label: "Services" },
-  { id: "contact",  label: "Contact"  },
-];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [active,   setActive]   = useState("home");
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const navLinks = [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Services", href: "#services" },
+    { name: "Contact", href: "#contact" },
+  ];
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 40);
-      [...LINKS].reverse().forEach(({ id }) => {
-        const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= 180) {
-          setActive(id);
-        }
-      });
-    };
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
 
-    const onResize = () => {
-      if (window.innerWidth >= 1024) {
-        setMenuOpen(false);
+      const sections = ["home", "about", "skills", "projects", "services", "contact"];
+      const scrollPos = window.scrollY + 200;
+
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            setActiveSection(section);
+            break;
+          }
+        }
       }
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onResize);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onResize);
-    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = id => {
-    setMenuOpen(false);
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
   return (
-    <>
-      <nav id="navbar" className={`${scrolled ? "scrolled" : ""} ${menuOpen ? "nav-open" : ""}`}>
-        {/* Brand / Logo */}
-        <div className="nav-logo" onClick={() => scrollTo("home")} role="button" tabIndex={0}>
-          <span className="logo-bracket">[</span>
-          <span className="logo-text">MD</span>
-          <span className="logo-bracket">]</span>
-          <span className="logo-name">Muhammad Danial</span>
-        </div>
-
-        {/* Desktop Navigation Links */}
-        <ul className="nav-links">
-          {LINKS.map(({ id, label }) => (
-            <li key={id}>
-              <button
-                className={`nav-link-btn ${active === id ? "active" : ""}`}
-                onClick={() => scrollTo(id)}
-              >
-                {label}
-                {active === id && <span className="nav-active-dot" />}
-              </button>
-            </li>
-          ))}
-        </ul>
-
-        {/* Right Section */}
-        <div className="nav-right">
-          <button className="nav-hire-btn" onClick={() => scrollTo("contact")}>
-            Hire Me ↗
-          </button>
-
-          {/* Mobile Hamburger Toggle */}
-          <button
-            className={`hamburger ${menuOpen ? "open" : ""}`}
-            onClick={() => setMenuOpen(prev => !prev)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile Drawer Overlay */}
-      {menuOpen && (
-        <div className="mobile-backdrop" onClick={() => setMenuOpen(false)} />
-      )}
-
-      {/* Mobile Menu Drawer */}
-      <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
-        <div className="mobile-menu-inner">
-          <div className="mobile-links-list">
-            {LINKS.map(({ id, label }, idx) => (
-              <button
-                key={id}
-                className={`mobile-link ${active === id ? "active" : ""}`}
-                onClick={() => scrollTo(id)}
-              >
-                <span className="mobile-link-num">0{idx + 1}</span>
-                <span className="mobile-link-text">{label}</span>
-                {active === id && <span className="mobile-link-dot" />}
-              </button>
-            ))}
+    <header className={`navbar-header ${scrolled ? "scrolled" : ""}`}>
+      <div className="navbar-container">
+        {/* Brand Logo */}
+        <a href="#home" onClick={(e) => handleNavClick(e, "#home")} className="navbar-brand">
+          <div className="brand-icon-box">
+            <span className="brand-letter">D</span>
           </div>
+          <div className="brand-text">
+            <span className="brand-name">Danial</span>
+            <span className="brand-dot"></span>
+          </div>
+        </a>
 
-          {/* Mobile Menu Footer CTA */}
-          <div className="mobile-menu-footer">
-            <button
-              className="btn btn-primary mobile-hire-btn"
-              onClick={() => scrollTo("contact")}
+        {/* Desktop Nav Links */}
+        <nav className="desktop-nav">
+          <ul className="nav-list">
+            {navLinks.map((link) => {
+              const id = link.href.replace("#", "");
+              const isActive = activeSection === id;
+              return (
+                <li key={link.name} className="nav-item">
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className={`nav-link ${isActive ? "active" : ""}`}
+                  >
+                    {link.name}
+                    {isActive && <span className="nav-active-pill" />}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        {/* Right CTA */}
+        <div className="navbar-right">
+          <a
+            href="https://wa.me/923137525862"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hire-me-btn"
+          >
+            <span>Hire Me</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+
+          {/* Mobile Menu Hamburger */}
+          <button
+            className={`mobile-toggle ${mobileMenuOpen ? "open" : ""}`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle navigation menu"
+          >
+            <span className="toggle-bar"></span>
+            <span className="toggle-bar"></span>
+            <span className="toggle-bar"></span>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Drawer Menu */}
+      <div className={`mobile-drawer ${mobileMenuOpen ? "open" : ""}`}>
+        <div className="mobile-drawer-content">
+          <ul className="mobile-nav-list">
+            {navLinks.map((link) => {
+              const id = link.href.replace("#", "");
+              const isActive = activeSection === id;
+              return (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className={`mobile-nav-link ${isActive ? "active" : ""}`}
+                  >
+                    <span>{link.name}</span>
+                    {isActive && <span className="mobile-active-dot" />}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className="mobile-drawer-footer">
+            <a
+              href="https://wa.me/923137525862"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mobile-hire-btn"
             >
-              <span className="btn-glow" />
-              Start a Project
-            </button>
+              <span>Hire Me (WhatsApp)</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
-    </>
+    </header>
   );
 }
