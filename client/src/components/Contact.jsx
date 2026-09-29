@@ -81,21 +81,23 @@ export default function Contact() {
           <div className="contact-methods-stack">
             {/* WhatsApp Card */}
             <div className="contact-method-card featured-method">
-              <div className="method-icon-box icon-green">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                </svg>
-              </div>
-              <div className="method-details">
-                <span className="method-label">Direct WhatsApp (Fastest Response)</span>
-                <a
-                  href="https://wa.me/923137525862"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="method-value"
-                >
-                  +92 313 7525862
-                </a>
+              <div className="method-main-row">
+                <div className="method-icon-box icon-green">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                  </svg>
+                </div>
+                <div className="method-details">
+                  <span className="method-label">Direct WhatsApp (Fastest)</span>
+                  <a
+                    href="https://wa.me/923137525862"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="method-value"
+                  >
+                    +92 313 7525862
+                  </a>
+                </div>
               </div>
               <a
                 href="https://wa.me/923137525862"
@@ -103,23 +105,25 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="method-action-btn"
               >
-                Chat ↗
+                Chat on WhatsApp ↗
               </a>
             </div>
 
             {/* Email Card */}
             <div className="contact-method-card">
-              <div className="method-icon-box icon-cyan">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-              </div>
-              <div className="method-details">
-                <span className="method-label">Direct Email</span>
-                <a href="mailto:innocentdanial00@gmail.com" className="method-value">
-                  innocentdanial00@gmail.com
-                </a>
+              <div className="method-main-row">
+                <div className="method-icon-box icon-cyan">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div className="method-details">
+                  <span className="method-label">Direct Email</span>
+                  <a href="mailto:innocentdanial00@gmail.com" className="method-value">
+                    innocentdanial00@gmail.com
+                  </a>
+                </div>
               </div>
               <button
                 type="button"
@@ -127,24 +131,26 @@ export default function Contact() {
                 className="method-action-btn"
                 title="Copy Email Address"
               >
-                {copiedEmail ? "✓ Copied" : "Copy"}
+                {copiedEmail ? "✓ Copied to Clipboard" : "Copy Email"}
               </button>
             </div>
 
             {/* Request Resume / CV Card */}
             <div className="contact-method-card">
-              <div className="method-icon-box icon-purple">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                  <polyline points="10 9 9 9 8 9"></polyline>
-                </svg>
-              </div>
-              <div className="method-details">
-                <span className="method-label">Recruiter &amp; Hiring</span>
-                <span className="method-value">Resume / CV Available on Request</span>
+              <div className="method-main-row">
+                <div className="method-icon-box icon-purple">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </div>
+                <div className="method-details">
+                  <span className="method-label">Recruiter &amp; Hiring</span>
+                  <span className="method-value">Resume / CV Available</span>
+                </div>
               </div>
               <a
                 href="https://wa.me/923137525862?text=Hello%20Danial,%20please%20share%20your%20updated%20Resume/CV."
@@ -158,21 +164,23 @@ export default function Contact() {
 
             {/* Location Card */}
             <div className="contact-method-card">
-              <div className="method-icon-box icon-cyan">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-              </div>
-              <div className="method-details">
-                <span className="method-label">Location &amp; Timezone</span>
-                <span className="method-value">Gujrat, Pakistan (PKT / UTC+5)</span>
+              <div className="method-main-row">
+                <div className="method-icon-box icon-cyan">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div className="method-details">
+                  <span className="method-label">Location &amp; Timezone</span>
+                  <span className="method-value">Gujrat, Pakistan (PKT / UTC+5)</span>
+                </div>
               </div>
               <span className="timezone-tag">Flexible overlap US/EU</span>
             </div>
           </div>
 
-          {/* Social Proof Row (GitHub & LinkedIn easy to find) */}
+          {/* Social Proof Row */}
           <div className="contact-social-wrap">
             <span className="social-wrap-title">Verified Profiles:</span>
             <div className="contact-social-icons">
@@ -220,7 +228,7 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Right Column: Low Friction Form (Section 6 from Report) */}
+        {/* Right Column: Low Friction Form */}
         <div className="contact-form-col">
           <form className="contact-glass-form" onSubmit={handleSubmit}>
             <div className="form-glow-top"></div>

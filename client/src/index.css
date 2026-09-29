@@ -2712,16 +2712,19 @@ body {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   gap: 34px;
   align-items: flex-start;
   width: 100%;
+  max-width: 100%;
 }
 
-.contact-info-col {
-  display: flex;
-  flex-direction: column;
+.contact-info-col,
+.contact-form-col {
+  min-width: 0;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .availability-card {
@@ -2733,6 +2736,9 @@ body {
   border: 1px solid rgba(34, 197, 94, 0.25);
   border-radius: 12px;
   margin-bottom: 18px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .status-indicator {
@@ -2751,8 +2757,25 @@ body {
   100% { transform: scale(1); opacity: 1; }
 }
 
-.availability-text strong { display: block; font-size: 0.88rem; color: #ffffff; }
-.availability-text span { font-size: 0.75rem; color: #86efac; }
+.availability-text {
+  min-width: 0;
+  flex: 1;
+}
+
+.availability-text strong {
+  display: block;
+  font-size: 0.88rem;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.availability-text span {
+  display: block;
+  font-size: 0.75rem;
+  color: #86efac;
+  line-height: 1.4;
+  word-break: break-word;
+}
 
 .contact-methods-stack {
   display: flex;
@@ -2760,12 +2783,14 @@ body {
   gap: 12px;
   margin-bottom: 20px;
   width: 100%;
+  max-width: 100%;
 }
 
 .contact-method-card {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  gap: 14px;
   padding: 14px 18px;
   background: var(--bg-card);
   border: 1px solid var(--border-glass);
@@ -2773,6 +2798,9 @@ body {
   backdrop-filter: blur(12px);
   transition: all var(--transition-fast);
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .featured-method {
@@ -2784,6 +2812,14 @@ body {
   border-color: var(--border-glass-hover);
   transform: translateX(3px);
   background: var(--bg-card-hover);
+}
+
+.method-main-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
 }
 
 .method-icon-box {
@@ -2812,6 +2848,8 @@ body {
   font-weight: 700;
   color: var(--text-dim);
   text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
 }
 
 .method-value {
@@ -2825,7 +2863,10 @@ body {
 }
 
 .method-action-btn {
-  padding: 5px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
   background: rgba(56, 189, 248, 0.1);
   border: 1px solid var(--border-glass);
   border-radius: 6px;
@@ -2836,6 +2877,7 @@ body {
   text-decoration: none;
   transition: all var(--transition-fast);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .method-action-btn:hover { background: var(--cyan-primary); color: #000000; }
@@ -2845,9 +2887,10 @@ body {
   font-weight: 600;
   color: #cbd5e1;
   background: rgba(255, 255, 255, 0.05);
-  padding: 3px 6px;
+  padding: 4px 8px;
   border-radius: 4px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .contact-social-wrap {
@@ -3334,8 +3377,38 @@ body {
   }
 
   /* Contact */
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
   .contact-glass-form {
     padding: 20px 14px;
+    border-radius: 14px;
+  }
+  .contact-method-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px 12px;
+    gap: 12px;
+  }
+  .method-main-row {
+    width: 100%;
+  }
+  .method-value {
+    white-space: normal;
+    word-break: break-word;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  .method-action-btn,
+  .timezone-tag {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    padding: 10px 14px;
+    font-size: 0.82rem;
+    border-radius: 8px;
   }
 
   /* Skills & Projects */
@@ -3468,5 +3541,29 @@ body {
   }
   .currently-learning-card {
     padding: 18px 14px;
+  }
+
+  /* Contact Small Phones */
+  .contact-grid {
+    gap: 18px;
+  }
+  .contact-glass-form {
+    padding: 16px 12px;
+    border-radius: 12px;
+  }
+  .form-input, .form-select, .form-textarea {
+    padding: 10px 12px;
+  }
+  .availability-card {
+    padding: 12px 14px;
+  }
+  .final-cta-heading {
+    font-size: 1.55rem;
+  }
+  .final-cta-subheading {
+    font-size: 0.85rem;
+  }
+  .final-cta-punchline {
+    font-size: 0.95rem;
   }
 }
