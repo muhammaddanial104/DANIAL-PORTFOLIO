@@ -1,104 +1,79 @@
 // ═══════════════════════════════════════════════════
-// COMPONENT: About.jsx — GENUINE, CRISP & PROFESSIONAL
-// Aligned with PDF Masterplan Sections 10 & 11:
-// - "Why Work With Me" (Focus on problem solving, automation & integration)
-// - "Availability & Capabilities" (Truthful Freelance, Contract, Remote, Full-time availability)
-// - 6-Month ITS Gujrat Internship + BS in Robotics (Coming Soon)
+// COMPONENT: About.jsx — REDESIGNED TO MATCH REFERENCE IMAGE
+// Section 01: About Me
+// Layout: Left content (Heading, Bio, Stats, CTAs, Experience, Availability)
+//         Right visual (Neon Glow Photo Frame + Signature + 4 Floating Tags: Code, Create, Automate, Innovate)
 // ═══════════════════════════════════════════════════
 
 export default function About() {
-  const scrollTo = id => {
+  const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section id="about" className="section about-section">
-      <div className="section-header">
-        <span className="section-num">02</span>
-        <h2 className="section-title">
-          ABOUT <span className="accent">ME</span>
-        </h2>
-        <div className="section-line" />
+      {/* Reference Category Tag */}
+      <div className="section-tag-row">
+        <span className="section-num-tag">01 | About Me</span>
       </div>
 
       <div className="about-grid">
-        {/* Photo Column */}
-        <div className="about-photo-col">
-          <div className="photo-frame">
-            <div className="pf-corner pf-tl" />
-            <div className="pf-corner pf-tr" />
-            <div className="pf-corner pf-bl" />
-            <div className="pf-corner pf-br" />
-            <img
-              src="/images/danial.jpg"
-              alt="Muhammad Danial"
-              className="profile-photo"
-              loading="lazy"
-            />
-            <div className="photo-scan" />
-          </div>
-
-          {/* Quick Pillars */}
-          <div className="about-pillars-list">
-            <div
-              className="about-pillar-tag"
-              style={{
-                borderColor: "rgba(16, 185, 129, 0.4)",
-                background: "rgba(16, 185, 129, 0.08)",
-              }}
-            >
-              <span className="pillar-icon">🎓</span>
-              <span className="pillar-title" style={{ color: "#10b981" }}>
-                Bachelor in Robotics
-              </span>
-            </div>
-            <div
-              className="about-pillar-tag"
-              style={{
-                borderColor: "rgba(34, 211, 238, 0.4)",
-                background: "rgba(34, 211, 238, 0.08)",
-              }}
-            >
-              <span className="pillar-icon">💼</span>
-              <span className="pillar-title" style={{ color: "#22d3ee" }}>
-                ITS Gujrat (6 Mo. Intern)
-              </span>
-            </div>
-            <div className="about-pillar-tag">
-              <span className="pillar-icon">🌐</span>
-              <span className="pillar-title">Full-Stack MERN</span>
-            </div>
-            <div className="about-pillar-tag">
-              <span className="pillar-icon">💻</span>
-              <span className="pillar-title">Modern Websites</span>
-            </div>
-            <div className="about-pillar-tag">
-              <span className="pillar-icon">🤖</span>
-              <span className="pillar-title">AI Agents</span>
-            </div>
-            <div className="about-pillar-tag">
-              <span className="pillar-icon">⚡</span>
-              <span className="pillar-title">Workflow Automation</span>
-            </div>
-            <div className="about-pillar-tag">
-              <span className="pillar-icon">🛡️</span>
-              <span className="pillar-title">Cyber Defense</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Info Column */}
+        {/* Left Column: Content */}
         <div className="about-info-col">
+          <h2 className="about-main-headline">
+            Turning Ideas into <br />
+            <span className="accent-gradient">Powerful Digital Solutions</span>
+          </h2>
+
           <p className="about-intro">
-            Hey, I&apos;m <span className="text-purple">Muhammad Danial</span> —
-            a Full-Stack Web Developer, Software Engineer &amp; AI Agent Developer based in Gujrat, Pakistan.
+            I&apos;m <span className="text-purple">Muhammad Danial</span> — a passionate Full-Stack Web Developer, Software Engineer &amp; AI Agent Developer based in Gujrat, Pakistan.
           </p>
 
           <p className="about-body">
             I build modern, high-performance web applications, high-converting business websites, and autonomous AI agents that do the real work. With 6 months of hands-on software engineering experience at ITS Gujrat building production MERN e-commerce platforms, I bridge cutting-edge frontend UI/UX, robust Node/Express/Python backends, and intelligent AI automation workflows.
           </p>
 
-          {/* PDF Section 10: WHY WORK WITH ME */}
+          {/* Reference Stats Row */}
+          <div className="about-stats-row">
+            <div className="about-stat-item">
+              <span className="about-stat-num">2+</span>
+              <span className="about-stat-label">Years Experience</span>
+            </div>
+            <div className="about-stat-item">
+              <span className="about-stat-num">10+</span>
+              <span className="about-stat-label">Projects Completed</span>
+            </div>
+            <div className="about-stat-item">
+              <span className="about-stat-num">100%</span>
+              <span className="about-stat-label">Dedication</span>
+            </div>
+          </div>
+
+          {/* Buttons Row */}
+          <div className="about-actions-row">
+            <button
+              className="btn btn-primary"
+              onClick={() => scrollTo("contact")}
+            >
+              <span className="btn-glow" />
+              Discuss a Project →
+            </button>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-outline about-resume-btn"
+              onClick={(e) => {
+                // If resume doesn't exist, scroll to contact
+                e.preventDefault();
+                scrollTo("contact");
+              }}
+            >
+              <span>Download Resume 📥</span>
+            </a>
+          </div>
+
+          {/* WHY WORK WITH ME (Refined Glassmorphic Card) */}
           <div className="why-work-card">
             <div className="why-work-header">
               <span className="why-work-icon">🎯</span>
@@ -141,7 +116,7 @@ export default function About() {
             </div>
           </div>
 
-          {/* Professional Experience Card: ITS GUJRAT 6-Month Internship */}
+          {/* Professional Experience Card: ITS GUJRAT */}
           <div className="about-exp-box" style={{ marginTop: "1.2rem" }}>
             <div className="exp-header">
               <div className="exp-meta-left">
@@ -170,7 +145,7 @@ export default function About() {
             </div>
           </div>
 
-          {/* PDF Section 11: AVAILABILITY & CAPABILITIES */}
+          {/* Current Availability */}
           <div className="availability-card" style={{ marginTop: "1.2rem" }}>
             <div className="avail-header">
               <span className="avail-pulse" />
@@ -207,15 +182,88 @@ export default function About() {
               </div>
             </div>
           </div>
+        </div>
 
-          <button
-            className="btn btn-primary"
-            onClick={() => scrollTo("contact")}
-            style={{ marginTop: "1.4rem" }}
-          >
-            <span className="btn-glow" />
-            Discuss a Project →
-          </button>
+        {/* Right Column: Reference Photo Frame + Floating Action Tags */}
+        <div className="about-photo-col">
+          <div className="about-photo-wrapper">
+            {/* Deep Cosmic Frame with Neon Glow */}
+            <div className="about-neon-frame">
+              <img
+                src="/images/danial.jpg"
+                alt="Muhammad Danial"
+                className="about-profile-img"
+                loading="lazy"
+              />
+              <div className="about-photo-overlay" />
+              
+              {/* Signature Overlay at bottom right */}
+              <div className="about-signature-wrap">
+                <span className="about-signature-text">Danial</span>
+                <span className="about-signature-sub">Full Stack Developer</span>
+              </div>
+            </div>
+
+            {/* 4 Floating Tags from Reference Image: Code, Create, Automate, Innovate */}
+            <div className="about-floating-action-tags">
+              <div className="about-action-tag at-1">
+                <span className="at-icon">💻</span>
+                <span className="at-text">Code</span>
+              </div>
+              <div className="about-action-tag at-2">
+                <span className="at-icon">✨</span>
+                <span className="at-text">Create</span>
+              </div>
+              <div className="about-action-tag at-3">
+                <span className="at-icon">⚡</span>
+                <span className="at-text">Automate</span>
+              </div>
+              <div className="about-action-tag at-4">
+                <span className="at-icon">💡</span>
+                <span className="at-text">Innovate</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Pillars (Below Photo) */}
+          <div className="about-pillars-list">
+            <div
+              className="about-pillar-tag"
+              style={{
+                borderColor: "rgba(16, 185, 129, 0.4)",
+                background: "rgba(16, 185, 129, 0.08)",
+              }}
+            >
+              <span className="pillar-icon">🎓</span>
+              <span className="pillar-title" style={{ color: "#10b981" }}>
+                Bachelor in Robotics
+              </span>
+            </div>
+            <div
+              className="about-pillar-tag"
+              style={{
+                borderColor: "rgba(34, 211, 238, 0.4)",
+                background: "rgba(34, 211, 238, 0.08)",
+              }}
+            >
+              <span className="pillar-icon">💼</span>
+              <span className="pillar-title" style={{ color: "#22d3ee" }}>
+                ITS Gujrat (6 Mo. Intern)
+              </span>
+            </div>
+            <div className="about-pillar-tag">
+              <span className="pillar-icon">🌐</span>
+              <span className="pillar-title">Full-Stack MERN</span>
+            </div>
+            <div className="about-pillar-tag">
+              <span className="pillar-icon">🤖</span>
+              <span className="pillar-title">AI Agents</span>
+            </div>
+            <div className="about-pillar-tag">
+              <span className="pillar-icon">🛡️</span>
+              <span className="pillar-title">Cyber Defense</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

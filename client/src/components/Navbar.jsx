@@ -5,8 +5,9 @@ import { useState, useEffect } from "react";
 
 const LINKS = [
   { id: "home",     label: "Home"     },
-  { id: "ai-lab",   label: "AI Lab"   },
+  { id: "about",    label: "About"    },
   { id: "projects", label: "Projects" },
+  { id: "skills",   label: "Skills"   },
   { id: "services", label: "Services" },
   { id: "contact",  label: "Contact"  },
 ];
@@ -78,7 +79,7 @@ export default function Navbar() {
         {/* Right Section */}
         <div className="nav-right">
           <button className="nav-hire-btn" onClick={() => scrollTo("contact")}>
-            Start a Project
+            Hire Me ↗
           </button>
 
           {/* Mobile Hamburger Toggle */}

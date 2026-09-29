@@ -91,22 +91,54 @@ const OTHER_PROJECTS = [
 
 export default function Projects() {
   const [selectedModal, setSelectedModal] = useState(null);
+  const [filter, setFilter] = useState("all");
 
   return (
     <section id="projects" className="section projects-section">
-      {/* Section Header */}
-      <div className="section-header">
-        <span className="section-num">03</span>
-        <h2 className="section-title">
-          PROJECT <span className="accent">CASE STUDIES</span>
-        </h2>
-        <div className="section-line" />
+      {/* Reference Category Tag */}
+      <div className="section-tag-row">
+        <span className="section-num-tag">03 | Projects</span>
       </div>
 
-      <p className="projects-subtitle">
-        Real systems engineered around concrete operational challenges. Structured by{" "}
-        <span className="text-cyan font-mono">Problem → Solution → Architecture → Result</span>.
-      </p>
+      {/* Header with Title and Filter Tabs (Reference Match) */}
+      <div className="projects-header-row">
+        <div>
+          <h2 className="projects-main-title">
+            Featured <span className="accent-gradient">Projects</span>
+          </h2>
+          <p className="projects-subtitle-text">
+            Here are some of my best projects. Each one was built with passion, problem-solving, and a focus on real-world impact.
+          </p>
+        </div>
+
+        {/* Filter Pills */}
+        <div className="projects-filter-pills">
+          <button
+            className={`proj-filter-btn ${filter === "all" ? "active" : ""}`}
+            onClick={() => setFilter("all")}
+          >
+            All
+          </button>
+          <button
+            className={`proj-filter-btn ${filter === "web" ? "active" : ""}`}
+            onClick={() => setFilter("web")}
+          >
+            Web Apps
+          </button>
+          <button
+            className={`proj-filter-btn ${filter === "ai" ? "active" : ""}`}
+            onClick={() => setFilter("ai")}
+          >
+            AI
+          </button>
+          <button
+            className={`proj-filter-btn ${filter === "fullstack" ? "active" : ""}`}
+            onClick={() => setFilter("fullstack")}
+          >
+            Full Stack
+          </button>
+        </div>
+      </div>
 
       {/* ══════════════════════════════════════════════════
           FLAGSHIP 1: NOVA AI 🤖 (Large Case-Study Treatment)

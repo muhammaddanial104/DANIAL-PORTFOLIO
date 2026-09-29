@@ -1,16 +1,15 @@
 // ═══════════════════════════════════════════════════
-// COMPONENT: Contact.jsx — FINAL CONVERSION CTA
-// Aligned with PDF Masterplan Section 10 & 12:
-// Headline: "YOUR NEXT AI SYSTEM COULD START HERE."
-// Subhead: "Have a repetitive process, AI idea, or business problem? Show me the problem. I'll show you what can be automated."
-// Primary CTA: "Start a Conversation"
+// COMPONENT: Contact.jsx — REDESIGNED TO MATCH REFERENCE IMAGE
+// Section 07: Contact ("Let's Work Together")
+// Left Column: Direct channels (Email, WhatsApp, Location: Gujrat, Pakistan)
+// Right Column: Clean glassmorphic contact form
 // ═══════════════════════════════════════════════════
 import { useState } from "react";
 
 const MAIL = "innocentdanial00@gmail.com";
 const GH_URL = "https://github.com/muhammaddanial104";
 const LI_URL = "https://www.linkedin.com/in/muhammad-danial-2584b4432";
-const WA_URL = "https://wa.me/923137525862?text=Hi%20Danial,%20I%20have%20a%20process%20I'd%20like%20to%20automate!";
+const WA_URL = "https://wa.me/923137525862?text=Hi%20Danial,%20I%20have%20a%20process%20or%20project%20I'd%20like%20to%20discuss!";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -79,153 +78,122 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section contact-section">
-      <div className="section-header">
-        <span className="section-num">06</span>
-        <h2 className="section-title">
-          START A <span className="accent">CONVERSATION</span>
-        </h2>
-        <div className="section-line" />
+      {/* Reference Category Tag */}
+      <div className="section-tag-row">
+        <span className="section-num-tag">07 | Contact</span>
       </div>
 
-      <div className="contact-container">
-        {/* PDF Section 10 & 12: EXACT MASTERPLAN CTA COPY */}
-        <div className="final-cta-banner">
-          <span className="cta-highlight-badge">⚡ LET&apos;S AUTOMATE YOUR WORKFLOW</span>
-          <h3 className="contact-main-heading">
-            YOUR NEXT AI SYSTEM <span className="accent">COULD START HERE.</span>
-          </h3>
-          <p className="contact-lead-text">
-            Have a repetitive process, AI idea, or business problem?
-            <br />
-            <strong className="text-white">
-              Show me the problem. I’ll show you what can be automated.
-            </strong>
-          </p>
-        </div>
+      <div className="contact-main-header">
+        <h2 className="contact-title-text">
+          Let&apos;s Work <span className="accent-gradient">Together</span>
+        </h2>
+        <p className="contact-subhead-text">
+          Have a project, collaboration or just want to say hi? I&apos;m always open to new opportunities.
+        </p>
+      </div>
 
-        {/* 4 Direct Channel Quick Buttons */}
-        <div className="contact-channels-grid">
-          <a
-            href={WA_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="channel-btn channel-wa"
-          >
-            <span className="channel-icon">💬</span>
-            <div className="channel-text-wrap">
-              <span className="channel-name">WhatsApp</span>
-              <span className="channel-sub">+92 313 7525862</span>
+      <div className="contact-grid-two-col">
+        {/* Left Column: Direct Info Cards (Matching Reference Layout) */}
+        <div className="contact-info-cards-col">
+          <a href={`mailto:${MAIL}`} className="contact-ref-card">
+            <div className="crc-icon-box">
+              <span>✉️</span>
+            </div>
+            <div className="crc-text-wrap">
+              <span className="crc-label">Email</span>
+              <span className="crc-val">{MAIL}</span>
             </div>
           </a>
 
-          <a href={`mailto:${MAIL}`} className="channel-btn channel-email">
-            <span className="channel-icon">✉️</span>
-            <div className="channel-text-wrap">
-              <span className="channel-name">Email Directly</span>
-              <span className="channel-sub">{MAIL}</span>
+          <a href={WA_URL} target="_blank" rel="noreferrer" className="contact-ref-card">
+            <div className="crc-icon-box crc-wa">
+              <span>💬</span>
+            </div>
+            <div className="crc-text-wrap">
+              <span className="crc-label">WhatsApp</span>
+              <span className="crc-val">+92 313 7525862</span>
             </div>
           </a>
 
-          <a
-            href={GH_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="channel-btn channel-gh"
-          >
-            <span className="channel-icon">🐙</span>
-            <div className="channel-text-wrap">
-              <span className="channel-name">GitHub</span>
-              <span className="channel-sub">muhammaddanial104</span>
+          <div className="contact-ref-card">
+            <div className="crc-icon-box crc-loc">
+              <span>📍</span>
             </div>
-          </a>
-
-          <a
-            href={LI_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="channel-btn channel-li"
-          >
-            <span className="channel-icon">💼</span>
-            <div className="channel-text-wrap">
-              <span className="channel-name">LinkedIn</span>
-              <span className="channel-sub">muhammad-danial</span>
+            <div className="crc-text-wrap">
+              <span className="crc-label">Location</span>
+              <span className="crc-val">Gujrat, Pakistan</span>
             </div>
-          </a>
-        </div>
-
-        {/* Contact Form with Direct Gmail Delivery */}
-        <div className="contact-form-wrap">
-          <div className="form-card-badge">
-            <span className="badge-pulse" />
-            DIRECT AUTOMATION INQUIRY
           </div>
 
-          <form
-            className="contact-simple-form"
-            onSubmit={handleSubmit}
-            noValidate
-          >
-            <div className="form-simple-row">
-              <div className="form-simple-group">
-                <label htmlFor="simple-name">
-                  <span className="term-num">01 //</span> YOUR NAME OR COMPANY
-                </label>
-                <input
-                  id="simple-name"
-                  type="text"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="e.g. Alex Morgan / Fintech Labs"
-                  autoComplete="name"
-                  required
-                />
-              </div>
+          {/* Social Pills */}
+          <div className="contact-social-pills-row">
+            <a href={GH_URL} target="_blank" rel="noreferrer" className="social-pill-btn">
+              <span>GitHub</span>
+            </a>
+            <a href={LI_URL} target="_blank" rel="noreferrer" className="social-pill-btn">
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://www.facebook.com/share/1EPnhc4Zon/" target="_blank" rel="noreferrer" className="social-pill-btn">
+              <span>Facebook</span>
+            </a>
+          </div>
+        </div>
 
-              <div className="form-simple-group">
-                <label htmlFor="simple-email">
-                  <span className="term-num">02 //</span> WORK EMAIL ADDRESS
-                </label>
-                <input
-                  id="simple-email"
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="name@company.com"
-                  autoComplete="email"
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="form-simple-group">
-              <label htmlFor="simple-message">
-                <span className="term-num">03 //</span> WHAT PROCESS WOULD YOU LIKE TO AUTOMATE?
-              </label>
-              <textarea
-                id="simple-message"
-                name="message"
-                rows="5"
-                value={form.message}
+        {/* Right Column: Clean Dark Glass Form */}
+        <div className="contact-form-glass-card">
+          <form className="contact-clean-form" onSubmit={handleSubmit} noValidate>
+            <div className="clean-form-group">
+              <label htmlFor="ref-name">Your Name</label>
+              <input
+                id="ref-name"
+                type="text"
+                name="name"
+                value={form.name}
                 onChange={handleChange}
-                placeholder="Describe your repetitive process, current bottlenecks, or AI agent concept..."
+                placeholder="e.g. Alex Morgan"
+                autoComplete="name"
                 required
               />
             </div>
 
-            {/* Primary CTA button as required by PDF Section 10 */}
+            <div className="clean-form-group">
+              <label htmlFor="ref-email">Your Email</label>
+              <input
+                id="ref-email"
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="name@company.com"
+                autoComplete="email"
+                required
+              />
+            </div>
+
+            <div className="clean-form-group">
+              <label htmlFor="ref-message">Your Message</label>
+              <textarea
+                id="ref-message"
+                name="message"
+                rows="5"
+                value={form.message}
+                onChange={handleChange}
+                placeholder="Tell me about your project, process to automate, or idea..."
+                required
+              />
+            </div>
+
             <button
               type="submit"
-              className="btn btn-primary contact-submit-btn"
+              className="btn btn-primary contact-send-btn"
               disabled={state === "sending"}
             >
               <span className="btn-glow" />
               {state === "sending"
-                ? "TRANSMITTING..."
+                ? "Sending..."
                 : state === "success"
-                ? "✓ MESSAGE TRANSMITTED!"
-                : "Start a Conversation →"}
+                ? "✓ Message Sent!"
+                : "Send Message →"}
             </button>
 
             {feedback && (

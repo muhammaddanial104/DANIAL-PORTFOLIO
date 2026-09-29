@@ -93,57 +93,66 @@ export default function useGSAPAnimations(loaded) {
         });
 
         // ═══════════════════════════════════════════════════
-        // 2. HERO SECTION (#home) — CINEMATIC 3D ENTRANCE
+        // 2. HERO SECTION (#home) — CINEMATIC 3D ENTRANCE (REDESIGNED)
         // ═══════════════════════════════════════════════════
         const heroSection = document.querySelector("#home");
         if (heroSection) {
           const heroTL = gsap.timeline({ delay: 0.15 });
 
-          // Tag badge
-          heroTL.to(".hero-tag", {
+          // Greeting badge
+          heroTL.to(".hero-greeting-badge", {
             opacity: 1,
-            x: 0,
-            rotateY: 0,
-            duration: 0.75,
-            ease: ease3D,
+            y: 0,
+            duration: 0.6,
+            ease: easeBounce,
           });
 
-          // Outcome headline ("I Build AI Agents That Do The Work")
+          // Name - First & Last
           heroTL.to(
-            ".hero-outcome-headline",
+            ".hero-name-first",
+            {
+              opacity: 1,
+              x: 0,
+              duration: 0.6,
+              ease: ease3D,
+            },
+            "-=0.3"
+          );
+
+          // Subtitle line
+          heroTL.to(
+            ".hero-subtitle-line",
             {
               opacity: 1,
               y: 0,
-              rotateX: 0,
-              duration: 0.8,
+              duration: 0.6,
               ease: ease3D,
             },
-            "-=0.4"
+            "-=0.3"
           );
 
-          // Supporting specialization line
+          // Bachelor in Robotics badge
           heroTL.to(
-            ".hero-supporting-line",
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.7,
-              ease: ease3D,
-            },
-            "-=0.4"
-          );
-
-          // Robotics coming soon badge
-          heroTL.to(
-            ".hero-edu-badge",
+            ".hero-badges",
             {
               opacity: 1,
               scale: 1,
-              rotateZ: 0,
-              duration: 0.8,
+              duration: 0.6,
               ease: easeElastic,
             },
-            "-=0.45"
+            "-=0.3"
+          );
+
+          // Description
+          heroTL.to(
+            ".hero-desc",
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.65,
+              ease: ease3D,
+            },
+            "-=0.35"
           );
 
           // CTA Action Buttons
@@ -152,34 +161,58 @@ export default function useGSAPAnimations(loaded) {
             {
               opacity: 1,
               y: 0,
-              rotateX: 0,
-              duration: 0.6,
-              stagger: 0.12,
+              duration: 0.55,
+              stagger: 0.1,
               ease: easeBounce,
             },
-            "-=0.4"
+            "-=0.35"
           );
 
-          // Right Visual Orb
+          // Social icons row
           heroTL.to(
-            ".orb-float-wrap",
+            ".hero-social-row a",
             {
               opacity: 1,
               scale: 1,
-              rotate: 0,
-              duration: 1.1,
-              ease: easeElastic,
+              duration: 0.45,
+              stagger: 0.06,
+              ease: easeBounce,
             },
-            "-=0.7"
+            "-=0.3"
           );
 
-          // Orb floating data tags
+          // Stats items row
           heroTL.to(
-            ".orb-data-tag",
+            ".hero-stats-row .hero-stat-item",
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              stagger: 0.1,
+              ease: ease3D,
+            },
+            "-=0.3"
+          );
+
+          // Right Photo Container
+          heroTL.to(
+            ".hero-photo-container",
             {
               opacity: 1,
               scale: 1,
-              rotate: 0,
+              x: 0,
+              duration: 0.9,
+              ease: ease3D,
+            },
+            "-=0.8"
+          );
+
+          // Floating tags around photo
+          heroTL.to(
+            ".hero-float-tag",
+            {
+              opacity: 1,
+              scale: 1,
               duration: 0.5,
               stagger: 0.1,
               ease: easeBounce,
@@ -191,7 +224,7 @@ export default function useGSAPAnimations(loaded) {
           heroTL.to(
             ".scroll-indicator",
             {
-              opacity: 1,
+              opacity: 0.5,
               y: 0,
               duration: 0.5,
               ease: ease3D,
@@ -480,7 +513,7 @@ export default function useGSAPAnimations(loaded) {
         }
 
         // ═══════════════════════════════════════════════════
-        // 8. ABOUT SECTION (#about) — 3D PROFILE PHOTO & METRICS
+        // 8. ABOUT SECTION (#about) — 3D PROFILE PHOTO & METRICS (REDESIGNED)
         // ═══════════════════════════════════════════════════
         const aboutSection = document.querySelector("#about");
         if (aboutSection) {
@@ -492,31 +525,28 @@ export default function useGSAPAnimations(loaded) {
             },
           });
 
-          // Photo Frame 3D entrance
-          aboutTL.to(".photo-frame", {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.85,
-            ease: ease3D,
-          });
-
-          // Pillar tags
-          const pillars = aboutSection.querySelectorAll(".about-pillar-tag");
-          if (pillars.length) {
-            aboutTL.to(
-              pillars,
-              {
-                opacity: 1,
-                scale: 1,
-                rotateZ: 0,
-                duration: 0.4,
-                stagger: 0.05,
-                ease: easeBounce,
-              },
-              "-=0.4"
-            );
+          // Section tag
+          const tag = aboutSection.querySelector(".section-num-tag");
+          if (tag) {
+            aboutTL.to(tag, {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              ease: easeBounce,
+            });
           }
+
+          // Main headline
+          aboutTL.to(
+            ".about-main-headline",
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              ease: ease3D,
+            },
+            "-=0.25"
+          );
 
           // Intro & Body
           aboutTL.to(
@@ -531,6 +561,71 @@ export default function useGSAPAnimations(loaded) {
             "-=0.3"
           );
 
+          // Stats items
+          const aboutStats = aboutSection.querySelectorAll(".about-stat-item");
+          if (aboutStats.length) {
+            aboutTL.to(
+              aboutStats,
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.45,
+                stagger: 0.08,
+                ease: easeBounce,
+              },
+              "-=0.25"
+            );
+          }
+
+          // Photo Frame 3D entrance
+          const photoWrap = aboutSection.querySelector(".about-photo-wrapper");
+          if (photoWrap) {
+            aboutTL.to(
+              photoWrap,
+              {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 0.85,
+                ease: ease3D,
+              },
+              "-=0.4"
+            );
+          }
+
+          // Floating Action Tags (Code, Create, Automate, Innovate)
+          const actionTags = aboutSection.querySelectorAll(".about-action-tag");
+          if (actionTags.length) {
+            aboutTL.to(
+              actionTags,
+              {
+                opacity: 1,
+                scale: 1,
+                x: 0,
+                duration: 0.4,
+                stagger: 0.08,
+                ease: easeBounce,
+              },
+              "-=0.5"
+            );
+          }
+
+          // Action buttons
+          const actionBtns = aboutSection.querySelectorAll(".about-actions-row .btn");
+          if (actionBtns.length) {
+            aboutTL.to(
+              actionBtns,
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.45,
+                stagger: 0.1,
+                ease: easeBounce,
+              },
+              "-=0.3"
+            );
+          }
+
           // Experience box
           aboutTL.to(
             ".about-exp-box",
@@ -540,73 +635,93 @@ export default function useGSAPAnimations(loaded) {
               duration: 0.6,
               ease: ease3D,
             },
-            "-=0.3"
+            "-=0.2"
           );
 
-          // Focus box
-          aboutTL.to(
-            ".about-focus-box",
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.6,
-              ease: ease3D,
-            },
-            "-=0.3"
-          );
-
-          // Fact cards
-          const factCards = aboutSection.querySelectorAll(".fact-card");
-          if (factCards.length) {
+          // Why work card
+          const whyCard = aboutSection.querySelector(".why-work-card");
+          if (whyCard) {
             aboutTL.to(
-              factCards,
+              whyCard,
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: ease3D,
+              },
+              "-=0.3"
+            );
+          }
+
+          // Availability card
+          const availCard = aboutSection.querySelector(".availability-card");
+          if (availCard) {
+            aboutTL.to(
+              availCard,
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: ease3D,
+              },
+              "-=0.3"
+            );
+          }
+
+          // Pillar tags
+          const pillars = aboutSection.querySelectorAll(".about-pillar-tag");
+          if (pillars.length) {
+            aboutTL.to(
+              pillars,
               {
                 opacity: 1,
                 scale: 1,
+                rotateZ: 0,
                 duration: 0.4,
-                stagger: 0.08,
+                stagger: 0.04,
                 ease: easeBounce,
               },
-              "-=0.2"
+              "-=0.3"
             );
           }
         }
 
         // ═══════════════════════════════════════════════════
-        // 9. SKILLS SECTION (#skills) — 3D CARDS & TECH PILLS
+        // 9. SKILLS SECTION (#skills) — 3D PEDESTALS & LEARNING CARD (REDESIGNED)
         // ═══════════════════════════════════════════════════
         const skillsSection = document.querySelector("#skills");
         if (skillsSection) {
-          const skillCategories = skillsSection.querySelectorAll(".skill-category");
-          if (skillCategories.length) {
-            gsap.to(skillCategories, {
+          // 3D Pedestal Tech Cards Stagger Entrance
+          const pedestalCards = skillsSection.querySelectorAll(".tech-pedestal-card");
+          if (pedestalCards.length) {
+            gsap.to(pedestalCards, {
               scrollTrigger: {
                 trigger: skillsSection,
-                start: "top 78%",
+                start: "top 76%",
                 toggleActions: "play none none reverse",
               },
               opacity: 1,
-              rotateY: 0,
               y: 0,
-              duration: 0.75,
-              stagger: 0.12,
-              ease: ease3D,
+              scale: 1,
+              duration: 0.6,
+              stagger: 0.06,
+              ease: easeBounce,
             });
           }
 
-          const techPills = skillsSection.querySelectorAll(".tech-pill");
-          if (techPills.length) {
-            gsap.to(techPills, {
+          // Currently Learning Sidebar Card Entrance
+          const learningCard = skillsSection.querySelector(".skills-learning-card");
+          if (learningCard) {
+            gsap.to(learningCard, {
               scrollTrigger: {
                 trigger: skillsSection,
-                start: "top 70%",
+                start: "top 74%",
                 toggleActions: "play none none reverse",
               },
               opacity: 1,
-              scale: 1,
-              duration: 0.35,
-              stagger: 0.02,
-              ease: easeBounce,
+              x: 0,
+              duration: 0.75,
+              ease: ease3D,
             });
           }
         }

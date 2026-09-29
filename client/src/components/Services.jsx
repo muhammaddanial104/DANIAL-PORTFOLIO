@@ -288,17 +288,21 @@ export default function Services() {
 
   return (
     <section id="services" className="section services-section">
-      <div className="section-header">
-        <span className="section-num">04</span>
-        <h2 className="section-title">
-          SERVICES &amp; <span className="accent">SOLUTIONS</span>
-        </h2>
-        <div className="section-line" />
+      {/* Reference Category Tag */}
+      <div className="section-tag-row">
+        <span className="section-num-tag">04 | Services</span>
       </div>
 
-      <p className="services-subtitle">
-        High-performance Full-Stack Web Development, modern responsive websites, and autonomous AI automation systems engineered for measurable business ROI.
-      </p>
+      <div className="services-header-row">
+        <div>
+          <h2 className="services-main-title">
+            What I <span className="accent-gradient">Do</span>
+          </h2>
+          <p className="services-subtitle-text">
+            I offer a range of development and AI services to help bring your ideas to life.
+          </p>
+        </div>
+      </div>
 
       {/* Interactive Category Filter Pills */}
       <div className="services-filter-row">
