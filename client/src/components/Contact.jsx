@@ -69,12 +69,27 @@ export default function Contact() {
       <div className="contact-grid">
         {/* Left Column: Direct Channels & Social Proof */}
         <div className="contact-info-col">
-          {/* Availability Card */}
-          <div className="availability-card">
-            <span className="status-indicator"></span>
-            <div className="availability-text">
-              <strong>Truthful Availability</strong>
-              <span>Open for: Client Projects • Contract Work • Remote Roles</span>
+          {/* Danial Full-Stack & AI Builder Identity Card */}
+          <div className="contact-profile-card">
+            <div className="profile-avatar-box">
+              <img
+                src="/images/danial.jpg"
+                alt="Muhammad Danial"
+                className="profile-avatar-img"
+              />
+              <span className="profile-online-badge" title="Online & Available"></span>
+            </div>
+            <div className="profile-info-box">
+              <div className="profile-name-row">
+                <h3 className="profile-name">Muhammad Danial</h3>
+                <span className="profile-check-tag">✓ Verified</span>
+              </div>
+              <p className="profile-role-title">Full-Stack Developer &amp; AI Automation Engineer</p>
+              <div className="profile-meta-pills">
+                <span className="profile-pill pill-degree">🎓 Robotics Degree</span>
+                <span className="profile-pill pill-intern">💼 6-Mo ITS Gujrat</span>
+                <span className="profile-pill pill-status">● Open for Work</span>
+              </div>
             </div>
           </div>
 

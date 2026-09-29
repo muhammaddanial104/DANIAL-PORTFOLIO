@@ -58,6 +58,7 @@ export default function Navbar() {
           </div>
           <div className="brand-text">
             <span className="brand-name">Danial</span>
+            <span className="brand-badge-role">Full-Stack</span>
             <span className="brand-dot"></span>
           </div>
         </a>

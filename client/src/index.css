@@ -186,6 +186,24 @@ body {
   box-shadow: 0 0 6px var(--cyan-primary);
 }
 
+.brand-badge-role {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 1px 7px;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+  margin-left: 6px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.4;
+  vertical-align: middle;
+}
+
 .desktop-nav {
   display: flex;
   align-items: center;
@@ -3013,6 +3031,146 @@ body {
   box-sizing: border-box;
 }
 
+/* Danial Full-Stack & AI Engineer Profile Card */
+.contact-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(15, 23, 42, 0.85) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 14px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(14px);
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-profile-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #38bdf8, #a855f7, transparent);
+}
+
+.profile-avatar-box {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--cyan-primary), var(--purple-accent));
+  flex-shrink: 0;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.3);
+}
+
+.profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.profile-online-badge {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 13px;
+  height: 13px;
+  background: #22c55e;
+  border: 2.5px solid #030712;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulseGreen 2s infinite;
+}
+
+.profile-info-box {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.profile-name {
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.profile-check-tag {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+}
+
+.profile-role-title {
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--cyan-primary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.profile-meta-pills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 3px;
+}
+
+.profile-pill {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.pill-degree {
+  color: #e2e8f0;
+  background: rgba(148, 163, 184, 0.1);
+  border-color: rgba(148, 163, 184, 0.2);
+}
+
+.pill-intern {
+  color: #93c5fd;
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.25);
+}
+
+.pill-status {
+  color: #86efac;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  font-weight: 700;
+}
+
 .availability-card {
   display: flex;
   align-items: center;
@@ -3299,12 +3457,24 @@ body {
    13. FOOTER
    ═══════════════════════════════════════════════════════════════════ */
 .footer-container {
-  border-top: 1px solid var(--border-glass);
-  background: rgba(3, 7, 18, 0.95);
-  padding: 40px 0 22px 0;
+  border-top: 1px solid rgba(56, 189, 248, 0.2);
+  background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.05) 0%, rgba(3, 7, 18, 0.98) 75%);
+  padding: 48px 0 28px 0;
   position: relative;
   z-index: 2;
   width: 100%;
+  overflow: hidden;
+}
+
+.footer-glow-top {
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.8), rgba(168, 85, 247, 0.8), transparent);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+  pointer-events: none;
 }
 
 .footer-content {
@@ -3327,7 +3497,13 @@ body {
 .footer-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+}
+
+.footer-brand-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 .footer-tagline {
@@ -3339,22 +3515,24 @@ body {
 .back-to-top-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 7px 16px;
-  background: rgba(15, 23, 42, 0.7);
+  gap: 8px;
+  padding: 8px 18px;
+  background: rgba(15, 23, 42, 0.75);
   border: 1px solid var(--border-glass);
   border-radius: 9999px;
   color: var(--text-muted);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
   transition: all var(--transition-fast);
+  backdrop-filter: blur(10px);
 }
 
 .back-to-top-btn:hover {
   color: var(--cyan-primary);
   border-color: var(--cyan-primary);
   transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
 }
 
 .footer-nav-row {
@@ -3362,8 +3540,8 @@ body {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 16px;
-  padding: 16px 0;
+  gap: 20px;
+  padding: 20px 0;
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
 }
@@ -3372,17 +3550,24 @@ body {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
 }
 
 .footer-nav-link {
-  font-size: 0.82rem;
+  font-size: 0.84rem;
+  font-weight: 500;
   color: var(--text-muted);
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: inline-block;
 }
 
-.footer-nav-link:hover { color: var(--cyan-primary); }
+.footer-nav-link:hover {
+  color: var(--cyan-primary);
+  transform: translateY(-1px);
+}
 
 .footer-social-row {
   display: flex;
@@ -3390,13 +3575,27 @@ body {
   gap: 10px;
 }
 
-.footer-soc-link {
-  font-size: 0.82rem;
+.footer-soc-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--border-glass);
   color: var(--text-muted);
   text-decoration: none;
+  transition: all var(--transition-fast);
 }
-.footer-soc-link:hover { color: var(--cyan-primary); }
-.soc-sep { color: var(--text-dim); }
+
+.footer-soc-icon-btn:hover {
+  color: var(--cyan-primary);
+  border-color: var(--cyan-primary);
+  background: rgba(56, 189, 248, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
+}
 
 .footer-bottom-row {
   display: flex;
@@ -3406,8 +3605,31 @@ body {
   gap: 12px;
 }
 
-.copyright-text { font-size: 0.75rem; color: var(--text-dim); }
-.footer-location-tag { font-size: 0.75rem; color: var(--text-muted); }
+.copyright-text {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.footer-location-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  gap: 4px;
+}
+
+.loc-live-dot {
+  width: 7px;
+  height: 7px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #22c55e;
+  display: inline-block;
+  animation: pulseGreen 2s infinite;
+  margin-right: 6px;
+  vertical-align: middle;
+}
 
 /* ═══════════════════════════════════════════════════════════════════
    14. COMPREHENSIVE RESPONSIVE BREAKPOINTS
@@ -3674,6 +3896,19 @@ body {
     grid-template-columns: minmax(0, 1fr);
     gap: 22px;
   }
+  .contact-profile-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+  }
+  .profile-avatar-box {
+    width: 52px;
+    height: 52px;
+  }
+  .profile-name {
+    font-size: 1rem;
+  }
   .contact-glass-form {
     padding: 20px 14px;
     border-radius: 14px;
@@ -3748,6 +3983,29 @@ body {
   .about-btn-primary, .about-btn-secondary {
     width: 100%;
     justify-content: center;
+  }
+
+  /* Footer Mobile */
+  .footer-top-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .back-to-top-btn {
+    align-self: flex-start;
+  }
+  .footer-nav-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .footer-nav-links {
+    gap: 12px 18px;
+  }
+  .footer-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 }
 
