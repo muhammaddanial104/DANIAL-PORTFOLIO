@@ -4,7 +4,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    service: "Web App Development",
+    service: "AI Agent & Business Automation",
     message: "",
   });
 
@@ -22,21 +22,21 @@ export default function Contact() {
       return;
     }
 
-    setStatus({ state: "loading", message: "Sending your message..." });
+    setStatus({ state: "loading", message: "Preparing your message..." });
 
     // Open WhatsApp with pre-filled message as direct communication guarantee
     const waText = encodeURIComponent(
-      `*New Portfolio Inquiry*\nName: ${formData.name}\nEmail: ${formData.email}\nService: ${formData.service}\nMessage: ${formData.message}`
+      `*New Project / Automation Inquiry*\nName: ${formData.name}\nEmail: ${formData.email}\nScope: ${formData.service}\nProblem Details: ${formData.message}`
     );
     const waUrl = `https://wa.me/923137525862?text=${waText}`;
 
     setTimeout(() => {
       setStatus({
         state: "success",
-        message: "Thank you! Redirecting to WhatsApp for instant response...",
+        message: "Thank you! Redirecting to WhatsApp for instant discussion...",
       });
       window.open(waUrl, "_blank");
-      setFormData({ name: "", email: "", service: "Web App Development", message: "" });
+      setFormData({ name: "", email: "", service: "AI Agent & Business Automation", message: "" });
     }, 1200);
   };
 
@@ -48,33 +48,65 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section-container contact-section">
-      {/* Section Header */}
-      <div className="section-header">
+      {/* 12 — FINAL CTA HEADER (EXACT COPY FROM UPGRADE PLAN) */}
+      <div className="section-header text-center-header">
         <div className="section-badge">
-          <span className="badge-num">07</span>
+          <span className="badge-num">11 & 12</span>
           <span className="badge-sep">|</span>
-          <span className="badge-title">Contact</span>
+          <span className="badge-title">Final Call to Action</span>
         </div>
-        <h2 className="section-main-heading">
-          Let's <span className="gradient-text">Work Together</span>
+        <h2 className="section-main-heading final-cta-heading">
+          YOUR NEXT AI SYSTEM <span className="gradient-text">COULD START HERE.</span>
         </h2>
-        <p className="section-subtitle">
-          Have an AI agent project, full-stack application, or want to discuss full-time opportunities?
+        <p className="final-cta-subheading">
+          Have a repetitive process, AI idea, or business problem?
+        </p>
+        <p className="final-cta-punchline">
+          <strong>Show me the problem. I’ll show you what can be automated.</strong>
         </p>
       </div>
 
       <div className="contact-grid">
-        {/* Left Column: Direct Reach Out */}
+        {/* Left Column: 11 — Truthful Availability & Direct Channels */}
         <div className="contact-info-col">
+          {/* Truthful Availability Badge from Upgrade Plan */}
           <div className="availability-card">
             <span className="status-indicator"></span>
             <div className="availability-text">
-              <strong>Available for Opportunities</strong>
-              <span>Full-time roles, contracts & freelance projects</span>
+              <strong>Truthful Availability</strong>
+              <span>Open for: Freelance • Contract • Remote • Full-Time</span>
             </div>
           </div>
 
           <div className="contact-methods-stack">
+            {/* WhatsApp Card (High Conversion Direct Route) */}
+            <div className="contact-method-card featured-method">
+              <div className="method-icon-box icon-green">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+              </div>
+              <div className="method-details">
+                <span className="method-label">Direct WhatsApp (Fastest)</span>
+                <a
+                  href="https://wa.me/923137525862"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="method-value"
+                >
+                  +92 313 7525862
+                </a>
+              </div>
+              <a
+                href="https://wa.me/923137525862"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="method-action-btn"
+              >
+                Chat ↗
+              </a>
+            </div>
+
             {/* Email Card */}
             <div className="contact-method-card">
               <div className="method-icon-box icon-cyan">
@@ -95,36 +127,8 @@ export default function Contact() {
                 className="method-action-btn"
                 title="Copy Email Address"
               >
-                {copiedEmail ? "✓" : "Copy"}
+                {copiedEmail ? "✓ Copied" : "Copy"}
               </button>
-            </div>
-
-            {/* WhatsApp Card */}
-            <div className="contact-method-card">
-              <div className="method-icon-box icon-green">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                </svg>
-              </div>
-              <div className="method-details">
-                <span className="method-label">WhatsApp (Direct)</span>
-                <a
-                  href="https://wa.me/923137525862"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="method-value"
-                >
-                  +92 313 7525862
-                </a>
-              </div>
-              <a
-                href="https://wa.me/923137525862"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="method-action-btn"
-              >
-                Chat ↗
-              </a>
             </div>
 
             {/* Location Card */}
@@ -136,16 +140,16 @@ export default function Contact() {
                 </svg>
               </div>
               <div className="method-details">
-                <span className="method-label">Location</span>
-                <span className="method-value">Gujrat, Punjab, Pakistan</span>
+                <span className="method-label">Location & Timezone</span>
+                <span className="method-value">Gujrat, Pakistan (PKT / UTC+5)</span>
               </div>
-              <span className="timezone-tag">PKT (UTC+5)</span>
+              <span className="timezone-tag">Flexible across US/EU</span>
             </div>
           </div>
 
           {/* Social Row */}
           <div className="contact-social-wrap">
-            <span className="social-wrap-title">Connect on Socials:</span>
+            <span className="social-wrap-title">Connect with Danial:</span>
             <div className="contact-social-icons">
               <a
                 href="https://github.com/muhammaddanial104"
@@ -184,43 +188,17 @@ export default function Contact() {
                   <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                 </svg>
               </a>
-
-              <a
-                href="https://www.facebook.com/share/1EPnhc4Zon/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-soc-btn"
-                title="Facebook"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                </svg>
-              </a>
-
-              <a
-                href="https://www.instagram.com/d4_danial"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-soc-btn"
-                title="Instagram"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
-              </a>
             </div>
           </div>
         </div>
 
-        {/* Right Column: Dark Glass Message Form */}
+        {/* Right Column: 10/10 Action Form */}
         <div className="contact-form-col">
           <form className="contact-glass-form" onSubmit={handleSubmit}>
             <div className="form-glow-top"></div>
 
-            <h3 className="form-heading">Send a Message</h3>
-            <p className="form-subheading">I typically respond within 24 hours.</p>
+            <h3 className="form-heading">Start a Conversation</h3>
+            <p className="form-subheading">Tell me about your workflow or business bottleneck.</p>
 
             {status.message && (
               <div className={`form-alert ${status.state}`}>
@@ -230,7 +208,7 @@ export default function Contact() {
 
             <div className="form-group">
               <label htmlFor="name" className="form-label">
-                Your Name <span className="req">*</span>
+                Your Name / Company <span className="req">*</span>
               </label>
               <input
                 id="name"
@@ -238,7 +216,7 @@ export default function Contact() {
                 type="text"
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="e.g. Alex Henderson"
+                placeholder="e.g. Alex Henderson (Founding Team)"
                 className="form-input"
                 required
               />
@@ -262,7 +240,7 @@ export default function Contact() {
 
             <div className="form-group">
               <label htmlFor="service" className="form-label">
-                Project Category
+                What Can We Automate?
               </label>
               <select
                 id="service"
@@ -271,17 +249,17 @@ export default function Contact() {
                 onChange={handleChange}
                 className="form-select"
               >
-                <option value="Web App Development">Web App Development (MERN / Next.js)</option>
-                <option value="Autonomous AI Agents">Autonomous AI Multi-Agents</option>
-                <option value="Automation & Web Scraping">Automation & Web Scraping</option>
-                <option value="E-Commerce Platform">E-Commerce Store Solution</option>
-                <option value="Full-Time Hiring">Full-Time / Contract Role</option>
+                <option value="AI Customer Support Agent">AI Customer Support (WhatsApp / Email)</option>
+                <option value="Autonomous AI Multi-Agent">Custom Autonomous AI Multi-Agent</option>
+                <option value="Business Process Automation">Business Process Automation / Web Scraper</option>
+                <option value="Full-Stack MERN / Next.js">Full-Stack MERN or Next.js Platform</option>
+                <option value="Full-Time / Contract Hiring">Full-Time / Contract Engineering Role</option>
               </select>
             </div>
 
             <div className="form-group">
               <label htmlFor="message" className="form-label">
-                Message <span className="req">*</span>
+                Show Me The Problem <span className="req">*</span>
               </label>
               <textarea
                 id="message"
@@ -289,7 +267,7 @@ export default function Contact() {
                 rows="4"
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Briefly describe your requirements or ideas..."
+                placeholder="What repetitive task, manual step, or AI idea do you want to solve?"
                 className="form-textarea"
                 required
               ></textarea>
@@ -300,7 +278,7 @@ export default function Contact() {
               disabled={status.state === "loading"}
               className="form-submit-btn"
             >
-              <span>{status.state === "loading" ? "Sending..." : "Send Message"}</span>
+              <span>{status.state === "loading" ? "Submitting..." : "Start a Conversation"}</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="22" y1="2" x2="11" y2="13"></line>
                 <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>

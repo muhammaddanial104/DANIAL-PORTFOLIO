@@ -7,10 +7,12 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Services", href: "#services" },
+    { name: "Ask AI", href: "#ask-ai" },
+    { name: "Automate", href: "#automate" },
+    { name: "Live Demo", href: "#demo" },
+    { name: "Case Studies", href: "#projects" },
+    { name: "Architecture", href: "#architecture" },
+    { name: "ROI Calc", href: "#roi-calc" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -18,7 +20,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      const sections = ["home", "about", "skills", "projects", "services", "contact"];
+      const sections = ["home", "ask-ai", "automate", "demo", "projects", "architecture", "roi-calc", "contact"];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -53,7 +55,7 @@ export default function Navbar() {
         {/* Brand Logo */}
         <a href="#home" onClick={(e) => handleNavClick(e, "#home")} className="navbar-brand">
           <div className="brand-icon-box">
-            <span className="brand-letter">D</span>
+            <span className="brand-letter">MD</span>
           </div>
           <div className="brand-text">
             <span className="brand-name">Danial</span>
@@ -83,15 +85,14 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        {/* Right CTA */}
+        {/* Right CTA Button from Upgrade Plan */}
         <div className="navbar-right">
           <a
-            href="https://wa.me/923137525862"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contact"
+            onClick={(e) => handleNavClick(e, "#contact")}
             className="hire-me-btn"
           >
-            <span>Hire Me</span>
+            <span>Start a Project</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="7" y1="17" x2="17" y2="7"></line>
               <polyline points="7 7 17 7 17 17"></polyline>
@@ -140,7 +141,7 @@ export default function Navbar() {
               rel="noopener noreferrer"
               className="mobile-hire-btn"
             >
-              <span>Hire Me (WhatsApp)</span>
+              <span>Start a Project (WhatsApp)</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="7" y1="17" x2="17" y2="7"></line>
                 <polyline points="7 7 17 7 17 17"></polyline>
