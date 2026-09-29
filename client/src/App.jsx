@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import AskDanialAI from "./components/AskDanialAI";
 import WhatICanAutomate from "./components/WhatICanAutomate";
 import LiveAgentDemo from "./components/LiveAgentDemo";
+import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import RoiCalculator from "./components/RoiCalculator";
 import SystemArchitecture from "./components/SystemArchitecture";
@@ -17,36 +18,39 @@ export default function App() {
       {/* 60FPS Twinkling Starfield Canvas */}
       <CosmicBackground />
 
-      {/* 01 — Minimal Navbar with "Start a Project" CTA */}
+      {/* Fixed Navbar with "Start a Project" CTA */}
       <Navbar />
 
-      {/* Main Content Sections Following 10/10 Upgrade Plan */}
+      {/* Main Content Sections */}
       <main className="main-content">
-        {/* 02 — Hero: "I Build AI Agents That Do the Work." */}
+        {/* 01 — Hero: "I Build AI Agents That Do the Work." */}
         <Hero />
 
-        {/* 03 — Ask Danial AI: Live Interactive AI Demo */}
+        {/* Live Interactive AI Demo */}
         <AskDanialAI />
 
-        {/* 04 — What I Can Automate: 8 High-Impact Business Automation Capabilities */}
+        {/* 8 High-Impact Business Automation Capabilities */}
         <WhatICanAutomate />
 
-        {/* 05 — Live Agent Demo: Complete 6-Step Autonomous Workflow */}
+        {/* Complete 6-Step Autonomous Workflow Simulation */}
         <LiveAgentDemo />
 
-        {/* 06 & 07 — Featured Nova AI Case Study & Additional Case Studies */}
+        {/* 02 — TECH SKILLS (From Video: 5 Categories + Actual Tech Stack) */}
+        <Skills />
+
+        {/* 03 — FEATURED PROJECTS (From Video: AEGIS-AI, AUTO-DEV AI, NOVA AI, E-Commerce) */}
         <Projects />
 
-        {/* 08 — AI ROI Calculator with Transparent Assumptions */}
+        {/* AI ROI Calculator with Transparent Assumptions */}
         <RoiCalculator />
 
-        {/* 09 — How I Build AI Systems: Interactive Multi-Agent Architecture */}
+        {/* How I Build AI Systems: Interactive Multi-Agent Architecture */}
         <SystemArchitecture />
 
-        {/* 10 — Why Work With Me: Engineering Rigor & Production Experience */}
+        {/* Why Work With Me: Engineering Rigor & Production Experience */}
         <WhyWorkWithMe />
 
-        {/* 11 & 12 — Truthful Availability, Final CTA & Action Form */}
+        {/* Truthful Availability, Final CTA & Action Form */}
         <Contact />
       </main>
 

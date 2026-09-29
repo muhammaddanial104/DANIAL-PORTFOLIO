@@ -8,9 +8,9 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "Ask AI", href: "#ask-ai" },
-    { name: "Automate", href: "#automate" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
     { name: "Live Demo", href: "#demo" },
-    { name: "Case Studies", href: "#projects" },
     { name: "Architecture", href: "#architecture" },
     { name: "ROI Calc", href: "#roi-calc" },
     { name: "Contact", href: "#contact" },
@@ -20,7 +20,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      const sections = ["home", "ask-ai", "automate", "demo", "projects", "architecture", "roi-calc", "contact"];
+      const sections = ["home", "ask-ai", "skills", "projects", "demo", "architecture", "roi-calc", "contact"];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -85,7 +85,7 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        {/* Right CTA Button from Upgrade Plan */}
+        {/* Right CTA Button */}
         <div className="navbar-right">
           <a
             href="#contact"

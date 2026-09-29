@@ -1,270 +1,490 @@
 import { useState } from "react";
 
+const AEGIS_FEATURES = [
+  { name: "Threat Detection",       icon: "🛡️" },
+  { name: "Phishing Defense",       icon: "🎣" },
+  { name: "Fraud & Anomaly AI",     icon: "🔍" },
+  { name: "Autonomous Bug Fix",     icon: "🧪" },
+  { name: "AI Self-Healing",        icon: "⚡" },
+  { name: "Vulnerability Scan",     icon: "📊" },
+  { name: "SOC Telemetry",          icon: "📈" },
+  { name: "Incident Response",      icon: "🤖" },
+  { name: "Zero-Day Shield",        icon: "🔴" },
+  { name: "Sandboxed Patches",      icon: "📦" },
+  { name: "Security Audits",        icon: "📋" },
+  { name: "SecOps Multi-Agent",     icon: "⚙️" },
+];
+
+const AUTODEV_FEATURES = [
+  { name: "Multi-Step Planning",    icon: "📋" },
+  { name: "Autonomous Coding",      icon: "💻" },
+  { name: "AST Code Parsing",       icon: "🌲" },
+  { name: "Unit Test Generator",    icon: "🧪" },
+  { name: "Docker Sandbox Exec",    icon: "🐳" },
+  { name: "Git Diffs & Commits",    icon: "🔀" },
+  { name: "Static Type Analysis",   icon: "🔬" },
+  { name: "Auto Bug Refactoring",   icon: "🔧" },
+  { name: "Telemetry & Profiling",  icon: "📊" },
+  { name: "Dependency Resolver",    icon: "📦" },
+  { name: "Multi-File Reasoning",   icon: "🧠" },
+  { name: "CI/CD Auto-Pipeline",    icon: "🚀" },
+];
+
+const NOVA_FEATURES = [
+  { name: "AI Brain",            icon: "🧠" },
+  { name: "Voice Assistant",     icon: "🎙️" },
+  { name: "Desktop Control",     icon: "🖥️" },
+  { name: "File Management",     icon: "📁" },
+  { name: "Browser Control",     icon: "🌐" },
+  { name: "Coding Assistant",    icon: "💻" },
+  { name: "Video Generator",     icon: "🎬" },
+  { name: "YouTube Automation",  icon: "▶️" },
+  { name: "TikTok Automation",   icon: "📱" },
+  { name: "Facebook Automation", icon: "👥" },
+  { name: "Task Automation",     icon: "⚙️" },
+  { name: "Multi-Agent Swarm",   icon: "🤖" },
+];
+
 export default function Projects() {
-  const [activeFilter, setActiveFilter] = useState("all");
-
-  const caseStudies = [
-    {
-      id: "webpulse",
-      title: "WebPulse",
-      subtitle: "SaaS Telemetry & Infrastructure Monitoring",
-      category: "fullstack",
-      categoryLabel: "SaaS & Web",
-      image: "/images/proj1.jpg",
-      problem: "Distributed servers and APIs suffer silent latency spikes and outages that traditional log-checkers detect too late.",
-      solution: "Engineered a real-time SaaS infrastructure telemetry platform with sub-second WebSocket telemetry, multi-tenant team workspaces, and custom threshold alerts.",
-      howItWorks: "Synthetic Probes ➔ WebSocket Ingestion Pipeline ➔ Time-Series MongoDB ➔ Live React Charts",
-      stack: ["React", "Node.js", "Express", "MongoDB", "WebSocket", "Tailwind CSS"],
-      result: "Sub-second live streaming telemetry, automated heartbeat alerts, and multi-tenant workspace isolation.",
-      liveUrl: "https://github.com/muhammaddanial104",
-      githubUrl: "https://github.com/muhammaddanial104",
-    },
-    {
-      id: "aegis-ai",
-      title: "AEGIS-AI",
-      subtitle: "Autonomous Cyber Security Reconnaissance Agent",
-      category: "ai",
-      categoryLabel: "AI & Security",
-      image: "/images/aegis-preview.jpg",
-      problem: "Manual network vulnerability auditing and CVE threat correlation take security engineers hours of repetitive manual analysis.",
-      solution: "Built an autonomous multi-agent cyber security engine that scans endpoints, maps vulnerabilities against NVD CVE databases, and generates automated remediation playbooks.",
-      howItWorks: "Network Surface Scanner ➔ Multi-Agent CVE Correlation ➔ Severity Scoring ➔ Actionable Mitigation Guide",
-      stack: ["Python", "FastAPI", "React", "Docker", "Security APIs", "NVD Database"],
-      result: "Automated vulnerability reconnaissance completed in under 4 minutes with structured remediation playbooks.",
-      liveUrl: "https://github.com/muhammaddanial104",
-      githubUrl: "https://github.com/muhammaddanial104",
-    },
-    {
-      id: "its-ecommerce",
-      title: "MERN Enterprise E-Commerce",
-      subtitle: "ITS Gujrat 6-Month Internship Store",
-      category: "fullstack",
-      categoryLabel: "Enterprise MERN",
-      image: "/images/proj2.jpg",
-      problem: "Commercial clients needed a custom high-performance e-commerce platform with multi-vendor support and seamless checkout.",
-      solution: "Engineered two full-scale production MERN E-Commerce applications during a rigorous 6-month software engineering internship at ITS Gujrat with Stripe payments and inventory tracking.",
-      howItWorks: "React UI ➔ Express/Node REST Layer ➔ JWT Auth ➔ Stripe Checkout ➔ MongoDB Cluster",
-      stack: ["MongoDB", "Express.js", "React", "Node.js", "Stripe API", "Redux"],
-      result: "Production-ready platforms shipped with zero transaction loss, complete order tracking, and real-time inventory synchronization.",
-      liveUrl: "https://github.com/muhammaddanial104",
-      githubUrl: "https://github.com/muhammaddanial104",
-    },
-  ];
-
-  const filtered = activeFilter === "all"
-    ? caseStudies
-    : caseStudies.filter((item) => item.category === activeFilter);
+  const [selectedModal, setSelectedModal] = useState(null);
 
   return (
     <section id="projects" className="section-container projects-section">
       {/* Section Header */}
       <div className="section-header">
         <div className="section-badge">
-          <span className="badge-num">06</span>
+          <span className="badge-num">03</span>
           <span className="badge-sep">|</span>
-          <span className="badge-title">Case Studies & Deployments</span>
+          <span className="badge-title">Featured Projects</span>
         </div>
         <h2 className="section-main-heading">
-          Engineering <span className="gradient-text">Case Studies</span>
+          FEATURED <span className="gradient-text">PROJECTS</span>
         </h2>
         <p className="section-subtitle">
-          Real problems, engineered solutions, verifiable architectures, and production results.
+          Engineering autonomous AI systems, enterprise cyber defense platforms, and autonomous software engineering agents.
         </p>
       </div>
 
-      {/* 06 — FEATURED PROJECT: NOVA AI LARGE CASE STUDY TREATMENT */}
-      <div className="featured-case-study-hero">
-        <div className="featured-case-left">
-          <div className="featured-badge-top">
-            <span className="featured-star">★</span>
-            <span>Flagship Case Study</span>
-            <span className="featured-cat-tag">Autonomous AI Desktop Companion</span>
+      {/* ══════════════════════════════════════════════════════════════
+          FLAGSHIP 1: AEGIS-AI (Exact from Video)
+          ══════════════════════════════════════════════════════════════ */}
+      <div className="flagship-project-card aegis-card">
+        <div className="flagship-top-meta">
+          <div className="meta-badge-group">
+            <span className="star-tag">★ KEY FEATURED PROJECT</span>
+            <span className="status-badge badge-green">Active Defense System</span>
           </div>
+          <span className="project-year">2026</span>
+        </div>
 
-          <h3 className="featured-hero-title">NOVA AI Engine</h3>
-          <p className="featured-hero-subtitle">
-            Autonomous Desktop AI Assistant & Voice Companion
+        {/* Desktop Window Frame Screenshot */}
+        <div className="window-frame-banner">
+          <div className="window-bar">
+            <div className="window-dots">
+              <span className="w-dot dot-red" />
+              <span className="w-dot dot-yellow" />
+              <span className="w-dot dot-green" />
+            </div>
+            <span className="window-title">AEGIS-AI • Autonomous SOC &amp; Cyber Defense Operations</span>
+            <span className="window-status status-armed">● ARMED &amp; SECURED</span>
+          </div>
+          <div className="window-image-wrap">
+            <img
+              src="/images/aegis-preview.jpg"
+              alt="AEGIS-AI Cyber Defense Platform Screenshot"
+              className="window-img"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        {/* Project Content Body */}
+        <div className="flagship-body">
+          <h3 className="flagship-title">AEGIS-AI</h3>
+          <h4 className="flagship-subtitle">
+            Autonomous AI Cyber Defense &amp; Self-Healing SOC Platform
+          </h4>
+
+          <p className="flagship-description">
+            An enterprise-grade autonomous cyber defense and Security Operations Center (SOC) platform engineered to detect multi-vector cyber attacks, phishing emails, and malicious fraud in real time. Features autonomous vulnerability detection, automated bug fixing, and sandboxed self-healing system remediation.
           </p>
 
-          {/* Case Study Template Breakdown */}
-          <div className="case-breakdown-stack">
-            <div className="case-item">
-              <span className="case-label label-problem">Problem:</span>
-              <p className="case-text">
-                Professionals lose up to 15+ hours weekly switching between dozens of open tabs, executing repetitive terminal tasks, and manually managing local files without an intelligent unified agent.
-              </p>
-            </div>
-
-            <div className="case-item">
-              <span className="case-label label-solution">Solution:</span>
-              <p className="case-text">
-                Engineered an autonomous AI desktop assistant equipped with voice synthesis, ReAct tool-calling loops, OS-level application control, and 3D companion presence.
-              </p>
-            </div>
-
-            <div className="case-item">
-              <span className="case-label label-workflow">How It Works:</span>
-              <p className="case-text font-mono text-cyan">
-                Voice/Text Input ➔ Whisper STT ➔ ReAct Loop with OS Tools ➔ System Execution (Files, Terminal, Apps) ➔ Feedback
-              </p>
-            </div>
-
-            <div className="case-item">
-              <span className="case-label label-result">Result:</span>
-              <p className="case-text font-bold text-white">
-                Sub-second voice response time, autonomous multi-step local desktop task execution, and 100% hands-free system interaction.
-              </p>
+          {/* 12 Core Capabilities Grid */}
+          <div className="capabilities-wrap">
+            <span className="capabilities-label">12 CORE DEFENSE CAPABILITIES:</span>
+            <div className="capabilities-grid">
+              {AEGIS_FEATURES.map((f) => (
+                <div className="cap-pill" key={f.name}>
+                  <span className="cap-icon">{f.icon}</span>
+                  <span className="cap-text">{f.name}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Tech Stack Pills */}
-          <div className="featured-stack-wrap">
-            {["Python", "Multi-Agents", "Electron", "React", "FastAPI", "OpenAI / Local LLMs", "PyAutoGUI"].map((t) => (
-              <span key={t} className="featured-tech-pill">{t}</span>
+          {/* Tech Stack Chips */}
+          <div className="tech-chips-row">
+            {["Python", "FastAPI", "LangChain / LangGraph", "Claude 3.5 Sonnet", "Suricata / Zeek", "Docker Sandboxes", "ChromaDB", "React / Tailwind"].map((t) => (
+              <span className="tech-chip" key={t}>{t}</span>
             ))}
           </div>
 
-          {/* Action CTAs */}
-          <div className="featured-actions-row">
+          {/* Action Buttons */}
+          <div className="flagship-actions">
             <a
               href="https://github.com/muhammaddanial104"
               target="_blank"
-              rel="noopener noreferrer"
-              className="featured-btn-primary"
+              rel="noreferrer"
+              className="btn-primary-glow"
             >
-              <span>Explore GitHub Repository</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
+              View on GitHub
             </a>
-
-            <a
-              href="https://wa.me/923137525862?text=Hello%20Danial,%20I%20am%20interested%20in%20the%20Nova%20AI%20architecture."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="featured-btn-secondary"
-            >
-              <span>Discuss Architecture</span>
-            </a>
-          </div>
-        </div>
-
-        {/* Featured Visual: 3D Robot Companion */}
-        <div className="featured-case-right">
-          <div className="robot-visual-card">
-            <div className="robot-aura-glow"></div>
-            <img
-              src="/images/stonic-robot.jpg"
-              alt="NOVA AI 3D Companion"
-              className="robot-visual-img"
-            />
-            <div className="robot-status-pill">
-              <span className="dot-pulse"></span>
-              <span>NOVA v3.1 Engine • Local Daemon Active</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* 07 — MORE PROJECTS (CASE STUDY CARDS) */}
-      <div className="projects-subhead-row">
-        <div>
-          <h3 className="more-projects-title">Additional Production Case Studies</h3>
-          <p className="more-projects-subtitle">Full-stack web applications and autonomous cyber defense agents</p>
-        </div>
-
-        <div className="project-filter-tabs">
-          {[
-            { label: "All Case Studies", value: "all" },
-            { label: "AI & Security", value: "ai" },
-            { label: "Full Stack & SaaS", value: "fullstack" },
-          ].map((tab) => (
             <button
-              key={tab.value}
-              onClick={() => setActiveFilter(tab.value)}
-              className={`filter-tab-btn ${activeFilter === tab.value ? "active" : ""}`}
+              className="btn-outline-glass"
+              onClick={() =>
+                setSelectedModal({
+                  title: "AEGIS-AI",
+                  badge: "Autonomous Cyber Defense Platform",
+                  image: "/images/aegis-preview.jpg",
+                  problem: "Manual security operations struggle with slow incident response, undetected zero-days, and alert fatigue.",
+                  solution: "Engineered an autonomous multi-agent SOC that scans networks, isolates malicious payloads in Docker, and generates instant CVE patches.",
+                  flow: "Telemetry Ingestion → Multi-Agent Triage → Sandboxed CVE Analysis → Autonomous Playbook Execution → Slack/SOC Alert",
+                  tech: ["Python", "FastAPI", "LangChain", "Claude 3.5", "Docker", "ChromaDB", "React"],
+                  result: "Detects and isolates network threats in under 4 minutes with verifiable self-healing rollbacks.",
+                  githubUrl: "https://github.com/muhammaddanial104",
+                })
+              }
             >
-              {tab.label}
+              Project Details
             </button>
-          ))}
+          </div>
         </div>
       </div>
 
-      <div className="case-studies-grid">
-        {filtered.map((item) => (
-          <div key={item.id} className="case-study-card">
-            {/* Thumbnail Header */}
-            <div className="case-study-thumb-wrap">
-              <img src={item.image} alt={item.title} className="case-study-thumb-img" />
-              <div className="case-thumb-overlay"></div>
-              <span className="case-category-tag">{item.categoryLabel}</span>
+      {/* ══════════════════════════════════════════════════════════════
+          FLAGSHIP 2: AUTO-DEV AI (Exact from Video)
+          ══════════════════════════════════════════════════════════════ */}
+      <div className="flagship-project-card autodev-card">
+        <div className="flagship-top-meta">
+          <div className="meta-badge-group">
+            <span className="star-tag">★ KEY FEATURED PROJECT</span>
+            <span className="status-badge badge-purple">Autonomous Coding Engine</span>
+          </div>
+          <span className="project-year">2026</span>
+        </div>
+
+        {/* Desktop Window Frame Screenshot */}
+        <div className="window-frame-banner">
+          <div className="window-bar">
+            <div className="window-dots">
+              <span className="w-dot dot-red" />
+              <span className="w-dot dot-yellow" />
+              <span className="w-dot dot-green" />
+            </div>
+            <span className="window-title">AUTO-DEV AI • Autonomous Software Engineering Agent</span>
+            <span className="window-status status-active">● AGENT ACTIVE</span>
+          </div>
+          <div className="window-image-wrap">
+            <img
+              src="/images/coder-agent-preview.jpg"
+              alt="AUTO-DEV AI Coder Agent Interface Screenshot"
+              className="window-img"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        {/* Project Content Body */}
+        <div className="flagship-body">
+          <h3 className="flagship-title">AUTO-DEV AI 💻</h3>
+          <h4 className="flagship-subtitle">
+            Autonomous AI Software Engineering Agent &amp; Code Generation Platform
+          </h4>
+
+          <p className="flagship-description">
+            An autonomous AI software engineer designed to plan, write, test, debug, and refactor production codebases. Features multi-step reasoning, AST-level syntax tree parsing, automated pytest test suite generation, and containerized Docker sandboxes for fully isolated, verified code execution.
+          </p>
+
+          {/* 12 Core Capabilities Grid */}
+          <div className="capabilities-wrap">
+            <span className="capabilities-label">12 CORE CODING CAPABILITIES:</span>
+            <div className="capabilities-grid">
+              {AUTODEV_FEATURES.map((f) => (
+                <div className="cap-pill" key={f.name}>
+                  <span className="cap-icon">{f.icon}</span>
+                  <span className="cap-text">{f.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Tech Stack Chips */}
+          <div className="tech-chips-row">
+            {["Python", "LangChain / LangGraph", "OpenAI GPT-4 / Claude", "Tree-sitter AST", "Docker Sandboxes", "Pytest Suite", "FastAPI", "Git Automation"].map((t) => (
+              <span className="tech-chip" key={t}>{t}</span>
+            ))}
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flagship-actions">
+            <a
+              href="https://github.com/muhammaddanial104"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary-glow"
+            >
+              View on GitHub
+            </a>
+            <button
+              className="btn-outline-glass"
+              onClick={() =>
+                setSelectedModal({
+                  title: "AUTO-DEV AI 💻",
+                  badge: "Autonomous AI Software Engineering Agent",
+                  image: "/images/coder-agent-preview.jpg",
+                  problem: "Developers spend significant hours on repetitive code scaffolding, bug recreation, and test authoring.",
+                  solution: "Engineered an autonomous coding agent with AST parsing and isolated Docker test verification.",
+                  flow: "User Requirement → AST Parse → Plan → Code Generation → Docker Pytest → Self-Reflection Loop → Git Diff",
+                  tech: ["Python", "LangChain", "OpenAI GPT-4", "Tree-sitter", "Docker", "Pytest", "FastAPI"],
+                  result: "Automated end-to-end task implementation with guaranteed containerized test verification.",
+                  githubUrl: "https://github.com/muhammaddanial104",
+                })
+              }
+            >
+              Project Details
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════════════════════════
+          FLAGSHIP 3: NOVA AI (Exact from Video)
+          ══════════════════════════════════════════════════════════════ */}
+      <div className="flagship-project-card nova-card">
+        <div className="flagship-top-meta">
+          <div className="meta-badge-group">
+            <span className="star-tag">★ KEY FEATURED PROJECT</span>
+            <span className="status-badge badge-amber">In Development</span>
+          </div>
+          <span className="project-year">2026</span>
+        </div>
+
+        {/* Desktop Window Frame Screenshot */}
+        <div className="window-frame-banner">
+          <div className="window-bar">
+            <div className="window-dots">
+              <span className="w-dot dot-red" />
+              <span className="w-dot dot-yellow" />
+              <span className="w-dot dot-green" />
+            </div>
+            <span className="window-title">NOVA AI • Desktop Assistant &amp; Workflow Engine</span>
+            <span className="window-status status-active">● ASSISTANT INTERFACE ACTIVE</span>
+          </div>
+          <div className="window-image-wrap">
+            <img
+              src="/images/nova-preview.jpg"
+              alt="NOVA AI Desktop Assistant Interface Screenshot"
+              className="window-img"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        {/* Project Content Body */}
+        <div className="flagship-body">
+          <h3 className="flagship-title">NOVA AI 🤖</h3>
+          <h4 className="flagship-subtitle">
+            Autonomous AI Desktop Assistant &amp; Automation Engine
+          </h4>
+
+          <p className="flagship-description">
+            An AI-powered desktop assistant designed to control your computer, manage files, interact with browsers, assist with coding, generate content and automate complex workflows.
+          </p>
+
+          {/* 12 Core Capabilities Grid */}
+          <div className="capabilities-wrap">
+            <span className="capabilities-label">12 CORE CAPABILITIES &amp; FEATURES:</span>
+            <div className="capabilities-grid">
+              {NOVA_FEATURES.map((f) => (
+                <div className="cap-pill" key={f.name}>
+                  <span className="cap-icon">{f.icon}</span>
+                  <span className="cap-text">{f.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Tech Stack Chips */}
+          <div className="tech-chips-row">
+            {["Python", "LangChain", "OpenAI GPT-4o", "Desktop Automation", "Browser Control", "Speech Recognition", "FastAPI", "Tkinter / Modern UI"].map((t) => (
+              <span className="tech-chip" key={t}>{t}</span>
+            ))}
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flagship-actions">
+            <a
+              href="https://github.com/muhammaddanial104"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary-glow"
+            >
+              View on GitHub
+            </a>
+            <button
+              className="btn-outline-glass"
+              onClick={() =>
+                setSelectedModal({
+                  title: "NOVA AI 🤖",
+                  badge: "Autonomous AI Desktop Assistant",
+                  image: "/images/nova-preview.jpg",
+                  problem: "Constant context-switching across browser, terminal, and local file explorer wastes hours of daily focus.",
+                  solution: "Engineered a local desktop AI assistant with voice recognition and system tool-calling hooks.",
+                  flow: "Voice / Text Input → Speech Parser → ReAct Agent → Local OS Hooks → Execution Feedback",
+                  tech: ["Python", "LangChain", "OpenAI GPT-4o", "FastAPI", "PyAutoGUI", "Whisper"],
+                  result: "Voice-driven OS control and automated file/browser workflow execution.",
+                  githubUrl: "https://github.com/muhammaddanial104",
+                })
+              }
+            >
+              Project Details
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════════════════════════
+          PROJECT 4: E-COMMERCE PLATFORMS (ITS GUJRAT)
+          ══════════════════════════════════════════════════════════════ */}
+      <div className="ecommerce-showcase-card">
+        <div className="flagship-top-meta">
+          <span className="star-tag">Featured Tech &amp; Techware</span>
+          <span className="project-year">ITS Gujrat Internship</span>
+        </div>
+
+        <div className="window-frame-banner">
+          <div className="window-image-wrap">
+            <img
+              src="/images/proj1.jpg"
+              alt="MERN E-Commerce Platform"
+              className="window-img"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div className="flagship-body">
+          <h3 className="flagship-title">E-Commerce Platforms (ITS Gujrat)</h3>
+          <p className="flagship-description">
+            2 full-featured MERN e-commerce platforms engineered during a 6-month internship at ITS Gujrat (Mar 2024 - Aug 2024) with product catalogs, JWT auth, and Stripe integration.
+          </p>
+
+          <div className="tech-chips-row">
+            {["React", "Node.js", "Express", "MongoDB", "Stripe", "JWT Auth"].map((t) => (
+              <span className="tech-chip" key={t}>{t}</span>
+            ))}
+          </div>
+
+          <div className="flagship-actions">
+            <a
+              href="https://github.com/muhammaddanial104"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary-glow"
+            >
+              Github
+            </a>
+            <button
+              className="btn-outline-glass"
+              onClick={() =>
+                setSelectedModal({
+                  title: "MERN E-Commerce Platforms",
+                  badge: "ITS Gujrat 6-Month Internship Platforms",
+                  image: "/images/proj1.jpg",
+                  problem: "Commercial retail operations needed custom scalable e-commerce infrastructure with secure checkout and inventory sync.",
+                  solution: "Architected 2 full-scale MERN platforms with multi-vendor support, JWT authentication, and Stripe payments.",
+                  flow: "React UI → Node/Express REST API → JWT Auth → Stripe Checkout → MongoDB Cluster",
+                  tech: ["React", "Node.js", "Express", "MongoDB", "Stripe", "Redux"],
+                  result: "Production platforms deployed with end-to-end payment processing and order management.",
+                  githubUrl: "https://github.com/muhammaddanial104",
+                })
+              }
+            >
+              Details
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Case Study Details Modal */}
+      {selectedModal && (
+        <div className="project-modal-overlay" onClick={() => setSelectedModal(null)}>
+          <div className="project-modal-dialog" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header-row">
+              <div>
+                <h3 className="modal-title">{selectedModal.title}</h3>
+                <span className="modal-badge">{selectedModal.badge}</span>
+              </div>
+              <button
+                className="modal-close-btn"
+                onClick={() => setSelectedModal(null)}
+                aria-label="Close modal"
+              >
+                ✕
+              </button>
             </div>
 
-            {/* Case Study Card Body with 4 Questions */}
-            <div className="case-card-body">
-              <h4 className="case-title">{item.title}</h4>
-              <span className="case-subtitle">{item.subtitle}</span>
+            {selectedModal.image && (
+              <div className="modal-banner-wrap">
+                <img
+                  src={selectedModal.image}
+                  alt={selectedModal.title}
+                  className="modal-banner-img"
+                />
+              </div>
+            )}
 
-              <div className="case-card-qa-stack">
-                <div className="qa-block">
-                  <span className="qa-tag tag-p">Problem:</span>
-                  <p className="qa-text">{item.problem}</p>
-                </div>
-
-                <div className="qa-block">
-                  <span className="qa-tag tag-s">Solution:</span>
-                  <p className="qa-text">{item.solution}</p>
-                </div>
-
-                <div className="qa-block">
-                  <span className="qa-tag tag-w">How It Works:</span>
-                  <p className="qa-text font-mono text-cyan">{item.howItWorks}</p>
-                </div>
-
-                <div className="qa-block">
-                  <span className="qa-tag tag-r">Result:</span>
-                  <p className="qa-text font-semibold text-white">{item.result}</p>
-                </div>
+            <div className="modal-content-stack">
+              <div className="modal-info-block">
+                <h4 className="modal-block-title">1. THE PROBLEM</h4>
+                <p className="modal-block-text">{selectedModal.problem}</p>
               </div>
 
-              {/* Stack */}
-              <div className="case-stack-tags">
-                {item.stack.map((t) => (
-                  <span key={t} className="case-tag-pill">{t}</span>
+              <div className="modal-info-block">
+                <h4 className="modal-block-title">2. THE SOLUTION &amp; SYSTEM BUILT</h4>
+                <p className="modal-block-text">{selectedModal.solution}</p>
+              </div>
+
+              <div className="modal-info-block">
+                <h4 className="modal-block-title">3. ARCHITECTURAL WORKFLOW</h4>
+                <p className="modal-block-text font-mono text-cyan">{selectedModal.flow}</p>
+              </div>
+
+              <div className="modal-info-block">
+                <h4 className="modal-block-title">4. VERIFIABLE OUTCOME</h4>
+                <p className="modal-block-text font-bold text-white">{selectedModal.result}</p>
+              </div>
+
+              <div className="modal-tags-row">
+                {selectedModal.tech?.map((t) => (
+                  <span className="tech-chip" key={t}>{t}</span>
                 ))}
               </div>
+            </div>
 
-              {/* Actions */}
-              <div className="case-card-actions">
-                <a
-                  href={item.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="case-btn-demo"
-                >
-                  <span>View Project</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                  </svg>
-                </a>
-
-                <a
-                  href={item.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="case-btn-github"
-                  title="Source Code"
-                >
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                  <span>Code</span>
-                </a>
-              </div>
+            <div className="modal-footer-row">
+              <a
+                href={selectedModal.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-primary-glow"
+              >
+                View Source on GitHub
+              </a>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      )}
     </section>
   );
 }
