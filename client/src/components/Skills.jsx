@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import TiltCard from "./TiltCard";
 
 // ── PROVEN PRODUCTION SKILLS ──
 const PROVEN_CATEGORIES = [
@@ -149,36 +150,37 @@ export default function Skills() {
       {/* 4 Proven Production Skill Cards Grid */}
       <div className="skills-proven-grid">
         {PROVEN_CATEGORIES.map((cat, idx) => (
-          <motion.div
-            className="skill-category-card"
-            key={cat.title}
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ y: -6, scale: 1.01 }}
-          >
-            <div className="skill-cat-header">
-              <h3 className="skill-cat-title">
-                <span className="skill-cat-icon" style={{ color: cat.color }}>{cat.icon}</span>
-                <span>{cat.title}</span>
-              </h3>
-              <span className="cat-badge-proven">{cat.badge}</span>
-            </div>
+          <TiltCard key={cat.title} maxTilt={8} glare={true} style={{ height: "100%" }}>
+            <motion.div
+              className="skill-category-card"
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              style={{ height: "100%", marginBottom: 0 }}
+            >
+              <div className="skill-cat-header">
+                <h3 className="skill-cat-title">
+                  <span className="skill-cat-icon" style={{ color: cat.color }}>{cat.icon}</span>
+                  <span>{cat.title}</span>
+                </h3>
+                <span className="cat-badge-proven">{cat.badge}</span>
+              </div>
 
-            <div className="skill-bars-stack">
-              {cat.skills.map((sk) => (
-                <SkillBar
-                  key={sk.name}
-                  name={sk.name}
-                  pct={sk.pct}
-                  color={cat.color}
-                />
-              ))}
-            </div>
+              <div className="skill-bars-stack">
+                {cat.skills.map((sk) => (
+                  <SkillBar
+                    key={sk.name}
+                    name={sk.name}
+                    pct={sk.pct}
+                    color={cat.color}
+                  />
+                ))}
+              </div>
 
-            <div className="cat-card-glow-bar" style={{ background: cat.color }}></div>
-          </motion.div>
+              <div className="cat-card-glow-bar" style={{ background: cat.color }}></div>
+            </motion.div>
+          </TiltCard>
         ))}
       </div>
 

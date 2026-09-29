@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import TiltCard from "./TiltCard";
 
 const AEGIS_FEATURES = [
   { name: "Threat Detection",       icon: "🛡️" },
@@ -75,13 +76,15 @@ export default function Projects() {
       {/* ══════════════════════════════════════════════════════════════
           FLAGSHIP 1: AEGIS-AI
           ══════════════════════════════════════════════════════════════ */}
-      <motion.div
-        className="flagship-project-card aegis-card"
-        initial={{ opacity: 0, y: 35 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-      >
+      <TiltCard maxTilt={6} glare={true} style={{ width: "100%", marginBottom: "35px" }}>
+        <motion.div
+          className="flagship-project-card aegis-card"
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          style={{ marginBottom: 0 }}
+        >
         <div className="flagship-top-meta">
           <div className="meta-badge-group">
             <span className="star-tag">★ KEY FEATURED PROJECT</span>
@@ -198,17 +201,20 @@ export default function Projects() {
           </div>
         </div>
       </motion.div>
+      </TiltCard>
 
       {/* ══════════════════════════════════════════════════════════════
           FLAGSHIP 2: AUTO-DEV AI 💻
           ══════════════════════════════════════════════════════════════ */}
-      <motion.div
-        className="flagship-project-card autodev-card"
-        initial={{ opacity: 0, y: 35 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-      >
+      <TiltCard maxTilt={6} glare={true} style={{ width: "100%", marginBottom: "35px" }}>
+        <motion.div
+          className="flagship-project-card autodev-card"
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          style={{ marginBottom: 0 }}
+        >
         <div className="flagship-top-meta">
           <div className="meta-badge-group">
             <span className="star-tag">★ KEY FEATURED PROJECT</span>
@@ -325,17 +331,20 @@ export default function Projects() {
           </div>
         </div>
       </motion.div>
+      </TiltCard>
 
       {/* ══════════════════════════════════════════════════════════════
           FLAGSHIP 3: NOVA AI 🤖 (Clearly marked Private/Beta per Report)
           ══════════════════════════════════════════════════════════════ */}
-      <motion.div
-        className="flagship-project-card nova-card"
-        initial={{ opacity: 0, y: 35 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-      >
+      <TiltCard maxTilt={6} glare={true} style={{ width: "100%", marginBottom: "35px" }}>
+        <motion.div
+          className="flagship-project-card nova-card"
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          style={{ marginBottom: 0 }}
+        >
         <div className="flagship-top-meta">
           <div className="meta-badge-group">
             <span className="star-tag">★ AGENTIC SYSTEM</span>
@@ -451,17 +460,20 @@ export default function Projects() {
           </div>
         </div>
       </motion.div>
+      </TiltCard>
 
       {/* ══════════════════════════════════════════════════════════════
           PROJECT 4: E-COMMERCE PLATFORMS (ITS Gujrat Client Work)
           ══════════════════════════════════════════════════════════════ */}
-      <motion.div
-        className="ecommerce-showcase-card"
-        initial={{ opacity: 0, y: 35 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-      >
+      <TiltCard maxTilt={6} glare={true} style={{ width: "100%", marginBottom: "30px" }}>
+        <motion.div
+          className="ecommerce-showcase-card"
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          style={{ marginBottom: 0 }}
+        >
         <div className="flagship-top-meta">
           <div className="meta-badge-group">
             <span className="star-tag" style={{ color: "#38bdf8", borderColor: "rgba(56, 189, 248, 0.4)", background: "rgba(56, 189, 248, 0.12)" }}>
@@ -551,6 +563,7 @@ export default function Projects() {
           </div>
         </div>
       </motion.div>
+      </TiltCard>
 
       {/* ══════════════════════════════════════════════════════════════
           INTERACTIVE CASE STUDY MODAL DIALOG

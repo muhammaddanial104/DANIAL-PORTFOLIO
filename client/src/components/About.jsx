@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import TiltCard from "./TiltCard";
 
 export default function About() {
   const [copied, setCopied] = useState(false);
@@ -159,60 +160,62 @@ export default function About() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="about-photo-wrapper">
-            {/* Glowing neon aura */}
-            <div className="about-glow-aura"></div>
+          <TiltCard maxTilt={12} glare={true} style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+            <div className="about-photo-wrapper">
+              {/* Glowing neon aura */}
+              <div className="about-glow-aura"></div>
 
-            {/* Glass photo frame */}
-            <div className="about-photo-frame">
-              <img
-                src="/images/danial.jpg"
-                alt="Muhammad Danial"
-                className="about-photo-img"
-              />
+              {/* Glass photo frame */}
+              <div className="about-photo-frame">
+                <img
+                  src="/images/danial.jpg"
+                  alt="Muhammad Danial"
+                  className="about-photo-img"
+                />
 
-              <div className="about-photo-overlay"></div>
+                <div className="about-photo-overlay"></div>
 
-              {/* Bottom signature badge */}
-              <div className="about-signature-badge">
-                <span className="signature-name">Muhammad Danial</span>
-                <span className="signature-role">Full-Stack &amp; AI Builder</span>
+                {/* Bottom signature badge */}
+                <div className="about-signature-badge">
+                  <span className="signature-name">Muhammad Danial</span>
+                  <span className="signature-role">Full-Stack &amp; AI Builder</span>
+                </div>
               </div>
+
+              {/* 4 Floating Badges with Subtle Oscillating Animation */}
+              <motion.div
+                className="about-float-tag tag-code"
+                animate={{ y: [-4, 4, -4] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <span>&lt;Code /&gt;</span>
+              </motion.div>
+
+              <motion.div
+                className="about-float-tag tag-create"
+                animate={{ y: [4, -4, 4] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+              >
+                <span>✨ Create</span>
+              </motion.div>
+
+              <motion.div
+                className="about-float-tag tag-automate"
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+              >
+                <span>⚡ Automate</span>
+              </motion.div>
+
+              <motion.div
+                className="about-float-tag tag-innovate"
+                animate={{ y: [5, -5, 5] }}
+                transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+              >
+                <span>🚀 Innovate</span>
+              </motion.div>
             </div>
-
-            {/* 4 Floating Badges with Subtle Oscillating Animation */}
-            <motion.div
-              className="about-float-tag tag-code"
-              animate={{ y: [-4, 4, -4] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <span>&lt;Code /&gt;</span>
-            </motion.div>
-
-            <motion.div
-              className="about-float-tag tag-create"
-              animate={{ y: [4, -4, 4] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-            >
-              <span>✨ Create</span>
-            </motion.div>
-
-            <motion.div
-              className="about-float-tag tag-automate"
-              animate={{ y: [-5, 5, -5] }}
-              transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-            >
-              <span>⚡ Automate</span>
-            </motion.div>
-
-            <motion.div
-              className="about-float-tag tag-innovate"
-              animate={{ y: [5, -5, 5] }}
-              transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-            >
-              <span>🚀 Innovate</span>
-            </motion.div>
-          </div>
+          </TiltCard>
         </motion.div>
       </div>
     </section>
