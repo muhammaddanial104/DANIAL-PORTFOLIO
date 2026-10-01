@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useSpring } from "framer-motion";
 
 export default function TiltCard({
@@ -12,13 +12,26 @@ export default function TiltCard({
   const cardRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [glarePos, setGlarePos] = useState({ x: 50, y: 50, opacity: 0 });
+  const [isTouchOrMobile, setIsTouchOrMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => {
+      setIsTouchOrMobile(
+        window.innerWidth <= 768 ||
+        (typeof window !== "undefined" && "ontouchstart" in window && window.innerWidth <= 1024)
+      );
+    };
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const springConfig = { damping: 20, stiffness: 260, mass: 0.5 };
   const rotateX = useSpring(0, springConfig);
   const rotateY = useSpring(0, springConfig);
 
   const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
+    if (isTouchOrMobile || !cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -42,6 +55,7 @@ export default function TiltCard({
   };
 
   const handleMouseEnter = () => {
+    if (isTouchOrMobile) return;
     setIsHovered(true);
   };
 
@@ -60,18 +74,21 @@ export default function TiltCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{
-        perspective: 1200,
-        transformStyle: "preserve-3d",
-        rotateX,
-        rotateY,
+        perspective: isTouchOrMobile ? "none" : 1200,
+        transformStyle: isTouchOrMobile ? "flat" : "preserve-3d",
+        rotateX: isTouchOrMobile ? 0 : rotateX,
+        rotateY: isTouchOrMobile ? 0 : rotateY,
         position: "relative",
+        width: "100%",
+        maxWidth: "100%",
+        boxSizing: "border-box",
         ...style,
       }}
       {...props}
     >
       {children}
 
-      {glare && (
+      {glare && !isTouchOrMobile && (
         <motion.div
           className="tilt-card-glare"
           style={{

@@ -1794,6 +1794,12 @@ body {
 /* ═══════════════════════════════════════════════════════════════════
    8. 02 — TECH SKILLS (EXACT DESIGN FROM VIDEO)
    ═══════════════════════════════════════════════════════════════════ */
+.skills-section {
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
 .skills-categories-grid,
 .skills-proven-grid {
   display: grid;
@@ -1801,6 +1807,14 @@ body {
   gap: 22px;
   margin-bottom: 30px;
   width: 100%;
+  box-sizing: border-box;
+}
+
+.tilt-card-wrapper {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .cat-badge-proven {
@@ -1814,6 +1828,7 @@ body {
   border-radius: 4px;
   letter-spacing: 0.08em;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* ── Currently Learning Section (Section 5 from Report) ── */
@@ -1825,6 +1840,9 @@ body {
   padding: 26px;
   margin-bottom: 30px;
   backdrop-filter: blur(14px);
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .learning-badge-pill {
@@ -1839,6 +1857,8 @@ body {
   border-radius: 6px;
   letter-spacing: 0.06em;
   margin-bottom: 10px;
+  max-width: 100%;
+  word-break: break-word;
 }
 
 .learning-heading {
@@ -1846,6 +1866,7 @@ body {
   font-weight: 800;
   color: #ffffff;
   margin-bottom: 6px;
+  word-break: break-word;
 }
 
 .learning-desc {
@@ -1854,12 +1875,15 @@ body {
   line-height: 1.6;
   margin-bottom: 20px;
   max-width: 800px;
+  word-break: break-word;
 }
 
 .learning-items-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .learning-item-box {
@@ -1868,6 +1892,8 @@ body {
   border-radius: 12px;
   padding: 16px;
   transition: all var(--transition-fast);
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .learning-item-box:hover {
@@ -1882,12 +1908,15 @@ body {
   justify-content: space-between;
   margin-bottom: 6px;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .learning-item-name {
   font-size: 0.92rem;
   font-weight: 700;
   color: #f1f5f9;
+  min-width: 0;
+  word-break: break-word;
 }
 
 .learning-item-tag {
@@ -1899,6 +1928,8 @@ body {
   border: 1px solid rgba(34, 197, 94, 0.3);
   padding: 2px 7px;
   border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .learning-item-desc {
@@ -1906,6 +1937,7 @@ body {
   color: var(--text-muted);
   line-height: 1.5;
   margin: 0;
+  word-break: break-word;
 }
 
 .skill-category-card {
@@ -1919,6 +1951,9 @@ body {
   transition: all var(--transition-smooth);
   display: flex;
   flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .skill-category-card:hover {
@@ -1936,7 +1971,9 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 18px;
-  gap: 8px;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .skill-cat-title {
@@ -1947,10 +1984,14 @@ body {
   align-items: center;
   gap: 8px;
   letter-spacing: 0.05em;
+  min-width: 0;
+  word-break: break-word;
+  flex: 1 1 auto;
 }
 
 .skill-cat-icon {
   font-size: 1.15rem;
+  flex-shrink: 0;
 }
 
 .cat-badge-soon {
@@ -1969,12 +2010,14 @@ body {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  width: 100%;
 }
 
 .skill-item {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  width: 100%;
 }
 
 .skill-info {
@@ -1983,6 +2026,8 @@ body {
   justify-content: space-between;
   font-size: 0.82rem;
   color: #e2e8f0;
+  gap: 8px;
+  width: 100%;
 }
 
 .skill-name {
@@ -1990,6 +2035,8 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
+  min-width: 0;
+  word-break: break-word;
 }
 
 .tag-soon {
@@ -2006,6 +2053,7 @@ body {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 700;
+  flex-shrink: 0;
 }
 
 .skill-bar-bg {
@@ -2051,6 +2099,7 @@ body {
 /* Actual Tech Stack Chips */
 .actual-tech-container {
   width: 100%;
+  box-sizing: border-box;
 }
 
 .actual-tech-card {
@@ -2059,13 +2108,17 @@ body {
   border-radius: 16px;
   padding: 24px;
   backdrop-filter: blur(14px);
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .actual-tech-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   margin-bottom: 18px;
+  width: 100%;
 }
 
 .actual-tech-icon {
@@ -2074,6 +2127,7 @@ body {
   border: 1px solid rgba(56, 189, 248, 0.3);
   border-radius: 8px;
   padding: 6px;
+  flex-shrink: 0;
 }
 
 .actual-tech-title {
@@ -2081,17 +2135,21 @@ body {
   font-weight: 800;
   color: #ffffff;
   letter-spacing: 0.05em;
+  word-break: break-word;
 }
 
 .actual-tech-sub {
   font-size: 0.78rem;
   color: var(--text-muted);
+  word-break: break-word;
+  line-height: 1.45;
 }
 
 .actual-tech-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  width: 100%;
 }
 
 .tech-pill {
@@ -2106,6 +2164,8 @@ body {
   font-weight: 600;
   color: #cbd5e1;
   transition: all var(--transition-fast);
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .tech-pill:hover {
@@ -3712,6 +3772,17 @@ body {
   .skills-categories-grid,
   .skills-proven-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .skill-category-card {
+    padding: 18px 16px;
+  }
+  .skill-cat-title {
+    font-size: 0.9rem;
+  }
+  .cat-badge-proven {
+    font-size: 0.6rem;
+    padding: 2px 6px;
   }
   .ecommerce-content-grid {
     grid-template-columns: 1fr;
@@ -3970,10 +4041,44 @@ body {
   .skills-proven-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+    width: 100%;
+  }
+  .skill-category-card {
+    padding: 18px 16px;
+    border-radius: 14px;
+  }
+  .skill-cat-header {
+    margin-bottom: 14px;
+    gap: 8px;
+  }
+  .skill-cat-title {
+    font-size: 0.92rem;
+  }
+  .cat-badge-proven {
+    font-size: 0.62rem;
+    padding: 2px 7px;
+  }
+  .currently-learning-card {
+    padding: 20px 16px;
+    border-radius: 14px;
   }
   .learning-items-grid {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+  .learning-item-box {
+    padding: 14px;
+  }
+  .actual-tech-card {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+  .actual-tech-chips {
+    gap: 6px;
+  }
+  .tech-pill {
+    padding: 4px 10px;
+    font-size: 0.74rem;
   }
   .ecommerce-content-grid {
     grid-template-columns: 1fr;
@@ -4137,8 +4242,98 @@ body {
   .project-proof-box {
     padding: 14px 12px;
   }
+  /* Skills Small Phones */
+  .skills-categories-grid,
+  .skills-proven-grid {
+    gap: 14px;
+  }
+  .skill-category-card {
+    padding: 15px 12px;
+    border-radius: 12px;
+  }
+  .skill-cat-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .skill-cat-title {
+    font-size: 0.88rem;
+    gap: 6px;
+  }
+  .cat-badge-proven {
+    font-size: 0.58rem;
+    padding: 2px 6px;
+    letter-spacing: 0.04em;
+    align-self: flex-start;
+    white-space: normal;
+  }
+  .skill-bars-stack {
+    gap: 11px;
+  }
+  .skill-info {
+    font-size: 0.78rem;
+  }
+  .skill-pct {
+    font-size: 0.74rem;
+  }
   .currently-learning-card {
-    padding: 18px 14px;
+    padding: 15px 12px;
+    border-radius: 12px;
+  }
+  .learning-badge-pill {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    white-space: normal;
+  }
+  .learning-heading {
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+  .learning-desc {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+  .learning-item-box {
+    padding: 12px 10px;
+  }
+  .learning-item-name {
+    font-size: 0.84rem;
+  }
+  .learning-item-tag {
+    font-size: 0.6rem;
+    padding: 2px 5px;
+  }
+  .learning-item-desc {
+    font-size: 0.74rem;
+  }
+  .actual-tech-card {
+    padding: 15px 12px;
+    border-radius: 12px;
+  }
+  .actual-tech-header {
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .actual-tech-icon {
+    font-size: 1.2rem;
+    padding: 4px;
+  }
+  .actual-tech-title {
+    font-size: 0.95rem;
+  }
+  .actual-tech-sub {
+    font-size: 0.72rem;
+    line-height: 1.4;
+  }
+  .actual-tech-chips {
+    gap: 5px;
+  }
+  .tech-pill {
+    padding: 3px 8px;
+    font-size: 0.7rem;
+    gap: 4px;
   }
 
   /* Contact Small Phones */

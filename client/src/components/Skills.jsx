@@ -150,14 +150,14 @@ export default function Skills() {
       {/* 4 Proven Production Skill Cards Grid */}
       <div className="skills-proven-grid">
         {PROVEN_CATEGORIES.map((cat, idx) => (
-          <TiltCard key={cat.title} maxTilt={8} glare={true} style={{ height: "100%" }}>
+          <TiltCard key={cat.title} maxTilt={8} glare={true} style={{ height: "100%", width: "100%", minWidth: 0 }}>
             <motion.div
               className="skill-category-card"
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              style={{ height: "100%", marginBottom: 0 }}
+              style={{ height: "100%", marginBottom: 0, width: "100%", boxSizing: "border-box" }}
             >
               <div className="skill-cat-header">
                 <h3 className="skill-cat-title">
