@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import CosmicBackground from "./components/CosmicBackground";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -14,6 +15,39 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 export default function App() {
+  useEffect(() => {
+    // 1. Disable browser scroll restoration
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    // 2. Clear any lingering hash so browser does not jump to other sections
+    if (window.location.hash) {
+      window.history.replaceState(null, "", window.location.pathname);
+    }
+
+    // 3. Immediately scroll to top
+    window.scrollTo(0, 0);
+
+    // 4. Double-check after initial paint and DOM render
+    const rafId = requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+      const homeEl = document.getElementById("home");
+      if (homeEl) {
+        homeEl.scrollIntoView({ behavior: "instant", block: "start" });
+      }
+    });
+
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <div className="cosmic-app-wrapper">
       {/* Ambient Starfield Canvas */}
