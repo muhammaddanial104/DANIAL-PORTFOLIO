@@ -54,12 +54,12 @@ const PROVEN_CATEGORIES = [
   },
 ];
 
-// ── ROBOTICS & ACADEMIC RESEARCH ──
+// ── ROBOTICS PROGRAMMING & HARDWARE (COMING SOON) ──
 const LEARNING_SKILLS = [
-  { name: "ROS & ROS 2", desc: "Robot Operating System node architectures, topics, and micro-ROS communications", tag: "Degree Coursework" },
-  { name: "Embedded C / C++", desc: "Hardware firmware, memory registers, UART/I2C/SPI sensor communications", tag: "Laboratory Research" },
-  { name: "Autonomous Navigation & SLAM", desc: "Kinematics, path planning algorithms, and LiDAR mapping fundamentals", tag: "Academic Focus" },
-  { name: "Microcontroller Hardware", desc: "Actuators, motor drivers, ESP32/STM32 platforms, and control feedback loops", tag: "Hands-on Lab" },
+  { name: "Robotics Programming & Control", desc: "Kinematics, inverse kinematics, actuator trajectory planning, and Python/C++ robot control scripts", tag: "COMING SOON" },
+  { name: "ROS & ROS 2 Architectures", desc: "Robot Operating System node architectures, pub/sub topics, and micro-ROS communications", tag: "COMING SOON" },
+  { name: "Embedded C / C++ Firmware", desc: "Hardware firmware, memory registers, UART/I2C/SPI sensor communications, and realtime control loops", tag: "COMING SOON" },
+  { name: "Autonomous Navigation & SLAM", desc: "Kinematics, path planning algorithms, and LiDAR mapping fundamentals", tag: "COMING SOON" },
 ];
 
 const PROVEN_TECH_TAGS = [
@@ -81,6 +81,9 @@ const PROVEN_TECH_TAGS = [
   "Vercel",
   "Tailwind CSS",
   "Browser Automation",
+  "Robotics Programming (Coming Soon)",
+  "ROS & ROS 2 (Coming Soon)",
+  "Embedded C++ (Coming Soon)",
 ];
 
 function SkillBar({ name, pct, color }) {
@@ -184,9 +187,9 @@ export default function Skills() {
         ))}
       </div>
 
-      {/* ── ROBOTICS & ACADEMIC RESEARCH ── */}
+      {/* ── ROBOTICS PROGRAMMING & HARDWARE (COMING SOON) ── */}
       <motion.div
-        className="currently-learning-card"
+        className="currently-learning-card cat-coming-soon"
         initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
@@ -194,10 +197,16 @@ export default function Skills() {
       >
         <div className="learning-header">
           <div className="learning-title-group">
-            <span className="learning-badge-pill">🎓 ACADEMIC RESEARCH &amp; FOUNDATIONS</span>
-            <h4 className="learning-heading">Robotics &amp; Embedded Systems Curriculum</h4>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap", marginBottom: "8px" }}>
+              <span className="learning-badge-pill">🦾 ROBOTICS PROGRAMMING &amp; HARDWARE</span>
+              <span className="cat-badge-soon">
+                <span className="live-dot-green" />
+                COMING SOON
+              </span>
+            </div>
+            <h4 className="learning-heading">Robotics Programming &amp; Autonomous Systems</h4>
             <p className="learning-desc">
-              Core academic pursuits from my Bachelor in Robotics &amp; Autonomous Systems degree, providing deep systems-level reasoning and analytical depth.
+              Expanding autonomous AI agents into physical hardware and robotic control. Hands-on robotics programming, ROS 2 node architecture, and embedded systems launching soon alongside my Bachelor in Robotics degree.
             </p>
           </div>
         </div>
@@ -207,12 +216,15 @@ export default function Skills() {
             <motion.div
               className="learning-item-box"
               key={item.name}
-              whileHover={{ y: -3, borderColor: "rgba(56, 189, 248, 0.4)" }}
+              whileHover={{ y: -3, borderColor: "rgba(16, 185, 129, 0.5)" }}
               transition={{ duration: 0.2 }}
             >
               <div className="learning-item-top">
                 <span className="learning-item-name">{item.name}</span>
-                <span className="learning-item-tag">{item.tag}</span>
+                <span className="learning-item-tag tag-soon-pulse">
+                  <span className="live-dot-green" />
+                  {item.tag}
+                </span>
               </div>
               <p className="learning-item-desc">{item.desc}</p>
             </motion.div>
@@ -238,17 +250,20 @@ export default function Skills() {
           </div>
 
           <div className="actual-tech-chips">
-            {PROVEN_TECH_TAGS.map((t, idx) => (
-              <motion.span
-                key={idx}
-                className="tech-pill"
-                whileHover={{ scale: 1.08, y: -2 }}
-                transition={{ duration: 0.15 }}
-              >
-                <span className="pill-dot" />
-                {t}
-              </motion.span>
-            ))}
+            {PROVEN_TECH_TAGS.map((t, idx) => {
+              const isSoon = t.includes("Coming Soon");
+              return (
+                <motion.span
+                  key={idx}
+                  className={`tech-pill ${isSoon ? "tech-pill-soon" : ""}`}
+                  whileHover={{ scale: 1.08, y: -2 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  <span className={`pill-dot ${isSoon ? "pill-dot-green" : ""}`} />
+                  {t}
+                </motion.span>
+              );
+            })}
           </div>
         </div>
       </motion.div>
