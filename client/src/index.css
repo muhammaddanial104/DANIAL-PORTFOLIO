@@ -92,6 +92,57 @@ body {
   overflow-x: hidden;
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   1.5. GLOBAL TYPOGRAPHY JUSTIFICATION (EQUAL LEFT & RIGHT MARGINS)
+   ═══════════════════════════════════════════════════════════════════ */
+p,
+.hero-desc,
+.about-lead,
+.about-paragraph,
+.section-subtitle,
+.highlight-info p,
+.learning-desc,
+.learning-item-desc,
+.actual-tech-sub,
+.proof-text,
+.proof-bullets li,
+.ecommerce-desc,
+.case-desc,
+.featured-case-desc,
+.flagship-description,
+.card-problem-text,
+.card-overview,
+.modal-desc,
+.ai-cmd-subtitle,
+.chat-bubble-content,
+.chat-bubble-content p,
+.automate-card p,
+.automate-card-desc,
+.workflow-box-desc,
+.telemetry-desc,
+.arch-block-val,
+.arch-inspector-desc,
+.arch-step-detail,
+.pillar-desc,
+.why-pillar-card p,
+.roi-box-desc,
+.final-cta-subheading,
+.contact-intro,
+.footer-brand-desc {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6,
+.section-main-heading,
+.hero-name,
+.featured-hero-title,
+.learning-heading {
+  text-wrap: balance;
+}
+
 /* Utility Helpers */
 .text-cyan { color: var(--cyan-primary) !important; }
 .text-purple { color: var(--purple-accent) !important; }
@@ -525,6 +576,8 @@ body {
   max-width: 580px;
   line-height: 1.65;
   margin-bottom: 24px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .hero-buttons {
@@ -876,6 +929,8 @@ body {
   color: var(--text-muted);
   max-width: 650px;
   line-height: 1.6;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -908,6 +963,8 @@ body {
   color: #f1f5f9;
   line-height: 1.6;
   margin-bottom: 16px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .about-paragraph {
@@ -915,6 +972,8 @@ body {
   color: var(--text-muted);
   line-height: 1.75;
   margin-bottom: 16px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .text-white { color: #ffffff; }
@@ -3775,6 +3834,8 @@ body {
   .hero-desc {
     margin-left: auto;
     margin-right: auto;
+    text-align: justify;
+    text-justify: inter-word;
   }
   .hero-buttons {
     justify-content: center;
@@ -3876,6 +3937,8 @@ body {
   }
   .hero-desc {
     font-size: 0.92rem;
+    text-align: justify;
+    text-justify: inter-word;
   }
 
   /* Planet avatar - safely inside viewport */
@@ -4211,6 +4274,8 @@ body {
   }
   .section-subtitle {
     font-size: 0.88rem;
+    text-align: justify;
+    text-justify: inter-word;
   }
 
   .hero-name {
