@@ -11,11 +11,6 @@ export default function About() {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section id="about" className="section-container about-section" aria-labelledby="about-heading">
       {/* Section Header */}
@@ -130,7 +125,7 @@ export default function About() {
           </div>
         </motion.div>
 
-        {/* Right Column: 3D Tilt Authentic Photo with Interactive Badges */}
+        {/* Right Column: 3D Tilt Authentic Photo with Interactive Badges & Signature */}
         <motion.div
           className="about-visual-col"
           initial={{ opacity: 0, x: 30 }}
@@ -158,36 +153,42 @@ export default function About() {
                 <div className="about-photo-overlay" aria-hidden="true"></div>
               </div>
 
-              {/* 4 Floating Contextual Tags */}
+              {/* Signature Badge */}
+              <div className="about-signature-badge">
+                <span className="signature-name">Muhammad Danial</span>
+                <span className="signature-role">Junior MERN Developer</span>
+              </div>
+
+              {/* 4 Floating Contextual Tags with Proven Perimeter Coordinates */}
               <motion.div
-                className="about-float-tag tag-deg"
+                className="about-float-tag tag-code"
                 animate={{ y: [-4, 4, -4] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <span className="tag-icon" aria-hidden="true">⚛️</span>
+                <span className="tag-text">MERN Stack</span>
+              </motion.div>
+
+              <motion.div
+                className="about-float-tag tag-create"
+                animate={{ y: [4, -4, 4] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
               >
                 <span className="tag-icon" aria-hidden="true">🎓</span>
                 <span className="tag-text">Robotics B.S.</span>
               </motion.div>
 
               <motion.div
-                className="about-float-tag tag-intern"
-                animate={{ y: [4, -4, 4] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+                className="about-float-tag tag-automate"
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
               >
                 <span className="tag-icon" aria-hidden="true">💼</span>
                 <span className="tag-text">6-Mo ITS Gujrat</span>
               </motion.div>
 
               <motion.div
-                className="about-float-tag tag-code"
-                animate={{ y: [-5, 5, -5] }}
-                transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-              >
-                <span className="tag-icon" aria-hidden="true">💻</span>
-                <span className="tag-text">MERN Stack</span>
-              </motion.div>
-
-              <motion.div
-                className="about-float-tag tag-loc"
+                className="about-float-tag tag-innovate"
                 animate={{ y: [5, -5, 5] }}
                 transition={{ duration: 4.7, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
               >
