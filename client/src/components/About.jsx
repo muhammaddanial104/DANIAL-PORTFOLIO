@@ -183,39 +183,37 @@ export default function About() {
               </div>
 
               {/* 4 Floating Badges with Subtle Oscillating Animation */}
-              <div className="about-float-tags-group">
-                <motion.div
-                  className="about-float-tag tag-code"
-                  animate={{ y: [-4, 4, -4] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <span>&lt;Code /&gt;</span>
-                </motion.div>
+              <motion.div
+                className="about-float-tag tag-code"
+                animate={{ y: [-4, 4, -4] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <span>&lt;Code /&gt;</span>
+              </motion.div>
 
-                <motion.div
-                  className="about-float-tag tag-create"
-                  animate={{ y: [4, -4, 4] }}
-                  transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-                >
-                  <span>✨ Create</span>
-                </motion.div>
+              <motion.div
+                className="about-float-tag tag-create"
+                animate={{ y: [4, -4, 4] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+              >
+                <span>✨ Create</span>
+              </motion.div>
 
-                <motion.div
-                  className="about-float-tag tag-automate"
-                  animate={{ y: [-5, 5, -5] }}
-                  transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-                >
-                  <span>⚡ Automate</span>
-                </motion.div>
+              <motion.div
+                className="about-float-tag tag-automate"
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+              >
+                <span>⚡ Automate</span>
+              </motion.div>
 
-                <motion.div
-                  className="about-float-tag tag-innovate"
-                  animate={{ y: [5, -5, 5] }}
-                  transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-                >
-                  <span>🚀 Innovate</span>
-                </motion.div>
-              </div>
+              <motion.div
+                className="about-float-tag tag-innovate"
+                animate={{ y: [5, -5, 5] }}
+                transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+              >
+                <span>🚀 Innovate</span>
+              </motion.div>
             </div>
           </TiltCard>
         </motion.div>

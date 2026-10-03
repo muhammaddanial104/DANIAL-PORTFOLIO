@@ -758,10 +758,6 @@ body {
   pointer-events: none;
 }
 
-.hero-float-badges-group {
-  display: contents;
-}
-
 .hero-float-badge {
   position: absolute;
   display: flex;
@@ -1117,10 +1113,6 @@ body {
 }
 
 /* 4 Floating Badges */
-.about-float-tags-group {
-  display: contents;
-}
-
 .about-float-tag {
   position: absolute;
   padding: 6px 14px;
@@ -3886,60 +3878,45 @@ body {
     font-size: 0.92rem;
   }
 
-  /* Planet avatar & Badges - Clean Unobstructed Photo with Badges Beneath */
+  /* Planet avatar - safely inside viewport */
   .hero-avatar-wrapper {
-    width: 100%;
-    max-width: 320px;
-    height: auto;
+    width: 280px;
+    height: 280px;
     margin: 10px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
   }
   .hero-planet-sphere {
-    width: 210px;
-    height: 210px;
-    position: relative;
-    margin: 8px auto 0;
+    width: 200px;
+    height: 200px;
   }
   .ring-1 {
-    width: 260px;
-    height: 260px;
+    width: 270px;
+    height: 270px;
   }
   .ring-2 {
-    width: 225px;
-    height: 225px;
-  }
-  .hero-float-badges-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px 10px;
-    width: 100%;
-    max-width: 320px;
-    margin-top: 4px;
-    z-index: 5;
+    width: 230px;
+    height: 230px;
   }
   .hero-float-badge {
-    position: static !important;
-    top: auto !important;
-    bottom: auto !important;
-    left: auto !important;
-    right: auto !important;
-    transform: none !important;
-    animation: none !important;
-    padding: 6px 12px;
-    background: rgba(10, 20, 42, 0.92);
-    border: 1px solid rgba(56, 189, 248, 0.35);
-    border-radius: 9999px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
-  }
-  .float-badge-icon {
-    font-size: 0.85rem;
+    padding: 4px 10px;
   }
   .float-badge-text {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
+  }
+  .badge-top-right {
+    top: 5px;
+    right: 0px;
+  }
+  .badge-mid-left {
+    top: 60px;
+    left: -10px;
+  }
+  .badge-bottom-left {
+    bottom: 25px;
+    left: 0px;
+  }
+  .badge-bottom-right {
+    bottom: 10px;
+    right: 0px;
   }
 
   .hero-buttons {
@@ -4159,63 +4136,18 @@ body {
     max-height: 94vh;
   }
 
-  /* About Section Mobile - Clean Unobstructed Photo with Tags Beneath */
+  /* About Section Mobile */
   .about-highlights-grid {
     grid-template-columns: 1fr;
     gap: 10px;
   }
   .about-photo-wrapper {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    aspect-ratio: auto;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
+    max-width: 320px;
   }
-  .about-photo-frame {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    border-radius: 20px;
-  }
-  .about-signature-badge {
-    bottom: 10px;
-    left: 12px;
-    right: 12px;
-    padding: 8px 12px;
-    border-radius: 10px;
-  }
-  .signature-name {
-    font-size: 0.95rem;
-  }
-  .signature-role {
-    font-size: 0.68rem;
-  }
-  .about-float-tags-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    max-width: 300px;
-    z-index: 5;
-  }
-  .about-float-tag {
-    position: static !important;
-    top: auto !important;
-    bottom: auto !important;
-    left: auto !important;
-    right: auto !important;
-    transform: none !important;
-    animation: none !important;
-    padding: 6px 14px;
-    font-size: 0.74rem;
-    background: rgba(15, 23, 42, 0.88);
-    border-radius: 9999px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
-  }
+  .tag-code { left: -10px; }
+  .tag-create { right: -10px; }
+  .tag-automate { right: -10px; }
+  .tag-innovate { left: -10px; }
   .about-actions-row {
     flex-direction: column;
     width: 100%;
@@ -4267,33 +4199,37 @@ body {
   }
 
   .hero-avatar-wrapper {
-    max-width: 290px;
-    gap: 12px;
+    width: 250px;
+    height: 250px;
   }
   .hero-planet-sphere {
-    width: 180px;
-    height: 180px;
+    width: 175px;
+    height: 175px;
   }
   .ring-1 {
-    width: 235px;
-    height: 235px;
+    width: 240px;
+    height: 240px;
   }
   .ring-2 {
-    width: 200px;
-    height: 200px;
+    width: 205px;
+    height: 205px;
   }
-  .hero-float-badges-group {
-    gap: 6px;
-    max-width: 290px;
+
+  .badge-mid-left {
+    left: -5px;
+    top: 50px;
   }
-  .hero-float-badge {
-    padding: 4px 10px;
+  .badge-top-right {
+    right: -5px;
+    top: 0px;
   }
-  .float-badge-icon {
-    font-size: 0.8rem;
+  .badge-bottom-left {
+    left: -5px;
+    bottom: 15px;
   }
-  .float-badge-text {
-    font-size: 0.68rem;
+  .badge-bottom-right {
+    right: -5px;
+    bottom: 5px;
   }
 
   .hero-stats-row {
@@ -4467,30 +4403,14 @@ body {
 
   /* About Small Phones */
   .about-photo-wrapper {
-    max-width: 260px;
-    gap: 10px;
-  }
-  .about-photo-frame {
-    border-radius: 16px;
-  }
-  .about-signature-badge {
-    bottom: 8px;
-    left: 8px;
-    right: 8px;
-    padding: 6px 10px;
-  }
-  .signature-name {
-    font-size: 0.88rem;
-  }
-  .signature-role {
-    font-size: 0.64rem;
-  }
-  .about-float-tags-group {
-    gap: 6px;
-    max-width: 260px;
+    max-width: 270px;
   }
   .about-float-tag {
     font-size: 0.68rem;
     padding: 4px 10px;
   }
+  .tag-code { top: 4%; left: -6px; }
+  .tag-create { top: 4%; right: -6px; }
+  .tag-automate { bottom: 20%; right: -6px; }
+  .tag-innovate { bottom: 12%; left: -6px; }
 }
