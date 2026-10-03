@@ -22,7 +22,7 @@ const AUTODEV_FEATURES = [
   { name: "Autonomous Coding",      icon: "💻" },
   { name: "AST Code Parsing",       icon: "🌲" },
   { name: "Unit Test Generator",    icon: "🧪" },
-  { name: "Docker Sandbox Exec",    icon: "🐳" },
+  { name: "Isolated Sandbox Exec",  icon: "🛡️" },
   { name: "Git Diffs & Commits",    icon: "🔀" },
   { name: "Static Type Analysis",   icon: "🔬" },
   { name: "Auto Bug Refactoring",   icon: "🔧" },
@@ -136,13 +136,13 @@ export default function Projects() {
             <div className="proof-row">
               <strong className="proof-label">🛠️ My Contribution:</strong>
               <ul className="proof-bullets">
-                <li>Architected multi-agent triage pipeline that isolates suspicious payloads inside ephemeral Docker sandboxes.</li>
+                <li>Architected multi-agent triage pipeline that isolates suspicious payloads inside isolated sandbox environments.</li>
                 <li>Engineered autonomous CVE vulnerability scanning and self-healing patch remediation with real-time SOC alerting.</li>
               </ul>
             </div>
             <div className="proof-row">
               <strong className="proof-label">⚡ Tech Stack:</strong>
-              <span className="proof-stack">Python · FastAPI · LangChain · Claude 3.5 Sonnet · Docker Sandboxes · Suricata · ChromaDB · React</span>
+              <span className="proof-stack">Python · FastAPI · LangChain · Claude 3.5 Sonnet · Threat Sandboxes · Suricata · ChromaDB · React</span>
             </div>
           </div>
 
@@ -183,14 +183,14 @@ export default function Projects() {
                   badge: "Autonomous Cyber Defense Platform",
                   image: "/images/aegis-preview.jpg",
                   problem: "Manual security operations struggle with slow incident response, undetected zero-days, and alert fatigue.",
-                  solution: "Engineered an autonomous multi-agent SOC that scans networks, isolates malicious payloads in Docker, and generates instant CVE patches.",
+                  solution: "Engineered an autonomous multi-agent SOC that scans networks, isolates malicious payloads in quarantine environments, and generates instant CVE patches.",
                   contribution: [
                     "Designed event-driven telemetry ingestion engine connecting Zeek logs to LangChain reasoning agents.",
-                    "Built automated Docker container quarantine service ensuring zero host contamination during payload analysis.",
+                    "Built automated payload quarantine service ensuring zero host contamination during vulnerability analysis.",
                     "Created real-time React dashboard with live threat heatmaps and incident timeline playback.",
                   ],
                   flow: "Telemetry Ingestion → Multi-Agent Triage → Sandboxed CVE Analysis → Autonomous Playbook Execution → SOC Alert",
-                  tech: ["Python", "FastAPI", "LangChain", "Claude 3.5 Sonnet", "Docker Sandboxes", "Suricata", "ChromaDB", "React"],
+                  tech: ["Python", "FastAPI", "LangChain", "Claude 3.5 Sonnet", "FastAPI Sandboxes", "Suricata", "ChromaDB", "React"],
                   result: "Detects and isolates simulated network threats in under 4 minutes with verifiable automated rollbacks.",
                   githubUrl: "https://github.com/muhammaddanial104",
                 })
@@ -267,12 +267,12 @@ export default function Projects() {
               <strong className="proof-label">🛠️ My Contribution:</strong>
               <ul className="proof-bullets">
                 <li>Built AST-level syntax tree parsing engine allowing the agent to safely read, modify, and refactor code across multiple files.</li>
-                <li>Implemented isolated containerized Pytest execution loop with autonomous self-reflection and auto-diff generator.</li>
+                <li>Implemented isolated automated Pytest execution loop with autonomous self-reflection and auto-diff generator.</li>
               </ul>
             </div>
             <div className="proof-row">
               <strong className="proof-label">⚡ Tech Stack:</strong>
-              <span className="proof-stack">Python · LangChain / LangGraph · Tree-sitter AST · OpenAI GPT-4 · Docker · Pytest · FastAPI</span>
+              <span className="proof-stack">Python · LangChain / LangGraph · Tree-sitter AST · OpenAI GPT-4 · Subprocess Sandboxing · Pytest · FastAPI</span>
             </div>
           </div>
 
@@ -313,15 +313,15 @@ export default function Projects() {
                   badge: "Autonomous AI Software Engineering Agent",
                   image: "/images/coder-agent-preview.jpg",
                   problem: "Developers spend significant hours on repetitive code scaffolding, bug recreation, and test authoring.",
-                  solution: "Engineered an autonomous coding agent with AST parsing and isolated Docker test verification.",
+                  solution: "Engineered an autonomous coding agent with AST parsing and isolated sandbox test verification.",
                   contribution: [
                     "Architected planner-critic agentic loop using LangGraph state graphs.",
-                    "Configured sandboxed Docker environment to execute unit tests without risking host environment integrity.",
+                    "Configured sandboxed execution environment to execute unit tests without risking host environment integrity.",
                     "Added unified git patch output generator allowing human review before merging.",
                   ],
-                  flow: "User Requirement → AST Parse → Plan → Code Generation → Docker Pytest → Self-Reflection Loop → Git Diff",
-                  tech: ["Python", "LangChain", "OpenAI GPT-4", "Tree-sitter", "Docker", "Pytest", "FastAPI"],
-                  result: "Automated end-to-end task implementation with guaranteed containerized test verification.",
+                  flow: "User Requirement → AST Parse → Plan → Code Generation → Automated Pytest → Self-Reflection Loop → Git Diff",
+                  tech: ["Python", "LangChain", "OpenAI GPT-4", "Tree-sitter", "Async Subprocess", "Pytest", "FastAPI"],
+                  result: "Automated end-to-end task implementation with guaranteed automated test verification.",
                   githubUrl: "https://github.com/muhammaddanial104",
                 })
               }

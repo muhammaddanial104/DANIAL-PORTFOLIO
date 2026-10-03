@@ -47,7 +47,7 @@ const PROVEN_CATEGORIES = [
     badge: "CI/CD & DEPLOYMENTS",
     skills: [
       { name: "Git Version Control & Team Workflows", pct: 91 },
-      { name: "Docker Containerization Sandboxes", pct: 85 },
+      { name: "Postman & API Integration Testing", pct: 89 },
       { name: "Vercel, Cloud Hosting & DNS", pct: 88 },
       { name: "Performance Optimization & Security", pct: 86 },
     ],
@@ -76,7 +76,7 @@ const PROVEN_TECH_TAGS = [
   "OpenAI GPT-4",
   "Claude 3.5 Sonnet",
   "REST APIs",
-  "Docker",
+  "Postman",
   "Git & GitHub",
   "Vercel",
   "Tailwind CSS",

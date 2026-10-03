@@ -26,7 +26,7 @@ export default function AskDanialAI() {
     {
       keywords: ["kind of ai", "types of agent", "what kind", "what ai", "build"],
       answer:
-        "Danial specializes in architecting 4 primary classes of autonomous AI systems:\n\n1. **ReAct & Tool-Calling Agents:** Multi-step autonomous workflows that connect to APIs, execute webhooks, and process file pipelines end-to-end.\n2. **AI Customer Support & Voice Agents:** 24/7 intelligent conversational agents with RAG over internal documentation, integrated with WhatsApp, Email, and CRM systems.\n3. **Desktop AI Companions:** Local system-control agents like NOVA AI featuring speech synthesis, browser orchestration, and desktop task automation.\n4. **Autonomous Cyber Defense Agents:** Real-time threat detection and vulnerability remediation platforms like AEGIS-AI with Docker isolation.",
+        "Danial specializes in architecting 4 primary classes of autonomous AI systems:\n\n1. **ReAct & Tool-Calling Agents:** Multi-step autonomous workflows that connect to APIs, execute webhooks, and process file pipelines end-to-end.\n2. **AI Customer Support & Voice Agents:** 24/7 intelligent conversational agents with RAG over internal documentation, integrated with WhatsApp, Email, and CRM systems.\n3. **Desktop AI Companions:** Local system-control agents like NOVA AI featuring speech synthesis, browser orchestration, and desktop task automation.\n4. **Autonomous Cyber Defense Agents:** Real-time threat detection and vulnerability remediation platforms like AEGIS-AI with automated threat quarantine and remediation.",
     },
     {
       keywords: ["customer support", "support", "ticket", "whatsapp", "email automation"],
@@ -36,12 +36,12 @@ export default function AskDanialAI() {
     {
       keywords: ["project", "nova", "aegis", "autodev", "ecommerce", "work"],
       answer:
-        "Here are Danial's verified flagship production architectures:\n\n• **AEGIS-AI:** Autonomous SOC platform that analyzes network threats in real-time and isolates CVE vulnerabilities in Docker sandboxes.\n• **AutoDev AI:** Autonomous coding engine with AST parsing, multi-file code generation, and automated containerized test execution.\n• **NOVA Desktop AI:** Autonomous desktop assistant with natural speech recognition, browser orchestration, and cross-platform automation.\n• **Enterprise MERN E-Commerce:** Built during Danial's 6-month software engineering internship at ITS Gujrat with full Stripe payment flow and live inventory sync.\n\nScroll to the **Projects** section to view complete case studies!",
+        "Here are Danial's verified flagship production architectures:\n\n• **AEGIS-AI:** Autonomous SOC platform that analyzes network threats in real-time and isolates CVE vulnerabilities in quarantined sandbox environments.\n• **AutoDev AI:** Autonomous coding engine with AST parsing, multi-file code generation, and automated test validation and AST diff generation.\n• **NOVA Desktop AI:** Autonomous desktop assistant with natural speech recognition, browser orchestration, and cross-platform automation.\n• **Enterprise MERN E-Commerce:** Built during Danial's 6-month software engineering internship at ITS Gujrat with full Stripe payment flow and live inventory sync.\n\nScroll to the **Projects** section to view complete case studies!",
     },
     {
       keywords: ["technology", "tech stack", "languages", "tools", "skills", "framework"],
       answer:
-        "Danial's core production tech stack comprises:\n\n• **Full-Stack & Web:** React.js, Next.js, Node.js, Express.js, MongoDB, RESTful APIs, Tailwind CSS.\n• **AI & Automation:** Python, FastAPI, LangChain, OpenAI GPT-4, Claude 3.5 Sonnet, ReAct Tool-Calling, RAG.\n• **DevOps & Sandboxing:** Docker, Git/GitHub, Vercel, Headless Browser Automation.\n• **Engineering Core:** Bachelor in Robotics & Autonomous Systems and 6-Month Intensive Software Engineering Internship at ITS Gujrat.",
+        "Danial's core production tech stack comprises:\n\n• **Full-Stack & Web:** React.js, Next.js, Node.js, Express.js, MongoDB, RESTful APIs, Tailwind CSS.\n• **AI & Automation:** Python, FastAPI, LangChain, OpenAI GPT-4, Claude 3.5 Sonnet, ReAct Tool-Calling, RAG.\n• **Tooling & Cloud:** Git/GitHub, Vercel, Postman, Headless Browser Automation.\n• **Engineering Core:** Bachelor in Robotics & Autonomous Systems and 6-Month Intensive Software Engineering Internship at ITS Gujrat.",
     },
     {
       keywords: ["business process", "automate", "process", "workflow", "save time", "hire"],

@@ -221,16 +221,16 @@ export default function Hero() {
           >
             <div className="hero-stat-item">
               <span className="hero-stat-number">
-                <CountUp end={2} suffix="+" />
+                <CountUp end={6} suffix=" Mo" />
               </span>
-              <span className="hero-stat-label">Years Experience</span>
+              <span className="hero-stat-label">Software Experience</span>
             </div>
             <div className="hero-stat-divider"></div>
             <div className="hero-stat-item">
               <span className="hero-stat-number">
-                <CountUp end={10} suffix="+" />
+                <CountUp end={2} suffix="" />
               </span>
-              <span className="hero-stat-label">Shipped Projects</span>
+              <span className="hero-stat-label">Projects Delivered</span>
             </div>
             <div className="hero-stat-divider"></div>
             <div className="hero-stat-item">
