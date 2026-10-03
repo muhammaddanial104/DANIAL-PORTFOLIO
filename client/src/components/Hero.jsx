@@ -272,45 +272,47 @@ export default function Hero() {
               </div>
 
               {/* 4 Interactive Floating Badges with Subtle Physics */}
-              <motion.div
-                className="hero-float-badge badge-top-right"
-                animate={{ y: [-5, 5, -5], x: [0, 3, 0] }}
-                transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
-                whileHover={{ scale: 1.12 }}
-              >
-                <span className="float-badge-icon">🌐</span>
-                <span className="float-badge-text">Full-Stack MERN</span>
-              </motion.div>
+              <div className="hero-float-badges-group">
+                <motion.div
+                  className="hero-float-badge badge-top-right"
+                  animate={{ y: [-5, 5, -5], x: [0, 3, 0] }}
+                  transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
+                  whileHover={{ scale: 1.12 }}
+                >
+                  <span className="float-badge-icon">🌐</span>
+                  <span className="float-badge-text">Full-Stack MERN</span>
+                </motion.div>
 
-              <motion.div
-                className="hero-float-badge badge-mid-left"
-                animate={{ y: [5, -5, 5], x: [0, -3, 0] }}
-                transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-                whileHover={{ scale: 1.12 }}
-              >
-                <span className="float-badge-icon">🤖</span>
-                <span className="float-badge-text">AI Automation</span>
-              </motion.div>
+                <motion.div
+                  className="hero-float-badge badge-mid-left"
+                  animate={{ y: [5, -5, 5], x: [0, -3, 0] }}
+                  transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+                  whileHover={{ scale: 1.12 }}
+                >
+                  <span className="float-badge-icon">🤖</span>
+                  <span className="float-badge-text">AI Automation</span>
+                </motion.div>
 
-              <motion.div
-                className="hero-float-badge badge-bottom-left"
-                animate={{ y: [-4, 6, -4], x: [0, 2, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-                whileHover={{ scale: 1.12 }}
-              >
-                <span className="float-badge-icon">⚙️</span>
-                <span className="float-badge-text">APIs &amp; Workflows</span>
-              </motion.div>
+                <motion.div
+                  className="hero-float-badge badge-bottom-left"
+                  animate={{ y: [-4, 6, -4], x: [0, 2, 0] }}
+                  transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+                  whileHover={{ scale: 1.12 }}
+                >
+                  <span className="float-badge-icon">⚙️</span>
+                  <span className="float-badge-text">APIs &amp; Workflows</span>
+                </motion.div>
 
-              <motion.div
-                className="hero-float-badge badge-bottom-right"
-                animate={{ y: [6, -4, 6], x: [0, -2, 0] }}
-                transition={{ duration: 5.1, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-                whileHover={{ scale: 1.12 }}
-              >
-                <span className="float-badge-icon">🦾</span>
-                <span className="float-badge-text">Robotics Degree</span>
-              </motion.div>
+                <motion.div
+                  className="hero-float-badge badge-bottom-right"
+                  animate={{ y: [6, -4, 6], x: [0, -2, 0] }}
+                  transition={{ duration: 5.1, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+                  whileHover={{ scale: 1.12 }}
+                >
+                  <span className="float-badge-icon">🦾</span>
+                  <span className="float-badge-text">Robotics Degree</span>
+                </motion.div>
+              </div>
             </motion.div>
           </TiltCard>
         </motion.div>
