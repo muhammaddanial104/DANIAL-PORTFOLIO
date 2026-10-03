@@ -23,7 +23,15 @@ export default function Hero() {
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) {
+      const navOffset = 80;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
@@ -330,28 +338,21 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll Down Indicator */}
-      <motion.div
-        className="scroll-indicator"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.6 }}
+      {/* Scroll Down / Explore Indicator */}
+      <motion.button
+        type="button"
+        onClick={() => scrollTo("about")}
+        className="hero-scroll-indicator"
+        initial={{ opacity: 0, y: -8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.9, duration: 0.6 }}
+        aria-label="Scroll down to explore about section"
       >
-        <button
-          type="button"
-          onClick={() => scrollTo("about")}
-          className="scroll-down-btn"
-          aria-label="Scroll down to About section"
-        >
-          <span className="scroll-text">Explore</span>
-          <div className="scroll-arrow-box">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <line x1="12" y1="5" x2="12" y2="19"></line>
-              <polyline points="19 12 12 19 5 12"></polyline>
-            </svg>
-          </div>
-        </button>
-      </motion.div>
+        <div className="mouse-icon" aria-hidden="true">
+          <div className="mouse-wheel"></div>
+        </div>
+        <span className="scroll-text">Explore</span>
+      </motion.button>
     </section>
   );
 }

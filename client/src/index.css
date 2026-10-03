@@ -841,46 +841,66 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .hero-scroll-indicator {
-  margin-top: 30px;
+  margin-top: 36px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
   cursor: pointer;
   color: var(--text-dim);
-  transition: color var(--transition-fast);
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  padding: 8px 16px;
+  transition: all var(--transition-fast);
 }
 
-.hero-scroll-indicator:hover { color: var(--cyan-primary); }
+.hero-scroll-indicator:hover {
+  color: var(--cyan-primary);
+  transform: translateY(2px);
+}
 
 .mouse-icon {
-  width: 20px;
-  height: 32px;
+  width: 22px;
+  height: 34px;
   border: 2px solid currentColor;
-  border-radius: 10px;
+  border-radius: 12px;
   display: flex;
   justify-content: center;
-  padding-top: 5px;
+  padding-top: 6px;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.hero-scroll-indicator:hover .mouse-icon {
+  border-color: var(--cyan-primary);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.45);
 }
 
 .mouse-wheel {
   width: 3px;
-  height: 6px;
+  height: 7px;
   background: currentColor;
   border-radius: 2px;
-  animation: mouseWheel 2s ease-in-out infinite;
+  animation: mouseWheel 1.8s ease-in-out infinite;
 }
 
 @keyframes mouseWheel {
   0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(10px); opacity: 0; }
+  100% { transform: translateY(12px); opacity: 0; }
 }
 
 .scroll-text {
-  font-size: 0.72rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  transition: color var(--transition-fast), text-shadow var(--transition-fast);
+}
+
+.hero-scroll-indicator:hover .scroll-text {
+  color: var(--cyan-primary);
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -892,6 +912,7 @@ h1, h2, h3, h4, h5, h6,
   margin: 0 auto;
   padding: 90px 20px;
   position: relative;
+  scroll-margin-top: 85px;
 }
 
 .section-header {
