@@ -17,7 +17,7 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="section-container about-section">
+    <section id="about" className="section-container about-section" aria-labelledby="about-heading">
       {/* Section Header */}
       <motion.div
         className="section-header"
@@ -29,18 +29,18 @@ export default function About() {
         <div className="section-badge">
           <span className="badge-num">02</span>
           <span className="badge-sep">|</span>
-          <span className="badge-title">About Me</span>
+          <span className="badge-title">My Journey &amp; Mindset</span>
         </div>
-        <h2 className="section-main-heading">
-          ENGINEERING DISCIPLINE &amp; <span className="gradient-text">DIGITAL EXCELLENCE</span>
+        <h2 id="about-heading" className="section-main-heading">
+          ENGINEERING DISCIPLINE &amp; <span className="gradient-text">GROWTH MINDSET</span>
         </h2>
         <p className="section-subtitle">
-          Merging robotics systems engineering with modern full-stack web architecture and autonomous AI workflows.
+          From robotics algorithms to commercial MERN platforms — building reliable web applications with curiosity, rigor, and clean code.
         </p>
       </motion.div>
 
       <div className="about-grid">
-        {/* Left Column: Authentic Bio & Highlights */}
+        {/* Left Column: Authentic Bio & Growth Mindset Story */}
         <motion.div
           className="about-bio-col"
           initial={{ opacity: 0, x: -30 }}
@@ -49,110 +49,88 @@ export default function About() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="about-lead">
-            Hi, I'm <strong className="text-white">Muhammad Danial</strong> — a Full-Stack Software Engineer and AI Automation Specialist based in Gujrat, Pakistan.
+            Hi! I'm <strong className="text-white">Muhammad Danial</strong> — an early-career Full-Stack MERN Developer based in Gujrat, Pakistan.
           </p>
 
           <p className="about-paragraph">
-            With a formal foundation in <span className="text-cyan">Bachelor in Robotics &amp; Autonomous Systems</span>, I approach software engineering from a first-principles perspective. Rather than just writing code, I design resilient, modular architectures that eliminate manual inefficiencies and scale reliably under real-world demands.
+            My journey began with a <span className="text-cyan">Bachelor in Robotics &amp; Autonomous Systems</span>. Working with hardware kinematics, microcontrollers, and state machines instilled a deep appreciation for deterministic logic, defensive programming, and systematic debugging. When I built my first web app, I was captivated by how fast ideas could transform into accessible software that solves everyday problems for real users.
           </p>
 
           <p className="about-paragraph">
-            During my intensive <span className="text-purple">6-Month Software Engineering Internship at ITS Gujrat</span>, I engineered and deployed two production-ready MERN e-commerce platforms. Both systems integrated automated Stripe/local payment flows, real-time inventory management, and robust JWT authorization protocols.
+            To ground my theory in production reality, I completed an intensive <span className="text-purple">6-Month Software Engineering Internship at ITS Gujrat</span>. There, I contributed directly to architecting and deploying two commercial MERN e-commerce platforms — implementing RESTful API endpoints, Stripe checkout workflows, JWT auth guards, and real-time MongoDB inventory synchronization.
           </p>
 
           <p className="about-paragraph">
-            Today, my core focus is building modern full-stack web applications and autonomous AI multi-agent workflows—turning complex business requirements into elegant, high-impact digital solutions.
+            I don't believe in exaggerated buzzwords. As a junior engineer, my superpower is my <strong className="text-white">relentless curiosity and humility</strong>: I code every day, document what I learn on Dev.to, welcome code reviews with open arms, and am eager to contribute value within a collaborative, fast-moving engineering team.
           </p>
 
-          {/* Key Highlights Grid */}
+          {/* 4 Pillars Grid */}
           <div className="about-highlights-grid">
-            <motion.div
-              className="highlight-card"
-              whileHover={{ y: -5, scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="highlight-icon">🎓</div>
-              <div className="highlight-info">
-                <h4>BS in Robotics</h4>
-                <p>Systematic logic, algorithms &amp; autonomous systems engineering</p>
+            <div className="about-highlight-card">
+              <span className="highlight-icon" aria-hidden="true">🎓</span>
+              <div>
+                <strong className="highlight-title">Robotics Degree</strong>
+                <p className="highlight-desc">Strong foundation in computational logic, math, and structured problem-solving.</p>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="highlight-card"
-              whileHover={{ y: -5, scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="highlight-icon">💼</div>
-              <div className="highlight-info">
-                <h4>ITS Gujrat Internship</h4>
-                <p>Shipped 2 production MERN e-commerce platforms end-to-end</p>
+            <div className="about-highlight-card">
+              <span className="highlight-icon" aria-hidden="true">💼</span>
+              <div>
+                <strong className="highlight-title">6-Mo Commercial Internship</strong>
+                <p className="highlight-desc">Shipped 2 production MERN platforms at ITS Gujrat with real client deployments.</p>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="highlight-card"
-              whileHover={{ y: -5, scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="highlight-icon">🤖</div>
-              <div className="highlight-info">
-                <h4>AI Agent Architect</h4>
-                <p>Autonomous LLM swarms, custom tool-calling &amp; API workflows</p>
+            <div className="about-highlight-card">
+              <span className="highlight-icon" aria-hidden="true">⚛️</span>
+              <div>
+                <strong className="highlight-title">Modern MERN Tooling</strong>
+                <p className="highlight-desc">React 18, Node.js, Express, MongoDB, Redux Toolkit, Postman, Git workflows.</p>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="highlight-card"
-              whileHover={{ y: -5, scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="highlight-icon">⚡</div>
-              <div className="highlight-info">
-                <h4>Full-Stack Mastery</h4>
-                <p>High-speed React, Next.js, Node.js, Express &amp; MongoDB</p>
+            <div className="about-highlight-card">
+              <span className="highlight-icon" aria-hidden="true">🌱</span>
+              <div>
+                <strong className="highlight-title">Continuous Growth</strong>
+                <p className="highlight-desc">Writing tech blogs on Dev.to, learning TypeScript and Next.js, eager to be mentored.</p>
               </div>
-            </motion.div>
+            </div>
           </div>
 
-          {/* Action Buttons */}
+          {/* Action CTAs */}
           <div className="about-actions-row">
-            <motion.a
-              href="https://wa.me/923137525862?text=Hello%20Danial,%20I%20am%20interested%20in%20discussing%20a%20project."
-              target="_blank"
-              rel="noopener noreferrer"
+            <a
+              href="/resume.pdf"
+              download="Muhammad_Danial_Resume.pdf"
               className="about-btn-primary"
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.97 }}
+              aria-label="Download Muhammad Danial CV"
             >
-              <span>Discuss a Project</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
+              <span>Download Full CV</span>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
-            </motion.a>
+            </a>
 
-            <motion.button
+            <button
+              type="button"
               onClick={copyEmail}
               className="about-btn-secondary"
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.97 }}
+              aria-label="Copy Danial's email address"
             >
-              <span>{copied ? "✓ Email Copied!" : "Copy Email"}</span>
-            </motion.button>
-
-            <motion.button
-              onClick={() => scrollTo("projects")}
-              className="about-btn-secondary"
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              <span>View Projects</span>
-            </motion.button>
+              <span>{copied ? "Email Copied! ✓" : "Copy Email"}</span>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </button>
           </div>
         </motion.div>
 
-        {/* Right Column: Sleek Photo Card with Glass Frame & Floating Badges */}
+        {/* Right Column: 3D Tilt Authentic Photo with Interactive Badges */}
         <motion.div
           className="about-visual-col"
           initial={{ opacity: 0, x: 30 }}
@@ -160,59 +138,61 @@ export default function About() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <TiltCard maxTilt={12} glare={true} style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+          <TiltCard maxTilt={12} glare={true} className="about-photo-tilt-card">
             <div className="about-photo-wrapper">
-              {/* Glowing neon aura */}
-              <div className="about-glow-aura"></div>
+              <div className="about-glow-aura" aria-hidden="true"></div>
 
-              {/* Glass photo frame */}
               <div className="about-photo-frame">
-                <img
-                  src="/images/danial.jpg"
-                  alt="Muhammad Danial"
-                  className="about-photo-img"
-                />
-
-                <div className="about-photo-overlay"></div>
-
-                {/* Bottom signature badge */}
-                <div className="about-signature-badge">
-                  <span className="signature-name">Muhammad Danial</span>
-                  <span className="signature-role">Full-Stack &amp; AI Builder</span>
-                </div>
+                <picture>
+                  <source srcSet="/images/danial.webp" type="image/webp" />
+                  <img
+                    src="/images/danial.jpg"
+                    alt="Muhammad Danial - Junior Full-Stack Developer"
+                    className="about-photo-img"
+                    width="400"
+                    height="500"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+                <div className="about-photo-overlay" aria-hidden="true"></div>
               </div>
 
-              {/* 4 Floating Badges with Subtle Oscillating Animation */}
+              {/* 4 Floating Contextual Tags */}
               <motion.div
-                className="about-float-tag tag-code"
+                className="about-float-tag tag-deg"
                 animate={{ y: [-4, 4, -4] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
-                <span>&lt;Code /&gt;</span>
+                <span className="tag-icon" aria-hidden="true">🎓</span>
+                <span className="tag-text">Robotics B.S.</span>
               </motion.div>
 
               <motion.div
-                className="about-float-tag tag-create"
+                className="about-float-tag tag-intern"
                 animate={{ y: [4, -4, 4] }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
               >
-                <span>✨ Create</span>
+                <span className="tag-icon" aria-hidden="true">💼</span>
+                <span className="tag-text">6-Mo ITS Gujrat</span>
               </motion.div>
 
               <motion.div
-                className="about-float-tag tag-automate"
+                className="about-float-tag tag-code"
                 animate={{ y: [-5, 5, -5] }}
                 transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
               >
-                <span>⚡ Automate</span>
+                <span className="tag-icon" aria-hidden="true">💻</span>
+                <span className="tag-text">MERN Stack</span>
               </motion.div>
 
               <motion.div
-                className="about-float-tag tag-innovate"
+                className="about-float-tag tag-loc"
                 animate={{ y: [5, -5, 5] }}
-                transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+                transition={{ duration: 4.7, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
               >
-                <span>🚀 Innovate</span>
+                <span className="tag-icon" aria-hidden="true">📍</span>
+                <span className="tag-text">Gujrat, Pakistan</span>
               </motion.div>
             </div>
           </TiltCard>

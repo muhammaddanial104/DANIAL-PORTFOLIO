@@ -5,85 +5,81 @@ import TiltCard from "./TiltCard";
 // ── PROVEN PRODUCTION SKILLS ──
 const PROVEN_CATEGORIES = [
   {
-    title: "AI & AGENT ARCHITECTURE",
-    icon: "🤖",
-    color: "#a855f7",
-    badge: "PRODUCTION & AGENT SWARMS",
-    skills: [
-      { name: "Autonomous AI Multi-Agents", pct: 94 },
-      { name: "LLM APIs (OpenAI GPT-4 & Claude 3.5)", pct: 92 },
-      { name: "LangChain, Tool Calling & RAG", pct: 89 },
-      { name: "System Prompting & Context Management", pct: 91 },
-    ],
-  },
-  {
-    title: "FULL-STACK WEB PLATFORMS",
-    icon: "💻",
+    title: "FRONTEND ENGINEERING",
+    icon: "⚛️",
     color: "#38bdf8",
-    badge: "MERN & ENTERPRISE CODE",
+    badge: "MERN & MODERN UI",
     skills: [
-      { name: "React.js, Next.js & Modern UI", pct: 90 },
-      { name: "Node.js, Express & Architecture", pct: 88 },
-      { name: "MongoDB & Database Design", pct: 87 },
-      { name: "RESTful APIs & State Management", pct: 90 },
+      { name: "React.js & Modern Hooks", pct: 90 },
+      { name: "JavaScript (ES6+) & DOM", pct: 91 },
+      { name: "Tailwind CSS & Responsive Layouts", pct: 92 },
+      { name: "Redux Toolkit & Context State", pct: 86 },
     ],
   },
   {
-    title: "AUTOMATION & WORKFLOW PIPELINES",
-    icon: "⚙️",
-    color: "#ec4899",
-    badge: "VERIFIED HIGH-CONCURRENCY",
+    title: "BACKEND & DATABASE",
+    icon: "🟢",
+    color: "#22c55e",
+    badge: "RESTFUL ARCHITECTURE",
     skills: [
-      { name: "API & Webhook Automations", pct: 92 },
-      { name: "Python Scripting & Headless Scraping", pct: 90 },
-      { name: "Browser & Desktop Task Automation", pct: 89 },
-      { name: "Automated Error Handling & Retries", pct: 87 },
+      { name: "Node.js & Express.js Routers", pct: 88 },
+      { name: "MongoDB & Mongoose Schemas", pct: 87 },
+      { name: "RESTful API Design & CRUD", pct: 90 },
+      { name: "JWT Auth & Password Encryption", pct: 89 },
     ],
   },
   {
-    title: "DEVOPS, CLOUD & TOOLING",
+    title: "DEVELOPER TOOLING & CLOUD",
     icon: "🛠️",
     color: "#f59e0b",
-    badge: "CI/CD & DEPLOYMENTS",
+    badge: "WORKFLOW & QA",
     skills: [
-      { name: "Git Version Control & Team Workflows", pct: 91 },
-      { name: "Postman & API Integration Testing", pct: 89 },
-      { name: "Vercel, Cloud Hosting & DNS", pct: 88 },
-      { name: "Performance Optimization & Security", pct: 86 },
+      { name: "Git Version Control & Team PRs", pct: 92 },
+      { name: "Postman API Integration Testing", pct: 89 },
+      { name: "Vercel Hosting & DNS Deployment", pct: 88 },
+      { name: "Cross-Device Responsive QA", pct: 91 },
+    ],
+  },
+  {
+    title: "ROBOTICS & COMPUTING CORE",
+    icon: "🤖",
+    color: "#a855f7",
+    badge: "DEGREE FOUNDATION",
+    skills: [
+      { name: "Python Scripting & Utilities", pct: 89 },
+      { name: "Data Structures & Core Logic", pct: 87 },
+      { name: "Robotic Kinematics & Simulator Math", pct: 86 },
+      { name: "Hardware Microcontroller Concepts", pct: 83 },
     ],
   },
 ];
 
-// ── ROBOTICS PROGRAMMING & HARDWARE (COMING SOON) ──
+// ── CURRENTLY LEARNING & GROWTH ──
 const LEARNING_SKILLS = [
-  { name: "Robotics Programming & Control", desc: "Kinematics, inverse kinematics, actuator trajectory planning, and Python/C++ robot control scripts", tag: "COMING SOON" },
-  { name: "ROS & ROS 2 Architectures", desc: "Robot Operating System node architectures, pub/sub topics, and micro-ROS communications", tag: "COMING SOON" },
-  { name: "Embedded C / C++ Firmware", desc: "Hardware firmware, memory registers, UART/I2C/SPI sensor communications, and realtime control loops", tag: "COMING SOON" },
-  { name: "Autonomous Navigation & SLAM", desc: "Kinematics, path planning algorithms, and LiDAR mapping fundamentals", tag: "COMING SOON" },
+  { name: "TypeScript for Scalable Apps", desc: "Static typing, interfaces, generics, and strict TypeScript with React and Node.js", tag: "LEARNING" },
+  { name: "Next.js 14 App Router", desc: "Server Components, Server Actions, streaming SSR, and SEO-optimized architecture", tag: "LEARNING" },
+  { name: "PostgreSQL & Prisma ORM", desc: "Relational schema design, SQL queries, relational joins, and type-safe Prisma models", tag: "LEARNING" },
+  { name: "Docker & Container Basics", desc: "Containerizing MERN applications with basic Dockerfiles and multi-stage builds", tag: "LEARNING" },
 ];
 
 const PROVEN_TECH_TAGS = [
   "React.js",
-  "Next.js",
+  "JavaScript ES6+",
   "Node.js",
   "Express.js",
   "MongoDB",
-  "JavaScript ES6+",
-  "TypeScript",
-  "Python",
-  "FastAPI",
-  "LangChain",
-  "OpenAI GPT-4",
-  "Claude 3.5 Sonnet",
+  "Mongoose",
   "REST APIs",
+  "Tailwind CSS",
+  "Redux Toolkit",
   "Postman",
   "Git & GitHub",
+  "HTML5 / CSS3",
+  "Python",
   "Vercel",
-  "Tailwind CSS",
-  "Browser Automation",
-  "Robotics Programming (Coming Soon)",
-  "ROS & ROS 2 (Coming Soon)",
-  "Embedded C++ (Coming Soon)",
+  "TypeScript (In Progress)",
+  "Next.js (In Progress)",
+  "PostgreSQL (In Progress)",
 ];
 
 function SkillBar({ name, pct, color }) {
@@ -110,16 +106,14 @@ function SkillBar({ name, pct, color }) {
         <span className="skill-name">{name}</span>
         <span className="skill-pct" style={{ color }}>{pct}%</span>
       </div>
-      <div className="skill-bar-bg">
-        <motion.div
-          className="skill-bar-fill"
+      <div className="skill-track" role="progressbar" aria-valuenow={pct} aria-valuemin="0" aria-valuemax="100" aria-label={name}>
+        <div
+          className="skill-fill"
           style={{
-            backgroundColor: color,
-            boxShadow: `0 0 12px ${color}88`,
+            width: filled ? `${pct}%` : "0%",
+            background: `linear-gradient(90deg, ${color}88, ${color})`,
+            boxShadow: filled ? `0 0 10px ${color}66` : "none",
           }}
-          initial={{ width: 0 }}
-          animate={{ width: filled ? `${pct}%` : "0%" }}
-          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
         />
       </div>
     </div>
@@ -128,7 +122,7 @@ function SkillBar({ name, pct, color }) {
 
 export default function Skills() {
   return (
-    <section id="skills" className="section-container skills-section">
+    <section id="skills" className="section-container skills-section" aria-labelledby="skills-heading">
       {/* Section Header */}
       <motion.div
         className="section-header"
@@ -142,131 +136,93 @@ export default function Skills() {
           <span className="badge-sep">|</span>
           <span className="badge-title">Technical Expertise</span>
         </div>
-        <h2 className="section-main-heading">
-          CORE ARSENAL &amp; <span className="gradient-text">TECHNICAL CAPABILITIES</span>
+        <h2 id="skills-heading" className="section-main-heading">
+          PROVEN SKILLS &amp; <span className="gradient-text">TECHNICAL TOOLING</span>
         </h2>
         <p className="section-subtitle">
-          Battle-tested competencies backed by real production code, enterprise MERN applications, and autonomous AI systems.
+          Demonstrated competencies backed by real production code, commercial internship deliverables, and daily programming practice.
         </p>
       </motion.div>
 
-      {/* 4 Proven Production Skill Cards Grid */}
-      <div className="skills-proven-grid">
-        {PROVEN_CATEGORIES.map((cat, idx) => (
-          <TiltCard key={cat.title} maxTilt={8} glare={true} style={{ height: "100%", width: "100%", minWidth: 0 }}>
-            <motion.div
-              className="skill-category-card"
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              style={{ height: "100%", marginBottom: 0, width: "100%", boxSizing: "border-box" }}
-            >
-              <div className="skill-cat-header">
-                <h3 className="skill-cat-title">
-                  <span className="skill-cat-icon" style={{ color: cat.color }}>{cat.icon}</span>
-                  <span>{cat.title}</span>
-                </h3>
-                <span className="cat-badge-proven">{cat.badge}</span>
+      {/* 4 Categorized Proven Skills Cards */}
+      <div className="skills-categories-grid">
+        {PROVEN_CATEGORIES.map((cat, ci) => (
+          <TiltCard key={cat.title} className="skills-cat-card" maxTilt={8} glare={true}>
+            <div className="skills-card-header">
+              <div className="skills-card-icon-title">
+                <span className="skills-card-icon" aria-hidden="true">{cat.icon}</span>
+                <div>
+                  <span className="skills-card-badge" style={{ color: cat.color, borderColor: `${cat.color}44` }}>
+                    {cat.badge}
+                  </span>
+                  <h3 className="skills-card-title">{cat.title}</h3>
+                </div>
               </div>
+            </div>
 
-              <div className="skill-bars-stack">
-                {cat.skills.map((sk) => (
-                  <SkillBar
-                    key={sk.name}
-                    name={sk.name}
-                    pct={sk.pct}
-                    color={cat.color}
-                  />
-                ))}
-              </div>
-
-              <div className="cat-card-glow-bar" style={{ background: cat.color }}></div>
-            </motion.div>
+            <div className="skills-bars-list">
+              {cat.skills.map((s) => (
+                <SkillBar key={s.name} name={s.name} pct={s.pct} color={cat.color} />
+              ))}
+            </div>
           </TiltCard>
         ))}
       </div>
 
-      {/* ── ROBOTICS PROGRAMMING & HARDWARE (COMING SOON) ── */}
-      <motion.div
-        className="currently-learning-card cat-coming-soon"
-        initial={{ opacity: 0, y: 25 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="learning-header">
-          <div className="learning-title-group">
-            <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap", marginBottom: "8px" }}>
-              <span className="learning-badge-pill">🦾 ROBOTICS PROGRAMMING &amp; HARDWARE</span>
-              <span className="cat-badge-soon">
-                <span className="live-dot-green" />
-                COMING SOON
-              </span>
-            </div>
-            <h4 className="learning-heading">Robotics Programming &amp; Autonomous Systems</h4>
-            <p className="learning-desc">
-              Expanding autonomous AI agents into physical hardware and robotic control. Hands-on robotics programming, ROS 2 node architecture, and embedded systems launching soon alongside my Bachelor in Robotics degree.
-            </p>
+      {/* Clearly Separated: Currently Learning / Growth Horizon */}
+      <div className="learning-section-wrap">
+        <div className="learning-section-header">
+          <div className="learning-badge">
+            <span className="learning-pulse-dot" aria-hidden="true"></span>
+            <span>GROWTH HORIZON</span>
           </div>
+          <h3 className="learning-heading">
+            Technologies I Am Actively Learning
+          </h3>
+          <p className="learning-sub">
+            Honest transparency: These are technologies I am studying and experimenting with to broaden my full-stack capabilities.
+          </p>
         </div>
 
-        <div className="learning-items-grid">
-          {LEARNING_SKILLS.map((item) => (
+        <div className="learning-grid">
+          {LEARNING_SKILLS.map((item, idx) => (
             <motion.div
-              className="learning-item-box"
               key={item.name}
-              whileHover={{ y: -3, borderColor: "rgba(16, 185, 129, 0.5)" }}
-              transition={{ duration: 0.2 }}
+              className="learning-card"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.45, delay: idx * 0.08 }}
             >
-              <div className="learning-item-top">
-                <span className="learning-item-name">{item.name}</span>
-                <span className="learning-item-tag tag-soon-pulse">
-                  <span className="live-dot-green" />
-                  {item.tag}
-                </span>
+              <div className="learning-card-top">
+                <span className="learning-tag">{item.tag}</span>
               </div>
-              <p className="learning-item-desc">{item.desc}</p>
+              <h4 className="learning-card-name">{item.name}</h4>
+              <p className="learning-card-desc">{item.desc}</p>
             </motion.div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
-      {/* ── VERIFIED ACTUAL TECH STACK CHIPS ── */}
-      <motion.div
-        className="actual-tech-container"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.6 }}
-      >
+      {/* Complete Tech Stack Pills */}
+      <div className="actual-tech-container">
         <div className="actual-tech-card">
           <div className="actual-tech-header">
-            <span className="actual-tech-icon">⚡</span>
+            <div className="actual-tech-icon" aria-hidden="true">🛠️</div>
             <div>
-              <h4 className="actual-tech-title">VERIFIED ACTIVE STACK</h4>
-              <p className="actual-tech-sub">Core technologies utilized across my deployed web platforms, automated pipelines, and client solutions</p>
+              <h3 className="actual-tech-title">Core Development Stack</h3>
+              <p className="actual-tech-sub">Languages, frameworks, and developer workflows I work with regularly</p>
             </div>
           </div>
-
           <div className="actual-tech-chips">
-            {PROVEN_TECH_TAGS.map((t, idx) => {
-              const isSoon = t.includes("Coming Soon");
-              return (
-                <motion.span
-                  key={idx}
-                  className={`tech-pill ${isSoon ? "tech-pill-soon" : ""}`}
-                  whileHover={{ scale: 1.08, y: -2 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <span className={`pill-dot ${isSoon ? "pill-dot-green" : ""}`} />
-                  {t}
-                </motion.span>
-              );
-            })}
+            {PROVEN_TECH_TAGS.map((tag) => (
+              <span key={tag} className="tech-chip">
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

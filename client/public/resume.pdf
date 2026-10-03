@@ -1,0 +1,56 @@
+%PDF-1.4
+1 0 obj << /Type /Catalog /Pages 2 0 R >> endobj
+2 0 obj << /Type /Pages /Kids [3 0 R] /Count 1 >> endobj
+3 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >> endobj
+4 0 obj << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >> endobj
+5 0 obj << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> endobj
+6 0 obj << /Length 3191 >> stream
+BT
+/F1 22 Tf 40 800 Td (MUHAMMAD DANIAL) Tj
+/F2 11 Tf 0 -18 Td (Junior MERN Stack Developer | Bachelor in Robotics & Autonomous Systems) Tj
+/F2 9.5 Tf 0 -15 Td (Gujrat, Pakistan  |  Email: innocentdanial00@gmail.com  |  Phone/WhatsApp: +92 313 7525862) Tj
+/F2 9.5 Tf 0 -13 Td (GitHub: github.com/muhammaddanial104  |  LinkedIn: linkedin.com/in/muhammad-danial-2584b4432) Tj
+/F1 12 Tf 0 -24 Td (PROFESSIONAL SUMMARY) Tj
+/F2 9.5 Tf 0 -14 Td (Detail-oriented Junior Full-Stack Developer with a Bachelor in Robotics and a 6-month software) Tj
+/F2 9.5 Tf 0 -12 Td (engineering internship at ITS Gujrat. Proven ability to build, test, and deploy responsive React frontends,) Tj
+/F2 9.5 Tf 0 -12 Td (modular Node.js/Express REST APIs, and MongoDB databases. Eager learner with a strong growth mindset.) Tj
+/F1 12 Tf 0 -22 Td (PROFESSIONAL EXPERIENCE) Tj
+/F1 10.5 Tf 0 -15 Td (Software Engineering Intern  -  ITS Gujrat) Tj
+/F2 9 Tf 0 -12 Td (March 2024 - August 2024  |  Gujrat, Pakistan) Tj
+/F2 9 Tf 0 -13 Td (\(bullet\) Engineered and deployed 2 commercial MERN stack e-commerce platforms with 99.9% reliability.) Tj
+/F2 9 Tf 0 -12 Td (\(bullet\) Implemented RESTful APIs, JWT user authentication, and secure Stripe payment gateway workflows.) Tj
+/F2 9 Tf 0 -12 Td (\(bullet\) Designed responsive React UI components with Redux Toolkit state persistence and inventory updates.) Tj
+/F2 9 Tf 0 -12 Td (\(bullet\) Performed comprehensive API integration testing using Postman and participated in Git team workflows.) Tj
+/F1 12 Tf 0 -22 Td (FEATURED PROJECTS) Tj
+/F1 10 Tf 0 -14 Td (Multi-Vendor E-Commerce Platform \(React, Node.js, Express, MongoDB, Stripe\)) Tj
+/F2 9 Tf 0 -12 Td (\(bullet\) Full-featured storefront with role-based admin dashboard, real-time inventory decrement, and checkout.) Tj
+/F1 10 Tf 0 -14 Td (ShopSphere - Modern E-Commerce Application \(React, Tailwind CSS, LocalStorage\)) Tj
+/F2 9 Tf 0 -12 Td (\(bullet\) Single-page web shop featuring live search autocomplete, category filtering, and cart drawer.) Tj
+/F1 10 Tf 0 -14 Td (DevConnect - Developer Community & Job Board \(MERN Stack, REST APIs\)) Tj
+/F2 9 Tf 0 -12 Td (\(bullet\) Developer networking portal with portfolio showcase, post feeds, tech tags, and profile management.) Tj
+/F1 10 Tf 0 -14 Td (Robotics 2-DOF Kinematics Arm Simulator \(JavaScript ES6+, HTML5 Canvas\)) Tj
+/F2 9 Tf 0 -12 Td (\(bullet\) Interactive inverse kinematics simulator visualizing joint angles and end-effector trajectories.) Tj
+/F1 12 Tf 0 -22 Td (TECHNICAL SKILLS) Tj
+/F2 9 Tf 0 -14 Td (\(bullet\) Languages & Web: JavaScript \(ES6+\), HTML5, CSS3, Tailwind CSS, Python) Tj
+/F2 9 Tf 0 -12 Td (\(bullet\) Frontend: React.js, Redux Toolkit, Context API, Responsive Design, CSS Animations) Tj
+/F2 9 Tf 0 -12 Td (\(bullet\) Backend & DB: Node.js, Express.js, MongoDB, Mongoose, RESTful API Design, JWT Auth) Tj
+/F2 9 Tf 0 -12 Td (\(bullet\) Tools & Workflow: Git, GitHub, Postman, Vercel, VS Code, Linux Shell, NPM) Tj
+/F1 12 Tf 0 -22 Td (EDUCATION) Tj
+/F1 10.5 Tf 0 -14 Td (Bachelor in Robotics & Autonomous Systems) Tj
+/F2 9 Tf 0 -12 Td (Graduated with focus on algorithmic systems, software engineering, and computational logic.) Tj
+ET
+endstream
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000257 00000 n 
+0000000332 00000 n 
+0000000402 00000 n 
+trailer << /Size 8 /Root 1 0 R >>
+startxref
+3645
+%%EOF

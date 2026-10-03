@@ -11,8 +11,7 @@ export default function Navbar() {
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
-    { name: "AI Demo", href: "#ask-ai" },
-    { name: "Architecture", href: "#architecture" },
+    { name: "Articles", href: "#blog" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -20,7 +19,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      const sections = ["home", "about", "skills", "projects", "ask-ai", "architecture", "contact"];
+      const sections = ["home", "about", "skills", "projects", "blog", "contact"];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -36,7 +35,7 @@ export default function Navbar() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -50,7 +49,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className={`navbar-header ${scrolled ? "scrolled" : ""}`}>
+    <header className={`navbar-header ${scrolled ? "scrolled" : ""}`} role="banner">
       <div className="navbar-container">
         {/* Brand Logo */}
         <motion.a
@@ -59,19 +58,20 @@ export default function Navbar() {
           className="navbar-brand"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
+          aria-label="Danial Portfolio Home"
         >
-          <div className="brand-icon-box">
+          <div className="brand-icon-box" aria-hidden="true">
             <span className="brand-letter">MD</span>
           </div>
           <div className="brand-text">
             <span className="brand-name">Danial</span>
-            <span className="brand-badge-role">Full-Stack</span>
-            <span className="brand-dot"></span>
+            <span className="brand-badge-role">MERN Developer</span>
+            <span className="brand-dot" aria-hidden="true"></span>
           </div>
         </motion.a>
 
-        {/* Desktop Nav Links with Sliding Spring Pill */}
-        <nav className="desktop-nav">
+        {/* Desktop Nav Links */}
+        <nav className="desktop-nav" aria-label="Main navigation">
           <ul className="nav-list">
             {navLinks.map((link) => {
               const id = link.href.replace("#", "");
@@ -82,7 +82,7 @@ export default function Navbar() {
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
                     className={`nav-link ${isActive ? "active" : ""}`}
-                    style={{ position: "relative" }}
+                    aria-current={isActive ? "page" : undefined}
                   >
                     {isActive && (
                       <motion.span
@@ -108,17 +108,32 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        {/* Right CTA Button */}
+        {/* Right Nav Actions: Resume & Let's Talk */}
         <div className="navbar-right">
+          <a
+            href="/resume.pdf"
+            download="Muhammad_Danial_Resume.pdf"
+            className="nav-resume-btn"
+            aria-label="Download Muhammad Danial Resume"
+          >
+            <span>Resume</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </a>
+
           <motion.a
             href="#contact"
             onClick={(e) => handleNavClick(e, "#contact")}
             className="hire-me-btn"
             whileHover={{ scale: 1.04, y: -1 }}
             whileTap={{ scale: 0.96 }}
+            aria-label="Scroll to contact form"
           >
-            <span>Start a Project</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <span>Let's Talk</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <line x1="7" y1="17" x2="17" y2="7"></line>
               <polyline points="7 7 17 7 17 17"></polyline>
             </svg>
@@ -126,9 +141,11 @@ export default function Navbar() {
 
           {/* Mobile Menu Hamburger */}
           <button
+            type="button"
             className={`mobile-toggle ${mobileMenuOpen ? "open" : ""}`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle navigation menu"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
           >
             <span className="toggle-bar"></span>
             <span className="toggle-bar"></span>
@@ -160,7 +177,7 @@ export default function Navbar() {
                         className={`mobile-nav-link ${isActive ? "active" : ""}`}
                       >
                         <span>{link.name}</span>
-                        {isActive && <span className="mobile-active-dot" />}
+                        {isActive && <span className="mobile-active-dot" aria-hidden="true" />}
                       </a>
                     </li>
                   );
@@ -169,13 +186,24 @@ export default function Navbar() {
 
               <div className="mobile-drawer-footer">
                 <a
-                  href="https://wa.me/923137525862"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/resume.pdf"
+                  download="Muhammad_Danial_Resume.pdf"
+                  className="mobile-resume-btn"
+                >
+                  <span>Download Resume (PDF)</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </a>
+                <a
+                  href="#contact"
+                  onClick={(e) => handleNavClick(e, "#contact")}
                   className="mobile-hire-btn"
                 >
-                  <span>Start a Project (WhatsApp)</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <span>Get in Touch</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
                     <polyline points="7 7 17 7 17 17"></polyline>
                   </svg>

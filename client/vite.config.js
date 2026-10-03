@@ -15,6 +15,14 @@ export default defineConfig({
   build: {
     outDir: "dist",
     sourcemap: false,
-    chunkSizeWarningLimit: 1600,
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "vendor-react": ["react", "react-dom"],
+          "vendor-framer": ["framer-motion"],
+        },
+      },
+    },
   },
 });

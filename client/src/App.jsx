@@ -1,35 +1,39 @@
-import { useEffect } from "react";
+import { useEffect, Suspense, lazy } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import CosmicBackground from "./components/CosmicBackground";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import AskDanialAI from "./components/AskDanialAI";
-import WhatICanAutomate from "./components/WhatICanAutomate";
-import LiveAgentDemo from "./components/LiveAgentDemo";
-import SystemArchitecture from "./components/SystemArchitecture";
-import WhyWorkWithMe from "./components/WhyWorkWithMe";
-import RoiCalculator from "./components/RoiCalculator";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+
+// Code splitting below-the-fold components via React.lazy for lightning-fast initial bundle
+const About = lazy(() => import("./components/About"));
+const Skills = lazy(() => import("./components/Skills"));
+const Projects = lazy(() => import("./components/Projects"));
+const Blog = lazy(() => import("./components/Blog"));
+const Contact = lazy(() => import("./components/Contact"));
+const Footer = lazy(() => import("./components/Footer"));
+
+function SectionFallback() {
+  return (
+    <div className="section-loading-fallback" aria-hidden="true">
+      <div className="fallback-pulse-ring"></div>
+    </div>
+  );
+}
 
 export default function App() {
   useEffect(() => {
-    // 1. Disable browser scroll restoration
+    // Disable browser scroll restoration
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
 
-    // 2. Clear any lingering hash so browser does not jump to other sections
+    // Clear lingering hash on initial load
     if (window.location.hash) {
       window.history.replaceState(null, "", window.location.pathname);
     }
 
-    // 3. Immediately scroll to top
     window.scrollTo(0, 0);
 
-    // 4. Double-check after initial paint and DOM render
     const rafId = requestAnimationFrame(() => {
       window.scrollTo(0, 0);
       const homeEl = document.getElementById("home");
@@ -50,42 +54,55 @@ export default function App() {
 
   return (
     <div className="cosmic-app-wrapper">
+      {/* Accessibility: Skip to Main Content Link */}
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+
       {/* Ambient Starfield Canvas */}
       <CosmicBackground />
 
       {/* Fixed Sticky Navbar */}
       <Navbar />
 
-      {/* Main Page Flow per Professional Improvement Report */}
-      <main className="main-content">
-        {/* 01 — HERO: Name + Role + Value Proposition + Primary CTAs */}
+      {/* Main Page Flow */}
+      <main id="main-content" className="main-content">
+        {/* 01 — HERO (Directly mounted for fastest FCP) */}
         <Hero />
 
-        {/* 02 — ABOUT: Short Story, Degree & 6-Month ITS Gujrat Internship */}
-        <About />
+        {/* 02 — ABOUT (Lazy loaded) */}
+        <Suspense fallback={<SectionFallback />}>
+          <About />
+        </Suspense>
 
-        {/* 03 — SKILLS: Proven Skills by Category + Separated Currently Learning */}
-        <Skills />
+        {/* 03 — SKILLS (Lazy loaded) */}
+        <Suspense fallback={<SectionFallback />}>
+          <Skills />
+        </Suspense>
 
-        {/* 04 — FEATURED PROJECTS: 4 Projects with Problem Solved, Contribution & Proof */}
-        <Projects />
+        {/* 04 — FEATURED PROJECTS (Lazy loaded) */}
+        <Suspense fallback={<SectionFallback />}>
+          <Projects />
+        </Suspense>
 
-        {/* 05 — AI / AUTOMATION: Interactive Command Center & Live Workflow Simulation */}
-        <AskDanialAI />
-        <WhatICanAutomate />
-        <LiveAgentDemo />
+        {/* 05 — TECHNICAL WRITING / ARTICLES (Lazy loaded) */}
+        <Suspense fallback={<SectionFallback />}>
+          <Blog />
+        </Suspense>
 
-        {/* 06 — PROCESS & RIGOR: Architecture, Why Work With Me & Transparent ROI */}
-        <SystemArchitecture />
-        <WhyWorkWithMe />
-        <RoiCalculator />
-
-        {/* 07 — CONTACT: Low-Friction Form, Direct WhatsApp, Email & Socials */}
-        <Contact />
+        {/* 06 — CONTACT (Lazy loaded) */}
+        <Suspense fallback={<SectionFallback />}>
+          <Contact />
+        </Suspense>
       </main>
 
-      {/* Footer */}
-      <Footer />
+      {/* Footer (Lazy loaded) */}
+      <Suspense fallback={<div style={{ minHeight: "120px" }} />}>
+        <Footer />
+      </Suspense>
+
+      {/* Vercel Web Analytics */}
+      <Analytics />
     </div>
   );
 }
