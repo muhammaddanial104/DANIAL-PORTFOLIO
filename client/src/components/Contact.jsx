@@ -90,7 +90,7 @@ export default function Contact() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="section-badge">
-          <span className="badge-num">06</span>
+          <span className="badge-num">07</span>
           <span className="badge-sep">|</span>
           <span className="badge-title">Direct Contact</span>
         </div>
@@ -133,7 +133,7 @@ export default function Contact() {
                 <h3 className="profile-name">Muhammad Danial</h3>
                 <span className="profile-check-tag">✓ Available</span>
               </div>
-              <p className="profile-role-title">Junior MERN Stack Developer</p>
+              <p className="profile-role-title">Full-Stack &amp; AI Automation Developer</p>
               <div className="profile-meta-pills">
                 <span className="profile-pill pill-degree">🎓 Robotics Graduate</span>
                 <span className="profile-pill pill-intern">💼 6-Mo ITS Gujrat</span>
@@ -147,7 +147,7 @@ export default function Contact() {
             <span className="status-indicator" aria-hidden="true"></span>
             <div className="availability-text">
               <strong>Open for Opportunities</strong>
-              <span>Junior Developer Roles, Full-Stack MERN Projects, &amp; Internships</span>
+              <span>Full-Stack Projects, AI Agents, n8n Automations, &amp; Junior Roles</span>
             </div>
           </div>
 
@@ -353,9 +353,10 @@ export default function Contact() {
                   onChange={handleChange}
                   className="form-select"
                 >
-                  <option value="Full-Stack Web Development Inquiry">Full-Stack Web Development</option>
-                  <option value="Frontend React.js Development">Frontend / React.js UI</option>
-                  <option value="Node.js & Backend REST API">Node.js &amp; Backend REST API</option>
+                  <option value="AI Agent & n8n Workflow Automation">AI Agent &amp; n8n Workflow Automation</option>
+                  <option value="Python Django & Bootstrap Web App">Python Django &amp; Bootstrap Web App</option>
+                  <option value="Full-Stack MERN Development">Full-Stack MERN Development</option>
+                  <option value="Mini Chatbot Integration">Mini Chatbot Integration</option>
                   <option value="Junior Software Developer Role">Junior Developer Job / Internship</option>
                   <option value="General Discussion / Mentorship">General Discussion / Mentorship</option>
                 </select>

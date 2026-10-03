@@ -44,7 +44,7 @@ export default function About() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="about-lead">
-            Hi! I'm <strong className="text-white">Muhammad Danial</strong> — an early-career Full-Stack MERN Developer based in Gujrat, Pakistan.
+            Hi! I'm <strong className="text-white">Muhammad Danial</strong> — Full-Stack Developer &amp; AI Automation Specialist based in Gujrat, Pakistan.
           </p>
 
           <p className="about-paragraph">
@@ -56,7 +56,7 @@ export default function About() {
           </p>
 
           <p className="about-paragraph">
-            I don't believe in exaggerated buzzwords. As a junior engineer, my superpower is my <strong className="text-white">relentless curiosity and humility</strong>: I code every day, document what I learn on Dev.to, welcome code reviews with open arms, and am eager to contribute value within a collaborative, fast-moving engineering team.
+            Expanding beyond traditional web development, I build <strong className="text-white">autonomous AI Agents, n8n workflow automations, and intelligent mini chatbots</strong> using Python, Django, and Bootstrap 5 alongside the MERN stack. My engineering philosophy centers on curiosity, disciplined clean code, and automating manual bottlenecks into seamless digital pipelines.
           </p>
 
           {/* 4 Pillars Grid with proven glass cards */}
@@ -78,18 +78,18 @@ export default function About() {
             </div>
 
             <div className="highlight-card">
-              <span className="highlight-icon" aria-hidden="true">⚛️</span>
+              <span className="highlight-icon" aria-hidden="true">🤖</span>
               <div className="highlight-info">
-                <h4>Modern MERN Tooling</h4>
-                <p>React 18, Node.js, Express, MongoDB, Redux Toolkit, Postman, Git workflows.</p>
+                <h4>AI Agents &amp; n8n Workflows</h4>
+                <p>Agentic pipelines, Gen AI prompts, webhook triggers, and automated mini chatbots.</p>
               </div>
             </div>
 
             <div className="highlight-card">
-              <span className="highlight-icon" aria-hidden="true">🌱</span>
+              <span className="highlight-icon" aria-hidden="true">🐍</span>
               <div className="highlight-info">
-                <h4>Continuous Growth</h4>
-                <p>Writing tech blogs on Dev.to, learning TypeScript and Next.js, eager to be mentored.</p>
+                <h4>Python, Django &amp; Bootstrap</h4>
+                <p>Modular Django REST APIs, responsive Bootstrap 5 UIs, and robust MERN systems.</p>
               </div>
             </div>
           </div>
@@ -156,7 +156,7 @@ export default function About() {
               {/* Signature Badge */}
               <div className="about-signature-badge">
                 <span className="signature-name">Muhammad Danial</span>
-                <span className="signature-role">Junior MERN Developer</span>
+                <span className="signature-role">Full-Stack &amp; AI Automation</span>
               </div>
 
               {/* 4 Floating Contextual Tags with Proven Perimeter Coordinates */}
@@ -166,7 +166,7 @@ export default function About() {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
                 <span className="tag-icon" aria-hidden="true">⚛️</span>
-                <span className="tag-text">MERN Stack</span>
+                <span className="tag-text">MERN &amp; Python</span>
               </motion.div>
 
               <motion.div
@@ -174,8 +174,8 @@ export default function About() {
                 animate={{ y: [4, -4, 4] }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
               >
-                <span className="tag-icon" aria-hidden="true">🎓</span>
-                <span className="tag-text">Robotics B.S.</span>
+                <span className="tag-icon" aria-hidden="true">🤖</span>
+                <span className="tag-text">AI Agents &amp; n8n</span>
               </motion.div>
 
               <motion.div
@@ -192,8 +192,8 @@ export default function About() {
                 animate={{ y: [5, -5, 5] }}
                 transition={{ duration: 4.7, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
               >
-                <span className="tag-icon" aria-hidden="true">📍</span>
-                <span className="tag-text">Gujrat, Pakistan</span>
+                <span className="tag-icon" aria-hidden="true">🐍</span>
+                <span className="tag-text">Django &amp; Bootstrap</span>
               </motion.div>
             </div>
           </TiltCard>

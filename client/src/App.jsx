@@ -8,9 +8,11 @@ import Hero from "./components/Hero";
 const About = lazy(() => import("./components/About"));
 const Skills = lazy(() => import("./components/Skills"));
 const Projects = lazy(() => import("./components/Projects"));
+const MiniChatbot = lazy(() => import("./components/MiniChatbot"));
 const Blog = lazy(() => import("./components/Blog"));
 const Contact = lazy(() => import("./components/Contact"));
 const Footer = lazy(() => import("./components/Footer"));
+import FloatingBotLauncher from "./components/FloatingBotLauncher";
 
 function SectionFallback() {
   return (
@@ -85,12 +87,17 @@ export default function App() {
           <Projects />
         </Suspense>
 
-        {/* 05 — TECHNICAL WRITING / ARTICLES (Lazy loaded) */}
+        {/* 05 — MINI CHATBOT AUTOMATION & AI AGENTS (Lazy loaded) */}
+        <Suspense fallback={<SectionFallback />}>
+          <MiniChatbot />
+        </Suspense>
+
+        {/* 06 — TECHNICAL WRITING / ARTICLES (Lazy loaded) */}
         <Suspense fallback={<SectionFallback />}>
           <Blog />
         </Suspense>
 
-        {/* 06 — CONTACT (Lazy loaded) */}
+        {/* 07 — CONTACT (Lazy loaded) */}
         <Suspense fallback={<SectionFallback />}>
           <Contact />
         </Suspense>
@@ -100,6 +107,9 @@ export default function App() {
       <Suspense fallback={<div style={{ minHeight: "120px" }} />}>
         <Footer />
       </Suspense>
+
+      {/* Quick Floating Mini Chatbot Launcher */}
+      <FloatingBotLauncher />
 
       {/* Vercel Web Analytics */}
       <Analytics />

@@ -10,6 +10,7 @@ export default function Footer() {
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
+    { name: "AI Bot", href: "#chatbot" },
     { name: "Articles", href: "#blog" },
     { name: "Contact", href: "#contact" },
   ];
@@ -31,11 +32,11 @@ export default function Footer() {
             <div className="footer-brand-info">
               <div className="brand-text">
                 <span className="brand-name">Muhammad Danial</span>
-                <span className="brand-badge-role">MERN Developer</span>
+                <span className="brand-badge-role">AI &amp; Full-Stack</span>
                 <span className="brand-dot" aria-hidden="true"></span>
               </div>
               <p className="footer-tagline">
-                Junior MERN Stack Developer • Bachelor in Robotics &amp; Autonomous Systems • Building Clean, Reliable Web Applications
+                Full-Stack Developer (MERN &amp; Python/Django) • AI Agents &amp; n8n Automation Specialist • Bachelor in Robotics
               </p>
             </div>
           </motion.div>

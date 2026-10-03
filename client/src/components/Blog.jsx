@@ -4,36 +4,36 @@ import TiltCard from "./TiltCard";
 
 const ARTICLES = [
   {
-    id: "rest-apis",
-    title: "Building Scalable REST APIs with Express & MongoDB",
-    category: "Backend Architecture",
-    tags: ["Node.js", "Express", "MongoDB", "Clean Code"],
+    id: "n8n-agents",
+    title: "Building Autonomous AI Agents & Workflows with n8n and Python",
+    category: "AI Automation & Agentic AI",
+    tags: ["n8n", "AI Agents", "Python", "AI Automation"],
     readTime: "5 min read",
     date: "Sep 2024",
-    icon: "⚡",
+    icon: "🤖",
     excerpt:
-      "A practical guide to structuring modular routers, async error handlers, Mongoose population, and indexing strategies for high throughput.",
+      "A hands-on breakdown of orchestrating multi-agent decision nodes in n8n, handling webhook events, and executing Python scripts for automated data extraction.",
     highlights: [
-      "Modular controller-service pattern separating business logic from HTTP routing.",
-      "Global async error wrapper middleware preventing unhandled promise rejections.",
-      "Compound indexing in MongoDB to optimize product catalog search queries.",
+      "Configuring webhook triggers to ingest live leads and form submissions into n8n.",
+      "Custom Python execution nodes for Gen AI prompt parsing and data normalization.",
+      "Multi-branch error routing with instant WhatsApp and email alert notifications.",
     ],
     devtoUrl: "https://dev.to/muhammaddanial104",
   },
   {
-    id: "react-state",
-    title: "State Management in React 18: Redux Toolkit vs. Context API",
-    category: "Frontend Engineering",
-    tags: ["React 18", "Redux Toolkit", "Context API"],
+    id: "django-chatbot",
+    title: "Architecting a Lightweight Mini Chatbot with Python Django & Bootstrap 5",
+    category: "Full-Stack & Chatbots",
+    tags: ["Python", "Django", "Bootstrap 5", "Mini Chatbot"],
     readTime: "4 min read",
     date: "Aug 2024",
-    icon: "⚛️",
+    icon: "💬",
     excerpt:
-      "Lessons learned during my 6-month software internship building 2 commercial e-commerce platforms — when to pick Context and when Redux is essential.",
+      "How to build an embeddable, responsive customer support chatbot using Bootstrap 5 on the frontend and Python Django REST framework on the backend.",
     highlights: [
-      "Why React Context caused unnecessary re-renders in dynamic cart drawer states.",
-      "Redux Toolkit slice architecture with createAsyncThunk for Stripe payment intents.",
-      "State persistence with localStorage synchronization across browser reloads.",
+      "Lightweight Bootstrap 5 chat component with smooth animated message bubbles.",
+      "Django REST API endpoint with regex and NLP-based intent matching algorithms.",
+      "Connecting n8n webhook listeners to escalate unanswered queries to live human agents.",
     ],
     devtoUrl: "https://dev.to/muhammaddanial104",
   },
@@ -87,7 +87,7 @@ export default function Blog() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="section-badge">
-          <span className="badge-num">05</span>
+          <span className="badge-num">06</span>
           <span className="badge-sep">|</span>
           <span className="badge-title">Articles &amp; Insights</span>
         </div>

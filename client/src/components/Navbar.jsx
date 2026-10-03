@@ -11,6 +11,7 @@ export default function Navbar() {
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
+    { name: "AI Bot", href: "#chatbot" },
     { name: "Articles", href: "#blog" },
     { name: "Contact", href: "#contact" },
   ];
@@ -19,7 +20,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      const sections = ["home", "about", "skills", "projects", "blog", "contact"];
+      const sections = ["home", "about", "skills", "projects", "chatbot", "blog", "contact"];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -65,7 +66,7 @@ export default function Navbar() {
           </div>
           <div className="brand-text">
             <span className="brand-name">Danial</span>
-            <span className="brand-badge-role">MERN Developer</span>
+            <span className="brand-badge-role">AI &amp; Full-Stack</span>
             <span className="brand-dot" aria-hidden="true"></span>
           </div>
         </motion.a>

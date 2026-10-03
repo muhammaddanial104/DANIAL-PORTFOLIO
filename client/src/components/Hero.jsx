@@ -4,10 +4,11 @@ import CountUp from "./CountUp";
 import TiltCard from "./TiltCard";
 
 const CYCLING_ROLES = [
-  "MERN Stack Developer",
-  "Full-Stack Web Developer",
-  "React.js & Node.js Specialist",
-  "Robotics Graduate & Programmer",
+  "Full-Stack Developer (MERN & Python/Django)",
+  "AI Agents & n8n Automation Specialist",
+  "Agentic AI & Generative AI Builder",
+  "Mini Chatbot Automation Developer",
+  "React.js, Bootstrap 5 & Python Engineer",
 ];
 
 export default function Hero() {
@@ -95,7 +96,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            Building responsive React web applications, robust Node.js/Express REST APIs, MongoDB databases, and clean modern code. Dedicated to delivering reliable, user-friendly digital solutions with disciplined engineering.
+            Building high-performance web platforms with MERN, Python &amp; Django, and Bootstrap 5, integrated with autonomous AI Agents, n8n workflow automations, and intelligent mini chatbots. Dedicated to transforming complex logic into seamless, automated digital pipelines.
           </motion.p>
 
           {/* Degree & Verified Background Pill */}
@@ -284,15 +285,15 @@ export default function Hero() {
                 <div className="planet-rim-light" aria-hidden="true"></div>
               </div>
 
-              {/* 4 Interactive Floating Badges: Concrete MERN tech */}
+              {/* 4 Interactive Floating Badges: AI Agents, Python/Django, Gen AI & Bootstrap */}
               <motion.div
                 className="hero-float-badge badge-top-right"
                 animate={{ y: [-5, 5, -5], x: [0, 3, 0] }}
                 transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
                 whileHover={{ scale: 1.12 }}
               >
-                <span className="float-badge-icon" aria-hidden="true">⚛️</span>
-                <span className="float-badge-text">React.js &amp; UI</span>
+                <span className="float-badge-icon" aria-hidden="true">🤖</span>
+                <span className="float-badge-text">AI Agents &amp; n8n</span>
               </motion.div>
 
               <motion.div
@@ -301,8 +302,8 @@ export default function Hero() {
                 transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
                 whileHover={{ scale: 1.12 }}
               >
-                <span className="float-badge-icon" aria-hidden="true">🟢</span>
-                <span className="float-badge-text">Node.js &amp; Express</span>
+                <span className="float-badge-icon" aria-hidden="true">🐍</span>
+                <span className="float-badge-text">Python &amp; Django</span>
               </motion.div>
 
               <motion.div
@@ -311,8 +312,8 @@ export default function Hero() {
                 transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
                 whileHover={{ scale: 1.12 }}
               >
-                <span className="float-badge-icon" aria-hidden="true">🍃</span>
-                <span className="float-badge-text">MongoDB &amp; REST</span>
+                <span className="float-badge-icon" aria-hidden="true">⚡</span>
+                <span className="float-badge-text">Gen AI &amp; Automation</span>
               </motion.div>
 
               <motion.div
@@ -321,8 +322,8 @@ export default function Hero() {
                 transition={{ duration: 5.1, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
                 whileHover={{ scale: 1.12 }}
               >
-                <span className="float-badge-icon" aria-hidden="true">🛠️</span>
-                <span className="float-badge-text">Git &amp; Clean Code</span>
+                <span className="float-badge-icon" aria-hidden="true">🎨</span>
+                <span className="float-badge-text">Bootstrap &amp; MERN</span>
               </motion.div>
             </motion.div>
           </TiltCard>

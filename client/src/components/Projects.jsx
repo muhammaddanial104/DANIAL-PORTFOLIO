@@ -4,10 +4,50 @@ import TiltCard from "./TiltCard";
 
 const PROJECTS = [
   {
+    id: "n8n-agent",
+    title: "n8n Autonomous Multi-Agent Workflow Engine",
+    category: "Agentic AI & Automation",
+    badge: "n8n + AI Agent",
+    badgeType: "featured",
+    imageWebp: "/images/coder-agent-preview.webp",
+    imageJpg: "/images/coder-agent-preview.jpg",
+    problem: "Businesses waste hours manually parsing inbound customer inquiries, formatting customer data, and updating multiple CRM databases.",
+    contribution: [
+      "Constructed autonomous multi-agent pipeline in n8n featuring custom Python execution nodes and Gen AI prompt parsing.",
+      "Implemented automated webhook ingestion from web forms with dynamic payload sanitization and scoring logic.",
+      "Orchestrated instantaneous notification dispatch to WhatsApp Business API and customer support channels.",
+    ],
+    stack: ["n8n", "AI Agents", "Python", "Generative AI", "Webhooks", "REST APIs"],
+    flow: "Inbound Webhook → n8n Pipeline → Python Gen AI Agent Parsing → Data Enrichment → WhatsApp & CRM Alert",
+    githubUrl: "https://github.com/muhammaddanial104",
+    liveUrl: "https://danial-portfolio-theta.vercel.app/#projects",
+    year: "2024",
+  },
+  {
+    id: "mini-chatbot",
+    title: "Python Django Mini Chatbot & Lead Automation",
+    category: "Python / Django & AI Chatbot",
+    badge: "Python + Bootstrap 5",
+    badgeType: "client",
+    imageWebp: "/images/aegis-preview.webp",
+    imageJpg: "/images/aegis-preview.jpg",
+    problem: "Portals require an embedded, lightweight customer support and lead qualification chatbot without costly enterprise SaaS monthly fees.",
+    contribution: [
+      "Engineered responsive chatbot interface using Bootstrap 5 with quick-action prompt chips and typing indicators.",
+      "Architected Python Django REST API backend with automated intent classification algorithms and FAQ triage.",
+      "Integrated n8n webhook triggers to escalate complex inquiries directly to human team members via email and WhatsApp.",
+    ],
+    stack: ["Python", "Django", "Bootstrap 5", "Mini Chatbot", "n8n", "REST APIs"],
+    flow: "User Message → Bootstrap UI → Django REST API → Python Intent Matcher → Automated FAQ Resolution / n8n Escalation",
+    githubUrl: "https://github.com/muhammaddanial104",
+    liveUrl: "https://danial-portfolio-theta.vercel.app/#projects",
+    year: "2024",
+  },
+  {
     id: "ecommerce-its",
     title: "Multi-Vendor E-Commerce Platform",
     category: "Commercial Client Work",
-    badge: "Shipped at ITS Gujrat",
+    badge: "Shipped at ITS Gujrat (6 Mo)",
     badgeType: "client",
     imageWebp: "/images/proj1.webp",
     imageJpg: "/images/proj1.jpg",
@@ -17,51 +57,11 @@ const PROJECTS = [
       "Integrated secure Stripe payment processing, webhook listeners, and dynamic inventory decrement upon successful payment.",
       "Built responsive React UI with Redux Toolkit cart persistence and admin dashboard for live order fulfillment.",
     ],
-    stack: ["React.js", "Node.js", "Express.js", "MongoDB", "Redux Toolkit", "Stripe API", "JWT"],
+    stack: ["React.js", "Node.js", "Express.js", "MongoDB", "Redux Toolkit", "Bootstrap 5", "Stripe API"],
     flow: "Catalog Browsing → Cart State Persistence → Checkout Auth → Stripe Payment Webhook → MongoDB Inventory Decrement → Confirmation",
     githubUrl: "https://github.com/muhammaddanial104/DANIAL-PORTFOLIO",
     liveUrl: "https://danial-portfolio-theta.vercel.app/#projects",
     year: "Mar 2024 – Aug 2024 (6 Months)",
-  },
-  {
-    id: "shopsphere",
-    title: "ShopSphere — Modern Web Store",
-    category: "Full-Stack Web App",
-    badge: "Open Source Project",
-    badgeType: "featured",
-    imageWebp: "/images/coder-agent-preview.webp",
-    imageJpg: "/images/coder-agent-preview.jpg",
-    problem: "Shoppers frequently abandon slow e-commerce sites with clunky pagination, slow search responsiveness, and confusing checkout flows.",
-    contribution: [
-      "Engineered single-page responsive shopping application featuring instant search autocomplete and multi-category filtering.",
-      "Implemented dynamic slide-out cart drawer with client-side localStorage state persistence across page reloads.",
-      "Designed clean Tailwind CSS layouts achieving 98+ Google Lighthouse mobile performance score.",
-    ],
-    stack: ["React.js", "Tailwind CSS", "JavaScript (ES6+)", "Context API", "LocalStorage", "REST APIs"],
-    flow: "Search & Filter → Real-Time Cart Drawer → Promo Code Validation → Mock Checkout Flow",
-    githubUrl: "https://github.com/muhammaddanial104",
-    liveUrl: "https://danial-portfolio-theta.vercel.app/#projects",
-    year: "2024",
-  },
-  {
-    id: "devconnect",
-    title: "DevConnect — Developer Showcase Platform",
-    category: "Full-Stack MERN",
-    badge: "Community Platform",
-    badgeType: "mern",
-    imageWebp: "/images/aegis-preview.webp",
-    imageJpg: "/images/aegis-preview.jpg",
-    problem: "Junior developers lack a focused platform to showcase project case studies, get constructive code reviews, and network with peers.",
-    contribution: [
-      "Constructed modular Express.js backend with JWT token authorization and password hashing using bcrypt.",
-      "Designed Mongoose database models for user profiles, technical post feeds, comments, and tech stack tags.",
-      "Tested all 14 REST endpoints systematically using Postman before wiring frontend React views.",
-    ],
-    stack: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT Auth", "Postman", "CSS3"],
-    flow: "User Registration / Login → Feed Browsing → Project Post Creation → Commenting & Tag Filtering",
-    githubUrl: "https://github.com/muhammaddanial104",
-    liveUrl: "https://danial-portfolio-theta.vercel.app/#projects",
-    year: "2024",
   },
   {
     id: "taskpulse",
@@ -147,7 +147,7 @@ export default function Projects() {
           VERIFIED PROJECTS &amp; <span className="gradient-text">CODE DELIVERABLES</span>
         </h2>
         <p className="section-subtitle">
-          Real production systems, commercial client deliverables from ITS Gujrat, and full-stack web applications with complete source code.
+          Autonomous n8n agentic workflows, Python Django mini chatbot automations, and commercial full-stack client deliverables from ITS Gujrat.
         </p>
       </motion.div>
 
