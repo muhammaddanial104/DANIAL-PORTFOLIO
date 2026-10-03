@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import TiltCard from "./TiltCard";
 
 // ── PROVEN PRODUCTION SKILLS ──
 const PROVEN_CATEGORIES = [
@@ -56,10 +55,10 @@ const PROVEN_CATEGORIES = [
 
 // ── CURRENTLY LEARNING & GROWTH ──
 const LEARNING_SKILLS = [
-  { name: "TypeScript for Scalable Apps", desc: "Static typing, interfaces, generics, and strict TypeScript with React and Node.js", tag: "LEARNING" },
-  { name: "Next.js 14 App Router", desc: "Server Components, Server Actions, streaming SSR, and SEO-optimized architecture", tag: "LEARNING" },
-  { name: "PostgreSQL & Prisma ORM", desc: "Relational schema design, SQL queries, relational joins, and type-safe Prisma models", tag: "LEARNING" },
-  { name: "Docker & Container Basics", desc: "Containerizing MERN applications with basic Dockerfiles and multi-stage builds", tag: "LEARNING" },
+  { name: "TypeScript for Scalable Apps", desc: "Static typing, interfaces, generics, and strict TypeScript with React and Node.js", tag: "IN PROGRESS" },
+  { name: "Next.js 14 App Router", desc: "Server Components, Server Actions, streaming SSR, and SEO-optimized architecture", tag: "IN PROGRESS" },
+  { name: "PostgreSQL & Prisma ORM", desc: "Relational schema design, SQL queries, relational joins, and type-safe Prisma models", tag: "IN PROGRESS" },
+  { name: "Docker & Container Basics", desc: "Containerizing MERN applications with basic Dockerfiles and multi-stage builds", tag: "IN PROGRESS" },
 ];
 
 const PROVEN_TECH_TAGS = [
@@ -94,7 +93,7 @@ function SkillBar({ name, pct, color }) {
           ob.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
     if (itemRef.current) ob.observe(itemRef.current);
     return () => ob.disconnect();
@@ -106,13 +105,14 @@ function SkillBar({ name, pct, color }) {
         <span className="skill-name">{name}</span>
         <span className="skill-pct" style={{ color }}>{pct}%</span>
       </div>
-      <div className="skill-track" role="progressbar" aria-valuenow={pct} aria-valuemin="0" aria-valuemax="100" aria-label={name}>
+      <div className="skill-bar-bg" role="progressbar" aria-valuenow={pct} aria-valuemin="0" aria-valuemax="100" aria-label={name}>
         <div
-          className="skill-fill"
+          className="skill-bar-fill"
           style={{
             width: filled ? `${pct}%` : "0%",
             background: `linear-gradient(90deg, ${color}88, ${color})`,
             boxShadow: filled ? `0 0 10px ${color}66` : "none",
+            transition: "width 1.2s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         />
       </div>
@@ -146,59 +146,62 @@ export default function Skills() {
 
       {/* 4 Categorized Proven Skills Cards */}
       <div className="skills-categories-grid">
-        {PROVEN_CATEGORIES.map((cat, ci) => (
-          <TiltCard key={cat.title} className="skills-cat-card" maxTilt={8} glare={true}>
-            <div className="skills-card-header">
-              <div className="skills-card-icon-title">
-                <span className="skills-card-icon" aria-hidden="true">{cat.icon}</span>
-                <div>
-                  <span className="skills-card-badge" style={{ color: cat.color, borderColor: `${cat.color}44` }}>
-                    {cat.badge}
-                  </span>
-                  <h3 className="skills-card-title">{cat.title}</h3>
-                </div>
-              </div>
+        {PROVEN_CATEGORIES.map((cat) => (
+          <div key={cat.title} className="skill-category-card">
+            <div className="skill-cat-header">
+              <h3 className="skill-cat-title">
+                <span className="skill-cat-icon" aria-hidden="true">{cat.icon}</span>
+                <span>{cat.title}</span>
+              </h3>
+              <span
+                className="cat-badge-soon"
+                style={{
+                  color: cat.color,
+                  borderColor: `${cat.color}66`,
+                  background: `${cat.color}15`,
+                  boxShadow: `0 0 10px ${cat.color}33`,
+                }}
+              >
+                {cat.badge}
+              </span>
             </div>
 
-            <div className="skills-bars-list">
+            <div className="skill-bars-stack">
               {cat.skills.map((s) => (
                 <SkillBar key={s.name} name={s.name} pct={s.pct} color={cat.color} />
               ))}
             </div>
-          </TiltCard>
+          </div>
         ))}
       </div>
 
       {/* Clearly Separated: Currently Learning / Growth Horizon */}
-      <div className="learning-section-wrap">
-        <div className="learning-section-header">
-          <div className="learning-badge">
-            <span className="learning-pulse-dot" aria-hidden="true"></span>
-            <span>GROWTH HORIZON</span>
-          </div>
-          <h3 className="learning-heading">
-            Technologies I Am Actively Learning
-          </h3>
-          <p className="learning-sub">
-            Honest transparency: These are technologies I am studying and experimenting with to broaden my full-stack capabilities.
-          </p>
-        </div>
+      <div className="currently-learning-card">
+        <span className="learning-badge-pill">
+          🌱 GROWTH HORIZON
+        </span>
+        <h3 className="learning-heading">
+          Technologies I Am Actively Learning
+        </h3>
+        <p className="learning-desc">
+          Honest transparency: These are modern frameworks and tools I am studying and practicing with daily to broaden my full-stack capabilities.
+        </p>
 
-        <div className="learning-grid">
+        <div className="learning-items-grid">
           {LEARNING_SKILLS.map((item, idx) => (
             <motion.div
               key={item.name}
-              className="learning-card"
+              className="learning-item-box"
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.45, delay: idx * 0.08 }}
             >
-              <div className="learning-card-top">
-                <span className="learning-tag">{item.tag}</span>
+              <div className="learning-item-top">
+                <h4 className="learning-item-name">{item.name}</h4>
+                <span className="learning-item-tag">{item.tag}</span>
               </div>
-              <h4 className="learning-card-name">{item.name}</h4>
-              <p className="learning-card-desc">{item.desc}</p>
+              <p className="learning-item-desc">{item.desc}</p>
             </motion.div>
           ))}
         </div>

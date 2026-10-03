@@ -59,37 +59,37 @@ export default function About() {
             I don't believe in exaggerated buzzwords. As a junior engineer, my superpower is my <strong className="text-white">relentless curiosity and humility</strong>: I code every day, document what I learn on Dev.to, welcome code reviews with open arms, and am eager to contribute value within a collaborative, fast-moving engineering team.
           </p>
 
-          {/* 4 Pillars Grid */}
+          {/* 4 Pillars Grid with proven glass cards */}
           <div className="about-highlights-grid">
-            <div className="about-highlight-card">
+            <div className="highlight-card">
               <span className="highlight-icon" aria-hidden="true">🎓</span>
-              <div>
-                <strong className="highlight-title">Robotics Degree</strong>
-                <p className="highlight-desc">Strong foundation in computational logic, math, and structured problem-solving.</p>
+              <div className="highlight-info">
+                <h4>Robotics Degree</h4>
+                <p>Strong foundation in computational logic, math, and structured problem-solving.</p>
               </div>
             </div>
 
-            <div className="about-highlight-card">
+            <div className="highlight-card">
               <span className="highlight-icon" aria-hidden="true">💼</span>
-              <div>
-                <strong className="highlight-title">6-Mo Commercial Internship</strong>
-                <p className="highlight-desc">Shipped 2 production MERN platforms at ITS Gujrat with real client deployments.</p>
+              <div className="highlight-info">
+                <h4>6-Mo Commercial Internship</h4>
+                <p>Shipped 2 production MERN platforms at ITS Gujrat with real client deployments.</p>
               </div>
             </div>
 
-            <div className="about-highlight-card">
+            <div className="highlight-card">
               <span className="highlight-icon" aria-hidden="true">⚛️</span>
-              <div>
-                <strong className="highlight-title">Modern MERN Tooling</strong>
-                <p className="highlight-desc">React 18, Node.js, Express, MongoDB, Redux Toolkit, Postman, Git workflows.</p>
+              <div className="highlight-info">
+                <h4>Modern MERN Tooling</h4>
+                <p>React 18, Node.js, Express, MongoDB, Redux Toolkit, Postman, Git workflows.</p>
               </div>
             </div>
 
-            <div className="about-highlight-card">
+            <div className="highlight-card">
               <span className="highlight-icon" aria-hidden="true">🌱</span>
-              <div>
-                <strong className="highlight-title">Continuous Growth</strong>
-                <p className="highlight-desc">Writing tech blogs on Dev.to, learning TypeScript and Next.js, eager to be mentored.</p>
+              <div className="highlight-info">
+                <h4>Continuous Growth</h4>
+                <p>Writing tech blogs on Dev.to, learning TypeScript and Next.js, eager to be mentored.</p>
               </div>
             </div>
           </div>

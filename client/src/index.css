@@ -943,11 +943,18 @@ h1, h2, h3, h4, h5, h6,
 
 .about-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-  gap: 48px;
+  grid-template-columns: minmax(0, 1fr) 350px;
+  gap: 40px;
   align-items: center;
   width: 100%;
   max-width: 100%;
+}
+
+.about-photo-tilt-card {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  justify-content: center;
 }
 
 .about-bio-col {
