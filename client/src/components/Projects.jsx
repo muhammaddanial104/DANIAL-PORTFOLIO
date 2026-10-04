@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import TiltCard from "./TiltCard";
 
@@ -127,6 +128,17 @@ const PROJECTS = [
 
 export default function Projects() {
   const [selectedModal, setSelectedModal] = useState(null);
+
+  useEffect(() => {
+    if (selectedModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedModal]);
 
   return (
     <section id="projects" className="section-container projects-section" aria-labelledby="projects-heading">
@@ -269,111 +281,115 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Case Study Details Modal */}
-      <AnimatePresence>
-        {selectedModal && (
-          <motion.div
-            className="project-modal-overlay"
-            onClick={() => setSelectedModal(null)}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.22 }}
-          >
-            <motion.div
-              className="project-modal-dialog"
-              onClick={(e) => e.stopPropagation()}
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="modal-project-title"
-              initial={{ opacity: 0, scale: 0.92, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.92, y: 20 }}
-              transition={{ duration: 0.26 }}
-            >
-              <div className="modal-header-row">
-                <div>
-                  <span className="modal-badge">{selectedModal.badge} • {selectedModal.category}</span>
-                  <h3 id="modal-project-title" className="modal-title">{selectedModal.title}</h3>
-                </div>
-                <button
-                  type="button"
-                  className="modal-close-btn"
-                  onClick={() => setSelectedModal(null)}
-                  aria-label="Close dialog"
+      {/* Case Study Details Modal (Portaled to body to guarantee top-level z-index) */}
+      {typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            {selectedModal && (
+              <motion.div
+                className="project-modal-overlay"
+                onClick={() => setSelectedModal(null)}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.22 }}
+              >
+                <motion.div
+                  className="project-modal-dialog"
+                  onClick={(e) => e.stopPropagation()}
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="modal-project-title"
+                  initial={{ opacity: 0, scale: 0.92, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.92, y: 20 }}
+                  transition={{ duration: 0.26 }}
                 >
-                  ✕
-                </button>
-              </div>
-
-              <div className="modal-body-content">
-                <div className="modal-img-wrap">
-                  <picture>
-                    <source srcSet={selectedModal.imageWebp} type="image/webp" />
-                    <img
-                      src={selectedModal.imageJpg}
-                      alt={selectedModal.title}
-                      className="modal-banner-img"
-                      loading="lazy"
-                    />
-                  </picture>
-                </div>
-
-                <div className="modal-section-block">
-                  <h4 className="modal-section-heading">🎯 Problem Solved</h4>
-                  <p className="modal-section-p">{selectedModal.problem}</p>
-                </div>
-
-                <div className="modal-section-block">
-                  <h4 className="modal-section-heading">🛠️ Key Personal Contributions</h4>
-                  <ul className="modal-bullets-list">
-                    {selectedModal.contribution.map((item, i) => (
-                      <li key={i}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="modal-section-block">
-                  <h4 className="modal-section-heading">🔄 Architecture &amp; Data Flow</h4>
-                  <div className="modal-flow-box">{selectedModal.flow}</div>
-                </div>
-
-                <div className="modal-section-block">
-                  <h4 className="modal-section-heading">⚡ Verified Tech Stack</h4>
-                  <div className="modal-tech-pills">
-                    {selectedModal.stack.map((t) => (
-                      <span className="modal-tech-pill" key={t}>{t}</span>
-                    ))}
+                  <div className="modal-header-row">
+                    <div>
+                      <span className="modal-badge">{selectedModal.badge} • {selectedModal.category}</span>
+                      <h3 id="modal-project-title" className="modal-title">{selectedModal.title}</h3>
+                    </div>
+                    <button
+                      type="button"
+                      className="modal-close-btn"
+                      onClick={() => setSelectedModal(null)}
+                      aria-label="Close dialog"
+                    >
+                      ✕
+                    </button>
                   </div>
-                </div>
-              </div>
 
-              <div className="modal-footer-row">
-                <a
-                  href={selectedModal.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary-glow"
-                >
-                  <span>View Code on GitHub</span>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                  </svg>
-                </a>
-                <button
-                  type="button"
-                  className="btn-outline-glass"
-                  onClick={() => setSelectedModal(null)}
-                >
-                  Close
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
+                  <div className="modal-body-content">
+                    <div className="modal-img-wrap">
+                      <picture>
+                        <source srcSet={selectedModal.imageWebp} type="image/webp" />
+                        <img
+                          src={selectedModal.imageJpg}
+                          alt={selectedModal.title}
+                          className="modal-banner-img"
+                          loading="lazy"
+                        />
+                      </picture>
+                    </div>
+
+                    <div className="modal-section-block">
+                      <h4 className="modal-section-heading">🎯 Problem Solved</h4>
+                      <p className="modal-section-p">{selectedModal.problem}</p>
+                    </div>
+
+                    <div className="modal-section-block">
+                      <h4 className="modal-section-heading">🛠️ Key Personal Contributions</h4>
+                      <ul className="modal-bullets-list">
+                        {selectedModal.contribution.map((item, i) => (
+                          <li key={i}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="modal-section-block">
+                      <h4 className="modal-section-heading">🔄 Architecture &amp; Data Flow</h4>
+                      <div className="modal-flow-box">{selectedModal.flow}</div>
+                    </div>
+
+                    <div className="modal-section-block">
+                      <h4 className="modal-section-heading">⚡ Verified Tech Stack</h4>
+                      <div className="modal-tech-pills">
+                        {selectedModal.stack.map((t) => (
+                          <span className="modal-tech-pill" key={t}>{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="modal-footer-row">
+                    <a
+                      href={selectedModal.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary-glow"
+                    >
+                      <span>View Code on GitHub</span>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                      </svg>
+                    </a>
+                    <button
+                      type="button"
+                      className="btn-outline-glass"
+                      onClick={() => setSelectedModal(null)}
+                    >
+                      Close
+                    </button>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
         )}
-      </AnimatePresence>
     </section>
   );
 }

@@ -1,6 +1,64 @@
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function FloatingBotLauncher() {
+  const [isVisible, setIsVisible] = useState(true);
+  const [isDismissed, setIsDismissed] = useState(() => {
+    try {
+      return sessionStorage.getItem("dismiss_bot_launcher") === "true";
+    } catch {
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    if (isDismissed) return;
+
+    const checkVisibility = () => {
+      // 1. Check if chatbot section is in viewport
+      const botEl = document.getElementById("chatbot");
+      let botVisible = false;
+      if (botEl) {
+        const rect = botEl.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 60 && rect.bottom > 60) {
+          botVisible = true;
+        }
+      }
+
+      // 2. Check if footer or bottom of page is in view
+      const footerEl = document.querySelector(".footer-container");
+      let footerVisible = false;
+      if (footerEl) {
+        const rect = footerEl.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 40) {
+          footerVisible = true;
+        }
+      }
+
+      // 3. Check if any modal is currently open in DOM
+      const modalOpen = Boolean(document.querySelector(".project-modal-overlay"));
+
+      if (botVisible || footerVisible || modalOpen) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+    };
+
+    window.addEventListener("scroll", checkVisibility, { passive: true });
+    window.addEventListener("resize", checkVisibility, { passive: true });
+    checkVisibility();
+
+    // Check periodically or on DOM mutations (e.g. when modal opens)
+    const interval = setInterval(checkVisibility, 500);
+
+    return () => {
+      window.removeEventListener("scroll", checkVisibility);
+      window.removeEventListener("resize", checkVisibility);
+      clearInterval(interval);
+    };
+  }, [isDismissed]);
+
   const scrollToBot = () => {
     const el = document.getElementById("chatbot");
     if (el) {
@@ -12,52 +70,48 @@ export default function FloatingBotLauncher() {
     }
   };
 
+  const handleDismiss = (e) => {
+    e.stopPropagation();
+    setIsDismissed(true);
+    try {
+      sessionStorage.setItem("dismiss_bot_launcher", "true");
+    } catch {}
+  };
+
+  if (isDismissed) return null;
+
   return (
-    <motion.button
-      type="button"
-      onClick={scrollToBot}
-      className="floating-bot-launcher"
-      initial={{ opacity: 0, scale: 0.8, y: 20 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 1 }}
-      whileHover={{ scale: 1.08, y: -4 }}
-      whileTap={{ scale: 0.94 }}
-      title="Try Danial's Mini Chatbot & AI Automation Demo"
-      aria-label="Open Mini Chatbot & AI Automation Demo"
-      style={{
-        position: "fixed",
-        bottom: "26px",
-        right: "26px",
-        zIndex: 990,
-        display: "inline-flex",
-        alignItems: "center",
-        gap: "8px",
-        padding: "10px 16px",
-        background: "rgba(6, 13, 33, 0.9)",
-        border: "1px solid rgba(56, 189, 248, 0.5)",
-        borderRadius: "9999px",
-        boxShadow: "0 8px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.35)",
-        backdropFilter: "blur(12px)",
-        cursor: "pointer",
-        color: "#ffffff",
-        fontSize: "0.85rem",
-        fontWeight: 700,
-        fontFamily: "inherit",
-      }}
-    >
-      <span
-        style={{
-          display: "inline-block",
-          width: "8px",
-          height: "8px",
-          borderRadius: "50%",
-          background: "#22c55e",
-          boxShadow: "0 0 8px #22c55e",
-        }}
-        aria-hidden="true"
-      />
-      <span style={{ fontSize: "1.1rem" }} aria-hidden="true">🤖</span>
-      <span style={{ color: "#e0f2fe", letterSpacing: "0.2px" }}>AI Chatbot</span>
-    </motion.button>
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          className="floating-bot-wrapper"
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.8, y: 15 }}
+          transition={{ duration: 0.28, ease: "easeOut" }}
+        >
+          <button
+            type="button"
+            onClick={scrollToBot}
+            className="floating-bot-launcher"
+            title="Try Danial's Mini Chatbot & AI Automation Demo"
+            aria-label="Open Mini Chatbot & AI Automation Demo"
+          >
+            <span className="floating-bot-pulse" aria-hidden="true" />
+            <span className="floating-bot-icon" aria-hidden="true">🤖</span>
+            <span className="floating-bot-text">AI Chatbot</span>
+          </button>
+          <button
+            type="button"
+            onClick={handleDismiss}
+            className="floating-bot-close"
+            aria-label="Dismiss AI Chatbot button"
+            title="Dismiss"
+          >
+            ✕
+          </button>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

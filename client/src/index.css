@@ -165,18 +165,18 @@ h1, h2, h3, h4, h5, h6,
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 1000;
   transition: all var(--transition-smooth);
   padding: 16px 0;
 }
 
 .navbar-header.scrolled {
   padding: 10px 0;
-  background: rgba(3, 7, 18, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-glass);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  background: rgba(3, 7, 18, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.22);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
 }
 
 .navbar-container {
@@ -350,22 +350,23 @@ h1, h2, h3, h4, h5, h6,
 .mobile-toggle.open .toggle-bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
 .mobile-drawer {
-  position: fixed;
-  top: 60px;
+  position: absolute;
+  top: 100%;
   left: 0;
   width: 100%;
   background: rgba(3, 7, 18, 0.98);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85);
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 99;
+  z-index: 1001;
 }
 
 .mobile-drawer.open {
-  max-height: 80vh;
+  max-height: 85vh;
   overflow-y: auto;
 }
 
@@ -2698,14 +2699,14 @@ h1, h2, h3, h4, h5, h6,
 .project-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(3, 7, 18, 0.85);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(3, 7, 18, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
-  padding: 20px;
+  z-index: 10000;
+  padding: 16px;
 }
 
 .project-modal-dialog {
@@ -3944,13 +3945,26 @@ h1, h2, h3, h4, h5, h6,
   }
   .mobile-toggle {
     display: flex;
+    flex-shrink: 0;
   }
   .navbar-container {
     padding: 0 16px;
   }
+  .navbar-right {
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
   .hire-me-btn {
-    padding: 7px 14px;
-    font-size: 0.8rem;
+    display: none !important;
+  }
+  .nav-resume-btn {
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    gap: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   /* Hero Section */
@@ -4297,6 +4311,58 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
+/* ── MOBILE SCREENS (max-width: 640px) ── */
+@media (max-width: 640px) {
+  .brand-badge-role {
+    display: none !important;
+  }
+  .brand-dot {
+    display: none !important;
+  }
+  .brand-name {
+    font-size: 1.15rem;
+  }
+  .brand-icon-box {
+    width: 32px;
+    height: 32px;
+  }
+  .navbar-container {
+    padding: 0 14px;
+  }
+
+  /* Floating Bot Launcher Compact FAB on Mobile */
+  .floating-bot-wrapper {
+    bottom: max(16px, env(safe-area-inset-bottom, 16px));
+    right: max(14px, env(safe-area-inset-right, 14px));
+    gap: 0;
+  }
+  .floating-bot-launcher {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7), 0 0 14px rgba(56, 189, 248, 0.35);
+  }
+  .floating-bot-text {
+    display: none !important;
+  }
+  .floating-bot-close {
+    display: none !important;
+  }
+  .floating-bot-pulse {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 7px;
+    height: 7px;
+  }
+  .floating-bot-icon {
+    font-size: 1.25rem;
+  }
+}
+
 /* ── SMALL PHONES (max-width: 480px) ── */
 @media (max-width: 480px) {
   .section-container {
@@ -4390,6 +4456,13 @@ h1, h2, h3, h4, h5, h6,
     flex-direction: column;
     text-align: center;
     gap: 8px;
+  }
+  .footer-container {
+    padding-bottom: max(55px, env(safe-area-inset-bottom, 20px) + 30px);
+  }
+  .footer-status-pill {
+    margin: 4px auto 0 auto;
+    font-size: 0.74rem;
   }
 
   /* Skills & Projects Small Phones */
@@ -4554,6 +4627,23 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
+/* ── ULTRA COMPACT PHONES (max-width: 380px) ── */
+@media (max-width: 380px) {
+  .navbar-container {
+    padding: 0 10px;
+  }
+  .nav-resume-btn {
+    padding: 5px 9px;
+    font-size: 0.74rem;
+    gap: 3px;
+  }
+  .brand-name {
+    font-size: 1.05rem;
+  }
+  .navbar-right {
+    gap: 6px;
+  }
+}
 
 /* ==========================================================================
    ACCESSIBILITY & FOCUS ENHANCEMENTS
@@ -4997,4 +5087,84 @@ h1, h2, h3, h4, h5, h6,
 .btn-sm {
   padding: 8px 16px;
   font-size: 0.85rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FLOATING AI CHATBOT LAUNCHER
+   ═══════════════════════════════════════════════════════════════════ */
+.floating-bot-wrapper {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 850;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.floating-bot-launcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(6, 13, 33, 0.92);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  border-radius: 9999px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: inherit;
+  transition: all 0.25s ease;
+}
+
+.floating-bot-launcher:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.5);
+  border-color: #38bdf8;
+}
+
+.floating-bot-pulse {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  flex-shrink: 0;
+}
+
+.floating-bot-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.floating-bot-text {
+  color: #e0f2fe;
+  letter-spacing: 0.2px;
+  font-weight: 700;
+}
+
+.floating-bot-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  color: #94a3b8;
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.floating-bot-close:hover {
+  color: #ffffff;
+  background: rgba(239, 68, 68, 0.7);
+  border-color: #ef4444;
 }
