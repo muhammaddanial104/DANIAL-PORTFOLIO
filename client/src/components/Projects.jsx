@@ -69,8 +69,8 @@ const PROJECTS = [
     category: "Productivity Web App",
     badge: "Team Tool",
     badgeType: "app",
-    imageWebp: "/images/nova-preview.webp",
-    imageJpg: "/images/nova-preview.jpg",
+    imageWebp: "/images/proj4.webp",
+    imageJpg: "/images/proj4.jpg",
     problem: "Small engineering teams need an intuitive sprint tracking board without the bloat, complexity, and high cost of enterprise Jira.",
     contribution: [
       "Implemented drag-and-drop task workflow across backlog, in-progress, code-review, and completed columns.",
@@ -89,8 +89,8 @@ const PROJECTS = [
     category: "REST API & Data Visualization",
     badge: "API Integration",
     badgeType: "api",
-    imageWebp: "/images/proj1.webp",
-    imageJpg: "/images/proj1.jpg",
+    imageWebp: "/images/proj2.webp",
+    imageJpg: "/images/proj2.jpg",
     problem: "Common weather widgets only display basic current temperature without actionable hourly forecasts, air quality index, and rain probabilities.",
     contribution: [
       "Integrated OpenWeather REST API with browser Geolocation API for seamless automatic local weather detection.",
@@ -109,8 +109,8 @@ const PROJECTS = [
     category: "Robotics & Mathematical Computing",
     badge: "Degree Highlight",
     badgeType: "robotics",
-    imageWebp: "/images/coder-agent-preview.webp",
-    imageJpg: "/images/coder-agent-preview.jpg",
+    imageWebp: "/images/proj3.webp",
+    imageJpg: "/images/proj3.jpg",
     problem: "Understanding inverse kinematics equations for robotic arms is notoriously abstract without an interactive geometric visualizer.",
     contribution: [
       "Formulated mathematical inverse kinematics algorithms calculating elbow-up and elbow-down joint angles in real time.",
@@ -170,20 +170,46 @@ export default function Projects() {
                 <span className="project-year">{proj.year}</span>
               </div>
 
-              {/* Preview Image with WebP */}
-              <div className="project-img-container">
-                <picture>
-                  <source srcSet={proj.imageWebp} type="image/webp" />
-                  <img
-                    src={proj.imageJpg}
-                    alt={proj.title}
-                    className="project-card-img"
-                    width="480"
-                    height="270"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </picture>
+              {/* Pixel-Perfect Window Frame Banner */}
+              <div
+                className="project-window-frame"
+                onClick={() => setSelectedModal(proj)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setSelectedModal(proj);
+                  }
+                }}
+                aria-label={`View detailed case study for ${proj.title}`}
+              >
+                <div className="project-window-bar">
+                  <div className="window-dots">
+                    <span className="w-dot dot-red" aria-hidden="true" />
+                    <span className="w-dot dot-yellow" aria-hidden="true" />
+                    <span className="w-dot dot-green" aria-hidden="true" />
+                  </div>
+                  <span className="window-title">{proj.title}</span>
+                  <span className="window-status status-active">● Active</span>
+                </div>
+                <div className="project-img-container">
+                  <picture>
+                    <source srcSet={proj.imageWebp} type="image/webp" />
+                    <img
+                      src={proj.imageJpg}
+                      alt={proj.title}
+                      className="project-card-img"
+                      width="1376"
+                      height="768"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
+                  <div className="img-hover-overlay" aria-hidden="true">
+                    <span className="zoom-hint">🔍 Click Case Study for Architecture</span>
+                  </div>
+                </div>
               </div>
 
               {/* Title & Category */}
