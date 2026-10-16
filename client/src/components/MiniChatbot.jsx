@@ -243,6 +243,8 @@ export default function MiniChatbot() {
           }}
         >
           <input
+            id="chatbot-query-input"
+            name="chatbot_query"
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -250,6 +252,7 @@ export default function MiniChatbot() {
             className="ai-chat-text-input"
             disabled={isTyping}
             aria-label="Type message to Danial AI"
+            autoComplete="off"
           />
 
           <motion.button

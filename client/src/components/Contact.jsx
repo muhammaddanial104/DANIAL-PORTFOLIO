@@ -322,6 +322,7 @@ export default function Contact() {
                   onChange={handleChange}
                   placeholder="e.g. Alex Johnson"
                   className="form-input"
+                  autoComplete="name"
                   required
                 />
               </div>
@@ -338,6 +339,7 @@ export default function Contact() {
                   onChange={handleChange}
                   placeholder="alex@company.com"
                   className="form-input"
+                  autoComplete="email"
                   required
                 />
               </div>
@@ -352,6 +354,7 @@ export default function Contact() {
                   value={formData.service}
                   onChange={handleChange}
                   className="form-select"
+                  autoComplete="off"
                 >
                   <option value="AI Agent & n8n Workflow Automation">AI Agent &amp; n8n Workflow Automation</option>
                   <option value="Python Django & Bootstrap Web App">Python Django &amp; Bootstrap Web App</option>
@@ -374,6 +377,7 @@ export default function Contact() {
                   placeholder="Share details about your requirements, role, or project..."
                   rows={4}
                   className="form-textarea"
+                  autoComplete="off"
                   required
                 />
               </div>
