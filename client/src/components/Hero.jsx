@@ -7,7 +7,7 @@ const CYCLING_ROLES = [
   "AI Agents & n8n Automation Specialist",
   "Agentic AI & Generative AI Builder",
   "Mini Chatbot Automation Developer",
-  "React.js, Bootstrap 5 & Python Engineer",
+  "Python, Django & React.js Engineer",
 ];
 
 export default function Hero() {
@@ -103,7 +103,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            Building high-performance web platforms with MERN, Python &amp; Django, and Bootstrap 5, integrated with autonomous AI Agents, n8n workflow automations, and intelligent mini chatbots. Dedicated to transforming complex logic into seamless, automated digital pipelines.
+            Building high-performance web platforms with MERN, Python &amp; Django, integrated with autonomous AI Agents, n8n workflow automations, and intelligent mini chatbots. Dedicated to transforming complex logic into seamless, automated digital pipelines.
           </motion.p>
 
           {/* Degree & Verified Background Pill */}
