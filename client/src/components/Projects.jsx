@@ -328,6 +328,8 @@ export default function Projects() {
                           src={selectedModal.imageJpg}
                           alt={selectedModal.title}
                           className="modal-banner-img"
+                          width="1376"
+                          height="768"
                           loading="lazy"
                         />
                       </picture>

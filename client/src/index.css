@@ -23,9 +23,9 @@
 
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
-  --text-dim: #64748b;
+  --text-dim: #8fa0be;
 
-  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2135,94 +2135,69 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
-.skill-bars-stack {
+.skill-proof-stack {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   width: 100%;
 }
 
-.skill-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  width: 100%;
+.skill-proof-item {
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 12px 14px;
+  transition: all 0.25s ease;
 }
 
-.skill-info {
+.skill-proof-item:hover {
+  background: rgba(15, 23, 42, 0.75);
+  border-color: rgba(56, 189, 248, 0.35);
+  transform: translateX(3px);
+}
+
+.skill-proof-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.82rem;
-  color: #e2e8f0;
   gap: 8px;
-  width: 100%;
+  margin-bottom: 5px;
 }
 
-.skill-name {
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  min-width: 0;
-  word-break: break-word;
-}
-
-.tag-soon {
-  font-size: 0.6rem;
-  font-weight: 800;
-  color: #10b981;
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  padding: 1px 5px;
-  border-radius: 3px;
-}
-
-.skill-pct {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
+.skill-proof-name {
+  font-size: 0.88rem;
   font-weight: 700;
-  flex-shrink: 0;
+  color: #f1f5f9;
+  margin: 0;
 }
 
-.skill-bar-bg {
-  width: 100%;
-  height: 5px;
-  background: rgba(255, 255, 255, 0.08);
+.skill-proof-badge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 8px;
   border-radius: 9999px;
-  overflow: hidden;
+  border: 1px solid currentColor;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
 }
 
-.skill-bar-fill {
-  height: 100%;
-  border-radius: 9999px;
-  position: relative;
-  overflow: hidden;
+.skill-proof-desc {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  line-height: 1.45;
+  margin: 0;
 }
 
-.skill-bar-fill::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.7) 50%, transparent 100%);
-  animation: laserPulse 2.4s ease-in-out infinite;
-}
-
-@keyframes laserPulse {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.cat-card-glow-bar {
-  position: absolute;
-  top: 0;
-  left: 20%;
-  right: 20%;
-  height: 2px;
-  opacity: 0.7;
+.cat-badge-proven {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 6px;
+  border: 1px solid currentColor;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 /* Actual Tech Stack Chips */
@@ -5209,4 +5184,242 @@ h1, h2, h3, h4, h5, h6,
   color: #ffffff;
   background: rgba(239, 68, 68, 0.7);
   border-color: #ef4444;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   STATS & MILESTONES BANNER (INDEPENDENT SECTION)
+   ═══════════════════════════════════════════════════════════════════ */
+.stats-banner-section {
+  width: 100%;
+  padding: 30px 20px 50px 20px;
+  position: relative;
+  z-index: 5;
+}
+
+.stats-banner-container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.stats-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.stat-metric-card {
+  background: rgba(10, 15, 36, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 16px;
+  padding: 22px 20px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-metric-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+.stat-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.stat-icon {
+  font-size: 1.4rem;
+}
+
+.stat-number {
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: #ffffff;
+  font-family: var(--font-mono, monospace);
+  background: linear-gradient(135deg, #ffffff 30%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  margin-bottom: 6px;
+}
+
+.stat-detail {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  line-height: 1.45;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .stats-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .stats-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .stat-metric-card {
+    padding: 18px 16px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   TESTIMONIALS & VERIFIED REFERENCES SECTION
+   ═══════════════════════════════════════════════════════════════════ */
+.testimonials-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.testimonial-tilt-wrapper {
+  height: 100%;
+}
+
+.testimonial-card {
+  height: 100%;
+  background: var(--bg-card, rgba(10, 15, 36, 0.75));
+  border: 1px solid var(--border-glass, rgba(56, 189, 248, 0.18));
+  border-radius: 18px;
+  padding: 26px 22px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65), 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+.testimonial-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.badge-supervisor {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+}
+
+.badge-academic {
+  color: #c084fc;
+  background: rgba(192, 132, 252, 0.12);
+  border: 1px solid rgba(192, 132, 252, 0.35);
+}
+
+.quote-mark-icon {
+  font-size: 2.8rem;
+  line-height: 1;
+  font-family: Georgia, serif;
+  font-weight: 900;
+  opacity: 0.6;
+}
+
+.testimonial-quote-text {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  line-height: 1.65;
+  font-style: italic;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.testimonial-skills-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.test-skill-pill {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 3px 8px;
+  border-radius: 9999px;
+}
+
+.testimonial-author-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.test-avatar-initials {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 0.82rem;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.test-author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.test-author-name {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+
+.test-author-role {
+  font-size: 0.76rem;
+  color: #38bdf8;
+  font-weight: 600;
+  margin: 2px 0 0 0;
+}
+
+.test-author-company {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+@media (max-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
 }

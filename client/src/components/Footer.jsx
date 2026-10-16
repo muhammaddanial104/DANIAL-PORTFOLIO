@@ -11,6 +11,7 @@ export default function Footer() {
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "AI Bot", href: "#chatbot" },
+    { name: "Reviews", href: "#testimonials" },
     { name: "Articles", href: "#blog" },
     { name: "Contact", href: "#contact" },
   ];

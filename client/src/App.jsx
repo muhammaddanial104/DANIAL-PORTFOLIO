@@ -3,12 +3,14 @@ import { Analytics } from "@vercel/analytics/react";
 import CosmicBackground from "./components/CosmicBackground";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import StatsBanner from "./components/StatsBanner";
 
 // Code splitting below-the-fold components via React.lazy for lightning-fast initial bundle
 const About = lazy(() => import("./components/About"));
 const Skills = lazy(() => import("./components/Skills"));
 const Projects = lazy(() => import("./components/Projects"));
 const MiniChatbot = lazy(() => import("./components/MiniChatbot"));
+const Testimonials = lazy(() => import("./components/Testimonials"));
 const Blog = lazy(() => import("./components/Blog"));
 const Contact = lazy(() => import("./components/Contact"));
 const Footer = lazy(() => import("./components/Footer"));
@@ -72,12 +74,15 @@ export default function App() {
         {/* 01 — HERO (Directly mounted for fastest FCP) */}
         <Hero />
 
+        {/* 01.5 — INDEPENDENT STATS & MILESTONES BANNER */}
+        <StatsBanner />
+
         {/* 02 — ABOUT (Lazy loaded) */}
         <Suspense fallback={<SectionFallback />}>
           <About />
         </Suspense>
 
-        {/* 03 — SKILLS (Lazy loaded) */}
+        {/* 03 — SKILLS & PROJECT PROOF (Lazy loaded) */}
         <Suspense fallback={<SectionFallback />}>
           <Skills />
         </Suspense>
@@ -87,17 +92,22 @@ export default function App() {
           <Projects />
         </Suspense>
 
-        {/* 05 — MINI CHATBOT AUTOMATION & AI AGENTS (Lazy loaded) */}
+        {/* 05 — MINI CHATBOT & AUTOMATION SIMULATOR (Lazy loaded) */}
         <Suspense fallback={<SectionFallback />}>
           <MiniChatbot />
         </Suspense>
 
-        {/* 06 — TECHNICAL WRITING / ARTICLES (Lazy loaded) */}
+        {/* 06 — VERIFIED REFERENCES & TESTIMONIALS (Lazy loaded) */}
+        <Suspense fallback={<SectionFallback />}>
+          <Testimonials />
+        </Suspense>
+
+        {/* 07 — TECHNICAL WRITING / ARTICLES (Lazy loaded) */}
         <Suspense fallback={<SectionFallback />}>
           <Blog />
         </Suspense>
 
-        {/* 07 — CONTACT (Lazy loaded) */}
+        {/* 08 — CONTACT (Lazy loaded) */}
         <Suspense fallback={<SectionFallback />}>
           <Contact />
         </Suspense>

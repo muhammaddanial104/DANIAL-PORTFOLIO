@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-// ── PROVEN PRODUCTION SKILLS ──
+// ── PROVEN PRODUCTION SKILLS WITH CONCRETE DELIVERABLES (NO SUBJECTIVE PERCENTAGES) ──
 const PROVEN_CATEGORIES = [
   {
     title: "AGENTIC AI & AUTOMATION",
@@ -9,10 +8,26 @@ const PROVEN_CATEGORIES = [
     color: "#38bdf8",
     badge: "AUTONOMOUS & WORKFLOWS",
     skills: [
-      { name: "AI Agents & Agentic Workflows", pct: 90 },
-      { name: "n8n Automation & Webhook Pipelines", pct: 92 },
-      { name: "Generative AI & LLM Integration", pct: 88 },
-      { name: "Mini Chatbot Automation", pct: 91 },
+      {
+        name: "AI Agents & Autonomous Workflows",
+        proof: "Engineered multi-step tool-calling pipelines and autonomous decision routing",
+        badge: "Production Applied",
+      },
+      {
+        name: "n8n Automation & Webhook Pipelines",
+        proof: "Automated lead intake, data sanitization, and WhatsApp notification dispatches",
+        badge: "Active Production",
+      },
+      {
+        name: "Generative AI & Prompt Engineering",
+        proof: "Structured JSON prompt extraction, intent classification, and sentiment routing",
+        badge: "Tested Deliverables",
+      },
+      {
+        name: "Mini Chatbot Automation",
+        proof: "Rule-based and intent-matching customer triage chatbots with fallback handling",
+        badge: "Live Embedded",
+      },
     ],
   },
   {
@@ -21,10 +36,26 @@ const PROVEN_CATEGORIES = [
     color: "#22c55e",
     badge: "SERVER-SIDE & APIS",
     skills: [
-      { name: "Python Programming & Scripting", pct: 92 },
-      { name: "Django Framework & REST APIs", pct: 89 },
-      { name: "Node.js & Express.js Routers", pct: 88 },
-      { name: "MongoDB & Database Architecture", pct: 87 },
+      {
+        name: "Python Programming & Scripting",
+        proof: "Automation algorithms, data transformation, and backend execution services",
+        badge: "Core Language",
+      },
+      {
+        name: "Django Framework & REST APIs",
+        proof: "Modular RESTful endpoints, model ORM query optimization, and JWT auth",
+        badge: "API Architecture",
+      },
+      {
+        name: "Node.js & Express.js Routers",
+        proof: "Engineered commercial e-commerce APIs during 6-mo ITS Gujrat internship",
+        badge: "Commercial Proof",
+      },
+      {
+        name: "MongoDB & Database Architecture",
+        proof: "Schema modeling, aggregation pipelines, and live inventory decrement sync",
+        badge: "Production Synced",
+      },
     ],
   },
   {
@@ -33,27 +64,59 @@ const PROVEN_CATEGORIES = [
     color: "#a855f7",
     badge: "MODERN CLIENTS",
     skills: [
-      { name: "React.js & Modern Hooks", pct: 91 },
-      { name: "Bootstrap 5 & Responsive Layouts", pct: 92 },
-      { name: "JavaScript (ES6+) & DOM", pct: 90 },
-      { name: "Tailwind CSS & Dynamic State", pct: 89 },
+      {
+        name: "React.js (React 18) & Custom Hooks",
+        proof: "Built 5+ production web apps with reusable modular component architecture",
+        badge: "5+ Shipped Apps",
+      },
+      {
+        name: "Bootstrap 5 & Responsive Layouts",
+        proof: "Mobile-first responsive grids, modal dialogs, and polished admin dashboards",
+        badge: "Pixel-Perfect",
+      },
+      {
+        name: "Modern JavaScript (ES6+) & DOM",
+        proof: "Async/await patterns, debounced queries, and event loop optimization",
+        badge: "Advanced ES6+",
+      },
+      {
+        name: "Tailwind CSS & Cosmic Glass UI",
+        proof: "Ultra-fast styling, bespoke cosmic glass gradients, and 98+ Lighthouse scores",
+        badge: "High Performance",
+      },
     ],
   },
   {
-    title: "DEVELOPER TOOLING & CLOUD",
+    title: "DEVELOPER TOOLING & SYSTEMS",
     icon: "🛠️",
     color: "#f59e0b",
     badge: "WORKFLOW & DEPLOYMENT",
     skills: [
-      { name: "Git Version Control & GitHub", pct: 92 },
-      { name: "Postman API Testing & Automation", pct: 90 },
-      { name: "Vercel Hosting & Cloud Deploy", pct: 88 },
-      { name: "Robotics Logic & State Machines", pct: 86 },
+      {
+        name: "Git & GitHub Version Control",
+        proof: "Branching workflows, semantic commits, and team collaboration hygiene",
+        badge: "Daily Practice",
+      },
+      {
+        name: "Postman API Automation & Testing",
+        proof: "Endpoint validation, payload assertions, and webhook simulation runs",
+        badge: "Verified Testing",
+      },
+      {
+        name: "Vercel Hosting & CI/CD Pipelines",
+        proof: "Automated Git deployment triggers, edge network distribution, and analytics",
+        badge: "Live CI/CD",
+      },
+      {
+        name: "Robotics State Logic & Kinematics",
+        proof: "Applied Bachelor in Robotics foundations to deterministic software state machines",
+        badge: "Degree Verified",
+      },
     ],
   },
 ];
 
-// ── CURRENTLY LEARNING & GROWTH ──
+// ── CURRENTLY LEARNING & GROWTH HORIZON ──
 const LEARNING_SKILLS = [
   { name: "Advanced Multi-Agent Swarms", desc: "Multi-agent coordination, agent memory loops, tool-calling, and autonomous decision routing", tag: "IN PROGRESS" },
   { name: "Enterprise n8n Node Integrations", desc: "Custom node modules, self-hosted n8n clusters, and fail-safe webhook retries", tag: "IN PROGRESS" },
@@ -83,45 +146,6 @@ const PROVEN_TECH_TAGS = [
   "Vercel",
 ];
 
-function SkillBar({ name, pct, color }) {
-  const [filled, setFilled] = useState(false);
-  const itemRef = useRef(null);
-
-  useEffect(() => {
-    const ob = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) {
-          setFilled(true);
-          ob.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-    if (itemRef.current) ob.observe(itemRef.current);
-    return () => ob.disconnect();
-  }, []);
-
-  return (
-    <div className="skill-item" ref={itemRef}>
-      <div className="skill-info">
-        <span className="skill-name">{name}</span>
-        <span className="skill-pct" style={{ color }}>{pct}%</span>
-      </div>
-      <div className="skill-bar-bg" role="progressbar" aria-valuenow={pct} aria-valuemin="0" aria-valuemax="100" aria-label={name}>
-        <div
-          className="skill-bar-fill"
-          style={{
-            width: filled ? `${pct}%` : "0%",
-            background: `linear-gradient(90deg, ${color}88, ${color})`,
-            boxShadow: filled ? `0 0 10px ${color}66` : "none",
-            transition: "width 1.2s cubic-bezier(0.16, 1, 0.3, 1)",
-          }}
-        />
-      </div>
-    </div>
-  );
-}
-
 export default function Skills() {
   return (
     <section id="skills" className="section-container skills-section" aria-labelledby="skills-heading">
@@ -136,44 +160,67 @@ export default function Skills() {
         <div className="section-badge">
           <span className="badge-num">03</span>
           <span className="badge-sep">|</span>
-          <span className="badge-title">Technical Expertise</span>
+          <span className="badge-title">Technical Competence</span>
         </div>
         <h2 id="skills-heading" className="section-main-heading">
-          PROVEN SKILLS &amp; <span className="gradient-text">TECHNICAL TOOLING</span>
+          VERIFIED SKILLS &amp; <span className="gradient-text">PROJECT PROOF</span>
         </h2>
         <p className="section-subtitle">
-          Demonstrated competencies backed by real production code, commercial internship deliverables, and daily programming practice.
+          Tangible engineering capabilities backed by commercial deliverables, deployed client applications, and continuous production coding.
         </p>
       </motion.div>
 
-      {/* 4 Categorized Proven Skills Cards */}
+      {/* 4 Categorized Proven Skills Cards (Proof-Based, Zero Artificial Percentages) */}
       <div className="skills-categories-grid">
-        {PROVEN_CATEGORIES.map((cat) => (
-          <div key={cat.title} className="skill-category-card">
+        {PROVEN_CATEGORIES.map((cat, catIdx) => (
+          <motion.div
+            key={cat.title}
+            className="skill-category-card"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: catIdx * 0.1 }}
+          >
             <div className="skill-cat-header">
               <h3 className="skill-cat-title">
                 <span className="skill-cat-icon" aria-hidden="true">{cat.icon}</span>
                 <span>{cat.title}</span>
               </h3>
               <span
-                className="cat-badge-soon"
+                className="cat-badge-proven"
                 style={{
                   color: cat.color,
-                  borderColor: `${cat.color}66`,
+                  borderColor: `${cat.color}55`,
                   background: `${cat.color}15`,
-                  boxShadow: `0 0 10px ${cat.color}33`,
+                  boxShadow: `0 0 10px ${cat.color}25`,
                 }}
               >
                 {cat.badge}
               </span>
             </div>
 
-            <div className="skill-bars-stack">
+            {/* Proof-Based Capability List */}
+            <div className="skill-proof-stack">
               {cat.skills.map((s) => (
-                <SkillBar key={s.name} name={s.name} pct={s.pct} color={cat.color} />
+                <div key={s.name} className="skill-proof-item">
+                  <div className="skill-proof-top">
+                    <h4 className="skill-proof-name">{s.name}</h4>
+                    <span
+                      className="skill-proof-badge"
+                      style={{
+                        color: cat.color,
+                        borderColor: `${cat.color}40`,
+                        background: `${cat.color}10`,
+                      }}
+                    >
+                      {s.badge}
+                    </span>
+                  </div>
+                  <p className="skill-proof-desc">{s.proof}</p>
+                </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
@@ -183,10 +230,10 @@ export default function Skills() {
           🌱 GROWTH HORIZON
         </span>
         <h3 className="learning-heading">
-          Technologies I Am Actively Learning
+          Technologies I Am Actively Deepening
         </h3>
         <p className="learning-desc">
-          Honest transparency: These are modern frameworks and tools I am studying and practicing with daily to broaden my full-stack capabilities.
+          Honest transparency: These are advanced frameworks and patterns I am studying and implementing in practice projects to broaden my engineering edge.
         </p>
 
         <div className="learning-items-grid">

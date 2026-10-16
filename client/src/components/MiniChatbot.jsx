@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const INITIAL_MESSAGES = [
   {
     sender: "ai",
-    text: "Hello! I am Danial's Mini Chatbot Automation Assistant.\n\nI showcase Danial's capabilities in Agentic AI, n8n workflow automations, Python, Django, and Bootstrap. You can ask me anything about his technical stack, commercial experience, or run a live automation demo!",
+    text: "Hello! I am Danial's Interactive Mini Chatbot Simulator.\n\nI showcase Danial's capabilities in Agentic AI, n8n workflow automations, Python, Django, and Bootstrap. You can test my automated triage logic, review his commercial experience, or trigger a live n8n workflow simulation!",
     timestamp: "Just now",
   },
 ];
@@ -115,13 +115,13 @@ export default function MiniChatbot() {
         <div className="section-badge">
           <span className="badge-num">05</span>
           <span className="badge-sep">|</span>
-          <span className="badge-title">Interactive AI Automation</span>
+          <span className="badge-title">Interactive Simulator Demo</span>
         </div>
         <h2 id="chatbot-heading" className="section-main-heading">
-          MINI CHATBOT AUTOMATION &amp; <span className="gradient-text">AI AGENTS</span>
+          MINI CHATBOT &amp; <span className="gradient-text">AUTOMATION SIMULATOR</span>
         </h2>
         <p className="section-subtitle">
-          Experience automated agentic workflows firsthand. Interact with Danial's mini chatbot powered by Python, Django concepts, and n8n webhook automation logic.
+          Interactive demo preview: Test Danial's automated customer triage logic, Python intent routing, and n8n webhook pipelines with live simulated responses.
         </p>
       </motion.div>
 
@@ -145,11 +145,11 @@ export default function MiniChatbot() {
 
           <div className="terminal-agent-title">
             <span className="agent-status-indicator" aria-hidden="true"></span>
-            <span className="agent-title-text">DANIAL-AI MINI CHATBOT [PYTHON &amp; n8n ENGINE — ONLINE]</span>
+            <span className="agent-title-text">DANIAL-AI SIMULATOR [DEMO PREVIEW — RULE &amp; INTENT ENGINE]</span>
           </div>
 
           <div className="terminal-badge">
-            <span>Agentic Workflow v3.0</span>
+            <span>Demo Preview v3.0</span>
           </div>
         </div>
 
