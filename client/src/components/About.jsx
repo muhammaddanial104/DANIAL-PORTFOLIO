@@ -48,15 +48,11 @@ export default function About() {
           </p>
 
           <p className="about-paragraph">
-            My journey began with a <span className="text-cyan">Bachelor in Robotics &amp; Autonomous Systems</span>. Working with hardware kinematics, microcontrollers, and state machines instilled a deep appreciation for deterministic logic, defensive programming, and systematic debugging. When I built my first web app, I was captivated by how fast ideas could transform into accessible software that solves everyday problems for real users.
+            With a degree in <span className="text-cyan">Robotics &amp; Autonomous Systems</span> and a <span className="text-purple">6-Month Software Internship at ITS Gujrat</span>, I bridge structured engineering logic with modern full-stack development. I contributed directly to deploying two commercial MERN e-commerce platforms with secure REST APIs, Stripe payments, and real-time data sync.
           </p>
 
           <p className="about-paragraph">
-            To ground my theory in production reality, I completed an intensive <span className="text-purple">6-Month Software Engineering Internship at ITS Gujrat</span>. There, I contributed directly to architecting and deploying two commercial MERN e-commerce platforms — implementing RESTful API endpoints, Stripe checkout workflows, JWT auth guards, and real-time MongoDB inventory synchronization.
-          </p>
-
-          <p className="about-paragraph">
-            Expanding beyond traditional web development, I build <strong className="text-white">autonomous AI Agents, n8n workflow automations, and intelligent mini chatbots</strong> using Python, Django, and Bootstrap 5 alongside the MERN stack. My engineering philosophy centers on curiosity, disciplined clean code, and automating manual bottlenecks into seamless digital pipelines.
+            Today, I specialize in architecting <strong className="text-white">autonomous AI Agents, n8n workflows, Python/Django backends, and responsive web applications</strong> — turning complex manual workflows into fast, automated digital pipelines.
           </p>
 
           {/* 4 Pillars Grid with proven glass cards */}
