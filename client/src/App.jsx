@@ -1,8 +1,11 @@
 import { useEffect, Suspense, lazy } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import CosmicBackground from "./components/CosmicBackground";
+import CustomCursor from "./components/CustomCursor";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import TechMarquee from "./components/TechMarquee";
+import ValuePillars from "./components/ValuePillars";
 import StatsBanner from "./components/StatsBanner";
 
 // Code splitting below-the-fold components via React.lazy for lightning-fast initial bundle
@@ -57,7 +60,10 @@ export default function App() {
   }, []);
 
   return (
-    <div className="cosmic-app-wrapper">
+    <div className="cosmic-app-wrapper hmh-agency-theme">
+      {/* Interactive Magnetic Cursor Follower (Media-Harbour Style) */}
+      <CustomCursor />
+
       {/* Accessibility: Skip to Main Content Link */}
       <a href="#main-content" className="skip-link">
         Skip to main content
@@ -71,10 +77,16 @@ export default function App() {
 
       {/* Main Page Flow */}
       <main id="main-content" className="main-content">
-        {/* 01 — HERO (Directly mounted for fastest FCP) */}
+        {/* 01 — HERO (Directly mounted with Interactive Canvas Mesh FX) */}
         <Hero />
 
-        {/* 01.5 — INDEPENDENT STATS & MILESTONES BANNER */}
+        {/* 01.2 — INFINITE TECH & STANDARDS MARQUEE TICKER */}
+        <TechMarquee />
+
+        {/* 01.5 — 5 VALUE PILLARS (Media-Harbour "Warum Kunden uns schätzen" style) */}
+        <ValuePillars />
+
+        {/* 01.8 — INDEPENDENT STATS & MILESTONES BANNER */}
         <StatsBanner />
 
         {/* 02 — ABOUT (Lazy loaded) */}

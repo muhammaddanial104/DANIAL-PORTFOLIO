@@ -5551,3 +5551,592 @@ h1, h2, h3, h4, h5, h6,
     gap: 18px;
   }
 }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   15. MEDIA-HARBOUR (HMH) EXECUTIVE AGENCY ARCHITECTURE & DESIGN
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  --hmh-blue-primary: #0040A8;
+  --hmh-blue-deep: #001B44;
+  --hmh-blue-vibrant: #0066FF;
+  --hmh-blue-light: #38bdf8;
+  --hmh-ai-orange: #FF8700;
+  --hmh-dark-canvas: #040914;
+  --hmh-navy-card: rgba(7, 18, 36, 0.75);
+  --hmh-border-blue: rgba(0, 64, 168, 0.35);
+  --hmh-border-glow: rgba(56, 189, 248, 0.25);
+}
+
+/* ── Custom Magnetic Cursor Follower (Media-Harbour #cursor-follower) ── */
+.media-harbour-cursor-container {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  overflow: hidden;
+}
+
+.hmh-cursor-dot {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  background: #38bdf8;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.05s ease;
+  box-shadow: 0 0 10px #38bdf8, 0 0 18px rgba(0, 102, 255, 0.8);
+  will-change: transform;
+}
+
+.hmh-cursor-dot-hidden {
+  opacity: 0;
+}
+
+.hmh-cursor-ring {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid rgba(56, 189, 248, 0.6);
+  background: rgba(0, 64, 168, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.28s ease,
+              border-color 0.28s ease,
+              transform 0.08s ease;
+  will-change: transform;
+  backdrop-filter: blur(1.5px);
+}
+
+.hmh-cursor-ring-hovered {
+  top: -30px;
+  left: -30px;
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 64, 168, 0.22);
+  border-color: #38bdf8;
+  box-shadow: 0 0 20px rgba(0, 102, 255, 0.4);
+}
+
+.hmh-cursor-ring-has-text {
+  top: -36px;
+  left: -36px;
+  width: 72px;
+  height: 72px;
+  background: rgba(0, 64, 168, 0.85);
+  border-color: #38bdf8;
+  box-shadow: 0 0 24px rgba(56, 189, 248, 0.5);
+}
+
+.hmh-cursor-ring-clicked {
+  transform: scale(0.85);
+}
+
+.hmh-cursor-text {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  pointer-events: none;
+}
+
+@media (pointer: coarse) or (hover: none) {
+  .media-harbour-cursor-container {
+    display: none !important;
+  }
+}
+
+/* ── Interactive Hero Canvas FX (hero-fx.min.js style) ── */
+.hmh-hero-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.hmh-hero-fx-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: auto;
+  opacity: 0.75;
+}
+
+/* ── Hero Agency Badge & Headline ── */
+.hmh-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: rgba(0, 64, 168, 0.16);
+  border: 1px solid rgba(0, 102, 255, 0.4);
+  margin-bottom: 18px;
+  box-shadow: 0 0 16px rgba(0, 64, 168, 0.25);
+  backdrop-filter: blur(8px);
+}
+
+.hmh-badge-dot-live {
+  width: 8px;
+  height: 8px;
+  background: #38bdf8;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #38bdf8, 0 0 18px rgba(0, 102, 255, 0.9);
+  animation: pulseCyan 2s infinite ease-in-out;
+}
+
+.hmh-badge-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #e0f2fe;
+  letter-spacing: 0.08em;
+}
+
+.hmh-hero-name {
+  margin-bottom: 8px;
+}
+
+.hmh-hero-statement {
+  margin: 6px 0 16px 0;
+}
+
+.hmh-hero-statement-main {
+  font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  display: block;
+}
+
+.hmh-hero-statement-highlight {
+  background: linear-gradient(135deg, #38bdf8 0%, #0066FF 60%, #818cf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.hmh-hero-desc {
+  max-width: 600px;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #94a3b8;
+  margin-bottom: 22px;
+}
+
+.hmh-cred-pill {
+  margin-bottom: 28px;
+  background: rgba(7, 18, 36, 0.8) !important;
+  border: 1px solid rgba(0, 64, 168, 0.4) !important;
+}
+
+.hmh-btn-primary {
+  background: linear-gradient(135deg, #0040A8 0%, #0066FF 100%) !important;
+  border: 1px solid rgba(56, 189, 248, 0.5) !important;
+  box-shadow: 0 4px 20px rgba(0, 64, 168, 0.5) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.hmh-btn-primary:hover {
+  background: linear-gradient(135deg, #003388 0%, #0052cc 100%) !important;
+  box-shadow: 0 6px 26px rgba(0, 102, 255, 0.65) !important;
+}
+
+.hmh-btn-secondary {
+  background: rgba(7, 18, 36, 0.75) !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  color: #e2e8f0 !important;
+  font-weight: 600 !important;
+}
+
+.hmh-btn-secondary:hover {
+  border-color: #38bdf8 !important;
+  background: rgba(0, 64, 168, 0.2) !important;
+  color: #ffffff !important;
+}
+
+.hmh-halo-blue {
+  background: radial-gradient(circle, rgba(0, 102, 255, 0.45) 0%, transparent 70%) !important;
+}
+
+.hmh-halo-navy {
+  background: radial-gradient(circle, rgba(0, 64, 168, 0.4) 0%, transparent 70%) !important;
+}
+
+.hmh-float-ai {
+  border-color: rgba(255, 135, 0, 0.4) !important;
+  box-shadow: 0 0 16px rgba(255, 135, 0, 0.25) !important;
+}
+
+.hmh-float-ai .float-badge-text {
+  color: #ffaa44 !important;
+}
+
+.hmh-float-code {
+  border-color: rgba(0, 102, 255, 0.4) !important;
+  box-shadow: 0 0 16px rgba(0, 102, 255, 0.25) !important;
+}
+
+/* ── 01.2 Infinite Tech & Standards Marquee Ticker (brands.min.js style) ── */
+.hmh-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 22px 0;
+  background: rgba(3, 7, 18, 0.85);
+  border-top: 1px solid rgba(0, 64, 168, 0.3);
+  border-bottom: 1px solid rgba(0, 64, 168, 0.3);
+  z-index: 2;
+}
+
+.hmh-marquee-fade-left,
+.hmh-marquee-fade-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.hmh-marquee-fade-left {
+  left: 0;
+  background: linear-gradient(90deg, #030712 0%, transparent 100%);
+}
+
+.hmh-marquee-fade-right {
+  right: 0;
+  background: linear-gradient(-90deg, #030712 0%, transparent 100%);
+}
+
+.hmh-marquee-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: hmhMarqueeScroll 38s linear infinite;
+}
+
+.hmh-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes hmhMarqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.hmh-marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.16);
+  border-radius: 9999px;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.hmh-marquee-item:hover {
+  border-color: #38bdf8;
+  background: rgba(0, 64, 168, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 102, 255, 0.3);
+}
+
+.hmh-marquee-icon {
+  font-size: 1.15rem;
+}
+
+.hmh-marquee-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.hmh-marquee-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.hmh-marquee-cat {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #38bdf8;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── 01.5 Media-Harbour Value Pillars Section ("Warum Kunden uns schätzen") ── */
+.hmh-pillars-section {
+  padding: 90px 0;
+  position: relative;
+  background: radial-gradient(circle at 50% 20%, rgba(0, 64, 168, 0.08) 0%, rgba(4, 9, 20, 0.98) 75%);
+  border-bottom: 1px solid rgba(0, 64, 168, 0.25);
+  z-index: 2;
+}
+
+.hmh-section-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 55px auto;
+}
+
+.hmh-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  background: rgba(0, 64, 168, 0.15);
+  border: 1px solid rgba(0, 102, 255, 0.35);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+  margin-bottom: 16px;
+}
+
+.hmh-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: #38bdf8;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #38bdf8;
+}
+
+.hmh-section-title {
+  font-size: clamp(2rem, 3.8vw, 2.9rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.hmh-gradient-text {
+  background: linear-gradient(135deg, #38bdf8 0%, #0066FF 60%, #818cf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hmh-section-desc {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: #94a3b8;
+  margin: 0 auto;
+}
+
+.hmh-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.hmh-pillar-card-prominent {
+  grid-column: span 1;
+}
+
+.hmh-pillar-card {
+  position: relative;
+  background: rgba(11, 22, 44, 0.75);
+  border: 1px solid rgba(0, 64, 168, 0.35);
+  border-radius: 18px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.hmh-pillar-card:hover {
+  border-color: #38bdf8;
+  background: rgba(14, 30, 60, 0.88);
+  box-shadow: 0 14px 40px rgba(0, 102, 255, 0.35);
+}
+
+.hmh-pillar-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.8), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hmh-pillar-card:hover .hmh-pillar-glow {
+  opacity: 1;
+}
+
+.hmh-pillar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.hmh-pillar-number {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: rgba(56, 189, 248, 0.3);
+  letter-spacing: -0.02em;
+  transition: color 0.3s ease;
+}
+
+.hmh-pillar-card:hover .hmh-pillar-number {
+  color: #38bdf8;
+}
+
+.hmh-pillar-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+  padding: 2px 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+}
+
+.hmh-pillar-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(0, 64, 168, 0.25);
+  border: 1px solid rgba(0, 102, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #38bdf8;
+  transition: all 0.3s ease;
+}
+
+.hmh-pillar-card:hover .hmh-pillar-icon {
+  background: #0066FF;
+  color: #ffffff;
+  transform: scale(1.08) rotate(4deg);
+  box-shadow: 0 0 18px rgba(0, 102, 255, 0.6);
+}
+
+.hmh-pillar-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.hmh-pillar-desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #94a3b8;
+  margin-bottom: 22px;
+  flex-grow: 1;
+}
+
+.hmh-pillar-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hmh-pillar-check {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #22c55e;
+}
+
+.hmh-pillar-highlight {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+/* ── Responsive Media-Harbour Breakpoints ── */
+@media (max-width: 1024px) {
+  .hmh-pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .hmh-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .hmh-hero-statement-main {
+    font-size: 2.1rem;
+  }
+  .hmh-pillar-card {
+    padding: 24px 20px;
+  }
+}
+
+
+/* ── Media-Harbour Category Filter Tabs (project-filter.min.js style) ── */
+.hmh-filter-tabs-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.hmh-filter-tab {
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(8px);
+}
+
+.hmh-filter-tab:hover {
+  color: #ffffff;
+  border-color: rgba(0, 102, 255, 0.5);
+  background: rgba(0, 64, 168, 0.2);
+  transform: translateY(-2px);
+}
+
+.hmh-filter-tab.active {
+  background: linear-gradient(135deg, #0040A8 0%, #0066FF 100%);
+  border-color: #38bdf8;
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(0, 102, 255, 0.45);
+}

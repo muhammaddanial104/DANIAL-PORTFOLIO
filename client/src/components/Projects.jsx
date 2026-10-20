@@ -126,8 +126,26 @@ const PROJECTS = [
   },
 ];
 
+const FILTERS = [
+  { id: "all", label: "All Works" },
+  { id: "ai", label: "AI Agents & n8n" },
+  { id: "commercial", label: "Commercial MERN (ITS Gujrat)" },
+  { id: "python", label: "Python & Django" },
+  { id: "robotics", label: "Robotics & Math" },
+];
+
 export default function Projects() {
   const [selectedModal, setSelectedModal] = useState(null);
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  const filteredProjects = PROJECTS.filter((proj) => {
+    if (activeFilter === "all") return true;
+    if (activeFilter === "ai") return proj.stack.includes("n8n") || proj.stack.includes("AI Agents");
+    if (activeFilter === "commercial") return proj.badgeType === "client" || proj.stack.includes("MongoDB");
+    if (activeFilter === "python") return proj.stack.includes("Python") || proj.stack.includes("Django");
+    if (activeFilter === "robotics") return proj.category.toLowerCase().includes("robotics") || proj.id.includes("robot");
+    return true;
+  });
 
   useEffect(() => {
     if (selectedModal) {
@@ -153,7 +171,7 @@ export default function Projects() {
         <div className="section-badge">
           <span className="badge-num">04</span>
           <span className="badge-sep">|</span>
-          <span className="badge-title">Featured Work</span>
+          <span className="badge-title">Case Studies &amp; Works</span>
         </div>
         <h2 id="projects-heading" className="section-main-heading">
           VERIFIED PROJECTS &amp; <span className="gradient-text">CODE DELIVERABLES</span>
@@ -161,19 +179,42 @@ export default function Projects() {
         <p className="section-subtitle">
           Autonomous n8n agentic workflows, Python Django mini chatbot automations, and commercial full-stack client deliverables from ITS Gujrat.
         </p>
+
+        {/* Media-Harbour Category Filter Tabs */}
+        <div className="hmh-filter-tabs-row" role="tablist" aria-label="Filter projects by category">
+          {FILTERS.map((f) => {
+            const isActive = activeFilter === f.id;
+            return (
+              <button
+                key={f.id}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                className={`hmh-filter-tab ${isActive ? "active" : ""}`}
+                onClick={() => setActiveFilter(f.id)}
+                data-cursor-text="Filter"
+              >
+                <span>{f.label}</span>
+              </button>
+            );
+          })}
+        </div>
       </motion.div>
 
-      {/* Projects Grid: 6 Real Projects */}
-      <div className="projects-cards-grid">
-        {PROJECTS.map((proj, idx) => (
-          <TiltCard key={proj.id} className="project-grid-tilt-card" maxTilt={8} glare={true}>
-            <motion.article
-              className="project-display-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: (idx % 2) * 0.12 }}
-            >
+      {/* Projects Grid: Filtered Real Projects */}
+      <motion.div layout className="projects-cards-grid">
+        <AnimatePresence>
+          {filteredProjects.map((proj, idx) => (
+            <TiltCard key={proj.id} className="project-grid-tilt-card" maxTilt={8} glare={true}>
+              <motion.article
+                layout
+                className="project-display-card project-card"
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.38, ease: "easeOut" }}
+                data-cursor-text="Case"
+              >
               {/* Card Header & Badge */}
               <div className="card-top-row">
                 <span className={`status-badge badge-${proj.badgeType}`}>
@@ -279,7 +320,8 @@ export default function Projects() {
             </motion.article>
           </TiltCard>
         ))}
-      </div>
+        </AnimatePresence>
+      </motion.div>
 
       {/* Case Study Details Modal (Portaled to body to guarantee top-level z-index) */}
       {typeof document !== "undefined" &&
