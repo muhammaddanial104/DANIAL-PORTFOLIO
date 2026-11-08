@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./Navbar.css";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {

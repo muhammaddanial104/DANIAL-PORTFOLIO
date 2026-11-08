@@ -1,77 +1,8 @@
 import { useState } from "react";
+import "./Blog.css";
 import { motion, AnimatePresence } from "framer-motion";
 import TiltCard from "./TiltCard";
-
-const ARTICLES = [
-  {
-    id: "n8n-agents",
-    title: "Building Autonomous AI Agents & Workflows with n8n and Python",
-    category: "AI Automation & Agentic AI",
-    tags: ["n8n", "AI Agents", "Python", "AI Automation"],
-    readTime: "5 min read",
-    date: "Sep 2024",
-    icon: "🤖",
-    excerpt:
-      "A hands-on breakdown of orchestrating multi-agent decision nodes in n8n, handling webhook events, and executing Python scripts for automated data extraction.",
-    highlights: [
-      "Configuring webhook triggers to ingest live leads and form submissions into n8n.",
-      "Custom Python execution nodes for Gen AI prompt parsing and data normalization.",
-      "Multi-branch error routing with instant WhatsApp and email alert notifications.",
-    ],
-    devtoUrl: "https://dev.to/muhammaddanial104",
-  },
-  {
-    id: "django-chatbot",
-    title: "Architecting a Lightweight Mini Chatbot with Python Django & Bootstrap 5",
-    category: "Full-Stack & Chatbots",
-    tags: ["Python", "Django", "Bootstrap 5", "Mini Chatbot"],
-    readTime: "4 min read",
-    date: "Aug 2024",
-    icon: "💬",
-    excerpt:
-      "How to build an embeddable, responsive customer support chatbot using Bootstrap 5 on the frontend and Python Django REST framework on the backend.",
-    highlights: [
-      "Lightweight Bootstrap 5 chat component with smooth animated message bubbles.",
-      "Django REST API endpoint with regex and NLP-based intent matching algorithms.",
-      "Connecting n8n webhook listeners to escalate unanswered queries to live human agents.",
-    ],
-    devtoUrl: "https://dev.to/muhammaddanial104",
-  },
-  {
-    id: "robotics-to-web",
-    title: "From Robotics to Full-Stack: What Hardware Taught Me About Code",
-    category: "Engineering Journey",
-    tags: ["Robotics", "Clean Code", "Growth Mindset"],
-    readTime: "6 min read",
-    date: "Jul 2024",
-    icon: "🤖",
-    excerpt:
-      "Why deterministic state machines, sensor latency, and physical feedback in my Robotics degree made me a more disciplined, defensive web developer.",
-    highlights: [
-      "Treating UI states like robotic state machines — zero unhandled error states.",
-      "Defensive API input validation mirroring physical sensor noise filtering.",
-      "Why hardware debugging instilled a relentless, root-cause troubleshooting mindset.",
-    ],
-    devtoUrl: "https://dev.to/muhammaddanial104",
-  },
-  {
-    id: "jwt-security",
-    title: "Securing MERN Apps: JWT Authentication, Refresh Tokens & Cookies",
-    category: "Web Security",
-    tags: ["Security", "JWT", "Node.js", "Express"],
-    readTime: "5 min read",
-    date: "Jun 2024",
-    icon: "🛡️",
-    excerpt:
-      "Production-ready patterns for storing access tokens securely, rotating refresh tokens, and protecting sensitive REST endpoints against XSS and CSRF.",
-    highlights: [
-      "HttpOnly, SameSite strict cookies preventing client-side script token theft.",
-      "Automatic token refresh interceptors with seamless user session renewal.",
-      "Express rate-limiting middleware to protect auth routes from brute-force attacks.",
-    ],
-    devtoUrl: "https://dev.to/muhammaddanial104",
-  },
-];
+import { ARTICLES_DATA } from "../data/blogData";
 
 export default function Blog() {
   const [selectedArticle, setSelectedArticle] = useState(null);
@@ -89,64 +20,90 @@ export default function Blog() {
         <div className="section-badge">
           <span className="badge-num">06</span>
           <span className="badge-sep">|</span>
-          <span className="badge-title">Articles &amp; Insights</span>
+          <span className="badge-title">Technical Writing &amp; Knowledge</span>
         </div>
         <h2 id="blog-heading" className="section-main-heading">
-          TECHNICAL WRITING &amp; <span className="gradient-text">LEARNING LOGS</span>
+          ENGINEERING ARTICLES &amp; <span className="gradient-text">INSIGHTS</span>
         </h2>
         <p className="section-subtitle">
-          Documenting real-world engineering discoveries, MERN stack patterns, and clean code principles as I build and grow every day.
+          Documenting real-world engineering discoveries, modern full-stack patterns, and clean code principles as I build and grow every day.
         </p>
       </motion.div>
 
       {/* Articles Grid */}
-      <div className="blog-grid">
-        {ARTICLES.map((article, idx) => (
-          <TiltCard key={article.id} className="blog-tilt-card" maxTilt={8} glare={true}>
+      <div className="articles-grid">
+        {ARTICLES_DATA.map((article, idx) => (
+          <TiltCard key={article.id} className="article-tilt-card" maxTilt={8} glare={true}>
             <motion.article
-              className="blog-card"
-              initial={{ opacity: 0, y: 24 }}
+              className="article-card"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
             >
-              <div className="blog-card-top">
-                <span className="blog-card-icon" aria-hidden="true">{article.icon}</span>
-                <div className="blog-meta-right">
-                  <span className="blog-category">{article.category}</span>
-                  <span className="blog-read-time">{article.readTime}</span>
+              {/* Top Row: Category, Date, Read Time */}
+              <div className="article-top-row">
+                <span className="article-cat-badge">{article.category}</span>
+                <div className="article-meta">
+                  <span className="article-date">{article.date}</span>
+                  <span className="meta-sep">•</span>
+                  <span className="article-time">{article.readTime}</span>
                 </div>
               </div>
 
-              <h3 className="blog-card-title">{article.title}</h3>
-              <p className="blog-card-excerpt">{article.excerpt}</p>
+              {/* Icon & Title */}
+              <div className="article-title-block">
+                <span className="article-icon" aria-hidden="true">{article.icon}</span>
+                <h3 className="article-title">{article.title}</h3>
+              </div>
 
-              <div className="blog-tags-row">
-                {article.tags.map((t) => (
-                  <span key={t} className="blog-tag-pill">{t}</span>
+              {/* Excerpt */}
+              <p className="article-excerpt">{article.excerpt}</p>
+
+              {/* Key Highlights Bullet Box */}
+              <div className="article-highlights-box">
+                <div className="highlights-label">Key Takeaways:</div>
+                <ul className="highlights-list">
+                  {article.highlights.map((h, i) => (
+                    <li key={i}>{h}</li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Tags Cloud */}
+              <div className="article-tags-row">
+                {article.tags.map((tag) => (
+                  <span key={tag} className="article-tag">{tag}</span>
                 ))}
               </div>
 
-              <div className="blog-card-actions">
+              {/* Footer CTA: Read Details Modal */}
+              <div className="article-card-footer">
                 <button
                   type="button"
-                  className="btn-outline-glass blog-btn"
+                  className="article-read-btn"
                   onClick={() => setSelectedArticle(article)}
-                  aria-label={`Read article preview: ${article.title}`}
+                  aria-label={`Read full summary of ${article.title}`}
                 >
-                  <span>Quick Read</span>
+                  <span>Read Article</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
                 </button>
+
                 <a
                   href={article.devtoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="blog-link-external"
-                  aria-label={`Read full article on Dev.to: ${article.title}`}
+                  className="article-devto-link"
+                  aria-label="View Danial's profile on Dev.to"
                 >
                   <span>Dev.to</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                    <polyline points="7 7 17 7 17 17"></polyline>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
                   </svg>
                 </a>
               </div>
@@ -155,32 +112,38 @@ export default function Blog() {
         ))}
       </div>
 
-      {/* Quick Read Modal Dialog */}
+      {/* Article Detail Modal */}
       <AnimatePresence>
         {selectedArticle && (
           <motion.div
-            className="project-modal-overlay"
+            className="article-modal-overlay"
             onClick={() => setSelectedArticle(null)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.22 }}
+            transition={{ duration: 0.2 }}
           >
             <motion.div
-              className="project-modal-dialog"
+              className="article-modal-dialog"
               onClick={(e) => e.stopPropagation()}
               role="dialog"
               aria-modal="true"
               aria-labelledby="modal-article-title"
-              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              initial={{ opacity: 0, scale: 0.94, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.92, y: 20 }}
-              transition={{ duration: 0.26 }}
+              exit={{ opacity: 0, scale: 0.94, y: 20 }}
+              transition={{ duration: 0.25 }}
             >
-              <div className="modal-header-row">
+              {/* Modal Header */}
+              <div className="article-modal-header">
                 <div>
-                  <span className="modal-badge">{selectedArticle.category} • {selectedArticle.readTime}</span>
-                  <h3 id="modal-article-title" className="modal-title">{selectedArticle.title}</h3>
+                  <div className="modal-article-meta">
+                    <span className="modal-cat-badge">{selectedArticle.category}</span>
+                    <span className="modal-time-badge">{selectedArticle.readTime} • {selectedArticle.date}</span>
+                  </div>
+                  <h3 id="modal-article-title" className="modal-article-title">
+                    <span className="modal-icon">{selectedArticle.icon}</span> {selectedArticle.title}
+                  </h3>
                 </div>
                 <button
                   type="button"
@@ -192,15 +155,13 @@ export default function Blog() {
                 </button>
               </div>
 
-              <div className="modal-body-content">
-                <div className="modal-section-block">
-                  <h4 className="modal-section-heading">📖 Article Overview</h4>
-                  <p className="modal-section-p">{selectedArticle.excerpt}</p>
-                </div>
+              {/* Modal Body */}
+              <div className="article-modal-body">
+                <p className="modal-article-excerpt">{selectedArticle.excerpt}</p>
 
                 <div className="modal-section-block">
-                  <h4 className="modal-section-heading">💡 Key Takeaways &amp; Architectural Takeaways</h4>
-                  <ul className="modal-bullets-list">
+                  <h4 className="modal-section-heading">Key Technical Takeaways &amp; Implementation Details</h4>
+                  <ul className="modal-highlights-list">
                     {selectedArticle.highlights.map((h, i) => (
                       <li key={i}>{h}</li>
                     ))}
@@ -208,31 +169,33 @@ export default function Blog() {
                 </div>
 
                 <div className="modal-section-block">
-                  <h4 className="modal-section-heading">🏷️ Topics &amp; Frameworks</h4>
-                  <div className="modal-tech-pills">
+                  <h4 className="modal-section-heading">Core Topics Covered</h4>
+                  <div className="modal-tags-row">
                     {selectedArticle.tags.map((t) => (
-                      <span className="modal-tech-pill" key={t}>{t}</span>
+                      <span key={t} className="modal-tag-chip">{t}</span>
                     ))}
                   </div>
                 </div>
               </div>
 
-              <div className="modal-footer-row">
+              {/* Modal Footer */}
+              <div className="article-modal-footer">
                 <a
                   href={selectedArticle.devtoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-primary-glow"
+                  className="btn-primary-glow btn-sm"
                 >
-                  <span>Read Full Article on Dev.to</span>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                    <polyline points="7 7 17 7 17 17"></polyline>
+                  <span>Read on Dev.to</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
                   </svg>
                 </a>
                 <button
                   type="button"
-                  className="btn-outline-glass"
+                  className="btn-outline-glass btn-sm"
                   onClick={() => setSelectedArticle(null)}
                 >
                   Close

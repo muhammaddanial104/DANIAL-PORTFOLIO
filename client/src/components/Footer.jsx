@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import "./Footer.css";
 import { motion, AnimatePresence } from "framer-motion";
 
 const FOOTER_TAGLINES = [
   "Building Autonomous AI Agents & n8n Automations ⚡",
-  "Architecting Full-Stack MERN & Python/Django Systems 🚀",
+  "Architecting Modern Full-Stack & Python/Django Systems 🚀",
   "Engineering Interactive Mini Chatbots & Custom Automations 🤖",
   "Robotics Degree • 6-Month Commercial Proof at ITS Gujrat 🎓",
 ];

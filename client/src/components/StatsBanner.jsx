@@ -1,43 +1,14 @@
 import { motion } from "framer-motion";
+import "./StatsBanner.css";
 import CountUp from "./CountUp";
-
-const STATS = [
-  {
-    number: 6,
-    suffix: " Mo",
-    title: "Commercial Internship",
-    detail: "Intensive production engineering at ITS Gujrat",
-    icon: "💼",
-  },
-  {
-    number: 2,
-    suffix: "",
-    title: "Shipped Platforms",
-    detail: "Commercial client deliverables with live payments",
-    icon: "🚀",
-  },
-  {
-    number: 6,
-    suffix: "+",
-    title: "Full-Stack & AI Projects",
-    detail: "MERN, Python/Django & n8n agentic workflows",
-    icon: "⚡",
-  },
-  {
-    number: 100,
-    suffix: "%",
-    title: "Deterministic Logic",
-    detail: "Robotics background applied to resilient code",
-    icon: "🎓",
-  },
-];
+import { STATS_DATA } from "../data/statsData";
 
 export default function StatsBanner() {
   return (
     <section className="stats-banner-section" aria-label="Key Professional Milestones">
       <div className="stats-banner-container">
         <div className="stats-cards-grid">
-          {STATS.map((item, idx) => (
+          {STATS_DATA.map((item, idx) => (
             <motion.div
               key={item.title}
               className="stat-metric-card"

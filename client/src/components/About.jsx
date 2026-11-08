@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./About.css";
 import { motion } from "framer-motion";
 import TiltCard from "./TiltCard";
 
@@ -30,7 +31,7 @@ export default function About() {
           ENGINEERING DISCIPLINE &amp; <span className="gradient-text">SYSTEMS THINKING</span>
         </h2>
         <p className="section-subtitle">
-          From robotics mathematical modeling to commercial MERN &amp; Python architectures — engineering resilient, high-speed digital platforms.
+          From robotics mathematical modeling to scalable Full-Stack &amp; Python architectures — engineering resilient, high-speed digital platforms.
         </p>
       </motion.div>
 
@@ -48,11 +49,11 @@ export default function About() {
           </p>
 
           <p className="about-paragraph">
-            With a degree in <span className="text-cyan">Robotics &amp; Autonomous Systems</span> and an intensive <span className="text-purple">6-Month Software Engineering Internship at ITS Gujrat</span>, I combine mathematical problem-solving with production-grade full-stack architecture. During my commercial tenure, I directly engineered and shipped two live MERN e-commerce platforms featuring resilient REST APIs, automated Stripe transactions, and live inventory sync.
+            With a degree in <span className="text-cyan">Robotics &amp; Autonomous Systems</span>, I combine mathematical problem-solving with production-grade full-stack architecture. I have engineered and deployed commercial e-commerce platforms and web applications featuring resilient REST APIs, automated Stripe transactions, and live database synchronization.
           </p>
 
           <p className="about-paragraph">
-            Today, I specialize in building <strong className="text-white">autonomous AI Agents, n8n workflow automations, Python &amp; Django REST backends, and decoupled React applications</strong> — transforming manual, time-intensive operations into high-speed, self-driving digital pipelines.
+            Today, I specialize in architecting <strong className="text-white">autonomous AI Agents, n8n workflow automations, Python &amp; Django REST backends, and responsive Full-Stack applications</strong> — transforming manual, time-intensive operations into high-speed, self-driving digital pipelines.
           </p>
 
           {/* 4 Pillars Grid with proven glass cards */}
@@ -68,8 +69,8 @@ export default function About() {
             <div className="highlight-card">
               <span className="highlight-icon" aria-hidden="true">💼</span>
               <div className="highlight-info">
-                <h4>6-Mo Commercial Internship</h4>
-                <p>Shipped 2 production MERN platforms at ITS Gujrat with live Stripe payments and inventory synchronization.</p>
+                <h4>Production Platform Delivery</h4>
+                <p>Shipped commercial full-stack platforms with live Stripe payments and real-time inventory synchronization.</p>
               </div>
             </div>
 
@@ -85,7 +86,7 @@ export default function About() {
               <span className="highlight-icon" aria-hidden="true">⚡</span>
               <div className="highlight-info">
                 <h4>Scalable Backend &amp; Cloud APIs</h4>
-                <p>High-concurrency Node.js/Express &amp; Python Django REST APIs, secure JWT auth, and MongoDB architectures.</p>
+                <p>High-concurrency Node.js/Express &amp; Python Django REST APIs, secure JWT auth, and database architectures.</p>
               </div>
             </div>
           </div>
@@ -100,7 +101,7 @@ export default function About() {
             >
               <span>Download Full CV</span>
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
@@ -155,14 +156,14 @@ export default function About() {
                 <span className="signature-role">Full-Stack &amp; AI Automation</span>
               </div>
 
-              {/* 3 Clean Floating Badges (Django & Bootstrap removed per user request) */}
+              {/* Clean Floating Badges: "Full Stack" and "AI Agents & n8n" */}
               <motion.div
                 className="about-float-tag tag-code"
                 animate={{ y: [-4, 4, -4] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
-                <span className="tag-icon" aria-hidden="true">⚛️</span>
-                <span className="tag-text">MERN &amp; Python</span>
+                <span className="tag-icon" aria-hidden="true">💻</span>
+                <span className="tag-text">Full Stack</span>
               </motion.div>
 
               <motion.div
@@ -172,15 +173,6 @@ export default function About() {
               >
                 <span className="tag-icon" aria-hidden="true">🤖</span>
                 <span className="tag-text">AI Agents &amp; n8n</span>
-              </motion.div>
-
-              <motion.div
-                className="about-float-tag tag-automate"
-                animate={{ y: [-5, 5, -5] }}
-                transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-              >
-                <span className="tag-icon" aria-hidden="true">💼</span>
-                <span className="tag-text">6-Mo ITS Gujrat</span>
               </motion.div>
             </div>
           </TiltCard>

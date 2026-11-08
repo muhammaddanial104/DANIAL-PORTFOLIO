@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import "./MiniChatbot.css";
 import { motion, AnimatePresence } from "framer-motion";
 
 const INITIAL_MESSAGES = [
@@ -13,8 +14,8 @@ const SUGGESTED_PROMPTS = [
   "⚡ Run n8n Automation Demo",
   "🐍 Tell me about Python & Django Stack",
   "🤖 How do you build AI Agents & Workflows?",
-  "🎨 Experience with Bootstrap & MERN?",
-  "💼 6-Month Commercial Internship Details",
+  "🎨 Experience with Full-Stack & UI Architecture?",
+  "💼 Commercial Platforms & Projects",
   "📲 How to contact Danial directly?",
 ];
 
@@ -37,12 +38,12 @@ const KNOWLEDGE_BASE = [
   {
     triggers: ["bootstrap", "frontend", "ui", "mern", "react"],
     answer:
-      "🎨 [BOOTSTRAP 5 & MERN STACK]:\n\nDanial's frontend toolkit combines:\n• Bootstrap 5 for clean, mobile-responsive grids, modals, and rapid UI prototyping.\n• React.js (React 18) with custom hooks and Redux Toolkit state management.\n• Tailwind CSS for modern bespoke cosmic and glassmorphic designs.\n• 98+ Lighthouse mobile performance optimization.",
+      "🎨 [FULL-STACK & UI ARCHITECTURE]:\n\nDanial's frontend toolkit combines:\n• Bootstrap 5 for clean, mobile-responsive grids, modals, and rapid UI prototyping.\n• React.js (React 18) with custom hooks and Redux Toolkit state management.\n• Tailwind CSS for modern bespoke cosmic and glassmorphic designs.\n• 98+ Lighthouse mobile performance optimization.",
   },
   {
-    triggers: ["internship", "experience", "its gujrat", "projects", "commercial"],
+    triggers: ["experience", "projects", "commercial", "work"],
     answer:
-      "💼 [6-MONTH COMMERCIAL INTERNSHIP & PROJECTS]:\n\n• Completed a 6-month software engineering internship at ITS Gujrat (March – August 2024).\n• Personally shipped 2 commercial MERN e-commerce platforms with Stripe payments and live inventory sync.\n• Built an n8n Autonomous Multi-Agent Workflow Engine and a Python Django Mini Chatbot system.\n• Holds a Bachelor in Robotics & Autonomous Systems with strong foundations in deterministic state logic.",
+      "💼 [COMMERCIAL PLATFORMS & PROJECTS]:\n\n• Personally shipped 2 commercial Full-Stack platforms with Stripe payments and live inventory sync.\n• Built an n8n Autonomous Multi-Agent Workflow Engine and a Python Django Mini Chatbot system.\n• Holds a Bachelor in Robotics & Autonomous Systems with strong foundations in deterministic state logic.",
   },
   {
     triggers: ["contact", "hire", "email", "phone", "whatsapp"],
@@ -83,7 +84,7 @@ export default function MiniChatbot() {
       }
 
       if (!matchedAnswer) {
-        matchedAnswer = `Danial is a Full-Stack Developer (MERN & Python/Django) and AI Automation Specialist. He builds autonomous AI Agents, n8n workflow pipelines, and intelligent mini chatbots.\n\nHe has a Bachelor in Robotics and completed a 6-month software engineering internship at ITS Gujrat shipping 2 commercial platforms.\n\nYou can chat directly with Danial on WhatsApp at +92 313 7525862 or click one of the suggested prompts below!`;
+        matchedAnswer = `Danial is a Full-Stack Developer & Python Engineer and AI Automation Specialist. He builds autonomous AI Agents, n8n workflow pipelines, and intelligent mini chatbots.\n\nHe has a Bachelor in Robotics and shipped multiple commercial platforms with Stripe payments and live database sync.\n\nYou can chat directly with Danial on WhatsApp at +92 313 7525862 or click one of the suggested prompts below!`;
       }
 
       setMessages((prev) => [

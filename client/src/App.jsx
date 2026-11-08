@@ -1,28 +1,18 @@
-import { useEffect, Suspense, lazy } from "react";
+import { useEffect } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import CosmicBackground from "./components/CosmicBackground";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import StatsBanner from "./components/StatsBanner";
-
-// Code splitting below-the-fold components via React.lazy for lightning-fast initial bundle
-const About = lazy(() => import("./components/About"));
-const Skills = lazy(() => import("./components/Skills"));
-const Projects = lazy(() => import("./components/Projects"));
-const MiniChatbot = lazy(() => import("./components/MiniChatbot"));
-const Testimonials = lazy(() => import("./components/Testimonials"));
-const Blog = lazy(() => import("./components/Blog"));
-const Contact = lazy(() => import("./components/Contact"));
-const Footer = lazy(() => import("./components/Footer"));
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import MiniChatbot from "./components/MiniChatbot";
+import Testimonials from "./components/Testimonials";
+import Blog from "./components/Blog";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 import FloatingBotLauncher from "./components/FloatingBotLauncher";
-
-function SectionFallback() {
-  return (
-    <div className="section-loading-fallback" aria-hidden="true">
-      <div className="fallback-pulse-ring"></div>
-    </div>
-  );
-}
 
 export default function App() {
   useEffect(() => {
@@ -71,52 +61,36 @@ export default function App() {
 
       {/* Main Page Flow */}
       <main id="main-content" className="main-content">
-        {/* 01 — HERO (Directly mounted for fastest FCP) */}
+        {/* 01 — HERO */}
         <Hero />
 
         {/* 01.5 — INDEPENDENT STATS & MILESTONES BANNER */}
         <StatsBanner />
 
-        {/* 02 — ABOUT (Lazy loaded) */}
-        <Suspense fallback={<SectionFallback />}>
-          <About />
-        </Suspense>
+        {/* 02 — ABOUT */}
+        <About />
 
-        {/* 03 — SKILLS & PROJECT PROOF (Lazy loaded) */}
-        <Suspense fallback={<SectionFallback />}>
-          <Skills />
-        </Suspense>
+        {/* 03 — SKILLS & PROJECT PROOF */}
+        <Skills />
 
-        {/* 04 — FEATURED PROJECTS (Lazy loaded) */}
-        <Suspense fallback={<SectionFallback />}>
-          <Projects />
-        </Suspense>
+        {/* 04 — FEATURED PROJECTS */}
+        <Projects />
 
-        {/* 05 — MINI CHATBOT & AUTOMATION SIMULATOR (Lazy loaded) */}
-        <Suspense fallback={<SectionFallback />}>
-          <MiniChatbot />
-        </Suspense>
+        {/* 05 — MINI CHATBOT & AUTOMATION SIMULATOR */}
+        <MiniChatbot />
 
-        {/* 06 — VERIFIED REFERENCES & TESTIMONIALS (Lazy loaded) */}
-        <Suspense fallback={<SectionFallback />}>
-          <Testimonials />
-        </Suspense>
+        {/* 06 — VERIFIED REFERENCES & TESTIMONIALS */}
+        <Testimonials />
 
-        {/* 07 — TECHNICAL WRITING / ARTICLES (Lazy loaded) */}
-        <Suspense fallback={<SectionFallback />}>
-          <Blog />
-        </Suspense>
+        {/* 07 — TECHNICAL WRITING / ARTICLES */}
+        <Blog />
 
-        {/* 08 — CONTACT (Lazy loaded) */}
-        <Suspense fallback={<SectionFallback />}>
-          <Contact />
-        </Suspense>
+        {/* 08 — CONTACT */}
+        <Contact />
       </main>
 
-      {/* Footer (Lazy loaded) */}
-      <Suspense fallback={<div style={{ minHeight: "120px" }} />}>
-        <Footer />
-      </Suspense>
+      {/* Footer */}
+      <Footer />
 
       {/* Quick Floating Mini Chatbot Launcher */}
       <FloatingBotLauncher />

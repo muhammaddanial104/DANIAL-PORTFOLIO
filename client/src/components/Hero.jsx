@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import "./Hero.css";
 import { motion, AnimatePresence } from "framer-motion";
 import TiltCard from "./TiltCard";
 
 const CYCLING_ROLES = [
-  "Full-Stack Developer (MERN & Python/Django)",
+  "Full-Stack Developer (Modern Web & Python/Django)",
   "AI Agents & n8n Automation Specialist",
   "Agentic AI & Generative AI Builder",
   "Mini Chatbot Automation Developer",
@@ -103,10 +104,10 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            Building high-performance web platforms with MERN, Python &amp; Django, integrated with autonomous AI Agents, n8n workflow automations, and intelligent mini chatbots. Dedicated to transforming complex logic into seamless, automated digital pipelines.
+            Building high-performance web platforms with modern Full-Stack technologies, Python &amp; Django, integrated with autonomous AI Agents, n8n workflow automations, and intelligent mini chatbots. Dedicated to transforming complex manual operations into seamless, automated digital pipelines.
           </motion.p>
 
-          {/* Degree & Verified Background Pill */}
+          {/* Degree & Verified Background Pill (Internship removed) */}
           <motion.div
             className="hero-pill-badge"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -115,7 +116,7 @@ export default function Hero() {
             whileHover={{ scale: 1.03 }}
           >
             <span className="pill-dot" aria-hidden="true"></span>
-            <span className="pill-text">🎓 Bachelor in Robotics • 6-Month Software Internship at ITS Gujrat</span>
+            <span className="pill-text">🎓 Bachelor in Robotics • Full-Stack &amp; AI Automation Specialist</span>
           </motion.div>
 
           {/* Interactive CTAs: Clear Primary Action & Secondary Resume */}
@@ -158,7 +159,7 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right Column: 3D Tilt Avatar Visual with Cosmic Rings & 2 Clean Floating Badges */}
+        {/* Right Column: 3D Tilt Avatar Visual with Cosmic Rings & Floating Badges */}
         <motion.div
           className="hero-visual-col"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -194,7 +195,7 @@ export default function Hero() {
                 <div className="planet-rim-light" aria-hidden="true"></div>
               </div>
 
-              {/* 2 Focused Floating Badges (AI Agents & Python/MERN) */}
+              {/* 2 Focused Floating Badges (AI Agents & Full Stack) */}
               <motion.div
                 className="hero-float-badge badge-top-right"
                 animate={{ y: [-5, 5, -5], x: [0, 3, 0] }}
@@ -211,8 +212,8 @@ export default function Hero() {
                 transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                 whileHover={{ scale: 1.12 }}
               >
-                <span className="float-badge-icon" aria-hidden="true">🐍</span>
-                <span className="float-badge-text">Python &amp; MERN Stack</span>
+                <span className="float-badge-icon" aria-hidden="true">💻</span>
+                <span className="float-badge-text">Full-Stack &amp; Python</span>
               </motion.div>
             </motion.div>
           </TiltCard>

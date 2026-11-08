@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Contact.css";
 import { motion } from "framer-motion";
 
 export default function Contact() {
@@ -358,9 +359,9 @@ export default function Contact() {
                 >
                   <option value="AI Agent & n8n Workflow Automation">AI Agent &amp; n8n Workflow Automation</option>
                   <option value="Python Django & Bootstrap Web App">Python Django &amp; Bootstrap Web App</option>
-                  <option value="Full-Stack MERN Development">Full-Stack MERN Development</option>
+                  <option value="Full-Stack Web Development">Full-Stack Web Development</option>
                   <option value="Mini Chatbot Integration">Mini Chatbot Integration</option>
-                  <option value="Junior Software Developer Role">Junior Developer Job / Internship</option>
+                  <option value="Junior Software Developer Role">Full-Stack Developer Role</option>
                   <option value="General Discussion / Mentorship">General Discussion / Mentorship</option>
                 </select>
               </div>

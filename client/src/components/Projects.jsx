@@ -1,130 +1,9 @@
 import { useState, useEffect } from "react";
+import "./Projects.css";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import TiltCard from "./TiltCard";
-
-const PROJECTS = [
-  {
-    id: "n8n-agent",
-    title: "n8n Autonomous Multi-Agent Workflow Engine",
-    category: "Autonomous AI & n8n Automation",
-    badge: "Featured AI Pipeline",
-    badgeType: "featured",
-    imageWebp: "/images/coder-agent-preview.webp",
-    imageJpg: "/images/coder-agent-preview.jpg",
-    problem: "Manual lead triage, repetitive data formatting, and delayed customer response times create operational bottlenecks and lost conversions.",
-    contribution: [
-      "Constructed autonomous multi-agent pipeline in n8n utilizing custom Python execution nodes and Gen AI prompt parsing.",
-      "Engineered automated webhook listeners with dynamic payload validation, data sanitization, and intent scoring.",
-      "Orchestrated instant notification alerts to WhatsApp Business API and automated CRM lead status updates.",
-    ],
-    stack: ["n8n", "AI Agents", "Python", "Generative AI", "Webhooks", "REST APIs"],
-    flow: "Inbound Webhook → n8n Pipeline → Python Gen AI Agent Parsing → Data Enrichment → WhatsApp & CRM Alert",
-    githubUrl: "https://github.com/muhammaddanial104",
-    liveUrl: "https://danial-portfolio-theta.vercel.app/#projects",
-    year: "2024",
-  },
-  {
-    id: "mini-chatbot",
-    title: "Python Django Mini Chatbot & Lead Automation",
-    category: "AI Automation & Backend APIs",
-    badge: "Python + Django REST",
-    badgeType: "client",
-    imageWebp: "/images/aegis-preview.webp",
-    imageJpg: "/images/aegis-preview.jpg",
-    problem: "Portals require an embedded, lightweight customer triage and lead capture chatbot with zero third-party recurring SaaS fees.",
-    contribution: [
-      "Architected Python Django REST API backend with automated intent matching, conversational state handling, and FAQ triage.",
-      "Designed clean interactive chat interface with typing indicators, suggested action chips, and instant response feedback.",
-      "Integrated n8n webhook triggers to escalate complex inquiries directly to human team members via email and WhatsApp.",
-    ],
-    stack: ["Python", "Django REST", "AI Chatbot", "n8n Workflows", "Webhooks", "REST APIs"],
-    flow: "User Message → Frontend UI → Django REST API → Python Intent Matcher → Automated FAQ Resolution / n8n Escalation",
-    githubUrl: "https://github.com/muhammaddanial104",
-    liveUrl: "https://danial-portfolio-theta.vercel.app/#projects",
-    year: "2024",
-  },
-  {
-    id: "ecommerce-its",
-    title: "Multi-Vendor E-Commerce Platform",
-    category: "Commercial Client Work",
-    badge: "Shipped at ITS Gujrat (6 Mo)",
-    badgeType: "client",
-    imageWebp: "/images/proj1.webp",
-    imageJpg: "/images/proj1.jpg",
-    problem: "Regional commercial clients required a high-reliability digital storefront with real-time stock sync, zero checkout failures, and role-based admin controls.",
-    contribution: [
-      "Personally engineered end-to-end RESTful Express APIs and MongoDB schemas for product catalog and order processing.",
-      "Integrated secure Stripe payment processing, webhook listeners, and dynamic inventory decrement upon successful payment.",
-      "Built responsive React UI with Redux Toolkit cart persistence and admin dashboard for live order fulfillment.",
-    ],
-    stack: ["React.js", "Node.js", "Express.js", "MongoDB", "Redux Toolkit", "Stripe API"],
-    flow: "Catalog Browsing → Cart State Persistence → Checkout Auth → Stripe Payment Webhook → MongoDB Inventory Decrement → Confirmation",
-    githubUrl: "https://github.com/muhammaddanial104/DANIAL-PORTFOLIO",
-    liveUrl: "https://danial-portfolio-theta.vercel.app/#projects",
-    year: "Mar 2024 – Aug 2024",
-  },
-  {
-    id: "taskpulse",
-    title: "TaskPulse — Agile Team Sprint & Kanban Tracker",
-    category: "Productivity Web App",
-    badge: "Full-Stack Web App",
-    badgeType: "app",
-    imageWebp: "/images/proj4.webp",
-    imageJpg: "/images/proj4.jpg",
-    problem: "Engineering teams need a lightweight sprint tracking board with instant visual feedback, avoiding enterprise Jira bloat and steep learning curves.",
-    contribution: [
-      "Implemented HTML5 drag-and-drop task workflow across backlog, in-progress, review, and completed columns.",
-      "Engineered optimistic UI updates for instantaneous visual feedback during task status transitions.",
-      "Created priority indicators, due-date countdowns, and debounced quick-search filtering.",
-    ],
-    stack: ["React.js", "HTML5 Drag & Drop", "Express.js", "MongoDB", "Tailwind CSS"],
-    flow: "Sprint Creation → Task Tagging → Drag-and-Drop Column Updates → Database Sync",
-    githubUrl: "https://github.com/muhammaddanial104",
-    liveUrl: "https://danial-portfolio-theta.vercel.app/#projects",
-    year: "2024",
-  },
-  {
-    id: "weather-hub",
-    title: "Weather & Air Quality Analytics Hub",
-    category: "REST API & Data Visualization",
-    badge: "API & Data Analytics",
-    badgeType: "api",
-    imageWebp: "/images/proj2.webp",
-    imageJpg: "/images/proj2.jpg",
-    problem: "Common weather widgets only display basic current temperature without actionable hourly forecasts, air quality index, and rain probabilities.",
-    contribution: [
-      "Integrated OpenWeather REST API with browser Geolocation API for seamless automatic local weather detection.",
-      "Built dynamic search input with debounced API queries to prevent unnecessary rate-limit consumption.",
-      "Rendered responsive 5-day hourly temperature trend charts with temperature unit toggling (°C/°F).",
-    ],
-    stack: ["React.js", "OpenWeather API", "Chart.js", "Geolocation API", "CSS Modules"],
-    flow: "Geolocation Request → OpenWeather API Fetch → Data Normalization → Chart.js Trend Rendering",
-    githubUrl: "https://github.com/muhammaddanial104",
-    liveUrl: "https://danial-portfolio-theta.vercel.app/#projects",
-    year: "2024",
-  },
-  {
-    id: "robotics-arm",
-    title: "Robotics 2-DOF Arm Kinematics Simulator",
-    category: "Robotics & Mathematical Computing",
-    badge: "Robotics Degree Highlight",
-    badgeType: "robotics",
-    imageWebp: "/images/proj3.webp",
-    imageJpg: "/images/proj3.jpg",
-    problem: "Understanding inverse kinematics equations for robotic arms is abstract and mathematically dense without an interactive geometric visualizer.",
-    contribution: [
-      "Formulated mathematical inverse kinematics algorithms calculating elbow-up and elbow-down joint angles in real time.",
-      "Rendered dynamic 2-link robotic arm with joint nodes on HTML5 Canvas running at 60 FPS.",
-      "Added interactive mouse target tracking with boundary clamping to prevent impossible kinematic singularities.",
-    ],
-    stack: ["JavaScript (ES6+)", "HTML5 Canvas API", "Kinematics Math Engine", "CSS3"],
-    flow: "Mouse Target Coordinate (X, Y) → Inverse Kinematics Calculation (θ1, θ2) → Canvas Frame Redraw",
-    githubUrl: "https://github.com/muhammaddanial104",
-    liveUrl: "https://danial-portfolio-theta.vercel.app/#projects",
-    year: "2024",
-  },
-];
+import { PROJECTS_DATA } from "../data/projectsData";
 
 export default function Projects() {
   const [selectedModal, setSelectedModal] = useState(null);
@@ -159,13 +38,13 @@ export default function Projects() {
           VERIFIED PROJECTS &amp; <span className="gradient-text">CODE DELIVERABLES</span>
         </h2>
         <p className="section-subtitle">
-          Autonomous n8n agentic workflows, Python Django mini chatbot automations, and commercial full-stack client deliverables from ITS Gujrat.
+          Autonomous n8n agentic workflows, Python Django mini chatbot automations, and commercial full-stack production platforms.
         </p>
       </motion.div>
 
-      {/* Projects Grid: 6 Real Projects */}
+      {/* Projects Grid */}
       <div className="projects-cards-grid">
-        {PROJECTS.map((proj, idx) => (
+        {PROJECTS_DATA.map((proj, idx) => (
           <TiltCard key={proj.id} className="project-grid-tilt-card" maxTilt={8} glare={true}>
             <motion.article
               className="project-display-card"
@@ -287,7 +166,7 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Case Study Details Modal (Portaled to body to guarantee top-level z-index) */}
+      {/* Case Study Details Modal */}
       {typeof document !== "undefined" &&
         createPortal(
           <AnimatePresence>
