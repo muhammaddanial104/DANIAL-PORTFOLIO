@@ -294,4 +294,56 @@
   border-color: rgba(16, 185, 129, 0.4);
   color: #86efac;
 }
-
+
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   ABOUT RESPONSIVE BREAKPOINTS
+   ═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+  }
+  .about-visual-col {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .about-photo-wrapper {
+    max-width: 300px;
+  }
+  .about-float-tag {
+    padding: 5px 12px;
+    font-size: 0.72rem;
+  }
+  .tag-code { top: -8px; left: -14px; }
+  .tag-create { top: -8px; right: -14px; }
+  .tag-automate { bottom: 65px; right: -16px; }
+  .tag-innovate { bottom: 65px; left: -16px; }
+  .about-signature-badge {
+    bottom: 10px;
+    left: 12px;
+    right: 12px;
+    padding: 8px 12px;
+  }
+  .signature-name {
+    font-size: 0.95rem;
+  }
+  .signature-role {
+    font-size: 0.68rem;
+  }
+  .about-actions-row {
+    flex-direction: column;
+    width: 100%;
+  }
+  .about-btn-primary, .about-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}

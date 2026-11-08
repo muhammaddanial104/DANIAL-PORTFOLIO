@@ -8,8 +8,6 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import MiniChatbot from "./components/MiniChatbot";
-import Testimonials from "./components/Testimonials";
-import Blog from "./components/Blog";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import FloatingBotLauncher from "./components/FloatingBotLauncher";
@@ -79,13 +77,7 @@ export default function App() {
         {/* 05 — MINI CHATBOT & AUTOMATION SIMULATOR */}
         <MiniChatbot />
 
-        {/* 06 — VERIFIED REFERENCES & TESTIMONIALS */}
-        <Testimonials />
-
-        {/* 07 — TECHNICAL WRITING / ARTICLES */}
-        <Blog />
-
-        {/* 08 — CONTACT */}
+        {/* 06 — CONTACT */}
         <Contact />
       </main>
 

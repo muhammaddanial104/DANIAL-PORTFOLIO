@@ -137,7 +137,7 @@ export default function Contact() {
               <p className="profile-role-title">Full-Stack &amp; AI Automation Developer</p>
               <div className="profile-meta-pills">
                 <span className="profile-pill pill-degree">🎓 Robotics Graduate</span>
-                <span className="profile-pill pill-intern">💼 6-Mo ITS Gujrat</span>
+                <span className="profile-pill pill-intern">⚡ Production Ready</span>
                 <span className="profile-pill pill-status">Remote Ready</span>
               </div>
             </div>

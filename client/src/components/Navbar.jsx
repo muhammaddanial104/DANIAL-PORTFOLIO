@@ -13,8 +13,6 @@ export default function Navbar() {
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "AI Bot", href: "#chatbot" },
-    { name: "Reviews", href: "#testimonials" },
-    { name: "Articles", href: "#blog" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -22,7 +20,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      const sections = ["home", "about", "skills", "projects", "chatbot", "testimonials", "blog", "contact"];
+      const sections = ["home", "about", "skills", "projects", "chatbot", "contact"];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {

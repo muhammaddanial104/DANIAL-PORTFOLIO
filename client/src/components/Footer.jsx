@@ -6,7 +6,7 @@ const FOOTER_TAGLINES = [
   "Building Autonomous AI Agents & n8n Automations ⚡",
   "Architecting Modern Full-Stack & Python/Django Systems 🚀",
   "Engineering Interactive Mini Chatbots & Custom Automations 🤖",
-  "Robotics Degree • 6-Month Commercial Proof at ITS Gujrat 🎓",
+  "Robotics Degree • Intelligent Autonomous AI Systems 🎓",
 ];
 
 const NAV_ITEMS = [
@@ -15,8 +15,6 @@ const NAV_ITEMS = [
   { name: "Skills", id: "skills" },
   { name: "Projects", id: "projects" },
   { name: "AI Bot", id: "chatbot" },
-  { name: "Reviews", id: "testimonials" },
-  { name: "Articles", id: "blog" },
   { name: "Contact", id: "contact" },
 ];
 

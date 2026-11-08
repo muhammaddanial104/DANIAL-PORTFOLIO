@@ -402,4 +402,72 @@
   background: rgba(16, 185, 129, 0.08);
   color: #86efac;
 }
-
+
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   SKILLS RESPONSIVE BREAKPOINTS
+   ═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .skills-categories-grid,
+  .skills-proven-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .skill-category-card {
+    padding: 18px 16px;
+  }
+  .skill-cat-title {
+    font-size: 0.9rem;
+  }
+  .cat-badge-proven {
+    font-size: 0.6rem;
+    padding: 2px 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-categories-grid,
+  .skills-proven-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    width: 100%;
+  }
+  .skill-category-card {
+    padding: 18px 16px;
+    border-radius: 14px;
+  }
+  .skill-cat-header {
+    margin-bottom: 14px;
+    gap: 8px;
+  }
+  .skill-cat-title {
+    font-size: 0.92rem;
+  }
+  .cat-badge-proven {
+    font-size: 0.62rem;
+    padding: 2px 7px;
+  }
+  .currently-learning-card {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+  .learning-items-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .learning-item-box {
+    padding: 14px;
+  }
+  .actual-tech-card {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+  .actual-tech-chips {
+    gap: 6px;
+  }
+  .tech-pill {
+    padding: 4px 10px;
+    font-size: 0.74rem;
+  }
+}

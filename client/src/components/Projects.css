@@ -235,12 +235,10 @@
   font-size: 0.72rem;
   font-weight: 700;
   color: #38bdf8;
-  background: rgba(56, 189, 248, 0.08);
   border: 1px solid rgba(56, 189, 248, 0.25);
   padding: 3px 9px;
   border-radius: 6px;
   letter-spacing: 0.02em;
-  transition: all 0.2s ease;
 }
 
 .tech-pill-chip:hover {
@@ -260,7 +258,6 @@
   background: rgba(245, 158, 11, 0.12);
   border: 1px solid rgba(245, 158, 11, 0.35);
   padding: 8px 14px;
-  border-radius: 8px;
 }
 
 /* E-Commerce Grid Layout */
@@ -329,7 +326,6 @@
   gap: 8px;
   padding: 6px 12px;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(56, 189, 248, 0.2);
   border-radius: 8px;
   font-size: 0.8rem;
   font-weight: 500;
@@ -356,7 +352,6 @@
   font-family: var(--font-mono);
   font-size: 0.72rem;
   padding: 4px 10px;
-  background: rgba(56, 189, 248, 0.08);
   border: 1px solid rgba(56, 189, 248, 0.3);
   color: #7dd3fc;
   border-radius: 6px;
@@ -379,7 +374,6 @@
   color: #ffffff;
   font-size: 0.85rem;
   font-weight: 700;
-  text-decoration: none;
   box-shadow: 0 0 20px rgba(14, 165, 233, 0.35);
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -401,7 +395,6 @@
   color: #f1f5f9;
   font-size: 0.85rem;
   font-weight: 700;
-  text-decoration: none;
   cursor: pointer;
   transition: all var(--transition-fast);
 }
@@ -538,21 +531,6 @@
   justify-content: flex-end;
   border-top: 1px solid var(--border-subtle);
   padding-top: 16px;
-}
-
-
-  text-decoration: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  transition: all 0.2s ease;
-}
-
-.blog-link-external:hover {
-  background: rgba(56, 189, 248, 0.18);
-  border-color: #38bdf8;
-  transform: translateY(-1px);
 }
 
 
@@ -734,6 +712,87 @@
   margin-bottom: 14px;
 }
 
+
 .project-category-label {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #38bdf8;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.project-title-text {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.35;
+}
+
+.project-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PROJECTS RESPONSIVE BREAKPOINTS
+   ═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .featured-case-study-hero {
+    grid-template-columns: 1fr;
+  }
+  .case-studies-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ecommerce-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .projects-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-case-study-hero {
+    padding: 22px 16px;
+    gap: 24px;
+  }
+  .featured-actions-row {
+    flex-direction: column;
+    width: 100%;
+  }
+  .featured-btn-primary, .featured-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+  .case-studies-grid {
+    grid-template-columns: 1fr;
+  }
+  .ecommerce-content-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .flagship-project-card {
+    padding: 20px 16px;
+  }
+  .capabilities-grid {
+    grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+  }
+  .project-modal-dialog {
+    padding: 18px 14px;
+    max-height: 94vh;
+  }
+}

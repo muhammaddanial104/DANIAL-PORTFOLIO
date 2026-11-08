@@ -673,4 +673,63 @@
   box-shadow: 0 0 30px rgba(14, 165, 233, 0.6);
   transform: translateY(-2px);
 }
-
+
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   CONTACT RESPONSIVE BREAKPOINTS
+   ═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+  .contact-profile-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+  }
+  .profile-avatar-box {
+    width: 52px;
+    height: 52px;
+  }
+  .profile-name {
+    font-size: 1rem;
+  }
+  .contact-glass-form {
+    padding: 20px 14px;
+    border-radius: 14px;
+  }
+  .contact-method-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px 12px;
+    gap: 12px;
+  }
+  .method-main-row {
+    width: 100%;
+  }
+  .method-value {
+    white-space: normal;
+    word-break: break-word;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  .method-action-btn,
+  .timezone-tag {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    padding: 10px 14px;
+    font-size: 0.82rem;
+    border-radius: 8px;
+  }
+}
