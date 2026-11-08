@@ -7,16 +7,16 @@ const PROJECTS = [
   {
     id: "n8n-agent",
     title: "n8n Autonomous Multi-Agent Workflow Engine",
-    category: "Agentic AI & Automation",
-    badge: "n8n + AI Agent",
+    category: "Autonomous AI & n8n Automation",
+    badge: "Featured AI Pipeline",
     badgeType: "featured",
     imageWebp: "/images/coder-agent-preview.webp",
     imageJpg: "/images/coder-agent-preview.jpg",
-    problem: "Businesses waste hours manually parsing inbound customer inquiries, formatting customer data, and updating multiple CRM databases.",
+    problem: "Manual lead triage, repetitive data formatting, and delayed customer response times create operational bottlenecks and lost conversions.",
     contribution: [
-      "Constructed autonomous multi-agent pipeline in n8n featuring custom Python execution nodes and Gen AI prompt parsing.",
-      "Implemented automated webhook ingestion from web forms with dynamic payload sanitization and scoring logic.",
-      "Orchestrated instantaneous notification dispatch to WhatsApp Business API and customer support channels.",
+      "Constructed autonomous multi-agent pipeline in n8n utilizing custom Python execution nodes and Gen AI prompt parsing.",
+      "Engineered automated webhook listeners with dynamic payload validation, data sanitization, and intent scoring.",
+      "Orchestrated instant notification alerts to WhatsApp Business API and automated CRM lead status updates.",
     ],
     stack: ["n8n", "AI Agents", "Python", "Generative AI", "Webhooks", "REST APIs"],
     flow: "Inbound Webhook → n8n Pipeline → Python Gen AI Agent Parsing → Data Enrichment → WhatsApp & CRM Alert",
@@ -27,19 +27,19 @@ const PROJECTS = [
   {
     id: "mini-chatbot",
     title: "Python Django Mini Chatbot & Lead Automation",
-    category: "Python / Django & AI Chatbot",
-    badge: "Python + Bootstrap 5",
+    category: "AI Automation & Backend APIs",
+    badge: "Python + Django REST",
     badgeType: "client",
     imageWebp: "/images/aegis-preview.webp",
     imageJpg: "/images/aegis-preview.jpg",
-    problem: "Portals require an embedded, lightweight customer support and lead qualification chatbot without costly enterprise SaaS monthly fees.",
+    problem: "Portals require an embedded, lightweight customer triage and lead capture chatbot with zero third-party recurring SaaS fees.",
     contribution: [
-      "Engineered responsive chatbot interface using Bootstrap 5 with quick-action prompt chips and typing indicators.",
-      "Architected Python Django REST API backend with automated intent classification algorithms and FAQ triage.",
+      "Architected Python Django REST API backend with automated intent matching, conversational state handling, and FAQ triage.",
+      "Designed clean interactive chat interface with typing indicators, suggested action chips, and instant response feedback.",
       "Integrated n8n webhook triggers to escalate complex inquiries directly to human team members via email and WhatsApp.",
     ],
-    stack: ["Python", "Django", "Bootstrap 5", "Mini Chatbot", "n8n", "REST APIs"],
-    flow: "User Message → Bootstrap UI → Django REST API → Python Intent Matcher → Automated FAQ Resolution / n8n Escalation",
+    stack: ["Python", "Django REST", "AI Chatbot", "n8n Workflows", "Webhooks", "REST APIs"],
+    flow: "User Message → Frontend UI → Django REST API → Python Intent Matcher → Automated FAQ Resolution / n8n Escalation",
     githubUrl: "https://github.com/muhammaddanial104",
     liveUrl: "https://danial-portfolio-theta.vercel.app/#projects",
     year: "2024",
@@ -58,28 +58,28 @@ const PROJECTS = [
       "Integrated secure Stripe payment processing, webhook listeners, and dynamic inventory decrement upon successful payment.",
       "Built responsive React UI with Redux Toolkit cart persistence and admin dashboard for live order fulfillment.",
     ],
-    stack: ["React.js", "Node.js", "Express.js", "MongoDB", "Redux Toolkit", "Bootstrap 5", "Stripe API"],
+    stack: ["React.js", "Node.js", "Express.js", "MongoDB", "Redux Toolkit", "Stripe API"],
     flow: "Catalog Browsing → Cart State Persistence → Checkout Auth → Stripe Payment Webhook → MongoDB Inventory Decrement → Confirmation",
     githubUrl: "https://github.com/muhammaddanial104/DANIAL-PORTFOLIO",
     liveUrl: "https://danial-portfolio-theta.vercel.app/#projects",
-    year: "Mar 2024 – Aug 2024 (6 Months)",
+    year: "Mar 2024 – Aug 2024",
   },
   {
     id: "taskpulse",
-    title: "TaskPulse — Agile Team Kanban Tracker",
+    title: "TaskPulse — Agile Team Sprint & Kanban Tracker",
     category: "Productivity Web App",
-    badge: "Team Tool",
+    badge: "Full-Stack Web App",
     badgeType: "app",
     imageWebp: "/images/proj4.webp",
     imageJpg: "/images/proj4.jpg",
-    problem: "Small engineering teams need an intuitive sprint tracking board without the bloat, complexity, and high cost of enterprise Jira.",
+    problem: "Engineering teams need a lightweight sprint tracking board with instant visual feedback, avoiding enterprise Jira bloat and steep learning curves.",
     contribution: [
-      "Implemented drag-and-drop task workflow across backlog, in-progress, code-review, and completed columns.",
-      "Added optimistic UI updates for instantaneous visual feedback during task status changes.",
-      "Created priority indicators, due-date countdowns, and quick task search filtering.",
+      "Implemented HTML5 drag-and-drop task workflow across backlog, in-progress, review, and completed columns.",
+      "Engineered optimistic UI updates for instantaneous visual feedback during task status transitions.",
+      "Created priority indicators, due-date countdowns, and debounced quick-search filtering.",
     ],
     stack: ["React.js", "HTML5 Drag & Drop", "Express.js", "MongoDB", "Tailwind CSS"],
-    flow: "Sprint Creation → Task Creation & Tagging → Drag-and-Drop Column Updates → Database Sync",
+    flow: "Sprint Creation → Task Tagging → Drag-and-Drop Column Updates → Database Sync",
     githubUrl: "https://github.com/muhammaddanial104",
     liveUrl: "https://danial-portfolio-theta.vercel.app/#projects",
     year: "2024",
@@ -88,7 +88,7 @@ const PROJECTS = [
     id: "weather-hub",
     title: "Weather & Air Quality Analytics Hub",
     category: "REST API & Data Visualization",
-    badge: "API Integration",
+    badge: "API & Data Analytics",
     badgeType: "api",
     imageWebp: "/images/proj2.webp",
     imageJpg: "/images/proj2.jpg",
@@ -108,17 +108,17 @@ const PROJECTS = [
     id: "robotics-arm",
     title: "Robotics 2-DOF Arm Kinematics Simulator",
     category: "Robotics & Mathematical Computing",
-    badge: "Degree Highlight",
+    badge: "Robotics Degree Highlight",
     badgeType: "robotics",
     imageWebp: "/images/proj3.webp",
     imageJpg: "/images/proj3.jpg",
-    problem: "Understanding inverse kinematics equations for robotic arms is notoriously abstract without an interactive geometric visualizer.",
+    problem: "Understanding inverse kinematics equations for robotic arms is abstract and mathematically dense without an interactive geometric visualizer.",
     contribution: [
       "Formulated mathematical inverse kinematics algorithms calculating elbow-up and elbow-down joint angles in real time.",
       "Rendered dynamic 2-link robotic arm with joint nodes on HTML5 Canvas running at 60 FPS.",
       "Added interactive mouse target tracking with boundary clamping to prevent impossible kinematic singularities.",
     ],
-    stack: ["JavaScript (ES6+)", "HTML5 Canvas API", "Trigonometric Math Engine", "CSS3"],
+    stack: ["JavaScript (ES6+)", "HTML5 Canvas API", "Kinematics Math Engine", "CSS3"],
     flow: "Mouse Target Coordinate (X, Y) → Inverse Kinematics Calculation (θ1, θ2) → Canvas Frame Redraw",
     githubUrl: "https://github.com/muhammaddanial104",
     liveUrl: "https://danial-portfolio-theta.vercel.app/#projects",
@@ -153,7 +153,7 @@ export default function Projects() {
         <div className="section-badge">
           <span className="badge-num">04</span>
           <span className="badge-sep">|</span>
-          <span className="badge-title">Featured Work</span>
+          <span className="badge-title">Featured Work &amp; Code Proof</span>
         </div>
         <h2 id="projects-heading" className="section-main-heading">
           VERIFIED PROJECTS &amp; <span className="gradient-text">CODE DELIVERABLES</span>
@@ -219,7 +219,7 @@ export default function Projects() {
                     />
                   </picture>
                   <div className="img-hover-overlay" aria-hidden="true">
-                    <span className="zoom-hint">🔍 Click Case Study for Architecture</span>
+                    <span className="zoom-hint">🔍 Architecture &amp; Case Study</span>
                   </div>
                 </div>
               </div>
@@ -233,11 +233,11 @@ export default function Projects() {
               {/* Problem Solved & Proof Callout */}
               <div className="project-proof-box">
                 <div className="proof-row">
-                  <strong className="proof-label">🎯 Problem Solved:</strong>
-                  <span className="proof-text">{proj.problem}</span>
+                  <strong className="proof-label">🎯 Challenge Solved:</strong>
+                  <p className="proof-text">{proj.problem}</p>
                 </div>
                 <div className="proof-row">
-                  <strong className="proof-label">🛠️ Key Contribution:</strong>
+                  <strong className="proof-label">🛠️ Key Engineering:</strong>
                   <ul className="proof-bullets">
                     {proj.contribution.slice(0, 2).map((item, i) => (
                       <li key={i}>{item}</li>
@@ -246,35 +246,41 @@ export default function Projects() {
                 </div>
                 <div className="proof-row">
                   <strong className="proof-label">⚡ Tech Stack:</strong>
-                  <span className="proof-stack">{proj.stack.join(" · ")}</span>
+                  <div className="proof-stack-pills">
+                    {proj.stack.map((tech) => (
+                      <span key={tech} className="tech-pill-chip">{tech}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              {/* Action Buttons: Live Demo, GitHub, Case Study */}
+              {/* Action Buttons: Case Study + GitHub */}
               <div className="project-actions-row">
-                <a
-                  href={proj.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary-glow btn-sm"
-                  aria-label={`View ${proj.title} source code on GitHub`}
-                >
-                  <span>GitHub</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                  </svg>
-                </a>
-
                 <button
                   type="button"
-                  className="btn-outline-glass btn-sm"
+                  className="btn-primary-glow btn-sm"
                   onClick={() => setSelectedModal(proj)}
                   aria-label={`Open detailed case study for ${proj.title}`}
                 >
                   <span>Case Study</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
                 </button>
+
+                <a
+                  href={proj.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline-glass btn-sm"
+                  aria-label={`View ${proj.title} source code on GitHub`}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                  </svg>
+                  <span>Code</span>
+                </a>
               </div>
             </motion.article>
           </TiltCard>
@@ -336,12 +342,12 @@ export default function Projects() {
                     </div>
 
                     <div className="modal-section-block">
-                      <h4 className="modal-section-heading">🎯 Problem Solved</h4>
+                      <h4 className="modal-section-heading">🎯 Challenge Solved</h4>
                       <p className="modal-section-p">{selectedModal.problem}</p>
                     </div>
 
                     <div className="modal-section-block">
-                      <h4 className="modal-section-heading">🛠️ Key Personal Contributions</h4>
+                      <h4 className="modal-section-heading">🛠️ Key Engineering Deliverables</h4>
                       <ul className="modal-bullets-list">
                         {selectedModal.contribution.map((item, i) => (
                           <li key={i}>{item}</li>
@@ -350,12 +356,12 @@ export default function Projects() {
                     </div>
 
                     <div className="modal-section-block">
-                      <h4 className="modal-section-heading">🔄 Architecture &amp; Data Flow</h4>
+                      <h4 className="modal-section-heading">🔄 Architecture &amp; Data Pipeline</h4>
                       <div className="modal-flow-box">{selectedModal.flow}</div>
                     </div>
 
                     <div className="modal-section-block">
-                      <h4 className="modal-section-heading">⚡ Verified Tech Stack</h4>
+                      <h4 className="modal-section-heading">⚡ Production Tech Stack</h4>
                       <div className="modal-tech-pills">
                         {selectedModal.stack.map((t) => (
                           <span className="modal-tech-pill" key={t}>{t}</span>

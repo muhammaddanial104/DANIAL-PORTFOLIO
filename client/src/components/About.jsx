@@ -24,13 +24,13 @@ export default function About() {
         <div className="section-badge">
           <span className="badge-num">02</span>
           <span className="badge-sep">|</span>
-          <span className="badge-title">My Journey &amp; Mindset</span>
+          <span className="badge-title">Identity &amp; Engineering Mindset</span>
         </div>
         <h2 id="about-heading" className="section-main-heading">
-          ENGINEERING DISCIPLINE &amp; <span className="gradient-text">GROWTH MINDSET</span>
+          ENGINEERING DISCIPLINE &amp; <span className="gradient-text">SYSTEMS THINKING</span>
         </h2>
         <p className="section-subtitle">
-          From robotics algorithms to commercial MERN platforms — building reliable web applications with curiosity, rigor, and clean code.
+          From robotics mathematical modeling to commercial MERN &amp; Python architectures — engineering resilient, high-speed digital platforms.
         </p>
       </motion.div>
 
@@ -48,11 +48,11 @@ export default function About() {
           </p>
 
           <p className="about-paragraph">
-            With a degree in <span className="text-cyan">Robotics &amp; Autonomous Systems</span> and a <span className="text-purple">6-Month Software Internship at ITS Gujrat</span>, I bridge structured engineering logic with modern full-stack development. I contributed directly to deploying two commercial MERN e-commerce platforms with secure REST APIs, Stripe payments, and real-time data sync.
+            With a degree in <span className="text-cyan">Robotics &amp; Autonomous Systems</span> and an intensive <span className="text-purple">6-Month Software Engineering Internship at ITS Gujrat</span>, I combine mathematical problem-solving with production-grade full-stack architecture. During my commercial tenure, I directly engineered and shipped two live MERN e-commerce platforms featuring resilient REST APIs, automated Stripe transactions, and live inventory sync.
           </p>
 
           <p className="about-paragraph">
-            Today, I specialize in architecting <strong className="text-white">autonomous AI Agents, n8n workflows, Python/Django backends, and responsive web applications</strong> — turning complex manual workflows into fast, automated digital pipelines.
+            Today, I specialize in building <strong className="text-white">autonomous AI Agents, n8n workflow automations, Python &amp; Django REST backends, and decoupled React applications</strong> — transforming manual, time-intensive operations into high-speed, self-driving digital pipelines.
           </p>
 
           {/* 4 Pillars Grid with proven glass cards */}
@@ -60,8 +60,8 @@ export default function About() {
             <div className="highlight-card">
               <span className="highlight-icon" aria-hidden="true">🎓</span>
               <div className="highlight-info">
-                <h4>Robotics Degree</h4>
-                <p>Strong foundation in computational logic, math, and structured problem-solving.</p>
+                <h4>Robotics &amp; Algorithmic Logic</h4>
+                <p>Strong foundations in computational kinematics, mathematical modeling, and deterministic system design.</p>
               </div>
             </div>
 
@@ -69,23 +69,23 @@ export default function About() {
               <span className="highlight-icon" aria-hidden="true">💼</span>
               <div className="highlight-info">
                 <h4>6-Mo Commercial Internship</h4>
-                <p>Shipped 2 production MERN platforms at ITS Gujrat with real client deployments.</p>
+                <p>Shipped 2 production MERN platforms at ITS Gujrat with live Stripe payments and inventory synchronization.</p>
               </div>
             </div>
 
             <div className="highlight-card">
               <span className="highlight-icon" aria-hidden="true">🤖</span>
               <div className="highlight-info">
-                <h4>AI Agents &amp; n8n Workflows</h4>
-                <p>Agentic pipelines, Gen AI prompts, webhook triggers, and automated mini chatbots.</p>
+                <h4>Autonomous AI Agents &amp; n8n</h4>
+                <p>Multi-agent pipelines, prompt engineering, automated webhook triage, and intelligent mini chatbots.</p>
               </div>
             </div>
 
             <div className="highlight-card">
-              <span className="highlight-icon" aria-hidden="true">🐍</span>
+              <span className="highlight-icon" aria-hidden="true">⚡</span>
               <div className="highlight-info">
-                <h4>Python, Django &amp; Bootstrap</h4>
-                <p>Modular Django REST APIs, responsive Bootstrap 5 UIs, and robust MERN systems.</p>
+                <h4>Scalable Backend &amp; Cloud APIs</h4>
+                <p>High-concurrency Node.js/Express &amp; Python Django REST APIs, secure JWT auth, and MongoDB architectures.</p>
               </div>
             </div>
           </div>
@@ -138,7 +138,7 @@ export default function About() {
                   <source srcSet="/images/danial.webp" type="image/webp" />
                   <img
                     src="/images/danial.jpg"
-                    alt="Muhammad Danial - Junior Full-Stack Developer"
+                    alt="Muhammad Danial - Full-Stack Developer & AI Automation Specialist"
                     className="about-photo-img"
                     width="400"
                     height="500"
@@ -155,7 +155,7 @@ export default function About() {
                 <span className="signature-role">Full-Stack &amp; AI Automation</span>
               </div>
 
-              {/* 4 Floating Contextual Tags with Proven Perimeter Coordinates */}
+              {/* 3 Clean Floating Badges (Django & Bootstrap removed per user request) */}
               <motion.div
                 className="about-float-tag tag-code"
                 animate={{ y: [-4, 4, -4] }}
@@ -181,15 +181,6 @@ export default function About() {
               >
                 <span className="tag-icon" aria-hidden="true">💼</span>
                 <span className="tag-text">6-Mo ITS Gujrat</span>
-              </motion.div>
-
-              <motion.div
-                className="about-float-tag tag-innovate"
-                animate={{ y: [5, -5, 5] }}
-                transition={{ duration: 4.7, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
-              >
-                <span className="tag-icon" aria-hidden="true">🐍</span>
-                <span className="tag-text">Django &amp; Bootstrap</span>
               </motion.div>
             </div>
           </TiltCard>
